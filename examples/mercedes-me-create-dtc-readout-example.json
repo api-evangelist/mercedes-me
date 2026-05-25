@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.mercedes-benz.com/remotediagnostic/v1/vehicles/WDD2050461R012345/dtcReadouts",
+    "headers": {
+      "Accept": "application/json",
+      "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "ecuFilter": ["ENGINE", "TRANSMISSION", "BRAKE"]
+    }
+  },
+  "response": {
+    "status": 202,
+    "headers": {
+      "Content-Type": "application/json",
+      "Location": "https://api.mercedes-benz.com/remotediagnostic/v1/vehicles/WDD2050461R012345/dtcReadouts/rd-9c2a18f4"
+    },
+    "body": {
+      "readoutId": "rd-9c2a18f4",
+      "vehicleId": "WDD2050461R012345",
+      "status": "PENDING",
+      "createdAt": "2026-05-25T17:42:11Z"
+    }
+  }
+}

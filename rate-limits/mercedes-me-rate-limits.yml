@@ -1,0 +1,62 @@
+apiCommonsRateLimits: "0.1"
+provider:
+  id: mercedes-me
+  name: Mercedes-Benz Mercedes me
+  url: https://developer.mercedes-benz.com/
+description: |
+  Mercedes-Benz documents quota enforcement implicitly through `429 Quota limit is exceeded` responses on
+  every operation in every published Swagger spec (Car Configurator, Dealer, Remote Diagnostic Support,
+  Vehicle Images). Specific request-per-minute and per-day limits are not published in the public spec —
+  they are set per API key/subscription on the developer portal. The Sandbox/Tryout tier is hard-capped on
+  the platform side; the production tiers are governed by partner contract.
+
+policies:
+  - id: per-api-key-quota
+    description: Each issued Mercedes-Benz developer API key has a quota counted across all endpoints of the
+      subscribed product. Exceeding the quota returns HTTP 429 with no Retry-After body content per the
+      published Swagger specs (the description string "Quota limit is exceeded" is the only signal).
+    enforcement: per-api-key
+    scope: per-product
+    response:
+      status: 429
+      bodyDescription: Quota limit is exceeded
+    documented:
+      - https://developer.mercedes-benz.com/
+      - openapi/mercedes-me-configurator-api-openapi.yml
+      - openapi/mercedes-me-dealer-api-openapi.yml
+      - openapi/mercedes-me-vehicle-images-api-openapi.yml
+      - openapi/mercedes-me-remote-diagnostic-support-api-openapi.yml
+
+  - id: sandbox-tryout-cap
+    description: The *_tryout basePaths (e.g. /configurator_tryout/v1) are hard-capped for free-tier sandbox
+      use. Exact limit values are dictated by the developer portal subscription, not published in the spec.
+    enforcement: per-api-key
+    scope: per-tryout-basepath
+    response:
+      status: 429
+      bodyDescription: Quota limit is exceeded
+
+  - id: customer-consent-throttling
+    description: Connected-vehicle APIs (Vehicle Status, Fuel Status, EV Status, Vehicle Lock Status, PAYD)
+      are additionally throttled at the per-vehicle level to protect on-vehicle modems and avoid waking the
+      vehicle excessively. Limits are set by Mercedes-Benz operations and are not published.
+    enforcement: per-vehicle
+    scope: per-vehicle-per-resource
+    response:
+      status: 429
+
+  - id: kafka-push-throughput
+    description: Fleet API Kafka Push topics are sized per partner subscription. Throughput is not a typical
+      HTTP 429 — instead the Kafka consumer experiences lag or partition rebalancing if a partner cannot keep
+      up. No public quota number is published.
+    enforcement: per-tenant
+    scope: kafka-topic
+    response:
+      status: n/a
+      bodyDescription: Kafka consumer lag / rebalance
+
+notes:
+  - All four published Swagger specs explicitly document `429 Quota limit is exceeded` as a response on every
+    operation, demonstrating consistent platform-wide quota enforcement.
+  - Exact RPS / RPM / requests-per-day numbers are quoted per contract and not in the public OpenAPI specs.
+  - There is no public Retry-After contract documented; clients should treat 429 as exponential-backoff.

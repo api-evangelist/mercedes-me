@@ -1,0 +1,98 @@
+apiCommonsPlans: "0.1"
+provider:
+  id: mercedes-me
+  name: Mercedes-Benz Mercedes me
+  url: https://developer.mercedes-benz.com/
+description: |
+  Mercedes-Benz exposes its API products through the /developers portal under a per-product subscription
+  model. Pricing for connected-vehicle APIs (Vehicle Status, Fuel Status, EV Status, Vehicle Lock Status,
+  Pay As You Drive) is custom-quoted: pricing is published per-product as "Contact Sales" pricing because
+  it depends on volume, target market, and end-customer consent flow. Public reference-data APIs (Car
+  Configurator, Dealer, Vehicle Images) ship with a free trial sandbox tier (the *_tryout basePath) plus a
+  metered production tier negotiated per partner. The Mercedes-Benz Fleet API is sold by Mercedes-Benz
+  Connectivity Services under a per-vehicle/per-data-package commercial model with custom enterprise pricing.
+
+plans:
+  - id: sandbox
+    name: Sandbox / Tryout
+    description: |
+      Free self-service sandbox available to any registered developer on developer.mercedes-benz.com.
+      Routes via *_tryout basePaths (e.g. /configurator_tryout/v1, /dealer_tryout/v1, /remotediagnostic_tryout/v1,
+      /image_tryout/v1) and returns synthetic data. Intended for prototype, demo, and education use.
+    price:
+      model: free
+      currency: USD
+      amount: 0
+      timeFrame: month
+    metering:
+      unit: request
+      included: 1000
+      overage: blocked
+    targetUsers: [developers, prototypers, integrators]
+    sla: none
+    support: community
+    notes:
+      - Requires registration on developer.mercedes-benz.com.
+      - Synthetic data only — does not return real customer vehicle data.
+
+  - id: reference-production
+    name: Reference Data Production
+    description: |
+      Production tier for the public reference-data APIs (Car Configurator, Dealer Locator, Vehicle Images).
+      Production basePaths (without _tryout suffix), real catalog data, contracted SLA.
+    price:
+      model: custom
+      currency: USD
+      amount: contact-sales
+      timeFrame: month
+    metering:
+      unit: request
+      included: contact-sales
+      overage: contact-sales
+    targetUsers: [oems, dealers, automotive_media, classifieds, leasing_platforms]
+    sla: contracted
+    support: account-managed
+
+  - id: connected-vehicle-production
+    name: Connected Vehicle Production
+    description: |
+      Production tier for connected-vehicle APIs (Vehicle Status, Fuel Status, Electric Vehicle Status,
+      Vehicle Lock Status, Pay As You Drive 2.0). Requires OAuth 2.0 customer-consent flow per vehicle owner
+      and a Mercedes-Benz commercial agreement covering data processing.
+    price:
+      model: custom
+      currency: USD
+      amount: contact-sales
+      timeFrame: vehicle
+    metering:
+      unit: per-vehicle-per-resource
+      included: contact-sales
+      overage: contact-sales
+    targetUsers: [insurance, mobility_apps, fleet_partners, charging_networks]
+    sla: contracted
+    support: account-managed
+    requirements:
+      - Customer consent per-vehicle for each requested resource scope.
+      - GDPR-compliant data processing agreement with Mercedes-Benz.
+
+  - id: fleet-api
+    name: Mercedes-Benz Fleet API
+    description: |
+      Commercial Fleet API tier from Mercedes-Benz Connectivity Services. Includes Management API (REST) and
+      Push API (Kafka). Per-vehicle, per-data-package pricing — packages (location, mileage, fuel/charge,
+      health, tires, doors/windows, driving behavior, anti-theft) are activated individually.
+    price:
+      model: per-vehicle-per-package
+      currency: EUR
+      amount: contact-sales
+      timeFrame: month
+    metering:
+      unit: vehicle-package-month
+      included: contact-sales
+      overage: contact-sales
+    targetUsers: [fleet_operators, leasing_companies, mobility_providers, telematics_resellers]
+    sla: contracted
+    support: account-managed
+    requirements:
+      - Mercedes-Benz Connectivity Services commercial contract.
+      - Vehicles must be Mercedes-Benz factory-connected (no retrofit).

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mercedes-me/main/json-schema/mercedes-me-dtc-readout-schema.json",
+  "title": "Mercedes-Benz DTC Readout",
+  "description": "Schema for a Mercedes-Benz Diagnostic Trouble Code readout returned by the Remote Diagnostic Support API.",
+  "type": "object",
+  "required": ["vehicleId", "readoutId", "status"],
+  "properties": {
+    "vehicleId": {
+      "type": "string",
+      "description": "VIN/FIN of the Mercedes-Benz vehicle. 17-character VIN.",
+      "minLength": 17,
+      "maxLength": 17
+    },
+    "readoutId": {
+      "type": "string",
+      "description": "Server-assigned identifier for this readout request."
+    },
+    "status": {
+      "type": "string",
+      "description": "Current readout status.",
+      "enum": ["PENDING", "IN_PROGRESS", "COMPLETED", "FAILED", "TIMED_OUT"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the readout was requested."
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the readout finished (if applicable)."
+    },
+    "ecus": {
+      "type": "array",
+      "description": "ECUs covered by the readout.",
+      "items": {
+        "type": "object",
+        "required": ["ecuId"],
+        "properties": {
+          "ecuId": {"type": "string", "description": "Electronic Control Unit identifier."},
+          "ecuName": {"type": "string"},
+          "dtcs": {
+            "type": "array",
+            "description": "Diagnostic Trouble Codes reported by this ECU.",
+            "items": {
+              "type": "object",
+              "required": ["dtcId"],
+              "properties": {
+                "dtcId": {"type": "string", "description": "DTC identifier (often UDS-format hex)."},
+                "description": {"type": "string"},
+                "severity": {"type": "string", "enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+                "active": {"type": "boolean"},
+                "occurrenceCount": {"type": "integer", "minimum": 0}
+              }
+            }
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "description": "Errors encountered during readout, if any.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {"type": "string"},
+          "message": {"type": "string"}
+        }
+      }
+    }
+  }
+}

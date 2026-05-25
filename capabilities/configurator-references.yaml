@@ -1,0 +1,295 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mercedes-Benz Car Configurator API — References
+  description: 'Mercedes-Benz Car Configurator API — References. 8 operations covering markets, vehicle bodies,
+    classes, and models. Self-contained Naftiko capability covering one Mercedes-Benz business surface.'
+  tags:
+  - Mercedes-Benz
+  - Configurator
+  - Vehicle Reference Data
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    MERCEDES_BENZ_API_KEY: MERCEDES_BENZ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: configurator-references
+    baseUri: https://api.mercedes-benz.com
+    description: Mercedes-Benz Car Configurator reference-data surface — markets, bodies, classes, and models.
+    resources:
+    - name: markets
+      path: /configurator/v1/markets
+      operations:
+      - name: listmarkets
+        method: GET
+        description: Get all available markets.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+    - name: market
+      path: /configurator/v1/markets/{marketId}
+      operations:
+      - name: getmarket
+        method: GET
+        description: Get the market with the given marketId.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: bodies
+      path: /configurator/v1/markets/{marketId}/bodies
+      operations:
+      - name: listbodies
+        method: GET
+        description: Get all available bodies for the given marketId.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+    - name: body
+      path: /configurator/v1/markets/{marketId}/bodies/{bodyId}
+      operations:
+      - name: getbody
+        method: GET
+        description: Get the body for the given marketId and bodyId.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: classes
+      path: /configurator/v1/markets/{marketId}/classes
+      operations:
+      - name: listclasses
+        method: GET
+        description: Get all available classes for the given marketId.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+    - name: class
+      path: /configurator/v1/markets/{marketId}/classes/{classId}
+      operations:
+      - name: getclass
+        method: GET
+        description: Get the class for the given marketId and classId.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: models
+      path: /configurator/v1/markets/{marketId}/models
+      operations:
+      - name: listmodels
+        method: GET
+        description: Get all available models for the given marketId.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+    - name: model
+      path: /configurator/v1/markets/{marketId}/models/{modelId}
+      operations:
+      - name: getmodel
+        method: GET
+        description: Get the model for the given marketId and modelId.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.MERCEDES_BENZ_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: configurator-references-rest
+    port: 8080
+    description: REST adapter for Mercedes-Benz Car Configurator references.
+    resources:
+    - path: /v1/markets
+      name: markets
+      description: REST surface for markets.
+      operations:
+      - method: GET
+        name: listmarkets
+        description: List Mercedes-Benz Markets
+        call: configurator-references.listmarkets
+        outputParameters:
+        - type: array
+          mapping: $.
+    - path: /v1/markets/{market-id}
+      name: market
+      description: REST surface for market.
+      operations:
+      - method: GET
+        name: getmarket
+        description: Get Mercedes-Benz Market By ID
+        call: configurator-references.getmarket
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/markets/{market-id}/bodies
+      name: bodies
+      description: REST surface for bodies.
+      operations:
+      - method: GET
+        name: listbodies
+        description: List Vehicle Bodies For Market
+        call: configurator-references.listbodies
+        outputParameters:
+        - type: array
+          mapping: $.
+    - path: /v1/markets/{market-id}/bodies/{body-id}
+      name: body
+      description: REST surface for body.
+      operations:
+      - method: GET
+        name: getbody
+        description: Get Vehicle Body By ID
+        call: configurator-references.getbody
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/markets/{market-id}/classes
+      name: classes
+      description: REST surface for classes.
+      operations:
+      - method: GET
+        name: listclasses
+        description: List Vehicle Classes For Market
+        call: configurator-references.listclasses
+        outputParameters:
+        - type: array
+          mapping: $.
+    - path: /v1/markets/{market-id}/classes/{class-id}
+      name: class
+      description: REST surface for class.
+      operations:
+      - method: GET
+        name: getclass
+        description: Get Vehicle Class By ID
+        call: configurator-references.getclass
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/markets/{market-id}/models
+      name: models
+      description: REST surface for models.
+      operations:
+      - method: GET
+        name: listmodels
+        description: List Vehicle Models For Market
+        call: configurator-references.listmodels
+        outputParameters:
+        - type: array
+          mapping: $.
+    - path: /v1/markets/{market-id}/models/{model-id}
+      name: model
+      description: REST surface for model.
+      operations:
+      - method: GET
+        name: getmodel
+        description: Get Vehicle Model By ID
+        call: configurator-references.getmodel
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: configurator-references-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter exposing Mercedes-Benz configurator reference data as read-only tools.
+    tools:
+    - name: mercedes-list-markets
+      description: List all Mercedes-Benz markets.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.listmarkets
+      outputParameters:
+      - type: array
+        mapping: $.
+    - name: mercedes-get-market
+      description: Get a specific Mercedes-Benz market by ID.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.getmarket
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-list-bodies
+      description: List all Mercedes-Benz vehicle bodies for a market.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.listbodies
+      outputParameters:
+      - type: array
+        mapping: $.
+    - name: mercedes-get-body
+      description: Get a Mercedes-Benz vehicle body by ID.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.getbody
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-list-classes
+      description: List Mercedes-Benz vehicle classes for a market.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.listclasses
+      outputParameters:
+      - type: array
+        mapping: $.
+    - name: mercedes-get-class
+      description: Get a Mercedes-Benz vehicle class by ID.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.getclass
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-list-models
+      description: List Mercedes-Benz vehicle models for a market.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.listmodels
+      outputParameters:
+      - type: array
+        mapping: $.
+    - name: mercedes-get-model
+      description: Get a Mercedes-Benz vehicle model by ID.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-references.getmodel
+      outputParameters:
+      - type: object
+        mapping: $.

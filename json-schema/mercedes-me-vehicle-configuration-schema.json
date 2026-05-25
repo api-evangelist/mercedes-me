@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mercedes-me/main/json-schema/mercedes-me-vehicle-configuration-schema.json",
+  "title": "Mercedes-Benz Vehicle Configuration",
+  "description": "Schema for a Mercedes-Benz vehicle configuration as returned by the Car Configurator API.",
+  "type": "object",
+  "required": ["marketId", "modelId", "configurationId"],
+  "properties": {
+    "marketId": {
+      "type": "string",
+      "description": "Mercedes-Benz market identifier (e.g. de_DE, en_US).",
+      "pattern": "^[a-z]{2}_[A-Z]{2}$"
+    },
+    "modelId": {
+      "type": "string",
+      "description": "Mercedes-Benz model identifier within the market."
+    },
+    "configurationId": {
+      "type": "string",
+      "description": "Opaque identifier representing the full configuration state."
+    },
+    "classId": {
+      "type": "string",
+      "description": "Mercedes-Benz vehicle class identifier (e.g. A, C, E, S, GLE)."
+    },
+    "bodyId": {
+      "type": "string",
+      "description": "Vehicle body identifier (e.g. saloon, estate, coupe, SUV)."
+    },
+    "productGroup": {
+      "type": "string",
+      "description": "Configured active product group identifier for the market."
+    },
+    "price": {
+      "type": "object",
+      "description": "Aggregate price object for the configuration.",
+      "properties": {
+        "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+        "amount": {"type": "number"}
+      },
+      "required": ["currency", "amount"]
+    },
+    "components": {
+      "type": "array",
+      "description": "List of selected components contributing to this configuration.",
+      "items": {
+        "type": "object",
+        "required": ["componentCode", "componentType"],
+        "properties": {
+          "componentCode": {"type": "string", "description": "Mercedes-Benz component code."},
+          "componentType": {
+            "type": "string",
+            "enum": ["ENGINE", "PAINT", "RIM", "TRIM", "UPHOLSTERY", "EQUIPMENT", "PACKAGE"]
+          },
+          "name": {"type": "string"},
+          "selectable": {"type": "boolean"}
+        }
+      }
+    },
+    "onlineCode": {
+      "type": "string",
+      "description": "Optional onlinecode under which this configuration has been saved."
+    },
+    "images": {
+      "type": "object",
+      "description": "Image URLs for the configuration's vehicle and components.",
+      "properties": {
+        "vehicle": {"type": "string", "format": "uri"},
+        "engine": {"type": "string", "format": "uri"},
+        "paint": {"type": "string", "format": "uri"},
+        "rim": {"type": "string", "format": "uri"},
+        "trim": {"type": "string", "format": "uri"},
+        "upholstery": {"type": "string", "format": "uri"}
+      }
+    }
+  }
+}

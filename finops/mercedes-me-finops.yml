@@ -1,0 +1,83 @@
+finopsAlignment: "0.1"
+provider:
+  id: mercedes-me
+  name: Mercedes-Benz Mercedes me
+  url: https://developer.mercedes-benz.com/
+description: |
+  FinOps/FOCUS-aligned view of the Mercedes-Benz API platform billing surface. Mercedes-Benz does not
+  publish a self-service per-call rate card. Instead, billing is contracted per product and metered through
+  the developer portal subscription. This document maps Mercedes-Benz commercial constructs to FOCUS data
+  spec dimensions so partners can integrate Mercedes-Benz spend into FinOps tooling.
+
+billingModel:
+  primary: contract-negotiated
+  secondary: per-vehicle-per-data-package
+  free-tier: sandbox (tryout basePaths)
+
+focusMapping:
+  - focus: BillingAccountId
+    mercedesField: developerPortalAccountId
+    description: Each registered developer organisation on developer.mercedes-benz.com has an account that
+      anchors all subscriptions and invoices.
+  - focus: SubAccountId
+    mercedesField: applicationId
+    description: Each application (consumer of API keys / OAuth client) within a developer account.
+  - focus: ServiceCategory
+    mercedesField: productCategory
+    values:
+      - ConnectedVehicle
+      - VehicleReferenceData
+      - Imagery
+      - Diagnostics
+      - DealerLocator
+      - FleetTelemetry
+      - Insurance
+  - focus: ServiceName
+    mercedesField: productId
+    values:
+      - configurator
+      - dealer
+      - vehicle_images
+      - remote_diagnostic_support
+      - vehicle_status
+      - vehicle_lock_status
+      - fuel_status
+      - electric_vehicle_status_3
+      - pay_as_you_drive_insurance_2
+      - mercedes-benz_fleet_api
+  - focus: ChargeCategory
+    values:
+      - Subscription (monthly/annual per product)
+      - Usage (per vehicle, per data package, per request beyond included)
+      - Setup (one-time onboarding fees for Fleet API)
+  - focus: PricingUnit
+    values:
+      - request
+      - vehicle
+      - vehicle-data-package
+      - month
+  - focus: UsageQuantity
+    mercedesField: meteredVolume
+  - focus: BilledCost
+    mercedesField: invoicedAmount
+    currency: EUR (primary), USD (US contracts), GBP, JPY, CNY (regional)
+
+allocationRecommendations:
+  - Tag each API call at the application layer with the consuming product
+    (configurator, dealer, etc.) for cost attribution.
+  - For connected-vehicle APIs, allocate cost by VIN/FIN to align with downstream
+    chargeback (e.g. per fleet vehicle, per insurance policy).
+  - For Fleet API, track activated-package-months per vehicle as the canonical
+    cost unit — this matches the per-vehicle-per-package billing model.
+
+publicEvidence:
+  - Pricing pages on developer.mercedes-benz.com are "Contact Sales" only — there is no public per-call rate
+    card.
+  - Mercedes-Benz Connectivity Services markets the Fleet API as individually-activatable data packages per
+    vehicle, consistent with a per-vehicle-per-package billing dimension.
+  - The Swagger specs document `429 Quota limit is exceeded`, confirming subscription-based metering.
+
+gaps:
+  - No public unit pricing for any product — partners must request quotes.
+  - No public usage-export API; cost data only available via portal/invoices.
+  - No FOCUS-formatted billing export documented as of this profile date.

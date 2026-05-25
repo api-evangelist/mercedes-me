@@ -1,0 +1,393 @@
+aid: mercedes-me
+url: https://raw.githubusercontent.com/api-evangelist/mercedes-me/refs/heads/main/apis.yml
+apis:
+- aid: mercedes-me:mercedes-me-car-configurator-api
+  name: Mercedes-Benz Car Configurator API
+  tags:
+  - Automotive
+  - Configurator
+  - Connected Vehicle
+  - Mercedes-Benz
+  - Vehicle Reference Data
+  humanURL: https://developer.mercedes-benz.com/products/configurator
+  baseURL: https://api.mercedes-benz.com/configurator/v1
+  properties:
+  - url: https://developer.mercedes-benz.com/products/configurator
+    type: Documentation
+  - url: https://developer.mercedes-benz.com/products/configurator/docs
+    type: Documentation
+  - url: openapi/mercedes-me-configurator-api-openapi.yml
+    type: OpenAPI
+  - url: capabilities/configurator-references.yaml
+    type: NaftikoCapability
+  - url: capabilities/configurator-configurations.yaml
+    type: NaftikoCapability
+  - url: capabilities/configurator-images.yaml
+    type: NaftikoCapability
+  - url: capabilities/configurator-saved-configurations.yaml
+    type: NaftikoCapability
+  - url: json-schema/mercedes-me-vehicle-configuration-schema.json
+    type: JSONSchema
+  - url: json-ld/mercedes-me-context.jsonld
+    type: JSONLD
+  description: The Car Configurator API offers programmatic access to Mercedes-Benz vehicle configuration functions.
+    It exposes reference data (markets, classes, bodies, models) and the configuration engine so apps can build
+    interactive configurators, retrieve images for any configuration state, and save/share configurations via an
+    online code.
+- aid: mercedes-me:mercedes-me-dealer-api
+  name: Mercedes-Benz Dealer API
+  tags:
+  - Automotive
+  - Dealer Locator
+  - Mercedes-Benz
+  - Retail
+  humanURL: https://developer.mercedes-benz.com/products/dealer
+  baseURL: https://api.mercedes-benz.com/dealer/v1
+  properties:
+  - url: https://developer.mercedes-benz.com/products/dealer
+    type: Documentation
+  - url: openapi/mercedes-me-dealer-api-openapi.yml
+    type: OpenAPI
+  - url: capabilities/dealer-dealers.yaml
+    type: NaftikoCapability
+  description: The Dealer API exposes Mercedes-Benz authorized dealer locations worldwide with filtering by
+    country, geo radius, services offered, opening hours, and dealer brand. It powers dealer-locator widgets,
+    service-booking flows, and OEM marketing surfaces.
+- aid: mercedes-me:mercedes-me-vehicle-images-api
+  name: Mercedes-Benz Vehicle Images API
+  tags:
+  - Automotive
+  - Imagery
+  - Mercedes-Benz
+  - Vehicle Reference Data
+  humanURL: https://developer.mercedes-benz.com/products/vehicle_images
+  baseURL: https://api.mercedes-benz.com/vehicle_images/v1/vehicles
+  properties:
+  - url: https://developer.mercedes-benz.com/products/vehicle_images
+    type: Documentation
+  - url: openapi/mercedes-me-vehicle-images-api-openapi.yml
+    type: OpenAPI
+  - url: capabilities/vehicle-images-vehicle.yaml
+    type: NaftikoCapability
+  - url: capabilities/vehicle-images-components.yaml
+    type: NaftikoCapability
+  description: The Vehicle Images API provides original Mercedes-Benz exterior, interior, and component imagery
+    keyed by FIN/VIN. It supports perspective and day/night modifiers and exposes component-level images for
+    engine, paint, rim, trim, upholstery, and individual equipments.
+- aid: mercedes-me:mercedes-me-remote-diagnostic-support-api
+  name: Mercedes-Benz Remote Diagnostic Support API
+  tags:
+  - Automotive
+  - Connected Vehicle
+  - Diagnostics
+  - DTC
+  - ECU
+  - Mercedes-Benz
+  - Telematics
+  humanURL: https://developer.mercedes-benz.com/products/remote_diagnostic_support
+  baseURL: https://api.mercedes-benz.com/remotediagnostic/v1
+  properties:
+  - url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
+    type: Documentation
+  - url: openapi/mercedes-me-remote-diagnostic-support-api-openapi.yml
+    type: OpenAPI
+  - url: capabilities/remote-diagnostic-support-readouts.yaml
+    type: NaftikoCapability
+  - url: json-schema/mercedes-me-dtc-readout-schema.json
+    type: JSONSchema
+  description: The Remote Diagnostic Support API lets authorized third parties (e.g. roadside assistance, fleet
+    operators, dealerships) read Diagnostic Trouble Codes, ECU inventories, DTC snapshots, and available resource
+    readouts from a Mercedes-Benz vehicle on behalf of the customer. All endpoints take a VIN/FIN as the vehicle
+    identifier and support async polling.
+- aid: mercedes-me:mercedes-me-vehicle-status-api
+  name: Mercedes-Benz Vehicle Status API
+  tags:
+  - Automotive
+  - Connected Vehicle
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  - Vehicle Status
+  humanURL: https://developer.mercedes-benz.com/products/vehicle_status
+  properties:
+  - url: https://developer.mercedes-benz.com/products/vehicle_status
+    type: Documentation
+  - url: https://developer.mercedes-benz.com/products/vehicle_status/docs
+    type: Documentation
+  description: The Vehicle Status API delivers real-time vehicle state — doors, windows, deck lid, sunroof, tire
+    pressure, and overall lock state — for a customer-consented Mercedes-Benz vehicle by VIN. Returns last-known
+    timestamps and uses the standard Mercedes-Benz OAuth 2.0 customer-consent flow.
+- aid: mercedes-me:mercedes-me-vehicle-lock-status-api
+  name: Mercedes-Benz Vehicle Lock Status API
+  tags:
+  - Automotive
+  - Connected Vehicle
+  - Lock Status
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  humanURL: https://developer.mercedes-benz.com/products/vehicle_lock_status
+  properties:
+  - url: https://developer.mercedes-benz.com/products/vehicle_lock_status
+    type: Documentation
+  - url: https://developer.mercedes-benz.com/products/vehicle_lock_status/docs
+    type: Documentation
+  description: The Vehicle Lock Status API returns the current door-lock, deck-lid, and position-lock state of a
+    Mercedes-Benz vehicle by VIN. Designed for parking, insurance, and security-monitoring use cases that need a
+    minimal lock-only surface separate from full Vehicle Status.
+- aid: mercedes-me:mercedes-me-fuel-status-api
+  name: Mercedes-Benz Fuel Status API
+  tags:
+  - Automotive
+  - Connected Vehicle
+  - Fuel
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  humanURL: https://developer.mercedes-benz.com/products/fuel_status
+  properties:
+  - url: https://developer.mercedes-benz.com/products/fuel_status
+    type: Documentation
+  - url: https://developer.mercedes-benz.com/products/fuel_status/docs
+    type: Documentation
+  description: The Fuel Status API exposes a Mercedes-Benz combustion vehicle's current tank level, remaining
+    fuel range in km, and last-update timestamp by VIN. Targeted at fueling, fleet, and concierge integrations.
+- aid: mercedes-me:mercedes-me-electric-vehicle-status-api
+  name: Mercedes-Benz Electric Vehicle Status API
+  tags:
+  - Automotive
+  - Charging
+  - Connected Vehicle
+  - Electric Vehicle
+  - EV
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  humanURL: https://developer.mercedes-benz.com/products/electric_vehicle_status_3
+  properties:
+  - url: https://developer.mercedes-benz.com/products/electric_vehicle_status_3
+    type: Documentation
+  - url: https://developer.mercedes-benz.com/products/electric_vehicle_status_2/docs
+    type: Documentation
+  description: The Electric Vehicle Status API (currently at v3) provides charge state, state-of-charge percent,
+    remaining electric range in km, charging-active flag, and time-to-full estimates for Mercedes-EQ and EV-mode
+    plug-in hybrid vehicles. v2 also adds remote charge start/stop commands.
+- aid: mercedes-me:mercedes-me-pay-as-you-drive-insurance-api
+  name: Mercedes-Benz Pay As You Drive 2.0 API
+  tags:
+  - Automotive
+  - Connected Vehicle
+  - Geolocation
+  - Insurance
+  - Mercedes me
+  - Mercedes-Benz
+  - Odometer
+  - Telematics
+  - Usage-Based Insurance
+  humanURL: https://developer.mercedes-benz.com/products/pay_as_you_drive_insurance_2
+  properties:
+  - url: https://developer.mercedes-benz.com/products/pay_as_you_drive_insurance_2
+    type: Documentation
+  - url: https://developer.mercedes-benz.com/products/pay_as_you_drive_insurance_2/docs
+    type: Documentation
+  description: The Pay As You Drive 2.0 API supplies precise odometer readings and geographical position for a
+    consented Mercedes-Benz vehicle, designed for usage-based insurance, mileage-based subscriptions, and PAYD
+    underwriting workflows.
+- aid: mercedes-me:mercedes-benz-fleet-api
+  name: Mercedes-Benz Fleet API
+  tags:
+  - Automotive
+  - Connected Vehicle
+  - Fleet Management
+  - Kafka
+  - Mercedes-Benz
+  - Streaming
+  - Telematics
+  humanURL: https://developer.mercedes-benz.com/products/mercedes-benz_fleet_api
+  properties:
+  - url: https://developer.mercedes-benz.com/products/mercedes-benz_fleet_api
+    type: Documentation
+  - url: https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api
+    type: Documentation
+  - url: https://github.com/mercedes-benz/kafka-integration-samples
+    type: SDK
+    name: Kafka Integration Samples
+  description: The Mercedes-Benz Fleet API integrates vehicle data into fleet management systems without retrofit
+    hardware. It splits into a REST Management API (add vehicles, activate/deactivate per-vehicle data packages,
+    issue remote commands) and a Kafka Push API that streams location, mileage, fuel/charge, vehicle health,
+    tires, door/window status, driving behavior, and anti-theft events. Packages are activated individually at
+    vehicle level.
+name: Mercedes-Benz Mercedes me
+tags:
+- Automotive
+- Connected Car
+- Connected Vehicle
+- Daimler
+- Fleet Management
+- Mercedes me
+- Mercedes-Benz
+- OEM
+- Telematics
+- Vehicle Data
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- type: Portal
+  url: https://developer.mercedes-benz.com/
+  name: Mercedes-Benz /developers
+- type: Documentation
+  url: https://developer.mercedes-benz.com/products
+  name: API Products Catalog
+- type: SDK
+  url: https://developer.mercedes-benz.com/sdks
+  name: Mercedes-Benz SDKs
+- type: SDK
+  url: https://github.com/mercedes-benz/MBSDK-Mobile-Android
+  name: MBSDK Mobile - Android
+- type: SDK
+  url: https://github.com/mercedes-benz/MBSDK-Mobile-iOS
+  name: MBSDK Mobile - iOS
+- type: SDK
+  url: https://github.com/mercedes-benz/MBSDK-community-support
+  name: MBSDK Community Support (Archived)
+- type: SDK
+  url: https://github.com/mercedes-benz/kafka-integration-samples
+  name: Kafka Integration Samples (Fleet API)
+- type: GitHub
+  url: https://github.com/mercedes-benz
+  name: Mercedes-Benz Group GitHub
+- type: GitHub
+  url: https://github.com/mercedes-benz/foss
+  name: Mercedes-Benz FOSS Landing
+- type: GitHub
+  url: https://github.com/mercedes-benz/mercedes-benz-foss-manifesto
+  name: Mercedes-Benz FOSS Manifesto
+- type: Postman
+  url: https://www.postman.com/mbdevelopers/mercedes-benz/overview
+  name: Mercedes-Benz Postman Workspace
+- type: Connectivity
+  url: https://connectivity.mercedes-benz.com/
+  name: Mercedes-Benz Connectivity Services
+- type: Connectivity
+  url: https://data.mercedes-benz.com/
+  name: Mercedes-Benz Business Solutions Data
+- type: LinkedIn
+  url: https://www.linkedin.com/company/mercedes-benz-ag/
+  name: Mercedes-Benz AG on LinkedIn
+- type: Twitter
+  url: https://twitter.com/MercedesBenz
+  name: '@MercedesBenz on Twitter'
+- type: ConsumerApp
+  url: https://www.mbusa.com/en/mercedes-benz-app
+  name: Mercedes me App (US)
+- type: Payments
+  url: https://group.mercedes-benz.com/innovations/digitalisation/connectivity/mercedes-pay.html
+  name: Mercedes pay (in-car payments)
+- type: Payments
+  url: https://www.mercedes-benz-mobility.com/en/what-we-do/payment-services/
+  name: Mercedes-Benz Mobility Payment Services
+- type: Vocabulary
+  url: vocabulary/mercedes-me-vocabulary.yml
+  name: Mercedes me Vocabulary
+- type: SpectralRules
+  url: rules/mercedes-me-rules.yml
+  name: Mercedes me Spectral Ruleset
+- type: Plans
+  url: plans/mercedes-me-plans-pricing.yml
+  name: Mercedes me Plans & Pricing
+- type: RateLimits
+  url: rate-limits/mercedes-me-rate-limits.yml
+  name: Mercedes me Rate Limits
+- type: FinOps
+  url: finops/mercedes-me-finops.yml
+  name: Mercedes me FinOps Alignment
+features:
+- type: APIPlatform
+  name: Self-Service Developer Portal
+  description: A public, self-service developer portal at developer.mercedes-benz.com lets any developer register an
+    application, manage API keys/OAuth client credentials, subscribe to API products, and try requests via the
+    integrated console.
+- type: Authentication
+  name: OAuth 2.0 Customer Consent
+  description: Connected-vehicle APIs (Vehicle Status, Fuel Status, EV Status, Vehicle Lock Status, PAYD) use a
+    Mercedes-Benz-hosted OAuth 2.0 authorization-code flow where the vehicle owner explicitly grants per-resource
+    consent (e.g. lock state, fuel level) to a third-party app.
+- type: PerResourceConsent
+  name: Granular Per-Resource Scopes
+  description: Connected-vehicle APIs split consent into fine-grained scopes — odometer, geo position, lock state,
+    fuel, charge, tire pressure — so apps only request the minimum data required.
+- type: ProductBased
+  name: Product-Style API Subscriptions
+  description: Each API is exposed as a "product" with a dedicated docs/specs/details/console tab, allowing
+    independent subscription, pricing, and lifecycle management.
+- type: Streaming
+  name: Kafka Push API
+  description: The Fleet API includes a managed Kafka Push API that streams vehicle telemetry events
+    (location, fuel/charge, health, tires, doors, anti-theft) directly into fleet management systems with OAuth
+    2.0-authenticated Kafka clients.
+- type: SDK
+  name: Mobile SDK (MBSDK)
+  description: Native iOS (Swift) and Android (Kotlin) modules encapsulate customer/car data, authentication,
+    vehicle assignment, and service activation so partner apps can ship Mercedes me integrations quickly.
+- type: VINKeyed
+  name: VIN/FIN-Indexed Operations
+  description: All connected-vehicle operations are keyed by VIN/FIN, matching Mercedes-Benz's vehicle-identity
+    model and enabling consistent telemetry, diagnostics, and command routing across products.
+- type: AsyncPolling
+  name: Async Polling for Diagnostics
+  description: The Remote Diagnostic Support API uses an asynchronous create-then-poll pattern (readouts) so
+    long-running ECU/DTC reads don't block client connections.
+- type: Sandbox
+  name: Tryout / Sandbox Environments
+  description: All public APIs ship with a *_tryout basePath (e.g. /configurator_tryout/v1) for sandbox-only
+    development against synthetic data before production credentials are issued.
+use_cases:
+- name: Connected Vehicle App
+  description: Build a Mercedes me-style companion app showing fuel/charge level, lock status, last known location,
+    and door/window state for a customer's vehicles.
+- name: Usage-Based Insurance
+  description: Underwrite per-mile or per-trip insurance policies using the Pay As You Drive 2.0 API's odometer
+    and geo position feeds, with explicit owner consent.
+- name: Fleet Management Integration
+  description: Stream live telemetry for thousands of vehicles into a fleet platform via the Fleet API Kafka Push,
+    using the Management API to activate per-vehicle data packages on demand.
+- name: Remote Roadside Diagnostics
+  description: Read DTCs and ECU inventories remotely via the Remote Diagnostic Support API so roadside-assistance
+    operators can triage breakdowns before dispatching a technician.
+- name: EV Charging Concierge
+  description: Combine Electric Vehicle Status with third-party charging-network APIs to recommend chargers based
+    on real state-of-charge and remaining range.
+- name: Dealer Locator and Service Booking
+  description: Use the Dealer API to build dealer-finder widgets and integrate with the Mercedes me service
+    appointment booking flow.
+- name: Online Configurator Embeds
+  description: Embed Mercedes-Benz configuration experiences in third-party properties (e.g. classifieds,
+    automotive media, leasing portals) using the Car Configurator API and Vehicle Images API together.
+- name: Telematics-Triggered Aftersales
+  description: Combine Vehicle Status, Fuel Status, and Remote Diagnostic Support to trigger proactive service,
+    refuel, or recall notifications.
+integrations:
+- name: Smartcar
+  type: 3rd-Party
+  description: Multi-OEM connected-car API aggregator exposing Mercedes-Benz alongside other brands via a unified
+    surface (smartcar.com/brand/mercedes-benz).
+- name: Apache Kafka
+  type: Streaming
+  description: Fleet API Push channel uses Kafka with OAuth-authenticated consumer clients.
+- name: OAuth 2.0
+  type: Authentication
+  description: Customer-consent flow across all connected-vehicle APIs.
+- name: Mercedes pay
+  type: Payments
+  description: In-car payment platform that pairs with vehicle identity for fueling, parking, and tolling flows.
+solutions:
+- name: OEM API Platform
+  description: Mercedes-Benz operates a full OEM API platform — a model for how an automaker can expose connected
+    vehicle data, configurator content, dealer data, and diagnostics under one self-service developer portal.
+- name: Connected Vehicle Data Productization
+  description: Each connected-vehicle data axis (lock, fuel, charge, odometer, position, diagnostics) is treated as
+    its own independently-subscribable product with its own scope, docs, and pricing.
+- name: Fleet Telematics-as-a-Service
+  description: The Fleet API replaces aftermarket telematics dongles with native, OEM-grade telemetry streamed via
+    Kafka, sold as a managed service.

@@ -1,0 +1,122 @@
+name: Mercedes-Benz Mercedes me Vocabulary
+description: Operational and capability vocabulary covering Mercedes-Benz's developer surface, Mercedes me connected vehicle services, the Fleet API, and OEM-grade telematics.
+namespace: mercedes-me
+version: 1.0.0
+dimensions:
+  operational:
+  - name: Authentication
+    terms:
+    - apiKey
+    - oauth2
+    - customerConsent
+    - clientCredentials
+    - bearerToken
+  - name: Identifier
+    terms:
+    - VIN
+    - FIN
+    - vehicleId
+    - dealerId
+    - configurationId
+    - onlineCode
+    - marketId
+    - modelId
+    - classId
+    - bodyId
+    - ecuId
+    - dtcId
+    - readoutId
+  - name: Protocol
+    terms:
+    - REST
+    - Kafka
+    - HTTPS
+    - JSON
+    - OAuth2
+  - name: Lifecycle
+    terms:
+    - sandbox
+    - tryout
+    - beta
+    - generallyAvailable
+    - deprecated
+    - archived
+  - name: ConsentScope
+    terms:
+    - mb:vehicle:status
+    - mb:vehicle:lock
+    - mb:vehicle:fuel
+    - mb:vehicle:charge
+    - mb:vehicle:odometer
+    - mb:vehicle:position
+    - mb:vehicle:tires
+  capability:
+  - name: ConnectedVehicleData
+    terms:
+    - vehicleStatus
+    - lockStatus
+    - fuelStatus
+    - electricVehicleStatus
+    - tirePressure
+    - odometer
+    - geoPosition
+    - doorStatus
+    - windowStatus
+    - deckLidStatus
+    - sunroofStatus
+  - name: VehicleReferenceData
+    terms:
+    - market
+    - vehicleClass
+    - vehicleBody
+    - vehicleModel
+    - productGroup
+    - configuration
+    - selectableComponent
+    - alternativeComponent
+  - name: Imagery
+    terms:
+    - vehicleImage
+    - engineImage
+    - paintImage
+    - rimImage
+    - trimImage
+    - upholsteryImage
+    - equipmentImage
+  - name: Diagnostics
+    terms:
+    - dtcReadout
+    - dtcSnapshotReadout
+    - ecuReadout
+    - resourceReadout
+    - diagnosticTroubleCode
+    - electronicControlUnit
+  - name: Fleet
+    terms:
+    - managementAPI
+    - pushAPI
+    - dataPackage
+    - serviceActivation
+    - remoteCommand
+    - drivingBehavior
+    - antiTheft
+    - preconditioning
+  - name: Commercial
+    terms:
+    - payAsYouDriveInsurance
+    - usageBasedInsurance
+    - mercedesPay
+    - dealerLocator
+    - serviceBooking
+    - aftersales
+  - name: SDK
+    terms:
+    - MBSDKMobileAndroid
+    - MBSDKMobileiOS
+    - kafkaIntegrationSamples
+  - name: Governance
+    terms:
+    - FOSS
+    - CLA
+    - codeOfConduct
+    - opensourceManifesto

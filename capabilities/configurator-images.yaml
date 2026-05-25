@@ -1,0 +1,223 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mercedes-Benz Car Configurator API — Images
+  description: 'Mercedes-Benz Car Configurator API — Images. Renders vehicle and component imagery (engine, paint,
+    rim, trim, upholstery, equipments) for a given configuration. Self-contained Naftiko capability.'
+  tags:
+  - Mercedes-Benz
+  - Configurator
+  - Imagery
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    MERCEDES_BENZ_API_KEY: MERCEDES_BENZ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: configurator-images
+    baseUri: https://api.mercedes-benz.com
+    description: Mercedes-Benz configurator images — vehicle and component renders for a configurationId.
+    resources:
+    - name: components
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components
+      operations:
+      - name: getcomponents
+        method: GET
+        description: Get all component images for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-engine
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/engine
+      operations:
+      - name: getengineimage
+        method: GET
+        description: Get the engine component image for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-equipments
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/equipments
+      operations:
+      - name: getequipmentsimages
+        method: GET
+        description: Get equipment component images for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-equipments-by-code
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/equipments/{componentCode}
+      operations:
+      - name: getequipmentimage
+        method: GET
+        description: Get a specific equipment component image by code.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-paint
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/paint
+      operations:
+      - name: getpaintimage
+        method: GET
+        description: Get the paint component image for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-rim
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/rim
+      operations:
+      - name: getrimimage
+        method: GET
+        description: Get the rim component image for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-trim
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/trim
+      operations:
+      - name: gettrimimage
+        method: GET
+        description: Get the trim component image for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-upholstery
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/upholstery
+      operations:
+      - name: getupholsteryimage
+        method: GET
+        description: Get the upholstery component image for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: vehicle-image
+      path: /configurator/v1/markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/vehicle
+      operations:
+      - name: getvehicleimage
+        method: GET
+        description: Get the full vehicle image for a configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.MERCEDES_BENZ_API_KEY}}'
+      placement: query
+  exposes:
+  - type: mcp
+    namespace: configurator-images-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter exposing Mercedes-Benz configurator imagery as read-only tools.
+    tools:
+    - name: mercedes-get-config-components
+      description: Get all component images for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getcomponents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-engine-image
+      description: Get the engine component image for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getengineimage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-equipments-images
+      description: Get equipment component images for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getequipmentsimages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-equipment-image
+      description: Get a specific equipment component image by code.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getequipmentimage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-paint-image
+      description: Get the paint component image for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getpaintimage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-rim-image
+      description: Get the rim component image for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getrimimage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-trim-image
+      description: Get the trim component image for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.gettrimimage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-upholstery-image
+      description: Get the upholstery component image for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getupholsteryimage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mercedes-get-config-vehicle-image
+      description: Get the full vehicle image for a configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configurator-images.getvehicleimage
+      outputParameters:
+      - type: object
+        mapping: $.

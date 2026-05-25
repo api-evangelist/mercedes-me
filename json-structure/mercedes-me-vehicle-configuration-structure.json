@@ -1,0 +1,122 @@
+{
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mercedes-me/main/json-structure/mercedes-me-vehicle-configuration-structure.json",
+  "title": "Mercedes-Benz Vehicle Configuration Structure",
+  "description": "JSON Structure (capability-oriented) view of a Mercedes-Benz vehicle configuration produced by the Car Configurator API.",
+  "namespace": "mercedes-me",
+  "version": "1.0.0",
+  "entities": [
+    {
+      "name": "Market",
+      "description": "A Mercedes-Benz market (country/region/language).",
+      "identifier": "marketId",
+      "fields": [
+        {"name": "marketId", "type": "string", "required": true},
+        {"name": "country", "type": "string"},
+        {"name": "language", "type": "string"}
+      ]
+    },
+    {
+      "name": "VehicleClass",
+      "description": "Top-level Mercedes-Benz vehicle class (A, C, E, S, GLE, etc.).",
+      "identifier": "classId",
+      "fields": [
+        {"name": "classId", "type": "string", "required": true},
+        {"name": "name", "type": "string"},
+        {"name": "marketId", "type": "string", "ref": "Market.marketId"}
+      ]
+    },
+    {
+      "name": "VehicleBody",
+      "description": "Vehicle body type within a market.",
+      "identifier": "bodyId",
+      "fields": [
+        {"name": "bodyId", "type": "string", "required": true},
+        {"name": "name", "type": "string"},
+        {"name": "marketId", "type": "string", "ref": "Market.marketId"}
+      ]
+    },
+    {
+      "name": "VehicleModel",
+      "description": "Specific vehicle model in a market with class and body assignment.",
+      "identifier": "modelId",
+      "fields": [
+        {"name": "modelId", "type": "string", "required": true},
+        {"name": "marketId", "type": "string", "ref": "Market.marketId"},
+        {"name": "classId", "type": "string", "ref": "VehicleClass.classId"},
+        {"name": "bodyId", "type": "string", "ref": "VehicleBody.bodyId"},
+        {"name": "name", "type": "string"},
+        {"name": "productGroup", "type": "string"}
+      ]
+    },
+    {
+      "name": "Configuration",
+      "description": "A specific vehicle configuration with selected components.",
+      "identifier": "configurationId",
+      "fields": [
+        {"name": "configurationId", "type": "string", "required": true},
+        {"name": "modelId", "type": "string", "ref": "VehicleModel.modelId"},
+        {"name": "marketId", "type": "string", "ref": "Market.marketId"},
+        {"name": "onlineCode", "type": "string"},
+        {"name": "components", "type": "array", "items": "Component"}
+      ]
+    },
+    {
+      "name": "Component",
+      "description": "A selected vehicle component (engine, paint, rim, trim, upholstery, equipment).",
+      "identifier": "componentCode",
+      "fields": [
+        {"name": "componentCode", "type": "string", "required": true},
+        {"name": "componentType", "type": "string", "enum": ["ENGINE", "PAINT", "RIM", "TRIM", "UPHOLSTERY", "EQUIPMENT", "PACKAGE"]},
+        {"name": "name", "type": "string"},
+        {"name": "selectable", "type": "boolean"}
+      ]
+    },
+    {
+      "name": "Dealer",
+      "description": "Mercedes-Benz authorized dealer.",
+      "identifier": "dealerId",
+      "fields": [
+        {"name": "dealerId", "type": "string", "required": true},
+        {"name": "name", "type": "string"},
+        {"name": "country", "type": "string"},
+        {"name": "city", "type": "string"},
+        {"name": "address", "type": "string"},
+        {"name": "latitude", "type": "number"},
+        {"name": "longitude", "type": "number"},
+        {"name": "services", "type": "array", "items": "string"}
+      ]
+    },
+    {
+      "name": "DtcReadout",
+      "description": "A Diagnostic Trouble Code readout result for a vehicle.",
+      "identifier": "readoutId",
+      "fields": [
+        {"name": "readoutId", "type": "string", "required": true},
+        {"name": "vehicleId", "type": "string", "description": "VIN/FIN"},
+        {"name": "status", "type": "string"},
+        {"name": "ecus", "type": "array", "items": "Ecu"}
+      ]
+    },
+    {
+      "name": "Ecu",
+      "description": "Electronic Control Unit reported by a readout.",
+      "identifier": "ecuId",
+      "fields": [
+        {"name": "ecuId", "type": "string", "required": true},
+        {"name": "ecuName", "type": "string"},
+        {"name": "dtcs", "type": "array", "items": "Dtc"}
+      ]
+    },
+    {
+      "name": "Dtc",
+      "description": "Diagnostic Trouble Code.",
+      "identifier": "dtcId",
+      "fields": [
+        {"name": "dtcId", "type": "string", "required": true},
+        {"name": "description", "type": "string"},
+        {"name": "severity", "type": "string"},
+        {"name": "active", "type": "boolean"}
+      ]
+    }
+  ]
+}

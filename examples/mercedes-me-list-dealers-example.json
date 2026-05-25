@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mercedes-benz.com/dealer/v1/dealers?countryCode=DE&latitude=48.7758&longitude=9.1829&radius=10&apikey=YOUR_API_KEY",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "dealerId": "DE-0001",
+        "name": "Mercedes-Benz Niederlassung Stuttgart",
+        "brand": "Mercedes-Benz",
+        "country": "DE",
+        "city": "Stuttgart",
+        "address": "Mercedesstraße 102, 70372 Stuttgart, Germany",
+        "latitude": 48.7884,
+        "longitude": 9.2333,
+        "services": ["sales", "service", "amg", "ev-charging"],
+        "phone": "+49 711 25 90-0",
+        "url": "https://www.mercedes-benz-stuttgart.com/"
+      },
+      {
+        "dealerId": "DE-0002",
+        "name": "Mercedes-Benz Center Stuttgart-Süd",
+        "brand": "Mercedes-Benz",
+        "country": "DE",
+        "city": "Stuttgart",
+        "latitude": 48.7553,
+        "longitude": 9.1633,
+        "services": ["sales", "service"]
+      }
+    ]
+  }
+}

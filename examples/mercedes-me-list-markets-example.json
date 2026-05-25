@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mercedes-benz.com/configurator/v1/markets?apikey=YOUR_API_KEY",
+    "headers": {"Accept": "application/json"}
+  },
+  "response": {
+    "status": 200,
+    "headers": {"Content-Type": "application/json"},
+    "body": [
+      {"marketId": "de_DE", "country": "DE", "language": "de"},
+      {"marketId": "en_US", "country": "US", "language": "en"},
+      {"marketId": "en_GB", "country": "GB", "language": "en"},
+      {"marketId": "fr_FR", "country": "FR", "language": "fr"},
+      {"marketId": "ja_JP", "country": "JP", "language": "ja"}
+    ]
+  }
+}
