@@ -1,0 +1,870 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Car Configurator",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "References",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Available Markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "This is a ISO language string e.g. 'de' and is spoken in Austria 'AT', Germany 'DE' and Swiss 'CH'."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "This is a ISO country string e.g. Germany 'DE' or Swiss 'CH'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get all available `Markets`. Optional query params **language** or **country** may be used to filter the result."
+        },
+        {
+          "info": {
+            "name": "Get the Market with the Given marketId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Gets the `Market` for the given **marketId**. There are no query parameters to filter the result."
+        },
+        {
+          "info": {
+            "name": "Get All Available Bodies for the Given marketId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/bodies",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "classId",
+                "value": "",
+                "type": "query",
+                "description": "This is a class id e.g. '176' for 'A-Class' in Germany."
+              },
+              {
+                "name": "bodyId",
+                "value": "",
+                "type": "query",
+                "description": "This is a body id e.g. '1' for 'Limousine' in Germany."
+              },
+              {
+                "name": "productGroups",
+                "value": "",
+                "type": "query",
+                "description": "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get all available `VehicleBodies` for the given **marketId**. Optional query params **classId** **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+."
+        },
+        {
+          "info": {
+            "name": "Get the Body for the Given marketId and bodyId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/bodies/:bodyId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "bodyId",
+                "value": "",
+                "type": "path",
+                "description": "This is a body id e.g. '1' for 'Limousine' in Germany."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the `VehicleBody` for the given **marketId** and **bodyId**."
+        },
+        {
+          "info": {
+            "name": "Get All Available Classes for the Given marketId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/classes",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "classId",
+                "value": "",
+                "type": "query",
+                "description": "This is a class id e.g. '176' for 'A-Class' in Germany."
+              },
+              {
+                "name": "bodyId",
+                "value": "",
+                "type": "query",
+                "description": "This is a body id e.g. '1' for 'Limousine' in Germany."
+              },
+              {
+                "name": "productGroups",
+                "value": "",
+                "type": "query",
+                "description": "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get all available `VehicleClasses` objects for the given **marketId**. Optional query params **classId**, **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+."
+        },
+        {
+          "info": {
+            "name": "Get the Class for the Given marketId and classId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/classes/:classId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "classId",
+                "value": "",
+                "type": "path",
+                "description": "This is a class id e.g. '176' for 'A-Klasse' in Germany."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the `VehicleClass` for the given **marketId** and **classId**."
+        },
+        {
+          "info": {
+            "name": "Get All Available Models for the Given marketId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "classId",
+                "value": "",
+                "type": "query",
+                "description": "This is a class id e.g. '176' for 'A-Class' in Germany."
+              },
+              {
+                "name": "bodyId",
+                "value": "",
+                "type": "query",
+                "description": "This is a body id e.g. '1' for 'Limousine' in Germany."
+              },
+              {
+                "name": "baumuster4prefix",
+                "value": "",
+                "type": "query",
+                "description": "The first four digits of a baumuster are called baumuster4prefix e.g. '1760' for 'Berline' in France."
+              },
+              {
+                "name": "baumuster",
+                "value": "",
+                "type": "query",
+                "description": "This is a baumuster e.g. '176042' for 'A 180 Limousine' in Germany."
+              },
+              {
+                "name": "nationalSalesType",
+                "value": "",
+                "type": "query",
+                "description": "This is the national sales type (NST) of a distinct baumuster. There is no predefined pattern for the NST, each market defines its NST. e.g. 'E07' in France, 0001 in Germany and ZA1 in South Africa Using the NST markets can define market specific conditions. e.g. different initial configuration, etc."
+              },
+              {
+                "name": "productGroups",
+                "value": "",
+                "type": "query",
+                "description": "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the available `VehicleModels` for the given **marketId**. Optional query params **classId**, **bodyId**, **baumuster4prefix**, **baumuster**, **nationalSalesType** or **productGroups** maybe used to filter the result. The baumuster4prefix must conform to the pattern [0-9]{4}."
+        },
+        {
+          "info": {
+            "name": "Get the Model for the Given marketId and modelId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the `VehicleModel` object for the given **marketId** and **modelId**."
+        },
+        {
+          "info": {
+            "name": "Get All Configured Active Product Groups for the Given marketId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/productgroups",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get all configured active product groups for the given **marketId**."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Initial Configuration for the Given marketId and modelId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/initial",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the initial `VehicleConfiguration` for the given **marketId** and **modelId**."
+        },
+        {
+          "info": {
+            "name": "Get the Configuration for the Given marketId, modelId and configurationId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**."
+        },
+        {
+          "info": {
+            "name": "Get the Alternatives for the Given marketId, modelId, configurationId and componentList",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/alternatives/:componentList",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              },
+              {
+                "name": "componentList",
+                "value": "",
+                "type": "path",
+                "description": "A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the `VehicleAlternatives` for the given **marketId**, **modelId** and **configurationId** and the given **componentList** of changes."
+        },
+        {
+          "info": {
+            "name": "Get the Selectable Components for the Given marketId, modelId and configurationId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/selectables",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              },
+              {
+                "name": "componentTypes",
+                "value": "",
+                "type": "query",
+                "description": "A list of component types separated by a comma case insensitive. If nothing is defined all component types are returned. Allowed values are:\n  - WHEELS\n  - PAINTS\n  - UPHOLSTERIES\n  - TRIMS\n  - PACKAGES\n  - LINES\n  - SPECIAL_EDITION\n  - SPECIAL_EQUIPMENT"
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Get the selectable `VehicleComponents` and the `ComponentCategories` of the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**. Optional query param **componentType** may be used to filter the result."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "imageComponentsGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px),\n  * rim (710x710 px),\n  * trim (800x600 px),\n  * paints (800x600 px),\n  * upholstery (800x600 px) and\n  * equipments (740x416 px)."
+        },
+        {
+          "info": {
+            "name": "imageComponentsEngineGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components/engine",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              }
+            ]
+          },
+          "docs": "Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px."
+        },
+        {
+          "info": {
+            "name": "imageComponentsEquipmentsGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components/equipments",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px)."
+        },
+        {
+          "info": {
+            "name": "imageComponentsEquipmentsByCodeGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components/equipments/:componentCode",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              },
+              {
+                "name": "componentCode",
+                "value": "",
+                "type": "path",
+                "description": "The value of the requested component group, e.g. '245'."
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px)."
+        },
+        {
+          "info": {
+            "name": "imageComponentsPaintGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components/paint",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)"
+        },
+        {
+          "info": {
+            "name": "imageComponentsRimGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components/rim",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              }
+            ]
+          },
+          "docs": "Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px."
+        },
+        {
+          "info": {
+            "name": "imageComponentsTrimGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components/trim",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              }
+            ]
+          },
+          "docs": "Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px."
+        },
+        {
+          "info": {
+            "name": "imageComponentsUpholsteryGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/components/upholstery",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px)."
+        },
+        {
+          "info": {
+            "name": "imageVehicleGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/models/:modelId/configurations/:configurationId/images/vehicle",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+              },
+              {
+                "name": "perspectives",
+                "value": "",
+                "type": "query",
+                "description": "One or more perspectives as a comma separated String list e.g. 'EXT000,EXT010,INT1'.  The following perspectives are available:\n  * EXT000-EXT350: EXT000 defines the front view, EXT010 defines a rotation of 10 degress and so forth.\n  * INT1-INT4: These are the 4 available interior perspectives.\n\nThe default value is EXT020,INT1 if no value is provided."
+              },
+              {
+                "name": "roofOpen",
+                "value": "",
+                "type": "query",
+                "description": "Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'."
+              },
+              {
+                "name": "night",
+                "value": "",
+                "type": "query",
+                "description": "Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'."
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to PNG images of a vehicle with a white background."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Saved configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Stores the Configuration of the Given configurationId and modelId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/markets/:marketId/onlinecode",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              }
+            ]
+          },
+          "docs": "Stores the configuration of the given **configurationId** and **modelId**"
+        },
+        {
+          "info": {
+            "name": "Get the Configuration of the Given onlineCode and marketId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/markets/:marketId/onlinecode/:onlineCode",
+            "params": [
+              {
+                "name": "onlineCode",
+                "value": "",
+                "type": "path",
+                "description": "OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+              },
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path",
+                "description": "This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+              },
+              {
+                "name": "fieldsFilter",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+              }
+            ]
+          },
+          "docs": "Gets the configuration for the given marketId and onlineCode."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

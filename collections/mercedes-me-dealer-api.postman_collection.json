@@ -1,0 +1,1244 @@
+{
+  "item": [
+    {
+      "id": "4946d99e-e49d-442e-a87e-5e823fae4d4a",
+      "name": "Dealer search",
+      "description": {
+        "content": "Resources that provide search functions for dealers (dealer, garage, retailer, etc.) based on given attributes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ddcdced3-4c01-47d1-95a7-9200b5d49f22",
+          "name": "dealers GET",
+          "request": {
+            "name": "dealers GET",
+            "description": {
+              "content": "This request returns dealers (dealer, garage, retailer, etc.) for given parameters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dealers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dealerIds",
+                  "value": "<string>,<string>",
+                  "description": "Array of dealer ids. The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857,GS0017621\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<number>",
+                  "description": "The latitude geo coordinate."
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<number>",
+                  "description": "The longitude geo coordinate."
+                },
+                {
+                  "disabled": false,
+                  "key": "radiusValue",
+                  "value": "10",
+                  "description": "The radius value of the search area. The center of the search area is defined by geo coordinates. (latitude, longitude properties) If radiusValue and radiusUnit parameters are missing, then the default radius is 10 km."
+                },
+                {
+                  "disabled": false,
+                  "key": "radiusUnit",
+                  "value": "KM",
+                  "description": "The radius unit of the search area. The center of the search area is defined by geo coordinates. (latitude, longitude properties) If radiusValue and radiusUnit parameters are missing, then the default radius is 10 km."
+                },
+                {
+                  "disabled": false,
+                  "key": "countryIsoCode",
+                  "value": "<string>",
+                  "description": "The country of the dealer address defined as ISO two letter ID (e.g. DE, CH, CN, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "The city of the dealer address."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "A name of the dealer, the name filter will be applied to all Dealer names (e.g. legalName, nameAddition). You can also search for parts of Dealer names, e.g. the search term 'Niederlassung' will also match 'Niederlassung Stuttgart'."
+                },
+                {
+                  "disabled": false,
+                  "key": "brand",
+                  "value": "<string>",
+                  "description": "Filter by brand, valid values are:\n  * MB: Mercedes-Benz\n  * SMT: Smart"
+                },
+                {
+                  "disabled": false,
+                  "key": "productGroup",
+                  "value": "<string>",
+                  "description": "Filter by a product group"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity",
+                  "value": "<string>",
+                  "description": "Filter by activity, valid actitvity values are:\n  * PARTS: Spare Parts Sales\n  * SALES: Sales of new vehicles\n  * SERVICE: Maintaining and repair\n  * USED-VEHICLES-TRADE: Sales of used vehicles"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned. e.g. fields=dealers(dealerId,address(street,city))"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The index of the page to be returned. If this parameter is omitted, the first page will be returned.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The index of the page to be returned. If this parameter is omitted, the first page will be returned.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6dcb31b-9687-441b-a589-42f4797f043c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dealerIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radiusValue",
+                      "value": "10"
+                    },
+                    {
+                      "key": "radiusUnit",
+                      "value": "KM"
+                    },
+                    {
+                      "key": "countryIsoCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"next\": {\n      \"href\": \"string\"\n    },\n    \"previous\": {\n      \"href\": \"string\"\n    },\n    \"self\": {\n      \"href\": \"string\"\n    }\n  },\n  \"dealers\": [\n    {\n      \"_links\": {\n        \"self\": {\n          \"href\": \"string\"\n        }\n      },\n      \"legalName\": \"string\",\n      \"dealerId\": \"string\",\n      \"address\": {\n        \"addressAddition\": \"string\",\n        \"city\": \"string\",\n        \"countryIsoCode\": \"string\",\n        \"district\": \"string\",\n        \"street\": \"string\",\n        \"zipCode\": \"string\"\n      },\n      \"brandCodes\": [\n        {\n          \"brand\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          }\n        },\n        {\n          \"brand\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          }\n        }\n      ],\n      \"communication\": {\n        \"general\": {\n          \"email\": \"string\",\n          \"facebook\": \"string\",\n          \"fax\": \"string\",\n          \"googlePlus\": \"string\",\n          \"mobile\": \"string\",\n          \"phone\": \"string\",\n          \"twitter\": \"string\",\n          \"website\": \"string\"\n        }\n      },\n      \"distance\": {\n        \"value\": 5079.816490762215,\n        \"unit\": \"KM\"\n      },\n      \"functions\": [\n        {\n          \"activity\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          },\n          \"brand\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          },\n          \"productGroup\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          }\n        }\n      ],\n      \"geoCoordinates\": {\n        \"latitude\": 1667.7946582409254,\n        \"longitude\": 393.8278310743248\n      },\n      \"nameAddition\": \"string\",\n      \"openingHours\": [\n        {\n          \"function\": {\n            \"activity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"brand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"productGroup\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"weekdays\": {\n            \"FRIDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"MONDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"SATURDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"SUNDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"THURSDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"TUESDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"WEDNESDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"region\": {\n        \"region\": \"string\",\n        \"subRegion\": \"string\"\n      }\n    },\n    {\n      \"_links\": {\n        \"self\": {\n          \"href\": \"string\"\n        }\n      },\n      \"legalName\": \"string\",\n      \"dealerId\": \"string\",\n      \"address\": {\n        \"addressAddition\": \"string\",\n        \"city\": \"string\",\n        \"countryIsoCode\": \"string\",\n        \"district\": \"string\",\n        \"street\": \"string\",\n        \"zipCode\": \"string\"\n      },\n      \"brandCodes\": [\n        {\n          \"brand\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          }\n        },\n        {\n          \"brand\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          }\n        }\n      ],\n      \"communication\": {\n        \"general\": {\n          \"email\": \"string\",\n          \"facebook\": \"string\",\n          \"fax\": \"string\",\n          \"googlePlus\": \"string\",\n          \"mobile\": \"string\",\n          \"phone\": \"string\",\n          \"twitter\": \"string\",\n          \"website\": \"string\"\n        }\n      },\n      \"distance\": {\n        \"value\": 9376.49864393307,\n        \"unit\": \"MILE\"\n      },\n      \"functions\": [\n        {\n          \"activity\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          },\n          \"brand\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          },\n          \"productGroup\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n          }\n        }\n      ],\n      \"geoCoordinates\": {\n        \"latitude\": 4264.320308057418,\n        \"longitude\": 1696.6337334898885\n      },\n      \"nameAddition\": \"string\",\n      \"openingHours\": [\n        {\n          \"function\": {\n            \"activity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"brand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"productGroup\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"weekdays\": {\n            \"FRIDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"MONDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"SATURDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"SUNDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"THURSDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"TUESDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"WEDNESDAY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"region\": {\n        \"region\": \"string\",\n        \"subRegion\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f665c93a-d0af-4e8b-a4d0-0df21bf32617",
+              "name": "The search did not match any dealers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dealerIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radiusValue",
+                      "value": "10"
+                    },
+                    {
+                      "key": "radiusUnit",
+                      "value": "KM"
+                    },
+                    {
+                      "key": "countryIsoCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ac45801-5202-4343-b02e-52e93e79ccfe",
+              "name": "Invalid parameter was specified:\n * DealerId is not valid\n * Area search is not valid (latitude or longitude missing or invalid)\n * Country ISO code is not valid\n * Brand code is not valid\n * Product group is not valid\n * Activity is not valid\n * Page is not valid\n * Page size is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dealerIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radiusValue",
+                      "value": "10"
+                    },
+                    {
+                      "key": "radiusUnit",
+                      "value": "KM"
+                    },
+                    {
+                      "key": "countryIsoCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9dc0f4c8-4c6b-4333-9ae0-9b08c4177ff1",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dealerIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radiusValue",
+                      "value": "10"
+                    },
+                    {
+                      "key": "radiusUnit",
+                      "value": "KM"
+                    },
+                    {
+                      "key": "countryIsoCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d5055a1-4729-40b5-9b2f-3d7c707f53c7",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dealerIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radiusValue",
+                      "value": "10"
+                    },
+                    {
+                      "key": "radiusUnit",
+                      "value": "KM"
+                    },
+                    {
+                      "key": "countryIsoCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5048080-e3ef-4855-b228-824777dd030d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dealerIds",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radiusValue",
+                      "value": "10"
+                    },
+                    {
+                      "key": "radiusUnit",
+                      "value": "KM"
+                    },
+                    {
+                      "key": "countryIsoCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc0d523e-aa95-464d-9155-55050bee36bd",
+          "name": "dealer GET",
+          "request": {
+            "name": "dealer GET",
+            "description": {
+              "content": "This request returns dealers for given parameters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dealers",
+                ":dealerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned. e.g. fields=dealerId,address(street,city)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "GS0000275",
+                  "key": "dealerId",
+                  "description": "(Required) The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ac6cb1c-ceb2-4ef9-90da-394594e3514a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers",
+                    ":dealerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "GS0000275",
+                      "key": "dealerId",
+                      "description": "(Required) The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    }\n  },\n  \"legalName\": \"string\",\n  \"dealerId\": \"string\",\n  \"address\": {\n    \"addressAddition\": \"string\",\n    \"city\": \"string\",\n    \"countryIsoCode\": \"string\",\n    \"district\": \"string\",\n    \"street\": \"string\",\n    \"zipCode\": \"string\"\n  },\n  \"brandCodes\": [\n    {\n      \"brand\": {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      }\n    },\n    {\n      \"brand\": {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  ],\n  \"communication\": {\n    \"general\": {\n      \"email\": \"string\",\n      \"facebook\": \"string\",\n      \"fax\": \"string\",\n      \"googlePlus\": \"string\",\n      \"mobile\": \"string\",\n      \"phone\": \"string\",\n      \"twitter\": \"string\",\n      \"website\": \"string\"\n    }\n  },\n  \"distance\": {\n    \"value\": 2651.314102842209,\n    \"unit\": \"MILE\"\n  },\n  \"functions\": [\n    {\n      \"activity\": {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      },\n      \"brand\": {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      },\n      \"productGroup\": {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  ],\n  \"geoCoordinates\": {\n    \"latitude\": 7055.891559466406,\n    \"longitude\": 346.94687290873884\n  },\n  \"nameAddition\": \"string\",\n  \"openingHours\": [\n    {\n      \"function\": {\n        \"activity\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        },\n        \"brand\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        },\n        \"productGroup\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        }\n      },\n      \"weekdays\": {\n        \"FRIDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        },\n        \"MONDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"CLOSED\"\n        },\n        \"SATURDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        },\n        \"SUNDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        },\n        \"THURSDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"CLOSED\"\n        },\n        \"TUESDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        },\n        \"WEDNESDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"CLOSED\"\n        }\n      }\n    },\n    {\n      \"function\": {\n        \"activity\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        },\n        \"brand\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        },\n        \"productGroup\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        }\n      },\n      \"weekdays\": {\n        \"FRIDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        },\n        \"MONDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        },\n        \"SATURDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"CLOSED\"\n        },\n        \"SUNDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"CLOSED\"\n        },\n        \"THURSDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"CLOSED\"\n        },\n        \"TUESDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        },\n        \"WEDNESDAY\": {\n          \"periods\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"status\": \"OPEN\"\n        }\n      }\n    }\n  ],\n  \"region\": {\n    \"region\": \"string\",\n    \"subRegion\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2230a52c-380c-441e-b6c8-cebe69dc89f8",
+              "name": "Invalid format for parameter dealerId was specified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers",
+                    ":dealerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "GS0000275",
+                      "key": "dealerId",
+                      "description": "(Required) The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "820be75a-4a40-46e2-bf89-a08a97da0cda",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers",
+                    ":dealerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "GS0000275",
+                      "key": "dealerId",
+                      "description": "(Required) The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4406b0cc-fe10-4918-9d0e-6913a2ca9747",
+              "name": "Dealer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers",
+                    ":dealerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "GS0000275",
+                      "key": "dealerId",
+                      "description": "(Required) The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a04e4179-a643-415f-bd24-8254bb6f504d",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers",
+                    ":dealerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "GS0000275",
+                      "key": "dealerId",
+                      "description": "(Required) The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69bbead8-e243-473c-a449-e22a1e4aa0bf",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dealers",
+                    ":dealerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "GS0000275",
+                      "key": "dealerId",
+                      "description": "(Required) The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "785b5098-ffcd-47f4-894e-6b3b670de913",
+      "name": "References",
+      "description": {
+        "content": "Reference data that is required for the Dealer API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "03f5f6bf-a565-4c74-84bf-10b0d7c4cd7e",
+          "name": "countries GET",
+          "request": {
+            "name": "countries GET",
+            "description": {
+              "content": "This request returns the countries supported by the Dealer API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The index of the page to be returned. If this parameter is omitted, the first page will be returned.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The index of the page to be returned. If this parameter is omitted, the first page will be returned.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2e1a8a5-2ab0-40a8-a729-174287a1612d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"next\": {\n      \"href\": \"string\"\n    },\n    \"previous\": {\n      \"href\": \"string\"\n    },\n    \"self\": {\n      \"href\": \"string\"\n    }\n  },\n  \"countries\": [\n    {\n      \"countryId\": \"string\",\n      \"isoCode\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"countryId\": \"string\",\n      \"isoCode\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e50a4b49-bcc9-4d69-8fe4-0a93d46b8342",
+              "name": "Invalid parameter was specified:\n * Page is not valid\n * Page size is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22682bc8-4d45-4487-b40a-46af2a8719a9",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c54e55d-1401-486e-b8d7-4bd8ba4a0f2b",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "532e953a-2536-492d-b24b-0bb7f05fbb81",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mercedes-benz.com/dealer_tryout/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "adb72a35-fd3e-40d2-8178-fd0db9464172",
+    "name": "Dealer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Dealer API provides Dealer search functions.\n\nContact Support:\n Name: The open API platform by Mercedes-Benz",
+      "type": "text/plain"
+    }
+  }
+}

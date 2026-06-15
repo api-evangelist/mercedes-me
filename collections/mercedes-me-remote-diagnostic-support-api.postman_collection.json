@@ -1,0 +1,3048 @@
+{
+  "item": [
+    {
+      "id": "a0069452-b2df-4920-b341-ac22b43c0b23",
+      "name": "Resources",
+      "description": {
+        "content": "Remote Diagnostic Support service for view all resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a1b33c8-eb75-4659-a7c7-d5a786d92e63",
+          "name": "View the List of Resources",
+          "request": {
+            "name": "View the List of Resources",
+            "description": {
+              "content": "This API creates a readout of available resources to the accessing party for one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the resource readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vehicles",
+                ":vehicleId",
+                "resourceReadouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicleId",
+                  "description": "(Required) vehicleId of the resources to be viewed"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a422fc5-291b-4256-a1ab-95de578cd798",
+              "name": "Returns a resource to the accessing party",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"resourceReadout\": {\n    \"id\": \"string\",\n    \"messageTimestamp\": \"1998-09-24T06:46:27.989Z\",\n    \"asyncStatus\": \"Pending\",\n    \"vehicleId\": \"string\",\n    \"asyncEstimatedComplete\": \"2017-11-18T08:54:55.118Z\",\n    \"asyncProgress\": 9935,\n    \"asyncWait\": 5792,\n    \"exveErrorId\": \"string\",\n    \"exveErrorMsg\": \"string\",\n    \"exveErrorRef\": \"string\",\n    \"exveNote\": \"string\",\n    \"receivedTimestamp\": \"1953-01-03T06:09:53.464Z\",\n    \"resources\": [\n      {\n        \"api\": \"string\",\n        \"name\": \"string\",\n        \"version\": \"string\"\n      },\n      {\n        \"api\": \"string\",\n        \"name\": \"string\",\n        \"version\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e06b452-f79c-4405-9585-61c97bb7e2ba",
+              "name": "The request has been accepted for processing, but not completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "460ab123-4940-418d-a841-cc0c923b5dc4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09645eee-d495-41b4-8bbd-c4113926025a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43266f9f-e65a-42b8-8245-3e25a8dab662",
+              "name": "Payment required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b5ed30b-0478-4d1e-b7a6-c0719fb24370",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c767b29-40f1-4851-87af-e17e5476835c",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b8dacef-4094-439e-8da7-cf8c4c09425a",
+              "name": "Not Acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c01528b-f7cb-440c-b65a-cd6da0e7847e",
+              "name": "Quota limit is exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cd2f15b-9a7e-4920-918b-733156e074c3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "258537d0-ffad-48ff-8f1b-5b68ff166392",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3cdcfc9-7398-4fdb-ac4a-f8c6f4a45537",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a57756e5-718f-4897-9faf-61624c2a5553",
+              "name": "Version not supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "resourceReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) vehicleId of the resources to be viewed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "HTTP Version Not Supported",
+              "code": 505,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.resourceReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "203bd1fe-9400-451d-8671-5df9e9ea6fcf",
+      "name": "Electronical Control Units (ECU's)",
+      "description": {
+        "content": "Remote Diagnostic Support services for view ecu List.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b51632a-f85f-418c-8b65-feeeed7632de",
+          "name": "View the List of Ecu for Specific vehicleId",
+          "request": {
+            "name": "View the List of Ecu for Specific vehicleId",
+            "description": {
+              "content": "This API creates a readout of ECUs for one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the ECU readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vehicles",
+                ":vehicleId",
+                "ecuReadouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ecuId",
+                  "value": "<string>",
+                  "description": "Return this ECU id only. Default: Return all ECUs."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicleId",
+                  "description": "(Required) The vehicle identifier of the vehicle to read from"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4b9e41d-6331-4661-946e-1db22fb90e8f",
+              "name": "Returns an ECU List",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"ecuReadout\": {\n    \"id\": \"string\",\n    \"messageTimestamp\": \"2026-01-03T13:37:53.627Z\",\n    \"asyncStatus\": \"Pending\",\n    \"vehicleId\": \"string\",\n    \"asyncEstimatedComplete\": \"1977-03-14T09:32:20.691Z\",\n    \"asyncProgress\": 7078,\n    \"asyncWait\": 9058,\n    \"exveErrorId\": \"string\",\n    \"exveErrorMsg\": \"string\",\n    \"exveErrorRef\": \"string\",\n    \"exveNote\": \"string\",\n    \"receivedTimestamp\": \"2007-02-13T21:12:34.760Z\",\n    \"ecus\": [\n      {\n        \"ecuId\": \"string\",\n        \"hardwareIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"softwareIds\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"ecuId\": \"string\",\n        \"hardwareIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"softwareIds\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03f1e13e-af37-4e1c-8fa6-ba7bc0a11f84",
+              "name": "The request has been accepted for processing, but not completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcc617b8-656c-44b5-b345-8ad2b0a24487",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "103e86d1-e512-4bac-9b9c-109f83acf9f5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1488425b-6f67-4e43-93a4-8f43e10a8b84",
+              "name": "Payment required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1fd7ea1-b087-4c97-be3f-34902f0f95d4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e6da29e-6366-4ef5-ab20-9d0a207eec5b",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25337473-dfdb-409f-ae7e-ffb3897cedfb",
+              "name": "Not Acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0110b497-32e4-4a72-b51e-de73e4ef8b3c",
+              "name": "Quota limit is exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "964276dd-782a-4cd6-96de-fcf3df186b98",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1b41e1f-7288-44a1-9ea6-44a1bb04450e",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21e1f5bb-187d-439a-adab-89c2eaeea44f",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bec4ed70-441c-45f1-a74d-ef47fe1b9a7c",
+              "name": "Version not supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "HTTP Version Not Supported",
+              "code": 505,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.ecureadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c1f0511e-1c34-46aa-9896-51cfc8f41ef5",
+      "name": "Diagnostic Trouble Codes (DTC's)",
+      "description": {
+        "content": "Remote Diagnostic Support service for view dtc List.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f9d7f16-980b-43d9-82eb-81dff495b8c1",
+          "name": "View the List of Dtcs for Specific vehicleId",
+          "request": {
+            "name": "View the List of Dtcs for Specific vehicleId",
+            "description": {
+              "content": "This API creates a readout of DTCs for one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the DTC readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vehicles",
+                ":vehicleId",
+                "dtcReadouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ecuId",
+                  "value": "<string>",
+                  "description": "Return DTCs from this ECU id only. Default: Return DTCs from all ECUs."
+                },
+                {
+                  "disabled": false,
+                  "key": "dtcStatus",
+                  "value": "<string>",
+                  "description": "Returns DTCs with this statuses only. Default: Return DTCs with all statuses."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicleId",
+                  "description": "(Required) The vehicle identifier of the vehicle to read from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60f1d4d9-7eec-492e-8177-2b11c939b57b",
+              "name": "Returns a DTC List",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"dtcReadout\": {\n    \"id\": \"string\",\n    \"messageTimestamp\": \"1995-12-03T11:14:14.594Z\",\n    \"asyncStatus\": \"Complete\",\n    \"vehicleId\": \"string\",\n    \"asyncEstimatedComplete\": \"1987-09-25T04:50:05.490Z\",\n    \"asyncProgress\": 7869,\n    \"asyncWait\": 9441,\n    \"exveErrorId\": \"string\",\n    \"exveErrorMsg\": \"string\",\n    \"exveErrorRef\": \"string\",\n    \"exveNote\": \"string\",\n    \"receivedTimestamp\": \"1986-06-19T03:31:37.072Z\",\n    \"dtcs\": [\n      {\n        \"dtcId\": \"string\",\n        \"ecuId\": \"string\",\n        \"status\": \"PENDING\",\n        \"dtcTimestamp\": \"string\",\n        \"occurrenceCounter\": 7166\n      },\n      {\n        \"dtcId\": \"string\",\n        \"ecuId\": \"string\",\n        \"status\": \"ACTIVE\",\n        \"dtcTimestamp\": \"string\",\n        \"occurrenceCounter\": 6318\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a6e7b12-f195-438d-988f-23edd28d4ff5",
+              "name": "The request has been accepted for processing, but not completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d3cfef2-19b5-4ba8-8125-e192e33f6f88",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf293785-0de2-418e-84f4-adb062b30fc4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73fcece1-56ed-4310-8f88-ce6e79e23089",
+              "name": "Payment required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea92b355-b9f6-4763-a23f-f7a5b8330714",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53ec96b6-4637-43d4-b788-5264185d6693",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4974112a-91b7-4426-a755-6dcce2c8e0b7",
+              "name": "Not Acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17514cc8-48b5-4c26-9c8a-3642554cc194",
+              "name": "Quota limit is exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce8699c7-9f00-48e6-87c4-2d7d686cd87d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a71ab3f4-5b1a-4ea9-a94c-6b006eefdd4f",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79917330-3ec0-4e74-b24e-b5ca475dc742",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2164d3a7-39be-46cc-ba8b-09195cd6539c",
+              "name": "Version not supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "dtcReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ecuId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtcStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "HTTP Version Not Supported",
+              "code": 505,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcreadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "35fd1d13-ca47-4d77-be26-1cb0269448ea",
+      "name": "Diagnostic Trouble Code (DTC) Snapshots",
+      "description": {
+        "content": "Remote Diagnostic Support service for view dtc snapshot List.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6103a26a-ee00-4197-b500-92849edfbf6e",
+          "name": "View the List of Dtc Snapshot for Specific vehicleId",
+          "request": {
+            "name": "View the List of Dtc Snapshot for Specific vehicleId",
+            "description": {
+              "content": "This API creates a readout of a DTC snapshot from one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the DTC snapshot readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vehicles",
+                ":vehicleId",
+                "ecuId",
+                ":ecuId",
+                "dtcId",
+                ":dtcId",
+                "dtcSnapshotReadouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicleId",
+                  "description": "(Required) The vehicle identifier of the vehicle to read from"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ecuId",
+                  "description": "(Required) The id of the ECU to read from"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dtcId",
+                  "description": "(Required) The id of the DTC associated with the snapshot"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57c634d3-349e-4556-a829-8ee9500a9a2b",
+              "name": "Returns a DTC Snapshot List",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"dtcSnapshotReadout\": {\n    \"asyncStatus\": \"Fail\",\n    \"dtcId\": \"string\",\n    \"ecuId\": \"string\",\n    \"id\": \"string\",\n    \"messageTimestamp\": \"2001-07-25T22:15:07.922Z\",\n    \"vehicleId\": \"string\",\n    \"asyncEstimatedComplete\": \"2010-02-24T03:23:07.611Z\",\n    \"asyncProgress\": 1306,\n    \"asyncWait\": 7426,\n    \"exveErrorId\": \"string\",\n    \"exveErrorMsg\": \"string\",\n    \"exveErrorRef\": \"string\",\n    \"exveNote\": \"string\",\n    \"receivedTimestamp\": \"1954-06-25T11:35:30.271Z\",\n    \"dtcSnapshotParameters\": [\n      {\n        \"id\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "458df797-3806-4fc9-aa0b-af5f61177092",
+              "name": "The request has been accepted for processing, but not completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90a0c82e-0206-496a-af18-e156dd6f6291",
+              "name": "The request has been accepted for processing, but no content is available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e829403-d557-46c8-8223-b103faf3844f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2eff769d-1cde-4358-8b19-595ec4a5f9ff",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32aeb110-b3f7-4cdd-8c21-c9fc2cae6df9",
+              "name": "Payment required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ccd450c-87f4-4ccd-b1f5-588767b006ee",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cb0d404-c541-4ea1-8d33-b1873c53099e",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "718783ab-fddc-4bc6-8bfb-eaa83d9ed78b",
+              "name": "Not Acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d471ea7e-1860-405a-a009-b0497c8441ae",
+              "name": "Quota limit is exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f25bdc43-7337-47b0-a47a-5a07d3a283d1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dff8ae39-e4df-40c3-97d1-6073fc7d63f0",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0670187d-445a-4c0d-92f4-c3839c4f6199",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f151a85b-4b6f-4222-b147-2d127bc5d03c",
+              "name": "Version not supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles",
+                    ":vehicleId",
+                    "ecuId",
+                    ":ecuId",
+                    "dtcId",
+                    ":dtcId",
+                    "dtcSnapshotReadouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) The vehicle identifier of the vehicle to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ecuId",
+                      "description": "(Required) The id of the ECU to read from"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dtcId",
+                      "description": "(Required) The id of the DTC associated with the snapshot"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "HTTP Version Not Supported",
+              "code": 505,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x.exve.org.dtcSnapshotReadout.v1+json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mercedes-benz.com/remotediagnostic_tryout/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cdbfd99a-aa07-482b-8cf9-5c881a2e6994",
+    "name": "Remote Diagnostic Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Remote Diagnostic Support API will provide the possibility for 3rd party applications (e.g. ADAC, ATU, etc.) to access vehicle diagnostics data remotely on behalf of the Daimler customer. To use the endpoints you need a valid vin/fin (vehicleId).\n\nContact Support:\n Name: The open API platform by Mercedes-Benz",
+      "type": "text/plain"
+    }
+  }
+}

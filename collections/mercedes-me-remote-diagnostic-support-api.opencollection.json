@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Remote Diagnostic Support",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diagnostic Trouble Codes (DTC's)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the List of Dtcs for Specific vehicleId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vehicles/:vehicleId/dtcReadouts",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path",
+                "description": "The vehicle identifier of the vehicle to read from."
+              },
+              {
+                "name": "ecuId",
+                "value": "",
+                "type": "query",
+                "description": "Return DTCs from this ECU id only. Default: Return DTCs from all ECUs."
+              },
+              {
+                "name": "dtcStatus",
+                "value": "",
+                "type": "query",
+                "description": "Returns DTCs with this statuses only. Default: Return DTCs with all statuses."
+              }
+            ]
+          },
+          "docs": "This API creates a readout of DTCs for one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the DTC readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Diagnostic Trouble Code (DTC) Snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the List of Dtc Snapshot for Specific vehicleId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vehicles/:vehicleId/ecuId/:ecuId/dtcId/:dtcId/dtcSnapshotReadouts",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path",
+                "description": "The vehicle identifier of the vehicle to read from"
+              },
+              {
+                "name": "ecuId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the ECU to read from"
+              },
+              {
+                "name": "dtcId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the DTC associated with the snapshot"
+              }
+            ]
+          },
+          "docs": "This API creates a readout of a DTC snapshot from one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the DTC snapshot readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Electronical Control Units (ECU's)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the List of Ecu for Specific vehicleId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vehicles/:vehicleId/ecuReadouts",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path",
+                "description": "The vehicle identifier of the vehicle to read from"
+              },
+              {
+                "name": "ecuId",
+                "value": "",
+                "type": "query",
+                "description": "Return this ECU id only. Default: Return all ECUs."
+              }
+            ]
+          },
+          "docs": "This API creates a readout of ECUs for one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the ECU readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the List of Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vehicles/:vehicleId/resourceReadouts",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path",
+                "description": "vehicleId of the resources to be viewed"
+              }
+            ]
+          },
+          "docs": "This API creates a readout of available resources to the accessing party for one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the resource readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
