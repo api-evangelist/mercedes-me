@@ -202,7 +202,7 @@ apis:
       - url: https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api
         type: Documentation
       - url: https://github.com/mercedes-benz/kafka-integration-samples
-        type: SDK
+        type: SDKs
         name: Kafka Integration Samples
     description: >-
       The Mercedes-Benz Fleet API integrates vehicle data into fleet management systems without retrofit hardware. It
@@ -231,19 +231,19 @@ common:
   - type: Documentation
     url: https://developer.mercedes-benz.com/products
     name: API Products Catalog
-  - type: SDK
+  - type: SDKs
     url: https://developer.mercedes-benz.com/sdks
     name: Mercedes-Benz SDKs
-  - type: SDK
+  - type: SDKs
     url: https://github.com/mercedes-benz/MBSDK-Mobile-Android
     name: MBSDK Mobile - Android
-  - type: SDK
+  - type: SDKs
     url: https://github.com/mercedes-benz/MBSDK-Mobile-iOS
     name: MBSDK Mobile - iOS
-  - type: SDK
+  - type: SDKs
     url: https://github.com/mercedes-benz/MBSDK-community-support
     name: MBSDK Community Support (Archived)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/mercedes-benz/kafka-integration-samples
     name: Kafka Integration Samples (Fleet API)
   - type: GitHub
@@ -322,7 +322,7 @@ features:
       The Fleet API includes a managed Kafka Push API that streams vehicle telemetry events (location, fuel/charge,
       health, tires, doors, anti-theft) directly into fleet management systems with OAuth 2.0-authenticated Kafka
       clients.
-  - type: SDK
+  - type: SDKs
     name: Mobile SDK (MBSDK)
     description: >-
       Native iOS (Swift) and Android (Kotlin) modules encapsulate customer/car data, authentication, vehicle assignment,
