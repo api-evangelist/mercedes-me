@@ -225,6 +225,10 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: VulnerabilityDisclosure
+    url: security/mercedes-me-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/mercedes-me-domain-security.yml
   - type: Portal
     url: https://developer.mercedes-benz.com/
     name: Mercedes-Benz /developers
