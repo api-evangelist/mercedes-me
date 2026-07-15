@@ -1,0 +1,438 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/mercedes-me-configurator-api-openapi.yml, openapi/mercedes-me-dealer-api-openapi.yml,
+  openapi/mercedes-me-remote-diagnostic-support-api-openapi.yml, openapi/mercedes-me-vehicle-images-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 39
+  by_action_class:
+    connected: 34
+    acting: 5
+  by_consequence:
+    read: 34
+    write: 4
+    safety-critical: 1
+  human_in_the_loop_required: 1
+operations:
+- path: /markets
+  method: get
+  operationId: marketsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}
+  method: get
+  operationId: marketGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/bodies
+  method: get
+  operationId: bodiesGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/bodies/{bodyId}
+  method: get
+  operationId: bodyGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/classes
+  method: get
+  operationId: classesGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/classes/{classId}
+  method: get
+  operationId: classGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models
+  method: get
+  operationId: modelsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}
+  method: get
+  operationId: modelGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/initial
+  method: get
+  operationId: modelConfigurationsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}
+  method: get
+  operationId: modelConfigurationGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/alternatives/{componentList}
+  method: get
+  operationId: modelConfigurationAlternativesGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components
+  method: get
+  operationId: imageComponentsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/engine
+  method: get
+  operationId: imageComponentsEngineGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/equipments
+  method: get
+  operationId: imageComponentsEquipmentsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/equipments/{componentCode}
+  method: get
+  operationId: imageComponentsEquipmentsByCodeGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/paint
+  method: get
+  operationId: imageComponentsPaintGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/rim
+  method: get
+  operationId: imageComponentsRimGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/trim
+  method: get
+  operationId: imageComponentsTrimGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/upholstery
+  method: get
+  operationId: imageComponentsUpholsteryGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/vehicle
+  method: get
+  operationId: imageVehicleGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/selectables
+  method: get
+  operationId: modelConfigurationSelectablesGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/onlinecode
+  method: post
+  operationId: onlineCodePOST
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /markets/{marketId}/onlinecode/{onlineCode}
+  method: get
+  operationId: onlineCodeGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/{marketId}/productgroups
+  method: get
+  operationId: productGroupsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /countries
+  method: get
+  operationId: countriesGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /dealers
+  method: get
+  operationId: dealersGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /dealers/{dealerId}
+  method: get
+  operationId: dealerGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /vehicles/{vehicleId}/dtcReadouts
+  method: post
+  operationId: getDtcDataListByEcuUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /vehicles/{vehicleId}/ecuId/{ecuId}/dtcId/{dtcId}/dtcSnapshotReadouts
+  method: post
+  operationId: getDtcSnapshotReadoutsUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /vehicles/{vehicleId}/ecuReadouts
+  method: post
+  operationId: getEcuDataListByVehicleIdUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /vehicles/{vehicleId}/resourceReadouts
+  method: post
+  operationId: getResourceReadoutsUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /{finorvin}/components
+  method: get
+  operationId: imageComponentsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{finorvin}/components/engine
+  method: get
+  operationId: imageComponentsEngineGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{finorvin}/components/equipments
+  method: get
+  operationId: imageComponentsEquipmentsGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{finorvin}/components/paint
+  method: get
+  operationId: imageComponentsPaintGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{finorvin}/components/rim
+  method: get
+  operationId: imageComponentsRimGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{finorvin}/components/trim
+  method: get
+  operationId: imageComponentsTrimGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{finorvin}/components/upholstery
+  method: get
+  operationId: imageComponentsUpholsteryGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{finorvin}/vehicle
+  method: get
+  operationId: imageVehicleGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
