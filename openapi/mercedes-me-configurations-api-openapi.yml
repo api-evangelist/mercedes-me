@@ -1,0 +1,760 @@
+swagger: '2.0'
+info:
+  contact:
+    name: The open API platform by Mercedes-Benz
+    x-twitter: MercedesBenz
+  description: The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.
+  title: Car Configurator Components Configurations API
+  version: '1.0'
+  x-apisguru-categories:
+  - transport
+  x-logo:
+    url: https://twitter.com/MercedesBenz/profile_image?size=original
+  x-origin:
+  - format: swagger
+    url: https://developer.mercedes-benz.com/content/sites/default/files/2018-08/swagger_car_configurator_api.json
+    version: '2.0'
+  x-providerName: mercedes-benz.com
+  x-serviceName: configurator
+host: api.mercedes-benz.com
+basePath: /configurator_tryout/v1
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+tags:
+- description: Select equipment and configure a car
+  name: Configurations
+paths:
+  /markets/{marketId}/models/{modelId}/configurations/initial:
+    x-swagger-router-controller: Configurations
+    get:
+      description: Get the initial `VehicleConfiguration` for the given **marketId** and **modelId**.
+      operationId: modelConfigurationsGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/VehicleConfiguration'
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market or Model not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Initial Configuration for the Given marketId and modelId
+      tags:
+      - Configurations
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}:
+    x-swagger-router-controller: Configurations
+    get:
+      description: Get the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**.
+      operationId: modelConfigurationGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/VehicleConfiguration'
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid\n * ConfigurationId is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market, Model or Configuration not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Configuration for the Given marketId, modelId and configurationId
+      tags:
+      - Configurations
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/alternatives/{componentList}:
+    x-swagger-router-controller: configurations176042_002
+    get:
+      description: Get the `VehicleAlternatives` for the given **marketId**, **modelId** and **configurationId** and the given **componentList** of changes.
+      operationId: modelConfigurationAlternativesGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      - $ref: '#/parameters/componentList'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            items:
+              $ref: '#/definitions/VehicleAlternative'
+            title: VehicleAlternatives
+            type: array
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid\n * ConfigurationId is not valid\n * ComponentList is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market, Model or Configuration not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Alternatives for the Given marketId, modelId, configurationId and componentList
+      tags:
+      - Configurations
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/selectables:
+    x-swagger-router-controller: Configurations
+    get:
+      description: Get the selectable `VehicleComponents` and the `ComponentCategories` of the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**. Optional query param **componentType** may be used to filter the result.
+      operationId: modelConfigurationSelectablesGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      - $ref: '#/parameters/componentTypes'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/VehicleComponentTree'
+        '204':
+          description: No content found for requested componentTypes
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid\n * ConfigurationId is not valid\n * ComponentTypes is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market, Model or Configuration not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Selectable Components for the Given marketId, modelId and configurationId
+      tags:
+      - Configurations
+definitions:
+  FuelEconomy:
+    description: This is for the fuel consumption holding a value and unit.
+    properties:
+      consumptionOfElectricityMax:
+        $ref: '#/definitions/Amount'
+      consumptionOfElectricityMin:
+        $ref: '#/definitions/Amount'
+      emissionCO2Max:
+        $ref: '#/definitions/Amount'
+      emissionCO2Min:
+        $ref: '#/definitions/Amount'
+      fuelConsumptionCityMax:
+        $ref: '#/definitions/Amount'
+      fuelConsumptionCityMin:
+        $ref: '#/definitions/Amount'
+      fuelConsumptionCombinedMax:
+        $ref: '#/definitions/Amount'
+      fuelConsumptionCombinedMin:
+        $ref: '#/definitions/Amount'
+      fuelConsumptionElectricity:
+        $ref: '#/definitions/Amount'
+      fuelConsumptionOverlandMax:
+        $ref: '#/definitions/Amount'
+      fuelConsumptionOverlandMin:
+        $ref: '#/definitions/Amount'
+  NedcEmission:
+    description: The Nedc 'New European Drive Cycle' emission.
+    properties:
+      city:
+        $ref: '#/definitions/NedcGear'
+      combined:
+        $ref: '#/definitions/NedcGear'
+      country:
+        $ref: '#/definitions/NedcGear'
+      weighted:
+        $ref: '#/definitions/NedcAmount'
+    type: object
+  FuelType:
+    description: The kind of fuel used by an engine of a vehicle. Where UNDEFINED is used as the default and/or error case.
+    enum:
+    - NORMAL
+    - SUPER
+    - SUPERPLUS
+    - DIESEL
+    - HGAS
+    - GAS
+    - ELECTRIC
+    - FUELCELL
+    - UNDEFINED
+    type: string
+  Wltp:
+    description: Holds all relevant informations for the Wltp 'Worldwide harmonized Light vehicles Test Procedure' drive cycle.
+    properties:
+      consumption:
+        $ref: '#/definitions/WltpConsumption'
+      emission:
+        $ref: '#/definitions/WltpEmission'
+  TechnicalInformation:
+    description: Contains all technical information calculated using BDAs.
+    properties:
+      acceleration:
+        $ref: '#/definitions/Amount'
+      doors:
+        type: number
+      energyEfficiencyClass:
+        type: string
+      engine:
+        $ref: '#/definitions/Engine'
+      nedc:
+        $ref: '#/definitions/Nedc'
+      seats:
+        type: number
+      topSpeed:
+        $ref: '#/definitions/Amount'
+      transmission:
+        $ref: '#/definitions/Transmission'
+      wltp:
+        $ref: '#/definitions/Wltp'
+    required:
+    - engine
+    - transmission
+  DriveConcept:
+    description: The kind of drive concept of a vehicle. Where UNDEFINED is used as the default and/or error case.
+    enum:
+    - COMBUSTOR
+    - HYBRID
+    - ELECTRIC
+    - FUELCELL
+    - UNDEFINED
+    type: string
+  NedcAmount:
+    description: The Nedc 'New European Drive Cycle' specific amount holds the nedc specific values.
+    properties:
+      individual:
+        $ref: '#/definitions/Amount'
+      max:
+        $ref: '#/definitions/Amount'
+      min:
+        $ref: '#/definitions/Amount'
+    required:
+    - individual
+    - min
+    - max
+    type: object
+  VehicleComponentType:
+    description: The component type of a vehicle component.
+    enum:
+    - ANY
+    - WHEELS
+    - PAINTS
+    - UPHOLSTERIES
+    - TRIMS
+    - PACKAGES
+    - LINES
+    - SPECIAL_EDITION
+    - SPECIAL_EQUIPMENT
+    type: string
+  VehicleConfiguration:
+    description: A vehicle configuration.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfSelectablesImageVehicleLinks'
+      changeYear:
+        type: string
+      configurationId:
+        type: string
+      configurationPrice:
+        $ref: '#/definitions/PriceInformation'
+      initialPrice:
+        $ref: '#/definitions/PriceInformation'
+      marketId:
+        type: string
+      modelId:
+        type: string
+      modelYear:
+        type: string
+      technicalInformation:
+        $ref: '#/definitions/TechnicalInformation'
+      vehicleComponents:
+        items:
+          $ref: '#/definitions/VehicleComponent'
+        type: array
+      wltpConfiguration:
+        type: boolean
+    required:
+    - marketId
+    - modelId
+    - configurationId
+    - initialPrice
+    - configurationPrice
+    - modelYear
+    - changeYear
+    - vehicleComponents
+    - technicalInformation
+    - wltpConfiguration
+    - _links
+    type: object
+  Amount:
+    description: Holds a value and unit.
+    properties:
+      unit:
+        type: string
+      value:
+        type: number
+    required:
+    - value
+  PriceInformation:
+    description: The prices, installment price, taxes and ISO currency of a vehicle.
+    properties:
+      currency:
+        type: string
+      instalmentPrice:
+        type: number
+      netPrice:
+        type: number
+      price:
+        type: number
+      taxes:
+        items:
+          $ref: '#/definitions/Tax'
+        type: array
+    required:
+    - price
+    - netPrice
+    - currency
+    - taxes
+    type: object
+  WltpEmission:
+    description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' emission.
+    properties:
+      chargeDeplete:
+        $ref: '#/definitions/WltpGear'
+      chargeDepleteCop:
+        $ref: '#/definitions/WltpGear'
+      chargeDepleteWeighted:
+        $ref: '#/definitions/WltpGear'
+      extraHigh:
+        $ref: '#/definitions/WltpGear'
+      high:
+        $ref: '#/definitions/WltpGear'
+      low:
+        $ref: '#/definitions/WltpGear'
+      lowMid:
+        $ref: '#/definitions/WltpGear'
+      medium:
+        $ref: '#/definitions/WltpGear'
+      total:
+        $ref: '#/definitions/WltpGear'
+      weighted:
+        $ref: '#/definitions/WltpGear'
+    type: object
+  HRef:
+    description: The URL to the specific resource.
+    properties:
+      href:
+        type: string
+    required:
+    - href
+    type: object
+  SelfLink:
+    description: Links to self.
+    properties:
+      self:
+        $ref: '#/definitions/HRef'
+    required:
+    - self
+    type: object
+  VehicleComponentCategoryCardinality:
+    description: The cardinality of the vehicle components belong to component category.
+    enum:
+    - NOT_DEFINED
+    - ONE_OR_NONE
+    - EXACTLY_ONE
+    - ARBITRARY
+    type: string
+  SelfSelectablesImageVehicleLinks:
+    description: Links to self and image resources.
+    properties:
+      imageapi_vehicle:
+        $ref: '#/definitions/HRef'
+      selectables:
+        $ref: '#/definitions/HRef'
+      self:
+        $ref: '#/definitions/HRef'
+    required:
+    - self
+    - selectables
+    - imageapi_vehicle
+    type: object
+  VehicleComponentCategory:
+    description: The component category of a VehicleComponent.
+    properties:
+      cardinality:
+        $ref: '#/definitions/VehicleComponentCategoryCardinality'
+      categoryId:
+        type: string
+      categoryName:
+        type: string
+      categorySortId:
+        type: number
+      componentIds:
+        items:
+          $ref: '#/definitions/VehicleComponentId'
+        type: array
+      subcategories:
+        items:
+          $ref: '#/definitions/VehicleComponentCategory'
+        type: array
+    required:
+    - categoryId
+    - categorySortId
+    - categoryName
+    - cardinality
+    - subcategories
+    - componentIds
+  Tax:
+    description: The country specific tax information.
+    properties:
+      amount:
+        type: number
+      baseAmount:
+        type: number
+      charge:
+        type: number
+      id:
+        type: string
+      rate:
+        type: number
+    required:
+    - id
+    - amount
+    - baseAmount
+    - charge
+    - rate
+    type: object
+  WltpAmount:
+    description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' drive cycle specific amount holds the wltp specific values.
+    properties:
+      individual:
+        $ref: '#/definitions/Amount'
+      max:
+        $ref: '#/definitions/Amount'
+      min:
+        $ref: '#/definitions/Amount'
+    required:
+    - individual
+    - min
+    - max
+    type: object
+  VehicleComponentTree:
+    description: Contains the vehicle components and the structure with component categories.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfLink'
+      componentCategories:
+        items:
+          $ref: '#/definitions/VehicleComponentCategory'
+        type: array
+      vehicleComponents:
+        additionalProperties:
+          $ref: '#/definitions/VehicleComponent'
+        properties:
+          componentId:
+            $ref: '#/definitions/VehicleComponent'
+        type: object
+    required:
+    - vehicleComponents
+    - componentCategories
+    - _links
+  WltpConsumption:
+    description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' consumption.
+    properties:
+      chargeDeplete:
+        $ref: '#/definitions/WltpGear'
+      chargeDepleteCop:
+        $ref: '#/definitions/WltpGear'
+      extraHigh:
+        $ref: '#/definitions/WltpGear'
+      high:
+        $ref: '#/definitions/WltpGear'
+      low:
+        $ref: '#/definitions/WltpGear'
+      medium:
+        $ref: '#/definitions/WltpGear'
+      total:
+        $ref: '#/definitions/WltpGear'
+      weighted:
+        $ref: '#/definitions/WltpGear'
+    type: object
+  VehicleComponent:
+    description: A vehicle component.
+    properties:
+      _links:
+        $ref: '#/definitions/ImageComponentLink'
+      code:
+        type: string
+      codeType:
+        type: string
+      componentSortId:
+        type: number
+      componentType:
+        $ref: '#/definitions/VehicleComponentType'
+      description:
+        description: HTML elements can be present
+        type: string
+      fixed:
+        description: Cannot changed by the customer
+        type: boolean
+      hidden:
+        description: Hidden, should not be displayed to the customer, not relevant for the customer
+        type: boolean
+      id:
+        type: string
+      name:
+        type: string
+      priceInformation:
+        $ref: '#/definitions/PriceInformation'
+      pseudoCode:
+        description: Not relevant for the customer
+        type: boolean
+      selected:
+        description: Selected by the customer
+        type: boolean
+      standard:
+        description: Standard equipment
+        type: boolean
+    required:
+    - id
+    - componentSortId
+    - name
+    - description
+    - code
+    - codeType
+    - componentType
+    - priceInformation
+    - standard
+    - selected
+    - fixed
+    - hidden
+    - pseudoCode
+    - _links
+    type: object
+  Nedc:
+    description: Holds all relevant informations for the Nedc 'New European Drive Cycle'.
+    properties:
+      consumption:
+        $ref: '#/definitions/NedcConsumption'
+      electricRange:
+        $ref: '#/definitions/NedcAmount'
+      emission:
+        $ref: '#/definitions/NedcEmission'
+      weight:
+        $ref: '#/definitions/NedcAmount'
+  VehicleComponentId:
+    description: The component id of a VehicleComponent.
+    properties:
+      componentId:
+        type: string
+    required:
+    - componentId
+  WltpGear:
+    description: The gear of a vehicle. A vehicle can have a primary and a secondary gear.
+    properties:
+      primaryGear:
+        $ref: '#/definitions/WltpAmount'
+      secondaryGear:
+        $ref: '#/definitions/WltpAmount'
+    type: object
+  NedcGear:
+    description: The gear of a vehicle. A vehicle can have a primary and a secondary gear.
+    properties:
+      primaryGear:
+        $ref: '#/definitions/NedcAmount'
+      secondaryGear:
+        $ref: '#/definitions/NedcAmount'
+    type: object
+  ImageComponentLink:
+    description: Link to VIM image API.
+    properties:
+      imageapi_component:
+        $ref: '#/definitions/HRef'
+    required:
+    - imageapi_component
+    type: object
+  NedcConsumption:
+    description: The Nedc 'New European Drive Cycle' consumption.
+    properties:
+      city:
+        $ref: '#/definitions/NedcGear'
+      combined:
+        $ref: '#/definitions/NedcGear'
+      country:
+        $ref: '#/definitions/NedcGear'
+      electric:
+        $ref: '#/definitions/NedcAmount'
+      weighted:
+        $ref: '#/definitions/NedcGear'
+    type: object
+  VehicleAlternative:
+    description: A vehicle alternative.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfSelectablesImageVehicleLinks'
+      addedComponents:
+        items:
+          $ref: '#/definitions/VehicleComponent'
+        type: array
+      configurationId:
+        type: string
+      marketId:
+        type: string
+      modelId:
+        type: string
+      priceInformation:
+        items:
+          $ref: '#/definitions/PriceInformation'
+        type: object
+      removedComponents:
+        items:
+          $ref: '#/definitions/VehicleComponent'
+        type: array
+      updatedComponents:
+        items:
+          $ref: '#/definitions/VehicleComponent'
+        type: array
+    required:
+    - marketId
+    - modelId
+    - configurationId
+    - addedComponents
+    - removedComponents
+    - updatedComponents
+    - priceInformation
+    - _links
+    type: object
+  Transmission:
+    description: The transmission of the vehicle configuration.
+    properties:
+      code:
+        type: string
+      codeType:
+        type: string
+      name:
+        type: string
+    required:
+    - code
+    - codeType
+    - name
+  Engine:
+    description: All technical information about a specific engine.
+    properties:
+      alternativeFuelType:
+        $ref: '#/definitions/FuelType'
+      capacity:
+        $ref: '#/definitions/Amount'
+      cylinder:
+        type: string
+      driveConcept:
+        $ref: '#/definitions/DriveConcept'
+      emissionStandard:
+        type: string
+      engineConcept:
+        $ref: '#/definitions/EngineConcept'
+      fuelEconomy:
+        $ref: '#/definitions/FuelEconomy'
+      fuelType:
+        $ref: '#/definitions/FuelType'
+      powerHp:
+        $ref: '#/definitions/Amount'
+      powerHybridExtensionHp:
+        $ref: '#/definitions/Amount'
+      powerHybridExtensionKw:
+        $ref: '#/definitions/Amount'
+      powerKw:
+        $ref: '#/definitions/Amount'
+    required:
+    - fuelType
+  EngineConcept:
+    description: The kind of fuel used by an engine of a vehicle determines the engine type. Where UNDEFINED is used as the default and/or error case.
+    enum:
+    - MONO_REGULAR
+    - MONO_DIESEL
+    - MONO_GAS
+    - MONO_ELECTRIC
+    - MONO_FUELCELL
+    - BI_NGT
+    - BI_NGD
+    - BI_MILD
+    - BI_PLUGIN
+    - MONO_UNDEFINED
+    - BI_UNDEFINED
+    - BI_HYBRID_UNDEFINED
+    - BI_COMBUSTION_UNDEFINED
+    - UNDEFINED
+    type: string
+parameters:
+  marketId:
+    default: de_DE
+    description: This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'.
+    in: path
+    name: marketId
+    pattern: ^[a-z]{2}_[A-Z]{2}$
+    required: true
+    type: string
+  componentList:
+    default: +L-197_P-518,-L-040_P-501
+    description: A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'.
+    in: path
+    name: componentList
+    required: true
+    type: string
+  componentTypes:
+    description: "A list of component types separated by a comma case insensitive. If nothing is defined all component types are returned. Allowed values are:\n  - WHEELS\n  - PAINTS\n  - UPHOLSTERIES\n  - TRIMS\n  - PACKAGES\n  - LINES\n  - SPECIAL_EDITION\n  - SPECIAL_EQUIPMENT"
+    in: query
+    items:
+      enum:
+      - WHEELS
+      - PAINTS
+      - UPHOLSTERIES
+      - TRIMS
+      - PACKAGES
+      - LINES
+      - SPECIAL_EDITION
+      - SPECIAL_EQUIPMENT
+      type: string
+    name: componentTypes
+    required: false
+    type: array
+  modelId:
+    default: 222980000
+    description: Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'.
+    in: path
+    name: modelId
+    required: true
+    type: string
+  fieldsFilter:
+    description: Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned.
+    in: query
+    items:
+      type: string
+    name: fieldsFilter
+    required: false
+    type: array
+  configurationId:
+    default: E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25
+    description: Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'.
+    in: path
+    name: configurationId
+    required: true
+    type: string
+x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB

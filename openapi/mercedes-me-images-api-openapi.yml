@@ -1,0 +1,529 @@
+swagger: '2.0'
+info:
+  contact:
+    name: The open API platform by Mercedes-Benz
+    x-twitter: MercedesBenz
+  description: The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.
+  title: Car Configurator Components Images API
+  version: '1.0'
+  x-apisguru-categories:
+  - transport
+  x-logo:
+    url: https://twitter.com/MercedesBenz/profile_image?size=original
+  x-origin:
+  - format: swagger
+    url: https://developer.mercedes-benz.com/content/sites/default/files/2018-08/swagger_car_configurator_api.json
+    version: '2.0'
+  x-providerName: mercedes-benz.com
+  x-serviceName: configurator
+host: api.mercedes-benz.com
+basePath: /configurator_tryout/v1
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+tags:
+- description: Get images for the vehicle configuration and its components
+  name: Images
+paths:
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components:
+    x-swagger-router-controller: images_components
+    get:
+      description: "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px),\n  * rim (710x710 px),\n  * trim (800x600 px),\n  * paints (800x600 px),\n  * upholstery (800x600 px) and\n  * equipments (740x416 px)."
+      operationId: imageComponentsGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/ComponentsImagesResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/engine:
+    x-swagger-router-controller: images_components
+    get:
+      description: Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px.
+      operationId: imageComponentsEngineGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/EngineImageResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/equipments:
+    x-swagger-router-controller: images_components
+    get:
+      description: Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).
+      operationId: imageComponentsEquipmentsGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/AllEquipmentImagesResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/equipments/{componentCode}:
+    x-swagger-router-controller: images_components
+    get:
+      description: Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).
+      operationId: imageComponentsEquipmentsByCodeGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      - $ref: '#/parameters/componentCode'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/EquipmentImageResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/paint:
+    x-swagger-router-controller: images_components
+    get:
+      description: Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)
+      operationId: imageComponentsPaintGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/PaintImageResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/rim:
+    x-swagger-router-controller: images_components
+    get:
+      description: Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px.
+      operationId: imageComponentsRimGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/RimImageResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/trim:
+    x-swagger-router-controller: images_components
+    get:
+      description: Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px.
+      operationId: imageComponentsTrimGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/TrimImageResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/upholstery:
+    x-swagger-router-controller: images_components
+    get:
+      description: Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px).
+      operationId: imageComponentsUpholsteryGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
+              type: string
+          schema:
+            $ref: '#/definitions/UpholsteryImageResponse'
+        '204':
+          description: No content could be found for your request.
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+  /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/vehicle:
+    x-swagger-router-controller: images_vehicle_configuration
+    get:
+      description: Returns URLs pointing to PNG images of a vehicle with a white background.
+      operationId: imageVehicleGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/configurationId'
+      - $ref: '#/parameters/perspectives'
+      - $ref: '#/parameters/roofOpen'
+      - $ref: '#/parameters/night'
+      responses:
+        '200':
+          description: Successful response
+          headers:
+            cache-control:
+              default: max-age=86400
+              description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date.
+              type: string
+          schema:
+            $ref: '#/definitions/VehicleImageResponse'
+        '204':
+          description: No content could be found for your request.
+        '400':
+          description: One of the provided parameters was invalid. Verify your query and inspect the global error object in the response for further information.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: The requested marketId, modelId and/or configurationId not found.
+          schema:
+            $ref: '#/definitions/ImageError'
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: The server encountered an internal error.
+          schema:
+            $ref: '#/definitions/ImageError'
+      tags:
+      - Images
+definitions:
+  ImageUrlWithError:
+    description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content. In case of an error that is related to the requested image material (e.g. perspective), an error object is present containing further information.
+    properties:
+      error:
+        $ref: '#/definitions/ImageError'
+      url:
+        type: string
+  PaintImageResponse:
+    description: A paint image object
+    properties:
+      paint:
+        $ref: '#/definitions/PaintsImages'
+    type: object
+  ComponentsImagesResponse:
+    description: Components images object
+    properties:
+      components:
+        $ref: '#/definitions/ComponentsImages'
+    type: object
+  PaintsImages:
+    description: The upper (paint2) and the lower (paint1) paint of the vehicle.
+    properties:
+      paint1:
+        $ref: '#/definitions/CodeImage'
+      paint2:
+        $ref: '#/definitions/CodeImage'
+    type: object
+  VehicleImageResponse:
+    description: The response object holds either an error object, in case that the request was malformed, or a vehicle object containing all urls for the requested perspectives.
+    properties:
+      vehicle:
+        additionalProperties:
+          $ref: '#/definitions/ImageUrlWithError'
+        description: A map holding a vehicle image for each requested perspective, e.g. EXT000.
+        type: object
+    required:
+    - vehicle
+  RimImageResponse:
+    description: A rim image object
+    properties:
+      rim:
+        $ref: '#/definitions/CodeImage'
+    type: object
+  EquipmentImageMap:
+    additionalProperties:
+      $ref: '#/definitions/ImageUrl'
+    description: The map holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment image urls for the requested vehicle with the equipment codes as map keys.
+    type: object
+  TrimImageResponse:
+    description: A trim image object
+    properties:
+      trim:
+        $ref: '#/definitions/CodeImage'
+    type: object
+  CodeImage:
+    description: The code image contains an equipment code with a corresponding image URL.
+    properties:
+      code:
+        description: The equipment code for the corresponding image.
+        type: string
+      url:
+        description: An URL pointing to an image of an equipment.
+        type: string
+    required:
+    - code
+    - url
+    type: object
+  AllEquipmentImagesResponse:
+    description: The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys.
+    properties:
+      equipments:
+        $ref: '#/definitions/EquipmentImageMap'
+    required:
+    - equipments
+  UpholsteryImageResponse:
+    description: An upholstery image object
+    properties:
+      upholstery:
+        $ref: '#/definitions/CodeImage'
+    type: object
+  EquipmentImageResponse:
+    description: An equipment image object
+    properties:
+      equipment:
+        $ref: '#/definitions/ImageUrl'
+    type: object
+  ImageUrl:
+    description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.
+    properties:
+      url:
+        type: string
+  ImageError:
+    description: The error object containing detailed information about the error.
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      uuid:
+        type: string
+    type: object
+  ComponentsImages:
+    description: A set of URLs pointing to images of the vehicle in low resolution.
+    properties:
+      engine:
+        $ref: '#/definitions/ImageUrl'
+      equipments:
+        $ref: '#/definitions/EquipmentImageMap'
+      paint:
+        $ref: '#/definitions/PaintsImages'
+      rim:
+        $ref: '#/definitions/CodeImage'
+      trim:
+        $ref: '#/definitions/CodeImage'
+      upholstery:
+        $ref: '#/definitions/CodeImage'
+    type: object
+  EngineImageResponse:
+    description: An engine image object
+    properties:
+      engine:
+        $ref: '#/definitions/ImageUrl'
+    type: object
+parameters:
+  marketId:
+    default: de_DE
+    description: This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'.
+    in: path
+    name: marketId
+    pattern: ^[a-z]{2}_[A-Z]{2}$
+    required: true
+    type: string
+  night:
+    default: false
+    description: Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'.
+    in: query
+    name: night
+    required: false
+    type: boolean
+  componentCode:
+    default: '223'
+    description: The value of the requested component group, e.g. '245'.
+    in: path
+    name: componentCode
+    required: true
+    type: string
+  roofOpen:
+    default: false
+    description: Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'.
+    in: query
+    name: roofOpen
+    required: false
+    type: boolean
+  modelId:
+    default: 222980000
+    description: Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'.
+    in: path
+    name: modelId
+    required: true
+    type: string
+  perspectives:
+    default: EXT020,INT1
+    description: "One or more perspectives as a comma separated String list e.g. 'EXT000,EXT010,INT1'.  The following perspectives are available:\n  * EXT000-EXT350: EXT000 defines the front view, EXT010 defines a rotation of 10 degress and so forth.\n  * INT1-INT4: These are the 4 available interior perspectives.\n\nThe default value is EXT020,INT1 if no value is provided."
+    in: query
+    name: perspectives
+    required: false
+    type: string
+  configurationId:
+    default: E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25
+    description: Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'.
+    in: path
+    name: configurationId
+    required: true
+    type: string
+x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB

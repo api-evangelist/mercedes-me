@@ -1,0 +1,683 @@
+swagger: '2.0'
+info:
+  contact:
+    name: The open API platform by Mercedes-Benz
+    x-twitter: MercedesBenz
+  description: The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.
+  title: Car Configurator Components References API
+  version: '1.0'
+  x-apisguru-categories:
+  - transport
+  x-logo:
+    url: https://twitter.com/MercedesBenz/profile_image?size=original
+  x-origin:
+  - format: swagger
+    url: https://developer.mercedes-benz.com/content/sites/default/files/2018-08/swagger_car_configurator_api.json
+    version: '2.0'
+  x-providerName: mercedes-benz.com
+  x-serviceName: configurator
+host: api.mercedes-benz.com
+basePath: /configurator_tryout/v1
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+tags:
+- description: Provide static reference data about cars like markets, bodies, classes, etc.
+  name: References
+paths:
+  /markets:
+    x-swagger-router-controller: References
+    get:
+      description: Get all available `Markets`. Optional query params **language** or **country** may be used to filter the result.
+      operationId: marketsGET
+      parameters:
+      - $ref: '#/parameters/languageParam'
+      - $ref: '#/parameters/countryParam'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            items:
+              $ref: '#/definitions/Market'
+            title: Markets
+            type: array
+        '204':
+          description: No content found for requested parameters language and/or country
+        '400':
+          description: "Invalid parameter was specified:\n * Language parameter is not valid\n * Country parameter is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get All Available Markets
+      tags:
+      - References
+  /markets/{marketId}:
+    x-swagger-router-controller: References
+    get:
+      description: Gets the `Market` for the given **marketId**. There are no query parameters to filter the result.
+      operationId: marketGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Market'
+        '400':
+          description: MarketId is not valid
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market not found for requested marketId
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Market with the Given marketId
+      tags:
+      - References
+  /markets/{marketId}/bodies:
+    x-swagger-router-controller: References
+    get:
+      description: Get all available `VehicleBodies` for the given **marketId**. Optional query params **classId** **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+.
+      operationId: bodiesGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/classIdParam'
+      - $ref: '#/parameters/bodyIdParam'
+      - $ref: '#/parameters/productGroups'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            items:
+              $ref: '#/definitions/VehicleBody'
+            title: VehicleBodies
+            type: array
+        '204':
+          description: No content found for requested parameters classId, bodyId and/or productGroups
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid\n * BodyId is not valid\n * ProductGroups is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get All Available Bodies for the Given marketId
+      tags:
+      - References
+  /markets/{marketId}/bodies/{bodyId}:
+    x-swagger-router-controller: References
+    get:
+      description: Get the `VehicleBody` for the given **marketId** and **bodyId**.
+      operationId: bodyGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/bodyId'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/VehicleBody'
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * BodyId is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market or VehicleBody not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Body for the Given marketId and bodyId
+      tags:
+      - References
+  /markets/{marketId}/classes:
+    x-swagger-router-controller: References
+    get:
+      description: Get all available `VehicleClasses` objects for the given **marketId**. Optional query params **classId**, **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+.
+      operationId: classesGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/classIdParam'
+      - $ref: '#/parameters/bodyIdParam'
+      - $ref: '#/parameters/productGroups'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            items:
+              $ref: '#/definitions/VehicleClass'
+            title: VehicleClasses
+            type: array
+        '204':
+          description: No content found for requested parameters classId, bodyId and/or productGroups
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid\n * BodyId is not valid\n * Product group is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market has not been found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get All Available Classes for the Given marketId
+      tags:
+      - References
+  /markets/{marketId}/classes/{classId}:
+    x-swagger-router-controller: References
+    get:
+      description: Get the `VehicleClass` for the given **marketId** and **classId**.
+      operationId: classGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/classId'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/VehicleClass'
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market or VehicleClass not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Class for the Given marketId and classId
+      tags:
+      - References
+  /markets/{marketId}/models:
+    x-swagger-router-controller: References
+    get:
+      description: Get the available `VehicleModels` for the given **marketId**. Optional query params **classId**, **bodyId**, **baumuster4prefix**, **baumuster**, **nationalSalesType** or **productGroups** maybe used to filter the result. The baumuster4prefix must conform to the pattern [0-9]{4}.
+      operationId: modelsGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/classIdParam'
+      - $ref: '#/parameters/bodyIdParam'
+      - $ref: '#/parameters/baumuster4prefixParam'
+      - $ref: '#/parameters/baumusterParam'
+      - $ref: '#/parameters/nationalSalesTypeParam'
+      - $ref: '#/parameters/productGroups'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            items:
+              $ref: '#/definitions/VehicleModel'
+            title: VehicleModels
+            type: array
+        '204':
+          description: No content found for requested parameters classId, bodyId, baumuster4prefix, baumuster, nationalSalesType and/or productGroups
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid\n * BodyId is not valid\n * Product group is not valid\n * baumuster4prefix is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get All Available Models for the Given marketId
+      tags:
+      - References
+  /markets/{marketId}/models/{modelId}:
+    x-swagger-router-controller: References
+    get:
+      description: Get the `VehicleModel` object for the given **marketId** and **modelId**.
+      operationId: modelGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/modelId'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/VehicleModel'
+        '400':
+          description: "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market or Model not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get the Model for the Given marketId and modelId
+      tags:
+      - References
+  /markets/{marketId}/productgroups:
+    x-swagger-router-controller: References
+    get:
+      description: Get all configured active product groups for the given **marketId**.
+      operationId: productGroupsGET
+      parameters:
+      - $ref: '#/parameters/marketId'
+      - $ref: '#/parameters/fieldsFilter'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/ProductGroupsPerMarket'
+        '400':
+          description: MarketId is not valid
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '404':
+          description: Market not found
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: An Error occurred on the server side
+      summary: Get All Configured Active Product Groups for the Given marketId
+      tags:
+      - References
+  /countries:
+    x-swagger-router-controller: get_countries
+    get:
+      description: This request returns the countries supported by the Dealer API
+      operationId: countriesGET
+      parameters:
+      - $ref: '#/parameters/page'
+      - $ref: '#/parameters/pageSize'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/HalifiedCountries'
+        '400':
+          description: "Invalid parameter was specified:\n * Page is not valid\n * Page size is not valid"
+        '401':
+          description: "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key"
+        '429':
+          description: Quota limit is exceeded
+        '500':
+          description: Internal server error
+      tags:
+      - References
+definitions:
+  ProductGroup:
+    description: Represent a product group.
+    enum:
+    - PKW
+    - VAN
+    - SMART
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  SelfReferencesLinks:
+    description: Market specific links to the specific resources. i.e. classes, bodies, etc.
+    properties:
+      bodies:
+        $ref: '#/definitions/HRef'
+      classes:
+        $ref: '#/definitions/HRef'
+      models:
+        $ref: '#/definitions/HRef'
+      productgroups:
+        $ref: '#/definitions/HRef'
+      self:
+        $ref: '#/definitions/HRef'
+    required:
+    - self
+    - classes
+    - bodies
+    - models
+    - productgroups
+    type: object
+  SelfModelLinks:
+    description: Links to self and models resources.
+    properties:
+      models:
+        $ref: '#/definitions/HRef'
+      self:
+        $ref: '#/definitions/HRef'
+    required:
+    - self
+    - models
+    type: object
+  PriceInformation:
+    description: The prices, installment price, taxes and ISO currency of a vehicle.
+    properties:
+      currency:
+        type: string
+      instalmentPrice:
+        type: number
+      netPrice:
+        type: number
+      price:
+        type: number
+      taxes:
+        items:
+          $ref: '#/definitions/Tax'
+        type: array
+    required:
+    - price
+    - netPrice
+    - currency
+    - taxes
+    type: object
+  HRef:
+    description: The URL to the specific resource.
+    properties:
+      href:
+        type: string
+    required:
+    - href
+    type: object
+  Country:
+    properties:
+      countryId:
+        description: the country id
+        type: string
+      isoCode:
+        description: the country iso code
+        type: string
+      name:
+        description: the country name
+        type: string
+    required:
+    - countryId
+    - isoCode
+    - name
+    type: object
+  VehicleModel:
+    description: The model of a Vehicle, e.g. '176042_002'.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfConfigurationLinks'
+      baumuster:
+        type: string
+      modelId:
+        type: string
+      name:
+        type: string
+      nationalSalesType:
+        type: string
+      priceInformation:
+        $ref: '#/definitions/PriceInformation'
+      productGroup:
+        $ref: '#/definitions/ProductGroup'
+      shortName:
+        type: string
+      vehicleBody:
+        $ref: '#/definitions/VehicleBody'
+      vehicleClass:
+        $ref: '#/definitions/VehicleClass'
+    required:
+    - modelId
+    - shortName
+    - name
+    - baumuster
+    - nationalSalesType
+    - vehicleClass
+    - vehicleBody
+    - productGroup
+    - priceInformation
+    - _links
+    type: object
+  HalifiedCountries:
+    description: countries and navigation links for additional results.
+    properties:
+      _links:
+        $ref: '#/definitions/DefaultLinks'
+      countries:
+        description: countries
+        items:
+          $ref: '#/definitions/Country'
+        type: array
+    required:
+    - _links
+    type: object
+  DefaultLinks:
+    description: default links
+    properties:
+      next:
+        $ref: '#/definitions/Link'
+      previous:
+        $ref: '#/definitions/Link'
+      self:
+        $ref: '#/definitions/Link'
+    type: object
+  Tax:
+    description: The country specific tax information.
+    properties:
+      amount:
+        type: number
+      baseAmount:
+        type: number
+      charge:
+        type: number
+      id:
+        type: string
+      rate:
+        type: number
+    required:
+    - id
+    - amount
+    - baseAmount
+    - charge
+    - rate
+    type: object
+  Market:
+    description: Represent a market (aka country) with a specific country and a language.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfReferencesLinks'
+      country:
+        type: string
+      language:
+        type: string
+      marketId:
+        type: string
+    required:
+    - marketId
+    - country
+    - language
+    - _links
+    type: object
+  VehicleBody:
+    description: The body of a Vehicle, e.g. 'Limousine'.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfModelLinks'
+      bodyId:
+        type: string
+      bodyName:
+        type: string
+    required:
+    - bodyId
+    - bodyName
+    - _links
+    type: object
+  SelfConfigurationLinks:
+    description: Links to self and configuration resources.
+    properties:
+      configuration:
+        $ref: '#/definitions/HRef'
+      self:
+        $ref: '#/definitions/HRef'
+    required:
+    - self
+    - configuration
+    type: object
+  VehicleClass:
+    description: The class of a Vehicle, e.g. 'A-Class'.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfModelLinks'
+      classId:
+        type: string
+      className:
+        type: string
+    required:
+    - classId
+    - className
+    - _links
+    type: object
+  ProductGroupsPerMarket:
+    description: Represent the active product groups for a market.
+    properties:
+      _links:
+        $ref: '#/definitions/SelfModelLinks'
+      market:
+        $ref: '#/definitions/Market'
+      productGroups:
+        items:
+          $ref: '#/definitions/ProductGroup'
+        type: array
+    required:
+    - market
+    - productGroups
+    - _links
+    type: object
+  Link:
+    description: the representation of a link
+    properties:
+      href:
+        description: the target of the link
+        type: string
+    required:
+    - href
+    type: object
+parameters:
+  marketId:
+    default: de_DE
+    description: This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'.
+    in: path
+    name: marketId
+    pattern: ^[a-z]{2}_[A-Z]{2}$
+    required: true
+    type: string
+  classId:
+    default: '222'
+    description: This is a class id e.g. '176' for 'A-Klasse' in Germany.
+    in: path
+    name: classId
+    required: true
+    type: string
+  bodyId:
+    default: '2'
+    description: This is a body id e.g. '1' for 'Limousine' in Germany.
+    in: path
+    name: bodyId
+    required: true
+    type: string
+  nationalSalesTypeParam:
+    description: This is the national sales type (NST) of a distinct baumuster. There is no predefined pattern for the NST, each market defines its NST. e.g. 'E07' in France, 0001 in Germany and ZA1 in South Africa Using the NST markets can define market specific conditions. e.g. different initial configuration, etc.
+    in: query
+    name: nationalSalesType
+    required: false
+    type: string
+  productGroups:
+    description: "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
+    in: query
+    items:
+      enum:
+      - PKW
+      - VAN
+      - SMART
+      type: string
+    name: productGroups
+    required: false
+    type: array
+  baumusterParam:
+    description: This is a baumuster e.g. '176042' for 'A 180 Limousine' in Germany.
+    in: query
+    name: baumuster
+    required: false
+    type: string
+  pageSize:
+    description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
+
+      '
+    format: int32
+    in: query
+    name: pageSize
+    required: false
+    type: integer
+  baumuster4prefixParam:
+    description: The first four digits of a baumuster are called baumuster4prefix e.g. '1760' for 'Berline' in France.
+    in: query
+    name: baumuster4prefix
+    required: false
+    type: string
+  classIdParam:
+    default: '222'
+    description: This is a class id e.g. '176' for 'A-Class' in Germany.
+    in: query
+    name: classId
+    required: false
+    type: string
+  modelId:
+    default: 222980000
+    description: Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'.
+    in: path
+    name: modelId
+    required: true
+    type: string
+  fieldsFilter:
+    description: Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned.
+    in: query
+    items:
+      type: string
+    name: fieldsFilter
+    required: false
+    type: array
+  page:
+    description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
+
+      '
+    format: int32
+    in: query
+    name: page
+    required: false
+    type: integer
+  languageParam:
+    default: de
+    description: This is a ISO language string e.g. 'de' and is spoken in Austria 'AT', Germany 'DE' and Swiss 'CH'.
+    in: query
+    name: language
+    required: false
+    type: string
+  bodyIdParam:
+    default: '2'
+    description: This is a body id e.g. '1' for 'Limousine' in Germany.
+    in: query
+    name: bodyId
+    required: false
+    type: string
+  countryParam:
+    description: This is a ISO country string e.g. Germany 'DE' or Swiss 'CH'.
+    in: query
+    name: country
+    required: false
+    type: string
+x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB
