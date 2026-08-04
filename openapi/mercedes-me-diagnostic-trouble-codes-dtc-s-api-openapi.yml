@@ -5,7 +5,7 @@ info:
     x-twitter: MercedesBenz
   description: The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.
   title: Car Configurator Components Diagnostic Trouble Codes (DTC's) API
-  version: '1.0'
+  version: '2.0'
   x-apisguru-categories:
   - transport
   x-logo:
@@ -13,7 +13,6 @@ info:
   x-origin:
   - format: swagger
     url: https://developer.mercedes-benz.com/content/sites/default/files/2018-08/swagger_car_configurator_api.json
-    version: '2.0'
   x-providerName: mercedes-benz.com
   x-serviceName: configurator
 host: api.mercedes-benz.com

@@ -1,0 +1,34 @@
+{
+  "provider": "mercedes-me",
+  "sources": [
+    "mercedes-me-components-api-openapi.yml",
+    "mercedes-me-configurations-api-openapi.yml",
+    "mercedes-me-dealer-search-api-openapi.yml",
+    "mercedes-me-diagnostic-trouble-code-dtc-snapshots-api-openapi.yml",
+    "mercedes-me-diagnostic-trouble-codes-dtc-s-api-openapi.yml",
+    "mercedes-me-electronical-control-units-ecu-s-api-openapi.yml",
+    "mercedes-me-images-api-openapi.yml",
+    "mercedes-me-perspectives-api-openapi.yml",
+    "mercedes-me-references-api-openapi.yml",
+    "mercedes-me-resources-api-openapi.yml",
+    "mercedes-me-saved-configurations-api-openapi.yml"
+  ],
+  "outputs": [
+    "mercedes-me-components-api-openapi.yml",
+    "mercedes-me-configurations-api-openapi.yml",
+    "mercedes-me-dealer-search-api-openapi.yml",
+    "mercedes-me-diagnostic-trouble-code-dtc-snapshots-api-openapi.yml",
+    "mercedes-me-diagnostic-trouble-codes-dtc-s-api-openapi.yml",
+    "mercedes-me-electronical-control-units-ecu-s-api-openapi.yml",
+    "mercedes-me-images-api-openapi.yml",
+    "mercedes-me-perspectives-api-openapi.yml",
+    "mercedes-me-references-api-openapi.yml",
+    "mercedes-me-resources-api-openapi.yml",
+    "mercedes-me-saved-configurations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
