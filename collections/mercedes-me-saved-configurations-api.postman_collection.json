@@ -1,0 +1,756 @@
+{
+  "item": [
+    {
+      "id": "189e14fa-15fb-44af-9af5-8bbc2edcdd6b",
+      "name": "Saved configurations",
+      "description": {
+        "content": "Store and load configurations with an onlinecode",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f9d09d8-2616-4eda-bb58-7e115527c164",
+          "name": "Stores the Configuration of the Given configurationId and modelId",
+          "request": {
+            "name": "Stores the Configuration of the Given configurationId and modelId",
+            "description": {
+              "content": "Stores the configuration of the given **configurationId** and **modelId**",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "onlinecode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"modelId\": \"<string>\",\n  \"configurationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f029eab-fdf3-432c-8332-da7663f31667",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"configurationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"onlineCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e545173-dede-4406-82b8-250393c9e77e",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid\n * ConfigurationId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"configurationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "092b67bb-fe84-4e48-989a-fd862993f65c",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"configurationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c80975c-6ee6-41db-b6a7-903df93bf024",
+              "name": "Configuration has not been found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"configurationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b91995b-422c-49fd-a0ea-0e107c052d3b",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"configurationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f65e984f-9790-44ed-8d64-8537bcced933",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"configurationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "407d4d4e-aff8-4586-b6fc-150a5bd5a099",
+          "name": "Get the Configuration of the Given onlineCode and marketId",
+          "request": {
+            "name": "Get the Configuration of the Given onlineCode and marketId",
+            "description": {
+              "content": "Gets the configuration for the given marketId and onlineCode.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "onlinecode",
+                ":onlineCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MQKCIHRI",
+                  "key": "onlineCode",
+                  "description": "(Required) OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f0b9d70-9657-4795-be7f-783c33283e08",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode",
+                    ":onlineCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "MQKCIHRI",
+                      "key": "onlineCode",
+                      "description": "(Required) OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"marketId\": \"string\",\n  \"modelId\": \"string\",\n  \"configurationId\": \"string\",\n  \"initialPrice\": {\n    \"price\": 3816.361758175556,\n    \"netPrice\": 7243.232309667298,\n    \"currency\": \"string\",\n    \"taxes\": [\n      {\n        \"id\": \"string\",\n        \"amount\": 5983.963280936475,\n        \"baseAmount\": 6538.776360469977,\n        \"charge\": 1690.1671884182024,\n        \"rate\": 2888.8127951910747\n      },\n      {\n        \"id\": \"string\",\n        \"amount\": 7482.495121007323,\n        \"baseAmount\": 9439.554899482411,\n        \"charge\": 9916.323843596083,\n        \"rate\": 5062.062387502378\n      }\n    ],\n    \"instalmentPrice\": 4661.601808352695\n  },\n  \"configurationPrice\": {\n    \"price\": 9855.62518629212,\n    \"netPrice\": 6939.956207550908,\n    \"currency\": \"string\",\n    \"taxes\": [\n      {\n        \"id\": \"string\",\n        \"amount\": 2958.980685357572,\n        \"baseAmount\": 2415.4030645845414,\n        \"charge\": 888.2488583800407,\n        \"rate\": 6276.690706596182\n      },\n      {\n        \"id\": \"string\",\n        \"amount\": 9904.794307523942,\n        \"baseAmount\": 292.83870301003435,\n        \"charge\": 7697.100419604552,\n        \"rate\": 6287.562214253817\n      }\n    ],\n    \"instalmentPrice\": 8529.102169087133\n  },\n  \"modelYear\": \"string\",\n  \"changeYear\": \"string\",\n  \"vehicleComponents\": [\n    {\n      \"id\": \"string\",\n      \"componentSortId\": 5413.666015427048,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"ANY\",\n      \"priceInformation\": {\n        \"price\": 144.931073180814,\n        \"netPrice\": 9093.448531123146,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 1136.337205268897,\n            \"baseAmount\": 4042.8117425050937,\n            \"charge\": 2392.2073394260956,\n            \"rate\": 5723.405613561607\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 7567.852554022065,\n            \"baseAmount\": 6573.509576827952,\n            \"charge\": 759.9276163080771,\n            \"rate\": 241.8452133517557\n          }\n        ],\n        \"instalmentPrice\": 4931.493665219169\n      },\n      \"standard\": true,\n      \"selected\": false,\n      \"fixed\": true,\n      \"hidden\": true,\n      \"pseudoCode\": false,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"componentSortId\": 8578.006607728943,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"UPHOLSTERIES\",\n      \"priceInformation\": {\n        \"price\": 9822.967596364106,\n        \"netPrice\": 1733.7976007328382,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 5649.812328449806,\n            \"baseAmount\": 3781.6728532513243,\n            \"charge\": 1233.2467960189651,\n            \"rate\": 5975.867144525287\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 6821.827937062029,\n            \"baseAmount\": 6994.471678093216,\n            \"charge\": 3473.932113625486,\n            \"rate\": 5911.832922447063\n          }\n        ],\n        \"instalmentPrice\": 3276.524996804132\n      },\n      \"standard\": true,\n      \"selected\": false,\n      \"fixed\": true,\n      \"hidden\": false,\n      \"pseudoCode\": false,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    }\n  ],\n  \"technicalInformation\": {\n    \"engine\": {\n      \"fuelType\": \"ELECTRIC\",\n      \"alternativeFuelType\": \"NORMAL\",\n      \"capacity\": {\n        \"value\": 9755.048832378397,\n        \"unit\": \"string\"\n      },\n      \"cylinder\": \"string\",\n      \"driveConcept\": \"COMBUSTOR\",\n      \"emissionStandard\": \"string\",\n      \"engineConcept\": \"MONO_DIESEL\",\n      \"fuelEconomy\": {\n        \"consumptionOfElectricityMax\": {\n          \"value\": 6116.684843750012,\n          \"unit\": \"string\"\n        },\n        \"consumptionOfElectricityMin\": {\n          \"value\": 435.80150064229105,\n          \"unit\": \"string\"\n        },\n        \"emissionCO2Max\": {\n          \"value\": 6782.037815661549,\n          \"unit\": \"string\"\n        },\n        \"emissionCO2Min\": {\n          \"value\": 199.5247228121444,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCityMax\": {\n          \"value\": 6041.377466010847,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCityMin\": {\n          \"value\": 429.1827357805167,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCombinedMax\": {\n          \"value\": 21.024031941296872,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCombinedMin\": {\n          \"value\": 3075.6806139835603,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionElectricity\": {\n          \"value\": 6208.626273132838,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionOverlandMax\": {\n          \"value\": 7806.717700369341,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionOverlandMin\": {\n          \"value\": 9303.865937772023,\n          \"unit\": \"string\"\n        }\n      },\n      \"powerHp\": {\n        \"value\": 3237.8600718845087,\n        \"unit\": \"string\"\n      },\n      \"powerHybridExtensionHp\": {\n        \"value\": 8116.861040789071,\n        \"unit\": \"string\"\n      },\n      \"powerHybridExtensionKw\": {\n        \"value\": 6972.489971281384,\n        \"unit\": \"string\"\n      },\n      \"powerKw\": {\n        \"value\": 6923.593536471173,\n        \"unit\": \"string\"\n      }\n    },\n    \"transmission\": {\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"name\": \"string\"\n    },\n    \"acceleration\": {\n      \"value\": 2087.6793471828646,\n      \"unit\": \"string\"\n    },\n    \"doors\": 5353.44018225369,\n    \"energyEfficiencyClass\": \"string\",\n    \"nedc\": {\n      \"consumption\": {\n        \"city\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"combined\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"country\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"electric\": {\n          \"individual\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"electricRange\": {\n        \"individual\": {\n          \"value\": 6811.866663501261,\n          \"unit\": \"string\"\n        },\n        \"min\": {\n          \"value\": 5462.426096585777,\n          \"unit\": \"string\"\n        },\n        \"max\": {\n          \"value\": 9162.032877592555,\n          \"unit\": \"string\"\n        }\n      },\n      \"emission\": {\n        \"city\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"combined\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"country\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"individual\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"weight\": {\n        \"individual\": {\n          \"value\": 4226.120801440931,\n          \"unit\": \"string\"\n        },\n        \"min\": {\n          \"value\": 3744.6306319405307,\n          \"unit\": \"string\"\n        },\n        \"max\": {\n          \"value\": 8414.188698746557,\n          \"unit\": \"string\"\n        }\n      }\n    },\n    \"seats\": 8945.545866308916,\n    \"topSpeed\": {\n      \"value\": 6171.065947607866,\n      \"unit\": \"string\"\n    },\n    \"wltp\": {\n      \"consumption\": {\n        \"chargeDeplete\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteCop\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"extraHigh\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"high\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"low\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"medium\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"emission\": {\n        \"chargeDeplete\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteCop\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteWeighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"extraHigh\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"high\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"low\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"lowMid\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"medium\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  },\n  \"wltpConfiguration\": true,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"selectables\": {\n      \"href\": \"string\"\n    },\n    \"imageapi_vehicle\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "100b468f-8c9a-4f59-af97-4a15a0b20fcd",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * OnlineCode is not valid\n * Fields is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode",
+                    ":onlineCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "MQKCIHRI",
+                      "key": "onlineCode",
+                      "description": "(Required) OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9dea1bbd-d9b5-45eb-b87f-d0e706620066",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode",
+                    ":onlineCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "MQKCIHRI",
+                      "key": "onlineCode",
+                      "description": "(Required) OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4a7f876-2b06-48f2-b2d9-bbcae83a6d97",
+              "name": "Configuration or Market has not been found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode",
+                    ":onlineCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "MQKCIHRI",
+                      "key": "onlineCode",
+                      "description": "(Required) OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e883459-4cbf-4dff-8d2a-46ce35b5f060",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode",
+                    ":onlineCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "MQKCIHRI",
+                      "key": "onlineCode",
+                      "description": "(Required) OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7fa8f4b3-8814-4dab-868d-6c335d638ede",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "onlinecode",
+                    ":onlineCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "MQKCIHRI",
+                      "key": "onlineCode",
+                      "description": "(Required) OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mercedes-benz.com/configurator_tryout/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f8524004-0333-4685-a8e9-88fd6d417195",
+    "name": "Car Configurator Components Saved configurations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.\n\nContact Support:\n Name: The open API platform by Mercedes-Benz",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Car Configurator Components Diagnostic Trouble Codes (DTC's) API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diagnostic Trouble Codes (DTC's)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the List of Dtcs for Specific vehicleId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vehicles/:vehicleId/dtcReadouts",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path",
+                "description": "The vehicle identifier of the vehicle to read from."
+              },
+              {
+                "name": "ecuId",
+                "value": "",
+                "type": "query",
+                "description": "Return DTCs from this ECU id only. Default: Return DTCs from all ECUs."
+              },
+              {
+                "name": "dtcStatus",
+                "value": "",
+                "type": "query",
+                "description": "Returns DTCs with this statuses only. Default: Return DTCs with all statuses."
+              }
+            ]
+          },
+          "docs": "This API creates a readout of DTCs for one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the DTC readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

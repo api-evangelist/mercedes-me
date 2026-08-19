@@ -1,0 +1,2272 @@
+{
+  "item": [
+    {
+      "id": "4e1c400c-6b0e-41fd-8426-9893d0b243f2",
+      "name": "Components",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac43bc1b-3788-477b-a233-7df3cc392434",
+          "name": "image Components GET",
+          "request": {
+            "name": "image Components GET",
+            "description": {
+              "content": "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px), \n  * rim (710x710 px), \n  * trim (800x600 px), \n  * paints (800x600 px), \n  * upholstery (800x600 px) and \n  * equipments (740x416 px).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":finorvin",
+                "components"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "WDD1760421J123456",
+                  "key": "finorvin",
+                  "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57b16f91-82a8-4bfc-8140-0ceba81d6ae1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              ",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date",
+                  "key": "cache-control",
+                  "value": "max-age=86400"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"components\": {\n    \"engine\": {\n      \"url\": \"string\"\n    },\n    \"equipments\": {\n      \"key_0\": {\n        \"urls\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"paint\": {\n      \"lowerPaint\": {\n        \"code\": \"string\",\n        \"url\": \"string\"\n      },\n      \"upperPaint\": {\n        \"code\": \"string\",\n        \"url\": \"string\"\n      }\n    },\n    \"rim\": {\n      \"code\": \"string\",\n      \"url\": \"string\"\n    },\n    \"trim\": {\n      \"code\": \"string\",\n      \"url\": \"string\"\n    },\n    \"upholstery\": {\n      \"code\": \"string\",\n      \"url\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "207ebc6e-ed9e-40ae-a7e9-2d7dabbb356f",
+              "name": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "514f455c-78e0-4cce-82e5-de29aa485891",
+              "name": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28618141-c350-4302-ad31-59703d8c700f",
+              "name": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.            ",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4914520a-621b-4411-9238-d60cdb9cb39e",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f61e0987-8027-4964-b36d-0a5bc59b401e",
+              "name": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35aae58b-4899-4267-85f8-3f900d34d50d",
+          "name": "image Components Engine GET",
+          "request": {
+            "name": "image Components Engine GET",
+            "description": {
+              "content": "Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":finorvin",
+                "components",
+                "engine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "WDD1760421J123456",
+                  "key": "finorvin",
+                  "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83813d30-6f3c-4817-a4e7-59fe66bbe78e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "engine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date",
+                  "key": "cache-control",
+                  "value": "max-age=86400"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"engine\": {\n    \"url\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a33efca-d477-47bc-bbed-756b5b732e28",
+              "name": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "engine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a97e1c65-113c-41b3-8e61-5fe609ccfc2c",
+              "name": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "engine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6abd85d6-da65-485c-8369-77aa0a11cb76",
+              "name": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "engine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09f96f20-f865-49c3-a51f-bea3303ea90a",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "engine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f47ed08-cccf-466b-a52d-ec274d4bf6f9",
+              "name": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "engine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc854b34-8241-472d-a157-70971e6f398e",
+          "name": "image Components Equipments GET",
+          "request": {
+            "name": "image Components Equipments GET",
+            "description": {
+              "content": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":finorvin",
+                "components",
+                "equipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "WDD1760421J123456",
+                  "key": "finorvin",
+                  "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "059f0482-bdf9-48ff-964b-20a28e997521",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "equipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              ",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date",
+                  "key": "cache-control",
+                  "value": "max-age=86400"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"equipments\": {\n    \"key_0\": {\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"key_1\": {\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"key_2\": {\n      \"urls\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fe9a536-feb5-41c2-bb76-ce4881ae8423",
+              "name": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "equipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6a23ed7-e7db-4f08-9376-5300821950e7",
+              "name": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "equipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a27704d1-0ffc-4f5c-af1f-ffadc8b792dd",
+              "name": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "equipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de125270-e37a-4ae4-8412-913d516a5404",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "equipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "861e598d-8fc8-48a3-9093-2fa06bf21b69",
+              "name": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "equipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35dbf34a-8d48-4ce9-adbe-f8b8fa2e1437",
+          "name": "image Components Paint GET",
+          "request": {
+            "name": "image Components Paint GET",
+            "description": {
+              "content": "Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":finorvin",
+                "components",
+                "paint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "WDD1760421J123456",
+                  "key": "finorvin",
+                  "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d1868f3-2ee7-47b6-a526-a0974c7b8e70",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "paint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              ",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date",
+                  "key": "cache-control",
+                  "value": "max-age=86400"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"paint\": {\n    \"lowerPaint\": {\n      \"code\": \"string\",\n      \"url\": \"string\"\n    },\n    \"upperPaint\": {\n      \"code\": \"string\",\n      \"url\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce8af79d-775f-4095-87b7-232d072cbe26",
+              "name": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "paint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "570445b3-beec-4dac-bf72-4df93a65fb53",
+              "name": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "paint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b0e16e2-acc3-4f7f-892f-3b421eea8938",
+              "name": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "paint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5402e5e6-f62f-4212-b1ae-6cc173fd0d3c",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "paint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6cd8ffb1-4683-40a3-b34d-df00ae22870b",
+              "name": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "paint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "668f2d6a-8477-43e6-a5bf-d60e806a8b74",
+          "name": "image Components Rim GET",
+          "request": {
+            "name": "image Components Rim GET",
+            "description": {
+              "content": "Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":finorvin",
+                "components",
+                "rim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "WDD1760421J123456",
+                  "key": "finorvin",
+                  "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1caa910d-7f70-4d80-be9b-14a8af0d3431",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "rim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              ",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date",
+                  "key": "cache-control",
+                  "value": "max-age=86400"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rim\": {\n    \"code\": \"string\",\n    \"url\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "263a2e3b-a07e-4d5d-bb14-60cbbcdb8c3d",
+              "name": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "rim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a1ed924-b428-4793-953e-8c6babd5f282",
+              "name": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "rim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a83ec3d8-ebe7-4584-bf25-29bcf4026a16",
+              "name": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "rim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cae400b7-50d9-4038-8a51-692e1b5a9095",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "rim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b68790bc-cfd4-44fb-b4a3-552a03593c68",
+              "name": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "rim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f39e7944-409c-4ed5-8dcc-618ddd0cb8ce",
+          "name": "image Components Trim GET",
+          "request": {
+            "name": "image Components Trim GET",
+            "description": {
+              "content": "Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":finorvin",
+                "components",
+                "trim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "WDD1760421J123456",
+                  "key": "finorvin",
+                  "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd80634a-a054-4d40-8e9d-65cd0e2e0dba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "trim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              ",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date",
+                  "key": "cache-control",
+                  "value": "max-age=86400"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trim\": {\n    \"code\": \"string\",\n    \"url\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7686cfe1-d791-44be-b50f-301af02cfa2b",
+              "name": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "trim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "498324f3-ac9e-4d80-8ad9-cc87da37a262",
+              "name": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "trim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62ba3315-bc96-41a6-afd0-39957cb44c40",
+              "name": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "trim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b45fad5d-737f-440d-aa93-4c83b0a2ebb2",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "trim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "692829fa-91cf-4497-b040-6bec0057d850",
+              "name": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "trim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a602069b-5dec-4a94-8720-988b3a288b3c",
+          "name": "image Components Upholstery GET",
+          "request": {
+            "name": "image Components Upholstery GET",
+            "description": {
+              "content": "Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":finorvin",
+                "components",
+                "upholstery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "WDD1760421J123456",
+                  "key": "finorvin",
+                  "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a074342b-1901-4fc2-b4ab-6049a2038f02",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "upholstery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              ",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date",
+                  "key": "cache-control",
+                  "value": "max-age=86400"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"upholstery\": {\n    \"code\": \"string\",\n    \"url\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d50b3ca-963c-46a0-a07c-afd5e23e74fe",
+              "name": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "upholstery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e72c601d-6f0e-4c1e-b3d9-57158e1253a1",
+              "name": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "upholstery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28d4e14c-e2c0-4c1e-96cf-02ca53d8d17a",
+              "name": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "upholstery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4799f4d1-891d-412c-83da-1ab2602475f3",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "upholstery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6876615-a3d7-4f1d-9149-399db8b8c774",
+              "name": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":finorvin",
+                    "components",
+                    "upholstery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "WDD1760421J123456",
+                      "key": "finorvin",
+                      "description": "(Required) The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mercedes-benz.com/configurator_tryout/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "551ca4d2-fcca-4c9b-b66a-5474f3708eb1",
+    "name": "Car Configurator Components API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.\n\nContact Support:\n Name: The open API platform by Mercedes-Benz",
+      "type": "text/plain"
+    }
+  }
+}

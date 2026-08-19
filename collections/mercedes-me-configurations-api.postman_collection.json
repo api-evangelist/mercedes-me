@@ -1,0 +1,1913 @@
+{
+  "item": [
+    {
+      "id": "21911765-d982-406e-9a09-cc1fd4a8df95",
+      "name": "Configurations",
+      "description": {
+        "content": "Select equipment and configure a car",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c90b835e-ae65-4b7c-861c-af2a18fe10b6",
+          "name": "Get the Initial Configuration for the Given marketId and modelId",
+          "request": {
+            "name": "Get the Initial Configuration for the Given marketId and modelId",
+            "description": {
+              "content": "Get the initial `VehicleConfiguration` for the given **marketId** and **modelId**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "models",
+                ":modelId",
+                "configurations",
+                "initial"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "222980000",
+                  "key": "modelId",
+                  "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6bb223f-8c40-44e4-9f5b-d2eea5137245",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    "initial"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"marketId\": \"string\",\n  \"modelId\": \"string\",\n  \"configurationId\": \"string\",\n  \"initialPrice\": {\n    \"price\": 8711.345953764807,\n    \"netPrice\": 5373.277735233285,\n    \"currency\": \"string\",\n    \"taxes\": [\n      {\n        \"id\": \"string\",\n        \"amount\": 4909.854398637031,\n        \"baseAmount\": 821.1757725886781,\n        \"charge\": 1451.4024040602424,\n        \"rate\": 547.4887926385608\n      },\n      {\n        \"id\": \"string\",\n        \"amount\": 2241.173152871698,\n        \"baseAmount\": 5966.9403448346,\n        \"charge\": 5551.965087496208,\n        \"rate\": 4063.3585402791373\n      }\n    ],\n    \"instalmentPrice\": 9938.970420224801\n  },\n  \"configurationPrice\": {\n    \"price\": 8091.927722813882,\n    \"netPrice\": 5539.106927323678,\n    \"currency\": \"string\",\n    \"taxes\": [\n      {\n        \"id\": \"string\",\n        \"amount\": 1470.383894059394,\n        \"baseAmount\": 7592.454947210487,\n        \"charge\": 1808.760500126231,\n        \"rate\": 4163.314582818114\n      },\n      {\n        \"id\": \"string\",\n        \"amount\": 3423.4842524859723,\n        \"baseAmount\": 1653.1607237275825,\n        \"charge\": 5421.273908720193,\n        \"rate\": 8989.563091911537\n      }\n    ],\n    \"instalmentPrice\": 21.922338177070564\n  },\n  \"modelYear\": \"string\",\n  \"changeYear\": \"string\",\n  \"vehicleComponents\": [\n    {\n      \"id\": \"string\",\n      \"componentSortId\": 302.4322812454472,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"WHEELS\",\n      \"priceInformation\": {\n        \"price\": 8260.122424688243,\n        \"netPrice\": 5762.640693722349,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 6606.813163531411,\n            \"baseAmount\": 2274.9066531281637,\n            \"charge\": 9327.477398656338,\n            \"rate\": 2189.9929625078685\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 5894.939994838293,\n            \"baseAmount\": 7798.889694739558,\n            \"charge\": 5374.159421017784,\n            \"rate\": 1683.198177975631\n          }\n        ],\n        \"instalmentPrice\": 4971.047684905218\n      },\n      \"standard\": true,\n      \"selected\": true,\n      \"fixed\": true,\n      \"hidden\": true,\n      \"pseudoCode\": false,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"componentSortId\": 4000.859941558239,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"LINES\",\n      \"priceInformation\": {\n        \"price\": 8237.98200081989,\n        \"netPrice\": 6588.599463292521,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 9782.120678860669,\n            \"baseAmount\": 3251.404418369096,\n            \"charge\": 8351.882994351752,\n            \"rate\": 7441.431437737096\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 3983.6661798355144,\n            \"baseAmount\": 9817.526361628527,\n            \"charge\": 6231.252066679654,\n            \"rate\": 6969.224598982304\n          }\n        ],\n        \"instalmentPrice\": 7191.158850414689\n      },\n      \"standard\": true,\n      \"selected\": true,\n      \"fixed\": false,\n      \"hidden\": true,\n      \"pseudoCode\": true,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    }\n  ],\n  \"technicalInformation\": {\n    \"engine\": {\n      \"fuelType\": \"SUPER\",\n      \"alternativeFuelType\": \"UNDEFINED\",\n      \"capacity\": {\n        \"value\": 9266.85990720899,\n        \"unit\": \"string\"\n      },\n      \"cylinder\": \"string\",\n      \"driveConcept\": \"COMBUSTOR\",\n      \"emissionStandard\": \"string\",\n      \"engineConcept\": \"UNDEFINED\",\n      \"fuelEconomy\": {\n        \"consumptionOfElectricityMax\": {\n          \"value\": 8747.985296152328,\n          \"unit\": \"string\"\n        },\n        \"consumptionOfElectricityMin\": {\n          \"value\": 9929.643391255964,\n          \"unit\": \"string\"\n        },\n        \"emissionCO2Max\": {\n          \"value\": 9980.292005114248,\n          \"unit\": \"string\"\n        },\n        \"emissionCO2Min\": {\n          \"value\": 1409.3600267591778,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCityMax\": {\n          \"value\": 1888.1603165616823,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCityMin\": {\n          \"value\": 2010.5838387915053,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCombinedMax\": {\n          \"value\": 1985.9344328678774,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCombinedMin\": {\n          \"value\": 3397.903360624681,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionElectricity\": {\n          \"value\": 1944.8677448985075,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionOverlandMax\": {\n          \"value\": 9968.814838991022,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionOverlandMin\": {\n          \"value\": 5366.515981185294,\n          \"unit\": \"string\"\n        }\n      },\n      \"powerHp\": {\n        \"value\": 9202.559970262382,\n        \"unit\": \"string\"\n      },\n      \"powerHybridExtensionHp\": {\n        \"value\": 4176.400998122509,\n        \"unit\": \"string\"\n      },\n      \"powerHybridExtensionKw\": {\n        \"value\": 6138.379754934878,\n        \"unit\": \"string\"\n      },\n      \"powerKw\": {\n        \"value\": 6635.558037131468,\n        \"unit\": \"string\"\n      }\n    },\n    \"transmission\": {\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"name\": \"string\"\n    },\n    \"acceleration\": {\n      \"value\": 5714.309645967527,\n      \"unit\": \"string\"\n    },\n    \"doors\": 6223.171622556737,\n    \"energyEfficiencyClass\": \"string\",\n    \"nedc\": {\n      \"consumption\": {\n        \"city\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"combined\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"country\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"electric\": {\n          \"individual\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"electricRange\": {\n        \"individual\": {\n          \"value\": 2282.099138650948,\n          \"unit\": \"string\"\n        },\n        \"min\": {\n          \"value\": 8732.805980380293,\n          \"unit\": \"string\"\n        },\n        \"max\": {\n          \"value\": 8942.26755503549,\n          \"unit\": \"string\"\n        }\n      },\n      \"emission\": {\n        \"city\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"combined\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"country\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"individual\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"weight\": {\n        \"individual\": {\n          \"value\": 1487.911378831668,\n          \"unit\": \"string\"\n        },\n        \"min\": {\n          \"value\": 7253.010886017088,\n          \"unit\": \"string\"\n        },\n        \"max\": {\n          \"value\": 7460.67754658771,\n          \"unit\": \"string\"\n        }\n      }\n    },\n    \"seats\": 4028.5766132219246,\n    \"topSpeed\": {\n      \"value\": 3008.2978546537042,\n      \"unit\": \"string\"\n    },\n    \"wltp\": {\n      \"consumption\": {\n        \"chargeDeplete\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteCop\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"extraHigh\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"high\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"low\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"medium\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"emission\": {\n        \"chargeDeplete\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteCop\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteWeighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"extraHigh\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"high\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"low\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"lowMid\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"medium\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  },\n  \"wltpConfiguration\": true,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"selectables\": {\n      \"href\": \"string\"\n    },\n    \"imageapi_vehicle\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a2c759f-afee-4fc9-aeae-87dd96048fb7",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    "initial"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14a1fbe7-439c-4c22-bb49-448159364629",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    "initial"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6ca8bb3-0fe6-45a1-8350-62e10f5f96d3",
+              "name": "Market or Model not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    "initial"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a97dc91-8741-4290-8bcf-6318003358d0",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    "initial"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b4feb5d-7614-499c-b3b9-389f9f92a40d",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    "initial"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3bb788b-13fa-45a3-96c1-c24764f1d77e",
+          "name": "Get the Configuration for the Given marketId, modelId and configurationId",
+          "request": {
+            "name": "Get the Configuration for the Given marketId, modelId and configurationId",
+            "description": {
+              "content": "Get the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "models",
+                ":modelId",
+                "configurations",
+                ":configurationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "222980000",
+                  "key": "modelId",
+                  "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                  "key": "configurationId",
+                  "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1edaf4eb-2928-49dc-b7ca-57d1cdcda999",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"marketId\": \"string\",\n  \"modelId\": \"string\",\n  \"configurationId\": \"string\",\n  \"initialPrice\": {\n    \"price\": 9524.181113253257,\n    \"netPrice\": 6187.775897682737,\n    \"currency\": \"string\",\n    \"taxes\": [\n      {\n        \"id\": \"string\",\n        \"amount\": 1133.6066392547439,\n        \"baseAmount\": 8417.636183775716,\n        \"charge\": 88.11815043237247,\n        \"rate\": 1825.511294575941\n      },\n      {\n        \"id\": \"string\",\n        \"amount\": 893.2175214150661,\n        \"baseAmount\": 1306.8387151804538,\n        \"charge\": 4728.64922468377,\n        \"rate\": 3515.960309333547\n      }\n    ],\n    \"instalmentPrice\": 8006.905713833347\n  },\n  \"configurationPrice\": {\n    \"price\": 5283.28249128134,\n    \"netPrice\": 3187.199960602671,\n    \"currency\": \"string\",\n    \"taxes\": [\n      {\n        \"id\": \"string\",\n        \"amount\": 5851.509183637929,\n        \"baseAmount\": 3067.921080567202,\n        \"charge\": 5849.438424844922,\n        \"rate\": 7378.357515040873\n      },\n      {\n        \"id\": \"string\",\n        \"amount\": 4070.7073257106917,\n        \"baseAmount\": 4008.991789066404,\n        \"charge\": 5798.139879750448,\n        \"rate\": 232.32395864256628\n      }\n    ],\n    \"instalmentPrice\": 9656.774599923354\n  },\n  \"modelYear\": \"string\",\n  \"changeYear\": \"string\",\n  \"vehicleComponents\": [\n    {\n      \"id\": \"string\",\n      \"componentSortId\": 99.4187529013446,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"WHEELS\",\n      \"priceInformation\": {\n        \"price\": 5595.595885287228,\n        \"netPrice\": 7052.553681129806,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 2490.9656659384914,\n            \"baseAmount\": 5725.512223978823,\n            \"charge\": 5403.563653186155,\n            \"rate\": 824.3661689753723\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 1026.8907345485013,\n            \"baseAmount\": 1100.4512781145559,\n            \"charge\": 3857.4854512087463,\n            \"rate\": 2139.6875020815264\n          }\n        ],\n        \"instalmentPrice\": 9129.15129171256\n      },\n      \"standard\": true,\n      \"selected\": true,\n      \"fixed\": false,\n      \"hidden\": false,\n      \"pseudoCode\": false,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"componentSortId\": 334.7872872565139,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"UPHOLSTERIES\",\n      \"priceInformation\": {\n        \"price\": 8025.576791547848,\n        \"netPrice\": 6078.334181309645,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 9187.226372109431,\n            \"baseAmount\": 1096.89257930468,\n            \"charge\": 590.3309764377451,\n            \"rate\": 2405.0942433317914\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 8018.777435085135,\n            \"baseAmount\": 2181.921847104186,\n            \"charge\": 8227.278042739532,\n            \"rate\": 3523.5097436597352\n          }\n        ],\n        \"instalmentPrice\": 7502.993898798976\n      },\n      \"standard\": false,\n      \"selected\": false,\n      \"fixed\": false,\n      \"hidden\": false,\n      \"pseudoCode\": false,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    }\n  ],\n  \"technicalInformation\": {\n    \"engine\": {\n      \"fuelType\": \"GAS\",\n      \"alternativeFuelType\": \"SUPERPLUS\",\n      \"capacity\": {\n        \"value\": 8263.836251257442,\n        \"unit\": \"string\"\n      },\n      \"cylinder\": \"string\",\n      \"driveConcept\": \"ELECTRIC\",\n      \"emissionStandard\": \"string\",\n      \"engineConcept\": \"BI_NGT\",\n      \"fuelEconomy\": {\n        \"consumptionOfElectricityMax\": {\n          \"value\": 5575.507814699559,\n          \"unit\": \"string\"\n        },\n        \"consumptionOfElectricityMin\": {\n          \"value\": 5947.812031907949,\n          \"unit\": \"string\"\n        },\n        \"emissionCO2Max\": {\n          \"value\": 2932.2220395267727,\n          \"unit\": \"string\"\n        },\n        \"emissionCO2Min\": {\n          \"value\": 1233.5742194008092,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCityMax\": {\n          \"value\": 9621.046358819753,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCityMin\": {\n          \"value\": 1406.834519294865,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCombinedMax\": {\n          \"value\": 0.8601420823273198,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionCombinedMin\": {\n          \"value\": 6397.859609479782,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionElectricity\": {\n          \"value\": 3270.046683624116,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionOverlandMax\": {\n          \"value\": 7764.818487633508,\n          \"unit\": \"string\"\n        },\n        \"fuelConsumptionOverlandMin\": {\n          \"value\": 4659.82136545852,\n          \"unit\": \"string\"\n        }\n      },\n      \"powerHp\": {\n        \"value\": 7803.940950955614,\n        \"unit\": \"string\"\n      },\n      \"powerHybridExtensionHp\": {\n        \"value\": 2742.2086856503715,\n        \"unit\": \"string\"\n      },\n      \"powerHybridExtensionKw\": {\n        \"value\": 9348.793071331722,\n        \"unit\": \"string\"\n      },\n      \"powerKw\": {\n        \"value\": 1442.9170234968424,\n        \"unit\": \"string\"\n      }\n    },\n    \"transmission\": {\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"name\": \"string\"\n    },\n    \"acceleration\": {\n      \"value\": 4691.3163935490675,\n      \"unit\": \"string\"\n    },\n    \"doors\": 3445.037074630969,\n    \"energyEfficiencyClass\": \"string\",\n    \"nedc\": {\n      \"consumption\": {\n        \"city\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"combined\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"country\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"electric\": {\n          \"individual\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"electricRange\": {\n        \"individual\": {\n          \"value\": 5217.6465150097065,\n          \"unit\": \"string\"\n        },\n        \"min\": {\n          \"value\": 1838.2535018655055,\n          \"unit\": \"string\"\n        },\n        \"max\": {\n          \"value\": 2536.5741367615124,\n          \"unit\": \"string\"\n        }\n      },\n      \"emission\": {\n        \"city\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"combined\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"country\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"individual\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"weight\": {\n        \"individual\": {\n          \"value\": 5063.702927538968,\n          \"unit\": \"string\"\n        },\n        \"min\": {\n          \"value\": 275.6615463429568,\n          \"unit\": \"string\"\n        },\n        \"max\": {\n          \"value\": 5645.294692900623,\n          \"unit\": \"string\"\n        }\n      }\n    },\n    \"seats\": 1792.6544611483098,\n    \"topSpeed\": {\n      \"value\": 1960.565367782251,\n      \"unit\": \"string\"\n    },\n    \"wltp\": {\n      \"consumption\": {\n        \"chargeDeplete\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteCop\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"extraHigh\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"high\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"low\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"medium\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"emission\": {\n        \"chargeDeplete\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteCop\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"chargeDepleteWeighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"extraHigh\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"high\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"low\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"lowMid\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"medium\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"weighted\": {\n          \"primaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondaryGear\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  },\n  \"wltpConfiguration\": false,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"selectables\": {\n      \"href\": \"string\"\n    },\n    \"imageapi_vehicle\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1552c97f-a2fb-4e37-8475-38302443da29",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid\n * ConfigurationId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1e2737d-b290-4596-a617-4c4d89d52d76",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9f123ff-99cb-46d1-b7f4-5c5f6722ebff",
+              "name": "Market, Model or Configuration not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9af8e82a-8a88-45c6-bb4d-44b093707b21",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7bc05da5-e3b4-4a81-893b-435567214997",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5223c191-e226-4e80-a000-ceef2ad99223",
+          "name": "Get the Alternatives for the Given marketId, modelId, configurationId and componentList",
+          "request": {
+            "name": "Get the Alternatives for the Given marketId, modelId, configurationId and componentList",
+            "description": {
+              "content": "Get the `VehicleAlternatives` for the given **marketId**, **modelId** and **configurationId** and the given **componentList** of changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "models",
+                ":modelId",
+                "configurations",
+                ":configurationId",
+                "alternatives",
+                ":componentList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "222980000",
+                  "key": "modelId",
+                  "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                  "key": "configurationId",
+                  "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "+L-197_P-518,-L-040_P-501",
+                  "key": "componentList",
+                  "description": "(Required) A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8911136a-cfad-4e83-b172-af537d8e00f5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "alternatives",
+                    ":componentList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "+L-197_P-518,-L-040_P-501",
+                      "key": "componentList",
+                      "description": "(Required) A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"marketId\": \"string\",\n    \"modelId\": \"string\",\n    \"configurationId\": \"string\",\n    \"addedComponents\": [\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 7259.318072896749,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"WHEELS\",\n        \"priceInformation\": {\n          \"price\": 6140.147127549406,\n          \"netPrice\": 4461.995967919898,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 7747.04478395962\n        },\n        \"standard\": false,\n        \"selected\": false,\n        \"fixed\": true,\n        \"hidden\": false,\n        \"pseudoCode\": true,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 9108.520144165026,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"LINES\",\n        \"priceInformation\": {\n          \"price\": 9194.190600367343,\n          \"netPrice\": 9999.645270080073,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 6046.145007056116\n        },\n        \"standard\": false,\n        \"selected\": true,\n        \"fixed\": false,\n        \"hidden\": false,\n        \"pseudoCode\": false,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"removedComponents\": [\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 3034.807357269067,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"SPECIAL_EDITION\",\n        \"priceInformation\": {\n          \"price\": 5221.683357030821,\n          \"netPrice\": 853.4701938172728,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 5544.59910707201\n        },\n        \"standard\": true,\n        \"selected\": true,\n        \"fixed\": false,\n        \"hidden\": false,\n        \"pseudoCode\": false,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 9243.941640413708,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"SPECIAL_EQUIPMENT\",\n        \"priceInformation\": {\n          \"price\": 5705.765821228618,\n          \"netPrice\": 2526.124107403417,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 1778.5158489819507\n        },\n        \"standard\": false,\n        \"selected\": true,\n        \"fixed\": false,\n        \"hidden\": true,\n        \"pseudoCode\": true,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"updatedComponents\": [\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 1734.3766639181567,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"SPECIAL_EQUIPMENT\",\n        \"priceInformation\": {\n          \"price\": 9160.315120381292,\n          \"netPrice\": 7044.984178962825,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 5424.72787735354\n        },\n        \"standard\": true,\n        \"selected\": false,\n        \"fixed\": false,\n        \"hidden\": true,\n        \"pseudoCode\": false,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 1039.314492811073,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"SPECIAL_EDITION\",\n        \"priceInformation\": {\n          \"price\": 4970.406015572755,\n          \"netPrice\": 337.91391160897246,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 275.9648308987839\n        },\n        \"standard\": false,\n        \"selected\": true,\n        \"fixed\": false,\n        \"hidden\": true,\n        \"pseudoCode\": true,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"priceInformation\": {},\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"selectables\": {\n        \"href\": \"string\"\n      },\n      \"imageapi_vehicle\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  {\n    \"marketId\": \"string\",\n    \"modelId\": \"string\",\n    \"configurationId\": \"string\",\n    \"addedComponents\": [\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 2921.0477911868525,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"TRIMS\",\n        \"priceInformation\": {\n          \"price\": 6595.805192929612,\n          \"netPrice\": 7052.52373648835,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 1209.6715348825414\n        },\n        \"standard\": false,\n        \"selected\": false,\n        \"fixed\": true,\n        \"hidden\": true,\n        \"pseudoCode\": true,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 8662.494080332717,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"LINES\",\n        \"priceInformation\": {\n          \"price\": 4290.750232534219,\n          \"netPrice\": 5532.784467718934,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 7366.790352637292\n        },\n        \"standard\": true,\n        \"selected\": true,\n        \"fixed\": false,\n        \"hidden\": true,\n        \"pseudoCode\": true,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"removedComponents\": [\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 1331.2278558426294,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"PACKAGES\",\n        \"priceInformation\": {\n          \"price\": 9179.998996627934,\n          \"netPrice\": 4028.9438596026084,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 2607.4640571617047\n        },\n        \"standard\": false,\n        \"selected\": true,\n        \"fixed\": false,\n        \"hidden\": false,\n        \"pseudoCode\": false,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 6602.107802961763,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"LINES\",\n        \"priceInformation\": {\n          \"price\": 7506.973521758832,\n          \"netPrice\": 7139.759161414863,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 2688.1065369583957\n        },\n        \"standard\": true,\n        \"selected\": true,\n        \"fixed\": false,\n        \"hidden\": true,\n        \"pseudoCode\": false,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"updatedComponents\": [\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 9770.493658712827,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"SPECIAL_EQUIPMENT\",\n        \"priceInformation\": {\n          \"price\": 8429.430191285182,\n          \"netPrice\": 271.48030231302744,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 2203.8289556359523\n        },\n        \"standard\": false,\n        \"selected\": false,\n        \"fixed\": false,\n        \"hidden\": true,\n        \"pseudoCode\": true,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"componentSortId\": 8873.095222114009,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"code\": \"string\",\n        \"codeType\": \"string\",\n        \"componentType\": \"LINES\",\n        \"priceInformation\": {\n          \"price\": 1099.5552494432447,\n          \"netPrice\": 8823.395755040025,\n          \"currency\": \"string\",\n          \"taxes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"instalmentPrice\": 5839.486303124717\n        },\n        \"standard\": true,\n        \"selected\": false,\n        \"fixed\": false,\n        \"hidden\": false,\n        \"pseudoCode\": true,\n        \"_links\": {\n          \"imageapi_component\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"priceInformation\": {},\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"selectables\": {\n        \"href\": \"string\"\n      },\n      \"imageapi_vehicle\": {\n        \"href\": \"string\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82f2212a-860f-49a7-86d9-78f4b2117633",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid\n * ConfigurationId is not valid\n * ComponentList is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "alternatives",
+                    ":componentList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "+L-197_P-518,-L-040_P-501",
+                      "key": "componentList",
+                      "description": "(Required) A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "510f50bf-5642-4856-9219-699309fdceca",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "alternatives",
+                    ":componentList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "+L-197_P-518,-L-040_P-501",
+                      "key": "componentList",
+                      "description": "(Required) A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "766ff509-c556-4fd1-90af-c9586237a06a",
+              "name": "Market, Model or Configuration not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "alternatives",
+                    ":componentList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "+L-197_P-518,-L-040_P-501",
+                      "key": "componentList",
+                      "description": "(Required) A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96f04a96-cc79-45fd-9b0c-51dd2104594f",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "alternatives",
+                    ":componentList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "+L-197_P-518,-L-040_P-501",
+                      "key": "componentList",
+                      "description": "(Required) A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "114b6f0b-4d8a-4b79-a50d-fd99becaaa23",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "alternatives",
+                    ":componentList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "+L-197_P-518,-L-040_P-501",
+                      "key": "componentList",
+                      "description": "(Required) A string representing the changes, in other words a list of components that will be added and removed. The following syntax is used for the components to be added and the components to be removed. The added components e.g. '+I-950_L-890' and the removed components e.g. '-I-953_L-696' and the delimiter between the added and removed components is ','. In one components string '+I-950_L-890,-I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd561283-7a0f-49fc-9cdb-df7f5dab710b",
+          "name": "Get the Selectable Components for the Given marketId, modelId and configurationId",
+          "request": {
+            "name": "Get the Selectable Components for the Given marketId, modelId and configurationId",
+            "description": {
+              "content": "Get the selectable `VehicleComponents` and the `ComponentCategories` of the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**. Optional query param **componentType** may be used to filter the result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "models",
+                ":modelId",
+                "configurations",
+                ":configurationId",
+                "selectables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "componentTypes",
+                  "value": "<string>,<string>",
+                  "description": "A list of component types separated by a comma case insensitive. If nothing is defined all component types are returned. Allowed values are:\n  - WHEELS\n  - PAINTS\n  - UPHOLSTERIES\n  - TRIMS\n  - PACKAGES\n  - LINES\n  - SPECIAL_EDITION\n  - SPECIAL_EQUIPMENT"
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "222980000",
+                  "key": "modelId",
+                  "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                  "key": "configurationId",
+                  "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21d8337b-15b6-4ee6-a2cd-ddf9927d8e15",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "selectables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vehicleComponents\": {\n    \"componentId\": {\n      \"id\": \"string\",\n      \"componentSortId\": 1272.755184392944,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"SPECIAL_EDITION\",\n      \"priceInformation\": {\n        \"price\": 3703.57941158845,\n        \"netPrice\": 6256.603203121083,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 4310.570364294852,\n            \"baseAmount\": 8684.410842653644,\n            \"charge\": 3100.954946804133,\n            \"rate\": 4912.009088002022\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 3426.085542338223,\n            \"baseAmount\": 7609.369902492355,\n            \"charge\": 3826.706573105172,\n            \"rate\": 7458.612502298656\n          }\n        ],\n        \"instalmentPrice\": 7091.3047907693435\n      },\n      \"standard\": false,\n      \"selected\": false,\n      \"fixed\": true,\n      \"hidden\": false,\n      \"pseudoCode\": false,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    \"key_0\": {\n      \"id\": \"string\",\n      \"componentSortId\": 9041.494596919369,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"code\": \"string\",\n      \"codeType\": \"string\",\n      \"componentType\": \"TRIMS\",\n      \"priceInformation\": {\n        \"price\": 9778.638834358091,\n        \"netPrice\": 8451.815555869043,\n        \"currency\": \"string\",\n        \"taxes\": [\n          {\n            \"id\": \"string\",\n            \"amount\": 5582.764268624779,\n            \"baseAmount\": 2233.951801644297,\n            \"charge\": 4464.023452495437,\n            \"rate\": 8688.952933479404\n          },\n          {\n            \"id\": \"string\",\n            \"amount\": 3022.694278220357,\n            \"baseAmount\": 1226.859099253439,\n            \"charge\": 4533.6176350750675,\n            \"rate\": 4885.597504601352\n          }\n        ],\n        \"instalmentPrice\": 4784.802947943059\n      },\n      \"standard\": false,\n      \"selected\": true,\n      \"fixed\": true,\n      \"hidden\": true,\n      \"pseudoCode\": false,\n      \"_links\": {\n        \"imageapi_component\": {\n          \"href\": \"string\"\n        }\n      }\n    }\n  },\n  \"componentCategories\": [\n    {\n      \"categoryId\": \"string\",\n      \"categorySortId\": 4601.370417758111,\n      \"categoryName\": \"string\",\n      \"cardinality\": \"NOT_DEFINED\",\n      \"subcategories\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/VehicleComponentCategory detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/VehicleComponentCategory detected>\"\n        }\n      ],\n      \"componentIds\": [\n        {\n          \"componentId\": \"string\"\n        },\n        {\n          \"componentId\": \"string\"\n        }\n      ]\n    },\n    {\n      \"categoryId\": \"string\",\n      \"categorySortId\": 2856.5364197168806,\n      \"categoryName\": \"string\",\n      \"cardinality\": \"ARBITRARY\",\n      \"subcategories\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/VehicleComponentCategory detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/VehicleComponentCategory detected>\"\n        }\n      ],\n      \"componentIds\": [\n        {\n          \"componentId\": \"string\"\n        },\n        {\n          \"componentId\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44627912-b80a-4e4f-85e5-d3b28c4b4124",
+              "name": "No content found for requested componentTypes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "selectables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a01ce3f-8f0b-41ec-92d0-b7927e4c8124",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid\n * ConfigurationId is not valid\n * ComponentTypes is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "selectables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d8f0746-a522-46d5-87b8-c5072e3d7657",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "selectables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d93dd37d-f57c-4aec-9e91-ea2f262a0502",
+              "name": "Market, Model or Configuration not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "selectables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6310eaaf-983b-4d31-bd20-bf3c0a096512",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "selectables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7aace613-18ea-4bd1-b28e-64ce75f10985",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId",
+                    "configurations",
+                    ":configurationId",
+                    "selectables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "componentTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                      "key": "configurationId",
+                      "description": "(Required) Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mercedes-benz.com/configurator_tryout/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fd2183a6-e9c3-412a-84e2-595c41a45778",
+    "name": "Car Configurator Components Configurations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.\n\nContact Support:\n Name: The open API platform by Mercedes-Benz",
+      "type": "text/plain"
+    }
+  }
+}

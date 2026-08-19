@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Car Configurator Components Diagnostic Trouble Code (DTC) Snapshots API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diagnostic Trouble Code (DTC) Snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the List of Dtc Snapshot for Specific vehicleId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vehicles/:vehicleId/ecuId/:ecuId/dtcId/:dtcId/dtcSnapshotReadouts",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path",
+                "description": "The vehicle identifier of the vehicle to read from"
+              },
+              {
+                "name": "ecuId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the ECU to read from"
+              },
+              {
+                "name": "dtcId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the DTC associated with the snapshot"
+              }
+            ]
+          },
+          "docs": "This API creates a readout of a DTC snapshot from one vehicle. If the result is available immediately, the result is returned. If the result isn't available, a location to the DTC snapshot readout is returned. This location shall be polled until the result is available. INFO: GET Requests are not yet supported!"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

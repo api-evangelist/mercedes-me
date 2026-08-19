@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Car Configurator Components API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "imageComponentsGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:finorvin/components",
+            "params": [
+              {
+                "name": "finorvin",
+                "value": "",
+                "type": "path",
+                "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px), \n  * rim (710x710 px), \n  * trim (800x600 px), \n  * paints (800x600 px), \n  * upholstery (800x600 px) and \n  * equipments (740x416 px)."
+        },
+        {
+          "info": {
+            "name": "imageComponentsEngineGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:finorvin/components/engine",
+            "params": [
+              {
+                "name": "finorvin",
+                "value": "",
+                "type": "path",
+                "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+              }
+            ]
+          },
+          "docs": "Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px."
+        },
+        {
+          "info": {
+            "name": "imageComponentsEquipmentsGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:finorvin/components/equipments",
+            "params": [
+              {
+                "name": "finorvin",
+                "value": "",
+                "type": "path",
+                "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px)."
+        },
+        {
+          "info": {
+            "name": "imageComponentsPaintGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:finorvin/components/paint",
+            "params": [
+              {
+                "name": "finorvin",
+                "value": "",
+                "type": "path",
+                "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)"
+        },
+        {
+          "info": {
+            "name": "imageComponentsRimGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:finorvin/components/rim",
+            "params": [
+              {
+                "name": "finorvin",
+                "value": "",
+                "type": "path",
+                "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+              }
+            ]
+          },
+          "docs": "Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px."
+        },
+        {
+          "info": {
+            "name": "imageComponentsTrimGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:finorvin/components/trim",
+            "params": [
+              {
+                "name": "finorvin",
+                "value": "",
+                "type": "path",
+                "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+              }
+            ]
+          },
+          "docs": "Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px."
+        },
+        {
+          "info": {
+            "name": "imageComponentsUpholsteryGET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:finorvin/components/upholstery",
+            "params": [
+              {
+                "name": "finorvin",
+                "value": "",
+                "type": "path",
+                "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+              }
+            ]
+          },
+          "docs": "Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

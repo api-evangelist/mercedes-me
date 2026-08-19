@@ -1,0 +1,3865 @@
+{
+  "item": [
+    {
+      "id": "3df86a98-04ad-48f1-b527-5717b37c37a5",
+      "name": "References",
+      "description": {
+        "content": "Provide static reference data about cars like markets, bodies, classes, etc.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52a62fa3-9546-447f-a548-88a5672d9119",
+          "name": "Get All Available Markets",
+          "request": {
+            "name": "Get All Available Markets",
+            "description": {
+              "content": "Get all available `Markets`. Optional query params **language** or **country** may be used to filter the result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "de",
+                  "description": "This is a ISO language string e.g. 'de' and is spoken in Austria 'AT', Germany 'DE' and Swiss 'CH'."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "This is a ISO country string e.g. Germany 'DE' or Swiss 'CH'."
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e841cd6e-da3a-47ec-a964-94a6e5936302",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "de"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"marketId\": \"string\",\n    \"country\": \"string\",\n    \"language\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"classes\": {\n        \"href\": \"string\"\n      },\n      \"bodies\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      },\n      \"productgroups\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  {\n    \"marketId\": \"string\",\n    \"country\": \"string\",\n    \"language\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"classes\": {\n        \"href\": \"string\"\n      },\n      \"bodies\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      },\n      \"productgroups\": {\n        \"href\": \"string\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df17d3f4-d7a8-4be7-ad48-817e24573af3",
+              "name": "No content found for requested parameters language and/or country",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "de"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a88c9399-055e-410a-a20b-d3fc7086da03",
+              "name": "Invalid parameter was specified:\n * Language parameter is not valid\n * Country parameter is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "de"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51d39035-54ef-4e71-98a5-f69f1beaba68",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "de"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c757dcc-bf7d-44fe-beae-14d45017ea77",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "de"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2afa98b1-b077-421d-a532-0e4109627740",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "de"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c1a1ba7-e9ad-41ca-989d-b6279948d220",
+          "name": "Get the Market with the Given marketId",
+          "request": {
+            "name": "Get the Market with the Given marketId",
+            "description": {
+              "content": "Gets the `Market` for the given **marketId**. There are no query parameters to filter the result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d26ae959-066f-4823-ae50-1894186c0841",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"marketId\": \"string\",\n  \"country\": \"string\",\n  \"language\": \"string\",\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"classes\": {\n      \"href\": \"string\"\n    },\n    \"bodies\": {\n      \"href\": \"string\"\n    },\n    \"models\": {\n      \"href\": \"string\"\n    },\n    \"productgroups\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f69c7209-be7b-4848-8d09-951bfa8ad409",
+              "name": "MarketId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4bdfeec-8276-4b82-97cf-a5f47ed81f49",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca62e464-a607-4bbe-97fd-c72f23461d8b",
+              "name": "Market not found for requested marketId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4009c2c-46b3-468b-aea2-f7a93166c1f8",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fe8d25f-ceee-427d-87cc-f581613df195",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42bf8125-8c17-4811-b64c-e083e23d2a18",
+          "name": "Get All Available Bodies for the Given marketId",
+          "request": {
+            "name": "Get All Available Bodies for the Given marketId",
+            "description": {
+              "content": "Get all available `VehicleBodies` for the given **marketId**. Optional query params **classId** **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "bodies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "classId",
+                  "value": "222",
+                  "description": "This is a class id e.g. '176' for 'A-Class' in Germany."
+                },
+                {
+                  "disabled": false,
+                  "key": "bodyId",
+                  "value": "2",
+                  "description": "This is a body id e.g. '1' for 'Limousine' in Germany."
+                },
+                {
+                  "disabled": false,
+                  "key": "productGroups",
+                  "value": "<string>,<string>",
+                  "description": "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be0a2099-1cf5-4b2f-8c02-3ca82b56e1b3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bodyId\": \"string\",\n    \"bodyName\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  {\n    \"bodyId\": \"string\",\n    \"bodyName\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d43a8863-f4c1-4f6b-99dd-1213477e81a3",
+              "name": "No content found for requested parameters classId, bodyId and/or productGroups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f835955-1373-43bd-9799-49659ce3bad9",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid\n * BodyId is not valid\n * ProductGroups is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e8552710-0aa2-42dd-ac48-d70882ac8a06",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e612fcac-d4a9-48d8-8817-0ae4e47b3740",
+              "name": "Market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f0684de-13bd-446e-9e71-66a1235a3056",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b93ad91-8a91-463f-a5ab-e430e073c782",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca744319-a7e8-4a77-9c22-182d38b4e037",
+          "name": "Get the Body for the Given marketId and bodyId",
+          "request": {
+            "name": "Get the Body for the Given marketId and bodyId",
+            "description": {
+              "content": "Get the `VehicleBody` for the given **marketId** and **bodyId**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "bodies",
+                ":bodyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "2",
+                  "key": "bodyId",
+                  "description": "(Required) This is a body id e.g. '1' for 'Limousine' in Germany."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb20b633-88ac-460d-9844-c72099e5368d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies",
+                    ":bodyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "2",
+                      "key": "bodyId",
+                      "description": "(Required) This is a body id e.g. '1' for 'Limousine' in Germany."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bodyId\": \"string\",\n  \"bodyName\": \"string\",\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"models\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3067e87-27a0-4f33-bcc2-2e12395816c7",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * BodyId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies",
+                    ":bodyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "2",
+                      "key": "bodyId",
+                      "description": "(Required) This is a body id e.g. '1' for 'Limousine' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0863acf-d0dc-4203-aeca-7b9f15beddff",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies",
+                    ":bodyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "2",
+                      "key": "bodyId",
+                      "description": "(Required) This is a body id e.g. '1' for 'Limousine' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b27b162-26cb-4d0f-8fb4-8c0019e72f4e",
+              "name": "Market or VehicleBody not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies",
+                    ":bodyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "2",
+                      "key": "bodyId",
+                      "description": "(Required) This is a body id e.g. '1' for 'Limousine' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26c50d00-7c2e-493a-b8b1-a862d84d61c2",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies",
+                    ":bodyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "2",
+                      "key": "bodyId",
+                      "description": "(Required) This is a body id e.g. '1' for 'Limousine' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cee44be5-f9ef-446a-810c-3a575711583c",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "bodies",
+                    ":bodyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "2",
+                      "key": "bodyId",
+                      "description": "(Required) This is a body id e.g. '1' for 'Limousine' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a71c31b6-87d6-4c39-9579-7320becc8d07",
+          "name": "Get All Available Classes for the Given marketId",
+          "request": {
+            "name": "Get All Available Classes for the Given marketId",
+            "description": {
+              "content": "Get all available `VehicleClasses` objects for the given **marketId**. Optional query params **classId**, **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "classes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "classId",
+                  "value": "222",
+                  "description": "This is a class id e.g. '176' for 'A-Class' in Germany."
+                },
+                {
+                  "disabled": false,
+                  "key": "bodyId",
+                  "value": "2",
+                  "description": "This is a body id e.g. '1' for 'Limousine' in Germany."
+                },
+                {
+                  "disabled": false,
+                  "key": "productGroups",
+                  "value": "<string>,<string>",
+                  "description": "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00cb0462-e94d-4ab8-bb28-615e0eff35aa",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"classId\": \"string\",\n    \"className\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  {\n    \"classId\": \"string\",\n    \"className\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9de873ed-3ace-4d32-83e6-19b694dcc03c",
+              "name": "No content found for requested parameters classId, bodyId and/or productGroups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a036531-5e1e-4935-a114-fd89a3137909",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid\n * BodyId is not valid\n * Product group is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2109364b-8a4c-4724-8e2f-f56e2e632cac",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b9e18df-e1eb-4012-abf2-7f1f037b2253",
+              "name": "Market has not been found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b482b50-439c-4b23-bb91-f12bd7394399",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e8bb6405-8b4a-4c9a-89a2-a109a2ce36d7",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78a69f36-d576-40e5-a1d8-3a4def34cb42",
+          "name": "Get the Class for the Given marketId and classId",
+          "request": {
+            "name": "Get the Class for the Given marketId and classId",
+            "description": {
+              "content": "Get the `VehicleClass` for the given **marketId** and **classId**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "classes",
+                ":classId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "222",
+                  "key": "classId",
+                  "description": "(Required) This is a class id e.g. '176' for 'A-Klasse' in Germany."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87483df0-fc39-4913-a98b-6152d7edff4e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes",
+                    ":classId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222",
+                      "key": "classId",
+                      "description": "(Required) This is a class id e.g. '176' for 'A-Klasse' in Germany."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"classId\": \"string\",\n  \"className\": \"string\",\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"models\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a530acae-b26f-48bd-84d7-ebe86bdc2f40",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes",
+                    ":classId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222",
+                      "key": "classId",
+                      "description": "(Required) This is a class id e.g. '176' for 'A-Klasse' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d87ee2a-eaf2-4486-bb16-2048bc0dac99",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes",
+                    ":classId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222",
+                      "key": "classId",
+                      "description": "(Required) This is a class id e.g. '176' for 'A-Klasse' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5742dab-67d0-4c2a-8fe0-2c9380ebc119",
+              "name": "Market or VehicleClass not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes",
+                    ":classId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222",
+                      "key": "classId",
+                      "description": "(Required) This is a class id e.g. '176' for 'A-Klasse' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ad6a4e8-53e6-40f2-9899-036a4f8eb746",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes",
+                    ":classId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222",
+                      "key": "classId",
+                      "description": "(Required) This is a class id e.g. '176' for 'A-Klasse' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "59c1d001-8f41-4ea7-b8d7-a5a660499417",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "classes",
+                    ":classId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222",
+                      "key": "classId",
+                      "description": "(Required) This is a class id e.g. '176' for 'A-Klasse' in Germany."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b86c540-7b2c-4769-bc92-9063986e3e44",
+          "name": "Get All Available Models for the Given marketId",
+          "request": {
+            "name": "Get All Available Models for the Given marketId",
+            "description": {
+              "content": "Get the available `VehicleModels` for the given **marketId**. Optional query params **classId**, **bodyId**, **baumuster4prefix**, **baumuster**, **nationalSalesType** or **productGroups** maybe used to filter the result. The baumuster4prefix must conform to the pattern [0-9]{4}.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "classId",
+                  "value": "222",
+                  "description": "This is a class id e.g. '176' for 'A-Class' in Germany."
+                },
+                {
+                  "disabled": false,
+                  "key": "bodyId",
+                  "value": "2",
+                  "description": "This is a body id e.g. '1' for 'Limousine' in Germany."
+                },
+                {
+                  "disabled": false,
+                  "key": "baumuster4prefix",
+                  "value": "<string>",
+                  "description": "The first four digits of a baumuster are called baumuster4prefix e.g. '1760' for 'Berline' in France."
+                },
+                {
+                  "disabled": false,
+                  "key": "baumuster",
+                  "value": "<string>",
+                  "description": "This is a baumuster e.g. '176042' for 'A 180 Limousine' in Germany."
+                },
+                {
+                  "disabled": false,
+                  "key": "nationalSalesType",
+                  "value": "<string>",
+                  "description": "This is the national sales type (NST) of a distinct baumuster. There is no predefined pattern for the NST, each market defines its NST. e.g. 'E07' in France, 0001 in Germany and ZA1 in South Africa Using the NST markets can define market specific conditions. e.g. different initial configuration, etc."
+                },
+                {
+                  "disabled": false,
+                  "key": "productGroups",
+                  "value": "<string>,<string>",
+                  "description": "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc4d3cbc-4bad-4cc1-96d7-fcbbe680c87a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "baumuster4prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baumuster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nationalSalesType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"modelId\": \"string\",\n    \"shortName\": \"string\",\n    \"name\": \"string\",\n    \"baumuster\": \"string\",\n    \"nationalSalesType\": \"string\",\n    \"vehicleClass\": {\n      \"classId\": \"string\",\n      \"className\": \"string\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"string\"\n        },\n        \"models\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    \"vehicleBody\": {\n      \"bodyId\": \"string\",\n      \"bodyName\": \"string\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"string\"\n        },\n        \"models\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    \"productGroup\": \"SMART\",\n    \"priceInformation\": {\n      \"price\": 838.7778252024181,\n      \"netPrice\": 5900.059659301391,\n      \"currency\": \"string\",\n      \"taxes\": [\n        {\n          \"id\": \"string\",\n          \"amount\": 9822.684142820744,\n          \"baseAmount\": 6914.341537748304,\n          \"charge\": 1997.716216838087,\n          \"rate\": 5265.350081399693\n        },\n        {\n          \"id\": \"string\",\n          \"amount\": 4099.996678795093,\n          \"baseAmount\": 9871.951452767462,\n          \"charge\": 8608.316025881892,\n          \"rate\": 3428.6096968987868\n        }\n      ],\n      \"instalmentPrice\": 9636.726362583624\n    },\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"configuration\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  {\n    \"modelId\": \"string\",\n    \"shortName\": \"string\",\n    \"name\": \"string\",\n    \"baumuster\": \"string\",\n    \"nationalSalesType\": \"string\",\n    \"vehicleClass\": {\n      \"classId\": \"string\",\n      \"className\": \"string\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"string\"\n        },\n        \"models\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    \"vehicleBody\": {\n      \"bodyId\": \"string\",\n      \"bodyName\": \"string\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"string\"\n        },\n        \"models\": {\n          \"href\": \"string\"\n        }\n      }\n    },\n    \"productGroup\": \"VAN\",\n    \"priceInformation\": {\n      \"price\": 5153.804366915431,\n      \"netPrice\": 8697.119889162366,\n      \"currency\": \"string\",\n      \"taxes\": [\n        {\n          \"id\": \"string\",\n          \"amount\": 5519.141826996852,\n          \"baseAmount\": 473.55857592601194,\n          \"charge\": 8918.362289626299,\n          \"rate\": 9593.208489018309\n        },\n        {\n          \"id\": \"string\",\n          \"amount\": 8043.938331203737,\n          \"baseAmount\": 5170.821520133269,\n          \"charge\": 2084.423912066814,\n          \"rate\": 5702.484648527701\n        }\n      ],\n      \"instalmentPrice\": 6791.391048499941\n    },\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"configuration\": {\n        \"href\": \"string\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a9ffd90-05ea-4ab3-b0d7-86bc3f14ec43",
+              "name": "No content found for requested parameters classId, bodyId, baumuster4prefix, baumuster, nationalSalesType and/or productGroups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "baumuster4prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baumuster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nationalSalesType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb9d4e65-dab1-4704-9302-ef2f4f4c2de8",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ClassId is not valid\n * BodyId is not valid\n * Product group is not valid\n * baumuster4prefix is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "baumuster4prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baumuster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nationalSalesType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e716f270-c8b2-42a0-a1f1-65816003a1a1",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "baumuster4prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baumuster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nationalSalesType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e2b713b-09ce-40f3-92a4-1e5f7cd4d3bc",
+              "name": "Market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "baumuster4prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baumuster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nationalSalesType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2374a54f-6b36-462b-9d77-ab03ff5de6c6",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "baumuster4prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baumuster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nationalSalesType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cde1d2f2-9871-4e56-9d64-a3b27426e0b0",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classId",
+                      "value": "222"
+                    },
+                    {
+                      "key": "bodyId",
+                      "value": "2"
+                    },
+                    {
+                      "key": "baumuster4prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baumuster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nationalSalesType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productGroups",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f130cf83-c35f-4577-8f18-fd9e7e394d0c",
+          "name": "Get the Model for the Given marketId and modelId",
+          "request": {
+            "name": "Get the Model for the Given marketId and modelId",
+            "description": {
+              "content": "Get the `VehicleModel` object for the given **marketId** and **modelId**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "models",
+                ":modelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "222980000",
+                  "key": "modelId",
+                  "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25c0d532-b98e-40db-9d42-bd55d45848b0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"modelId\": \"string\",\n  \"shortName\": \"string\",\n  \"name\": \"string\",\n  \"baumuster\": \"string\",\n  \"nationalSalesType\": \"string\",\n  \"vehicleClass\": {\n    \"classId\": \"string\",\n    \"className\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  \"vehicleBody\": {\n    \"bodyId\": \"string\",\n    \"bodyName\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  \"productGroup\": \"PKW\",\n  \"priceInformation\": {\n    \"price\": 793.3702804941578,\n    \"netPrice\": 5515.819674966291,\n    \"currency\": \"string\",\n    \"taxes\": [\n      {\n        \"id\": \"string\",\n        \"amount\": 8642.453918000785,\n        \"baseAmount\": 677.0103324619492,\n        \"charge\": 4602.78199605668,\n        \"rate\": 8733.559024673183\n      },\n      {\n        \"id\": \"string\",\n        \"amount\": 3649.339055023373,\n        \"baseAmount\": 2193.626851681144,\n        \"charge\": 5566.146389144917,\n        \"rate\": 7820.6808048054145\n      }\n    ],\n    \"instalmentPrice\": 4511.554325830425\n  },\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"configuration\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bd85e99-0ab0-4461-a6a0-766ecd90aee7",
+              "name": "Invalid parameter was specified:\n * MarketId is not valid\n * ModelId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58daa74e-7ecd-40cb-a328-239fadf474b3",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18604216-18ca-413c-aae5-72fe6ccdecc1",
+              "name": "Market or Model not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fed8d69d-00b2-47d0-a5a8-d444236a8dc3",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ba79ca8-30a6-4b48-9afa-eb50c96c4ec8",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "222980000",
+                      "key": "modelId",
+                      "description": "(Required) Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a8d4eeb-b9bb-4df9-b704-c588482181ec",
+          "name": "Get All Configured Active Product Groups for the Given marketId",
+          "request": {
+            "name": "Get All Configured Active Product Groups for the Given marketId",
+            "description": {
+              "content": "Get all configured active product groups for the given **marketId**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":marketId",
+                "productgroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldsFilter",
+                  "value": "<string>,<string>",
+                  "description": "Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "de_DE",
+                  "key": "marketId",
+                  "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61fdddc1-5458-4610-94ed-72643b4a8760",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "productgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"market\": {\n    \"marketId\": \"string\",\n    \"country\": \"string\",\n    \"language\": \"string\",\n    \"_links\": {\n      \"self\": {\n        \"href\": \"string\"\n      },\n      \"classes\": {\n        \"href\": \"string\"\n      },\n      \"bodies\": {\n        \"href\": \"string\"\n      },\n      \"models\": {\n        \"href\": \"string\"\n      },\n      \"productgroups\": {\n        \"href\": \"string\"\n      }\n    }\n  },\n  \"productGroups\": [\n    \"VAN\",\n    \"VAN\"\n  ],\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    },\n    \"models\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b1fc28a-1487-4eba-8e5d-4e0f7cc9be8f",
+              "name": "MarketId is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "productgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5231ac2b-ec3d-4b86-9774-6cff51e4a2c7",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "productgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fc57394-aec7-4f96-90ce-90433c8e279d",
+              "name": "Market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "productgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32b1ad72-d0db-42a2-8afe-31d436274627",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "productgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4fa4ce62-efdf-4d04-90c5-9bec6f68fda8",
+              "name": "An Error occurred on the server side",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":marketId",
+                    "productgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldsFilter",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "de_DE",
+                      "key": "marketId",
+                      "description": "(Required) This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4749daaf-09b2-4338-83f6-1729a995b4eb",
+          "name": "countries GET",
+          "request": {
+            "name": "countries GET",
+            "description": {
+              "content": "This request returns the countries supported by the Dealer API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The index of the page to be returned. If this parameter is omitted, the first page will be returned.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The index of the page to be returned. If this parameter is omitted, the first page will be returned.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2765a7cf-1337-4714-ab14-144c503496b2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"next\": {\n      \"href\": \"string\"\n    },\n    \"previous\": {\n      \"href\": \"string\"\n    },\n    \"self\": {\n      \"href\": \"string\"\n    }\n  },\n  \"countries\": [\n    {\n      \"countryId\": \"string\",\n      \"isoCode\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"countryId\": \"string\",\n      \"isoCode\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "832c6f21-cb3c-40bd-ac49-edcc2d72dbc8",
+              "name": "Invalid parameter was specified:\n * Page is not valid\n * Page size is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4e501bb-9286-4478-913d-3663c229dc50",
+              "name": "Unauthorized:\n  * Failed to resolve API Key query parameter\n  * Invalid API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c231020-f168-4c14-a354-c8fbdf67e9bc",
+              "name": "Quota limit is exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6d54269-9146-4f34-b8a6-c4682b52240f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mercedes-benz.com/configurator_tryout/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5320a3d4-c316-40e5-9045-44b5559ce47b",
+    "name": "Car Configurator Components References API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.\n\nContact Support:\n Name: The open API platform by Mercedes-Benz",
+      "type": "text/plain"
+    }
+  }
+}
