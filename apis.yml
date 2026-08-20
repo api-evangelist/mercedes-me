@@ -290,6 +290,8 @@ apis:
   humanURL: https://developer.mercedes-benz.com/products/configurator
   baseURL: https://api.mercedes-benz.com/configurator/v1
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
