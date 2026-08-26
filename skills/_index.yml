@@ -1,0 +1,44 @@
+generated: '2026-08-26'
+method: generated
+source: >-
+  Authored from the 39 operations in the eleven refined OpenAPI documents in openapi/ and the four
+  provider-published Swagger 2.0 originals in openapi/_original/. Every operationId referenced in every
+  skill was grepped out of a spec in this repository; none was invented. Searched for provider-published
+  Agent Skills or an AGENTS.md on developer.mercedes-benz.com and in github.com/mercedes-benz first —
+  Mercedes-Benz publishes neither.
+description: >-
+  Packaged Agent Skills for the four Mercedes-Benz APIs that have a published machine-readable contract.
+  Each skill carries the cross-cutting rules an agent has to know to call this estate safely: no
+  idempotency, no pagination, no Retry-After header, no RFC 9457, and a 204 that means success.
+skills:
+  - name: mercedes-me-configure-and-save-vehicle
+    file: mercedes-me-configure-and-save-vehicle.md
+    api: Car Configurator API
+    operations: 9
+    write_operations: 1
+    caution: onlineCodePOST is a non-idempotent write with no delete and no published expiry.
+  - name: mercedes-me-render-vehicle-imagery
+    file: mercedes-me-render-vehicle-imagery.md
+    api: Vehicle Images API and Car Configurator imagery
+    operations: 9
+    write_operations: 0
+    caution: 204 means "valid vehicle, no imagery" and is a success, not a failure.
+  - name: mercedes-me-find-dealer
+    file: mercedes-me-find-dealer.md
+    api: Dealer API
+    operations: 3
+    write_operations: 0
+    caution: Opening hours are attached per dealer FUNCTION, not per dealer.
+  - name: mercedes-me-remote-diagnostic-readout
+    file: mercedes-me-remote-diagnostic-readout.md
+    api: Remote Diagnostic Support API
+    operations: 4
+    write_operations: 4
+    caution: >-
+      Every operation is a POST that starts an asynchronous job against a real vehicle. Not idempotent,
+      not cancellable, returns 202.
+not_covered:
+  - >-
+    No skill exists for Vehicle Status, Vehicle Lock Status, Fuel Status, Electric Vehicle Status,
+    Pay As You Drive or the Fleet API. Mercedes-Benz publishes no OpenAPI for any of them, so there is no
+    operationId to ground a skill in. Writing one from marketing copy would be a fabrication.

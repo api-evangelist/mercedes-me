@@ -1,0 +1,79 @@
+generated: '2026-08-26'
+method: searched
+source: https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api
+evidence:
+  - url: https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api
+    status: 200
+    note: >-
+      Data packages and remote-command packages read verbatim from the product page served by
+      Mercedes-Benz Connectivity Services GmbH.
+  - url: https://github.com/mercedes-benz/kafka-integration-samples
+    status: 200
+    note: First-party sample Kafka consumers for this channel. v1.0.0, released 2024-07-03. MIT.
+description: >-
+  Mercedes-Benz operates a real event-streaming surface — the Mercedes-Benz Fleet API Push channel, a
+  managed Apache Kafka feed of vehicle telemetry — and publishes NO AsyncAPI document for it, no webhook
+  catalogue, and no schema for any message on it. This artifact records the event surface as the provider
+  describes it, so the absence of a contract is countable rather than invisible.
+surface:
+  kind: kafka-stream
+  name: Mercedes-Benz Fleet API — Push API
+  transport: Apache Kafka
+  auth: OAuth 2.0 authenticated Kafka consumer clients
+  vendor: Mercedes-Benz Connectivity Services GmbH
+  activation: per data package, per vehicle
+  asyncapi_document: null
+  webhooks: false
+  message_schemas_published: false
+companion_surface:
+  kind: rest
+  name: Mercedes-Benz Fleet API — Management API
+  purpose: add vehicles, activate/deactivate per-vehicle data packages, issue remote commands
+  openapi_document: null
+data_packages:
+  note: >-
+    Read verbatim from the Fleet API product page. These are the activatable units Mercedes-Benz sells;
+    each is described there as consisting of "different vehicle signals, such as Fuel Level, Odometer and
+    State of Charge". The individual signal names inside each package are NOT published.
+  packages:
+    - Mileage
+    - Ignition Status
+    - Fuel & Consumption Data
+    - Charging Data
+    - Position Data
+    - Vehicle Health Data
+    - Tire Data
+    - Driving & Speed Data
+    - Door & Window Status
+    - Park Events Data
+    - Driving Behaviour Data
+    - Alarming & Anti-theft Data
+    - Trip Consumption
+    - Trip Mileage
+    - Trip Position
+    - Trip Idling
+    - Driving Status
+    - Refueling & Charging Detection Data
+    - Charging Session Data
+remote_command_packages:
+  note: >-
+    Also read verbatim from the product page. These are WRITE surfaces that actuate a physical vehicle,
+    and none of them has a published contract, schema, or reversal window.
+  packages:
+    - Remote Door Lock and Unlock Commands
+    - Driver Management
+    - Remote Preconditioning Commands
+    - Remote Charging Management
+    - Remote Vehicle Finder Command
+gaps:
+  - No AsyncAPI document. Nineteen data packages of streamed vehicle telemetry with no machine-readable channel, message or payload definition.
+  - No per-signal schema. A partner learns the shape of a Kafka message from a contract negotiation, not from a spec.
+  - No topic naming convention published.
+  - No published delivery guarantee, ordering guarantee, retention window or replay policy.
+  - >-
+    The five remote-command packages actuate a real vehicle — including door lock and unlock — and have no
+    published contract at all. See conventions/mercedes-me-conventions.yml reversibility.
+not_an_asyncapi: >-
+  This file is a catalogue of an event surface, NOT an AsyncAPI document. It is deliberately not wired as
+  type AsyncAPI or type Webhooks in apis.yml: Mercedes-Benz publishes neither, and claiming either on their
+  behalf would credit them with a contract they have not written.

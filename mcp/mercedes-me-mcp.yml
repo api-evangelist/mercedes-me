@@ -1,0 +1,215 @@
+generated: '2026-08-26'
+method: derived
+status: candidate
+source: >-
+  No Mercedes-Benz MCP server exists. Searched the github.com/mercedes-benz organisation (all repositories
+  listed via the GitHub API — the only MCP repository there is a FORK of github/github-mcp-server, marked
+  "This is a fork ... for the purpose of contributing", which is not a Mercedes-Benz API server), the npm
+  registry, and the Mercedes-Benz developer portal. Probed /.well-known/agent-card.json and
+  /.well-known/agent.json on every host in the estate — all soft-404s, 401s, 404s or 403s. The tool list
+  below is DERIVED from the 39 operations in the eleven refined OpenAPI documents in openapi/. It is a
+  candidate: Mercedes-Benz ships nothing.
+description: >-
+  A candidate MCP tool surface for the four Mercedes-Benz APIs that have a published contract. Mercedes-Benz
+  publishes no MCP server, no agent card and no agent-facing surface of any kind.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+  note: >-
+    Nobody ships a server. `endpoint` is deliberately empty — guessing an MCP URL that happened to answer
+    200 would read as a verified agent surface that Mercedes-Benz has not built.
+searched:
+  - target: github.com/mercedes-benz organisation
+    method: GitHub REST API repository listing
+    result: >-
+      One repository matching "mcp": github-mcp-server, explicitly described as a fork of
+      github/github-mcp-server for upstream contribution. Not a Mercedes-Benz API server.
+  - target: npm registry
+    query: 'mercedes-benz, scope:daimler'
+    result: no MCP package
+  - target: developer.mercedes-benz.com
+    result: >-
+      Client-rendered SPA; every path returns the same HTML shell. robots.txt disallows /console/, /api/,
+      /config/ and /ciam/. No MCP, agent or LLM surface discoverable.
+  - target: '/.well-known/agent-card.json and /.well-known/agent.json'
+    hosts: [developer.mercedes-benz.com, api.mercedes-benz.com, connectivity.mercedes-benz.com, www.mercedes-benz.com]
+    result: no agent card on any host — see well-known/mercedes-me-well-known.yml
+tools:
+  - name: list_markets
+    description: List every market (country) the Mercedes-Benz car configurator supports.
+    rest: [marketsGET]
+    method: GET
+    path: /markets
+    read_only: true
+  - name: get_market
+    description: Get one configurator market by id.
+    rest: [marketGET]
+    method: GET
+    path: /markets/{marketId}
+    read_only: true
+  - name: list_vehicle_classes
+    description: List Mercedes-Benz vehicle classes available in a market.
+    rest: [classesGET]
+    method: GET
+    path: /markets/{marketId}/classes
+    read_only: true
+  - name: get_vehicle_class
+    rest: [classGET]
+    method: GET
+    path: /markets/{marketId}/classes/{classId}
+    read_only: true
+  - name: list_vehicle_bodies
+    rest: [bodiesGET]
+    method: GET
+    path: /markets/{marketId}/bodies
+    read_only: true
+  - name: get_vehicle_body
+    rest: [bodyGET]
+    method: GET
+    path: /markets/{marketId}/bodies/{bodyId}
+    read_only: true
+  - name: list_product_groups
+    rest: [productGroupsGET]
+    method: GET
+    path: /markets/{marketId}/productgroups
+    read_only: true
+  - name: list_models
+    description: List Mercedes-Benz vehicle models available in a market.
+    rest: [modelsGET]
+    method: GET
+    path: /markets/{marketId}/models
+    read_only: true
+  - name: get_model
+    rest: [modelGET]
+    method: GET
+    path: /markets/{marketId}/models/{modelId}
+    read_only: true
+  - name: get_initial_configuration
+    description: Get the initial (default) configuration for a model in a market.
+    rest: [modelConfigurationsGET]
+    method: GET
+    path: /markets/{marketId}/models/{modelId}/configurations/initial
+    read_only: true
+  - name: get_configuration
+    rest: [modelConfigurationGET]
+    method: GET
+    path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}
+    read_only: true
+  - name: list_configuration_selectables
+    description: List the components that can still be selected for a configuration.
+    rest: [modelConfigurationSelectablesGET]
+    method: GET
+    path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/selectables
+    read_only: true
+  - name: get_configuration_alternatives
+    description: Get the configuration that results from swapping a component list.
+    rest: [modelConfigurationAlternativesGET]
+    method: GET
+    path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/alternatives/{componentList}
+    read_only: true
+  - name: save_configuration
+    description: Persist a configuration and return a shareable online code.
+    rest: [onlineCodePOST]
+    method: POST
+    path: /markets/{marketId}/onlinecode
+    read_only: false
+    caution: >-
+      WRITE. No idempotency key exists — a retry creates a second online code. No delete operation and no
+      published expiry. See conventions/mercedes-me-conventions.yml reversibility.
+  - name: load_saved_configuration
+    rest: [onlineCodeGET]
+    method: GET
+    path: /markets/{marketId}/onlinecode/{onlineCode}
+    read_only: true
+  - name: get_configuration_vehicle_image
+    rest: [imageVehicleGET]
+    method: GET
+    path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/vehicle
+    read_only: true
+  - name: get_configuration_component_images
+    rest: [imageComponentsGET, imageComponentsEngineGET, imageComponentsEquipmentsGET, imageComponentsEquipmentsByCodeGET, imageComponentsPaintGET, imageComponentsRimGET, imageComponentsTrimGET, imageComponentsUpholsteryGET]
+    method: GET
+    path: /markets/{marketId}/models/{modelId}/configurations/{configurationId}/images/components/*
+    read_only: true
+  - name: get_vehicle_image_by_vin
+    description: Get vehicle imagery for a built vehicle by FIN/VIN.
+    rest: [imageVehicleGET]
+    method: GET
+    path: /{finorvin}/vehicle
+    api: Vehicle Images API
+    read_only: true
+  - name: get_vehicle_components_by_vin
+    rest: [imageComponentsGET, imageComponentsEngineGET, imageComponentsEquipmentsGET, imageComponentsPaintGET, imageComponentsRimGET, imageComponentsTrimGET, imageComponentsUpholsteryGET]
+    method: GET
+    path: /{finorvin}/components/*
+    api: Vehicle Images API
+    read_only: true
+  - name: search_dealers
+    description: Search Mercedes-Benz dealers, garages and retailers by attribute.
+    rest: [dealersGET]
+    method: GET
+    path: /dealers
+    api: Dealer API
+    read_only: true
+  - name: get_dealer
+    rest: [dealerGET]
+    method: GET
+    path: /dealers/{dealerId}
+    api: Dealer API
+    read_only: true
+  - name: list_countries
+    rest: [countriesGET]
+    method: GET
+    path: /countries
+    api: Dealer API
+    read_only: true
+  - name: request_ecu_readout
+    description: Start an asynchronous readout of a vehicle's electronic control units.
+    rest: [getEcuDataListByVehicleIdUsingPOST]
+    method: POST
+    path: /vehicles/{vehicleId}/ecuReadouts
+    api: Remote Diagnostic Support API
+    read_only: false
+    caution: >-
+      WRITE. Starts a job against a real vehicle. No cancel operation is published, no idempotency key
+      exists, and the response is 202 Accepted — the agent must poll.
+  - name: request_dtc_readout
+    rest: [getDtcDataListByEcuUsingPOST]
+    method: POST
+    path: /vehicles/{vehicleId}/dtcReadouts
+    api: Remote Diagnostic Support API
+    read_only: false
+    caution: WRITE. Same asynchronous, non-cancellable, non-idempotent job semantics.
+  - name: request_dtc_snapshot_readout
+    rest: [getDtcSnapshotReadoutsUsingPOST]
+    method: POST
+    path: /vehicles/{vehicleId}/ecuId/{ecuId}/dtcId/{dtcId}/dtcSnapshotReadouts
+    api: Remote Diagnostic Support API
+    read_only: false
+    caution: WRITE. Same asynchronous, non-cancellable, non-idempotent job semantics.
+  - name: request_resource_readout
+    rest: [getResourceReadoutsUsingPOST]
+    method: POST
+    path: /vehicles/{vehicleId}/resourceReadouts
+    api: Remote Diagnostic Support API
+    read_only: false
+    caution: WRITE. Same asynchronous, non-cancellable, non-idempotent job semantics.
+coverage:
+  openapi_operations: 39
+  tools_derived: 26
+  read_only_tools: 21
+  write_tools: 5
+  operations_without_a_tool: 0
+  note: >-
+    Fewer tools than operations because the eight configurator component-image operations and the seven
+    FIN/VIN component operations collapse into two parameterised tools each.
+not_covered:
+  - >-
+    The connected-vehicle family (Vehicle Status, Vehicle Lock Status, Fuel Status, Electric Vehicle Status,
+    Pay As You Drive) and the Fleet API have NO published OpenAPI, so no tool can be derived for them. Those
+    are the products with the actual vehicle-command surface — including remote door lock/unlock — and they
+    are the least agent-addressable part of the estate.

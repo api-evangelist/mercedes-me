@@ -1,0 +1,62 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Car Configurator Components Configurations API
+  version: 1.0.0
+  x-generated: '2026-08-26'
+  x-method: generated
+  x-source: API Evangelist enrichment pipeline, from openapi/mercedes-me-configurations-api-openapi.yml
+    and openapi/_original/
+extends: ../openapi/mercedes-me-configurations-api-openapi.yml
+actions:
+- target: $.info
+  description: Record API Evangelist provenance and the source of every value asserted below.
+  update:
+    x-api-evangelist:
+      profile: https://apis.io/provider/mercedes-me
+      repository: https://github.com/api-evangelist/mercedes-me
+      enriched: '2026-08-26'
+      source-spec: openapi/_original/ (provider-published Swagger 2.0, x-origin developer.mercedes-benz.com)
+      product: Car Configurator API
+- target: $
+  description: Add the production base path alongside the sandbox one. Mercedes-Benz publishes only the
+    *_tryout sandbox document; the production path is the same path with the _tryout suffix removed. Recorded
+    as a DERIVATION — see sandbox/mercedes-me-sandbox.yml — not as a value read from a Mercedes-Benz document.
+  update:
+    x-environments:
+      sandbox: https://api.mercedes-benz.com/configurator_tryout/v1
+      production: https://api.mercedes-benz.com/configurator/v1
+      derivation: production = sandbox path with "_tryout" removed (derived, not published)
+- target: $
+  description: 'Add the API key security scheme the contract describes in prose but does not declare.
+    Every operation in the source document returns 401 "Failed to resolve API Key query parameter / Invalid
+    API Key", yet the document carries no securityDefinitions at all, so no machine can discover how to
+    authenticate. The parameter NAME is deliberately left as a variable: Mercedes-Benz does not publish
+    it in any machine-readable place we could read, and inventing one would be worse than leaving the
+    gap visible.'
+  update:
+    securityDefinitions:
+      MercedesBenzApiKey:
+        type: apiKey
+        in: query
+        name: REPLACE_WITH_PORTAL_DOCUMENTED_PARAMETER_NAME
+        description: Developer-portal API key for the subscribed product, passed as a query parameter.
+          The exact parameter name is documented only on developer.mercedes-benz.com, which is a client-rendered
+          SPA and cannot be read by a non-browser client. Obtain it from the product page before use.
+        x-unverified: true
+- target: $.info
+  description: Attach the runtime semantics observed live against the gateway, which the contract omits.
+  update:
+    x-rate-limit:
+      status: 429
+      retry_after_header: false
+      ratelimit_headers: false
+      signal: 'English prose in the response body: "Rate limit is exceeded. Try again in NN seconds."'
+      observed: https://api.mercedes-benz.com — unauthenticated probe, 2026-08-26
+    x-error-envelope:
+      rfc9457: false
+      shape: '{"errorMessage": string, "statusCode": string|integer, "message": string}'
+      note: statusCode is a string on 401 and an integer on 429 from the same gateway.
+      catalog: errors/mercedes-me-problem-types.yml
+    x-idempotency:
+      supported: false
+      note: No idempotency key on any write operation. A retried POST duplicates the effect.

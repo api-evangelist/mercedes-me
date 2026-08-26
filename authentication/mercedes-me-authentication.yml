@@ -1,0 +1,127 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  https://id.mercedes-benz.com/.well-known/openid-configuration (probed 200, saved verbatim) plus the
+  401 response descriptions declared in the four provider-published Swagger 2.0 documents in
+  openapi/_original/.
+docs: https://developer.mercedes-benz.com/content-page/oauth-documentation
+evidence:
+  - url: https://id.mercedes-benz.com/.well-known/openid-configuration
+    status: 200
+  - url: https://id.mercedes-benz.com/.well-known/oauth-authorization-server
+    status: 200
+  - url: https://api.mercedes-benz.com/configurator/v1/markets
+    status: 401
+    body: '{"errorMessage":"Unauthorized","statusCode":"401","message":"No credentials provided"}'
+  - url: https://developer.mercedes-benz.com/content-page/oauth-documentation
+    status: 200
+    note: >-
+      HTTP 200 but the body is the portal's client-rendered SPA shell — identical to the shell served
+      for a path that does not exist — so the OAuth reference text itself could not be read by a
+      non-browser client.
+description: >-
+  Mercedes-Benz runs two distinct authentication models across one API gateway, and which one applies
+  depends on whether the API touches a customer's vehicle.
+summary:
+  models: 2
+  oauth2: true
+  openid_connect: true
+  api_key: true
+  mutual_tls: true            # tls_client_auth is advertised in token_endpoint_auth_methods_supported
+  pkce: true                  # S256
+  par: true                   # pushed_authorization_request_endpoint present
+  ciba: true                  # urn:openid:params:grant-type:ciba
+  token_exchange: true        # urn:ietf:params:oauth:grant-type:token-exchange
+  dynamic_client_registration: true   # registration_endpoint present
+  token_revocation: true
+  token_introspection: true
+schemes:
+  - id: mercedes-benz-api-key
+    type: apiKey
+    in: query
+    applies_to:
+      - Car Configurator API (Components, Configurations, Images, References, Saved configurations)
+      - Dealer API (Dealer search)
+      - Vehicle Images API (Components, Perspectives)
+      - Remote Diagnostic Support API (DTCs, DTC Snapshots, ECUs, Resources)
+    evidence: >-
+      Every operation in all four published Swagger 2.0 documents declares a 401 whose description is
+      "Unauthorized: * Failed to resolve API Key query parameter * Invalid API Key". The key is issued
+      per subscribed product on the developer portal. NOTE: the specs declare this in prose only —
+      they carry no securityDefinitions object at all, so no machine can discover the parameter name
+      from the contract.
+    gap: >-
+      The contract does not name the query parameter that carries the key. An agent reading the
+      OpenAPI cannot construct an authenticated request without a human reading the portal.
+  - id: mercedes-benz-oauth2
+    type: oauth2
+    flows:
+      authorizationCode:
+        authorizationUrl: https://id.mercedes-benz.com/as/authorization.oauth2
+        tokenUrl: https://id.mercedes-benz.com/as/token.oauth2
+        refreshUrl: https://id.mercedes-benz.com/as/token.oauth2
+        pkce: S256
+      clientCredentials:
+        tokenUrl: https://id.mercedes-benz.com/as/token.oauth2
+      deviceCode:
+        deviceAuthorizationUrl: present in discovery document
+    applies_to:
+      - Vehicle Status API
+      - Vehicle Lock Status API
+      - Fuel Status API
+      - Electric Vehicle Status API
+      - Pay As You Drive 2.0 API
+      - Mercedes-Benz Fleet API (Kafka Push consumers authenticate with OAuth 2.0)
+    consent_model: >-
+      Authorization-code flow in which the VEHICLE OWNER — not the developer — grants per-resource
+      consent. Scope selection is the consent surface: an application requesting
+      mb:vehicle:mbdata:fuelstatus receives tank level and nothing else. See
+      scopes/mercedes-me-scopes.yml for all 38 published product scopes.
+    scopes_reference: scopes/mercedes-me-scopes.yml
+  - id: mercedes-benz-openid-connect
+    type: openIdConnect
+    openIdConnectUrl: https://id.mercedes-benz.com/.well-known/openid-configuration
+    issuer: https://id.mercedes-benz.com
+    userinfo_endpoint: https://id.mercedes-benz.com/idp/userinfo.openid
+    jwks_uri: https://id.mercedes-benz.com/pf/JWKS
+    claims_supported:
+      - acr
+      - ciam-uid
+      - company-id
+      - country
+      - email
+      - email_verified
+      - family_name
+      - given_name
+      - identityProviders
+      - known_user
+      - locale
+      - name
+      - phone_number
+      - phone_number_verified
+      - reg-track-id
+      - sub
+      - third-party-ids
+    subject_types_supported: [public, pairwise]
+    id_token_signing_alg_values_supported: [RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512, HS256, HS384, HS512, none]
+token_endpoint_auth_methods:
+  - client_secret_basic
+  - client_secret_post
+  - client_secret_jwt
+  - private_key_jwt
+  - tls_client_auth
+  - none
+observations:
+  - >-
+    STRONG: the authorization server advertises PKCE S256, pushed authorization requests, private_key_jwt
+    and mutual-TLS client authentication, and dynamic client registration — a modern, FAPI-adjacent
+    posture for an OEM identity provider.
+  - >-
+    WEAK: implicit, password and the "none" token-endpoint auth method are still advertised as supported.
+    A public OAuth discovery document that still lists the resource-owner password grant is a legacy
+    surface an integrator should be told not to use; Mercedes-Benz publishes no statement deprecating it
+    that we could read.
+  - >-
+    WEAK: no securityDefinitions in ANY published OpenAPI. The four Swagger 2.0 documents describe
+    authentication only in a 401 response description string. That is not machine-readable auth: an
+    agent cannot construct a request from the contract alone.

@@ -1,3 +1,27 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api (HTTP 200, read) for the Fleet
+  API commercial model and its per-vehicle data-package structure; the *_tryout basePaths declared in the
+  four provider-published Swagger 2.0 documents in openapi/_original/ for the sandbox tier; and
+  https://developer.mercedes-benz.com/ for the product-subscription model. Mercedes-Benz publishes NO
+  price list and NO public rate card for any API — every production tier is a sales conversation, and the
+  developer portal's own product pages are client-rendered and return an empty HTML shell to any
+  non-browser client, so no per-product price could be read.
+evidence:
+  - url: https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api
+    status: 200
+    note: >-
+      "Get in touch with us! Speak with our experts to explore Mercedes-Benz Fleet API" — a contact-sales
+      gate, with the activatable data packages and remote-command packages listed but no prices.
+  - url: https://developer.mercedes-benz.com/products
+    status: 200
+    note: HTTP 200 but the body is the portal's SPA shell, not a readable product or pricing page.
+plan_count: 4
+public_price_count: 1
+public_price_note: >-
+  Exactly one tier carries a real published price: the free Tryout sandbox. Every other tier is
+  contact-sales.
 apiCommonsPlans: "0.1"
 provider:
   id: mercedes-me
@@ -26,8 +50,13 @@ plans:
       timeFrame: month
     metering:
       unit: request
-      included: 1000
-      overage: blocked
+      included: null
+      overage: null
+      note: >-
+        CORRECTED 2026-08-26. A previous round of this profile recorded a 1,000-request included quota and
+        a blocked overage for the tryout tier. Mercedes-Benz publishes no such number anywhere we could
+        read, so the values are removed rather than left standing. The sandbox is hard-capped on the
+        platform side; the cap is not published.
     targetUsers: [developers, prototypers, integrators]
     sla: none
     support: community

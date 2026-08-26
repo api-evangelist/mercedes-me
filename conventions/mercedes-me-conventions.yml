@@ -1,0 +1,184 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  Derived from the eleven refined OpenAPI documents in openapi/ and the four provider-published Swagger 2.0
+  originals in openapi/_original/, plus live unauthenticated probes of https://api.mercedes-benz.com and the
+  OpenID Connect discovery document at https://id.mercedes-benz.com. The developer portal's own convention
+  pages could not be read: developer.mercedes-benz.com is a client-rendered SPA that returns an identical
+  ~4.3 KB HTML shell for every path, verified by diffing a real product page against a fabricated one.
+description: >-
+  Cross-cutting runtime semantics for the Mercedes-Benz API surface. Recorded from the contract and from
+  live gateway behaviour; every field that Mercedes-Benz does not publish is marked as such rather than
+  filled in.
+
+auth_style:
+  reference: authentication/mercedes-me-authentication.yml
+  reference_data_apis: API key, passed as a query parameter (parameter name NOT declared in the contract)
+  connected_vehicle_apis: OAuth 2.0 authorization code with vehicle-owner consent, PKCE S256 available
+  token_endpoint: https://id.mercedes-benz.com/as/token.oauth2
+
+idempotency:
+  supported: false
+  header: null
+  scope: null
+  retention: null
+  evidence: >-
+    No Idempotency-Key header, no idempotency parameter and no idempotency language appears in any of the
+    four published Swagger documents. The five write operations (four Remote Diagnostic Support readout
+    POSTs and the Saved Configurations onlinecode POST) declare no de-duplication mechanism.
+  consequence: >-
+    A retried POST /markets/{marketId}/onlinecode creates a second online code. A retried readout POST
+    starts a second asynchronous readout against the vehicle. An agent retrying on a timeout has no way to
+    make either safe.
+
+pagination:
+  style: none
+  evidence: >-
+    No limit/offset/page/cursor parameter appears anywhere in the 39 operations. Collection endpoints —
+    GET /markets, GET /countries, GET /dealers, GET /markets/{marketId}/models — return the full set.
+  note: >-
+    GET /dealers accepts filter parameters (search attributes) rather than page parameters, so a large
+    result set is narrowed by query, not paged.
+
+hypermedia:
+  style: HAL-like link objects
+  evidence: >-
+    The contract defines Link, HRef, SelfLink, DefaultLinks, SelfModelLinks, SelfConfigurationLinks,
+    SelfReferencesLinks, SelfSelectablesImageVehicleLinks, HalifiedDealers and HalifiedCountries schemas.
+    Responses embed navigational links.
+  media_type_note: >-
+    Despite the "Halified" schema names, every document declares produces: [application/json] — NOT
+    application/hal+json. The shape is HAL-influenced; the content type does not advertise HAL, so a
+    generic HAL client will not auto-negotiate it.
+
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata_fields:
+  supported: false
+
+request_id_tracing:
+  supported: false
+  evidence: >-
+    No X-Request-Id, no correlation-id parameter, and no request identifier in any documented response or
+    error envelope. Live 401 and 429 bodies carry no identifier either.
+  consequence: A caller opening a support ticket has no request identifier to quote.
+
+versioning:
+  style: URI path segment
+  pattern: 'https://api.mercedes-benz.com/{product}/{version}/...'
+  examples:
+    - /configurator/v1
+    - /dealer/v1
+    - /image/v1/vehicles
+    - /remotediagnostic/v1
+  product_versioning: >-
+    Major product versions are shipped as SEPARATE developer-portal products rather than as versions of one
+    product — Electric Vehicle Status v1, v2 and v3 are three products with three OAuth scopes
+    (mb:vehicle:mbdata:evstatus, evstatus2.0, evstatus3.0), and Pay As You Drive is v1 and 2.0 likewise.
+    Consequence: an upgrade is a re-subscription and a re-consent, not a header change.
+  header_versioning: false
+  media_type_versioning: false
+
+sandbox_convention:
+  style: separate basePath
+  pattern: '{product}_tryout'
+  reference: sandbox/mercedes-me-sandbox.yml
+
+error_envelope:
+  reference: errors/mercedes-me-problem-types.yml
+  rfc9457: false
+  shape: '{"errorMessage": string, "statusCode": string|integer, "message": string}'
+  inconsistency: statusCode is a string on 401 and an integer on 429 from the same gateway
+
+rate_limit_signaling:
+  reference: rate-limits/mercedes-me-rate-limits.yml
+  status_on_exhaustion: 429
+  retry_after_header: false
+  ratelimit_headers: false
+  signal: >-
+    Human-readable prose in the response body only — "Rate limit is exceeded. Try again in 58 seconds."
+    An agent must parse English to learn its backoff interval.
+
+content_negotiation:
+  produces: [application/json]
+  consumes: [application/json]
+  compression: not documented
+
+dry_run_mode:
+  supported: false
+  status: none
+  note: >-
+    No preview, validate-only or simulate parameter exists on any operation. The *_tryout sandbox basePath
+    is the closest equivalent, but it is a separate environment against synthetic data, not a dry run
+    against production state.
+
+reversibility:
+  grade: na
+  applies: partial
+  write_surface_present: true
+  assessment: >-
+    NA WITH ONE QUALIFICATION. Of 39 operations, 34 are reads. The five writes do not mutate durable,
+    reversible provider state in the way this dimension is meant to measure — four are asynchronous
+    diagnostic READOUT requests (POST .../dtcReadouts, .../dtcSnapshotReadouts, .../ecuReadouts,
+    .../resourceReadouts) which create a job that reads from the vehicle and returns data, and the fifth
+    creates a shareable configuration online code. None of them takes money, changes a customer record,
+    dispatches a vehicle command or transfers anything.
+  write_operations:
+    - operationId: getDtcDataListByEcuUsingPOST
+      path: /vehicles/{vehicleId}/dtcReadouts
+      effect: creates an asynchronous DTC readout job
+      reversal_operation: null
+      reversal_window: null
+      note: >-
+        No cancel, abort or delete operation is published for a readout in flight. The contract declares
+        202 Accepted but no job-cancellation path.
+    - operationId: getDtcSnapshotReadoutsUsingPOST
+      path: /vehicles/{vehicleId}/ecuId/{ecuId}/dtcId/{dtcId}/dtcSnapshotReadouts
+      effect: creates an asynchronous DTC-snapshot readout job
+      reversal_operation: null
+      reversal_window: null
+    - operationId: getEcuDataListByVehicleIdUsingPOST
+      path: /vehicles/{vehicleId}/ecuReadouts
+      effect: creates an asynchronous ECU readout job
+      reversal_operation: null
+      reversal_window: null
+    - operationId: getResourceReadoutsUsingPOST
+      path: /vehicles/{vehicleId}/resourceReadouts
+      effect: creates an asynchronous resource readout job
+      reversal_operation: null
+      reversal_window: null
+    - operationId: onlineCodePOST
+      path: /markets/{marketId}/onlinecode
+      effect: persists a vehicle configuration and returns a shareable online code
+      reversal_operation: null
+      reversal_window: null
+      note: >-
+        No DELETE and no expiry is published for an online code. Mercedes-Benz does not state how long a
+        saved configuration lives or whether it can be revoked, so we record no window — asserting one
+        would be an invention.
+  out_of_scope_but_material: >-
+    The connected-vehicle product family DOES have a genuinely irreversible write surface — the
+    mb:vehicle:action:doors and mb:vehicle:action:general OAuth scopes actuate remote door lock/unlock
+    on a real car, and the Fleet API sells Remote Door Lock and Unlock Commands, Remote Preconditioning
+    and Remote Charging Management as activatable command packages. Mercedes-Benz publishes NO OpenAPI
+    for any of it, so there is no operationId to bind and no published reversal window to record. That
+    absence is the finding: the highest-consequence actions in this estate are the ones with no
+    machine-readable contract at all.
+  evidence:
+    - url: https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api
+      status: 200
+      note: lists Remote Door Lock and Unlock Commands among the activatable remote-command packages
+    - url: https://id.mercedes-benz.com/.well-known/openid-configuration
+      status: 200
+      note: publishes mb:vehicle:action:doors and mb:vehicle:action:general as production OAuth scopes
+
+cross_links:
+  errors: errors/mercedes-me-problem-types.yml
+  lifecycle: lifecycle/mercedes-me-lifecycle.yml
+  authentication: authentication/mercedes-me-authentication.yml
+  scopes: scopes/mercedes-me-scopes.yml
+  rate_limits: rate-limits/mercedes-me-rate-limits.yml
+  sandbox: sandbox/mercedes-me-sandbox.yml
+  data_model: data-model/mercedes-me-data-model.yml

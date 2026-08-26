@@ -1,0 +1,251 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  Derived from the 109 `definitions` and the path structure of the four provider-published Swagger 2.0
+  documents in openapi/_original/ (Car Configurator, Dealer, Vehicle Images, Remote Diagnostic Support) and
+  their eleven refined per-tag descendants in openapi/. Relationships come from $ref links between
+  definitions and from path-nesting; nothing was inferred from marketing copy.
+description: >-
+  The Mercedes-Benz public API data model is three loosely-coupled graphs sharing one identifier concept.
+  The configurator graph is keyed by a market/model/configuration triple, the diagnostics graph is keyed by
+  vehicleId, and the imagery graph is keyed by FIN/VIN. There is no single root entity and no cross-graph
+  reference — the three products do not link to one another.
+identifiers:
+  - id: finorvin
+    name: FIN / VIN
+    description: >-
+      Vehicle Identification Number (FIN is the Mercedes-Benz term). The path key for the Vehicle Images
+      API and the customer-vehicle key for the whole connected-vehicle family.
+    format: opaque string, 17 characters in practice
+    used_by: [Vehicle Images API, Components, Perspectives, connected-vehicle products]
+  - id: vehicleId
+    name: vehicleId
+    description: The Remote Diagnostic Support key for a vehicle.
+    used_by: [Remote Diagnostic Support API]
+    note: >-
+      Published as a separate parameter name from finorvin. Mercedes-Benz does not state in the contract
+      whether the two are the same value, which is a real interoperability gap between its own products.
+  - id: marketId
+    name: marketId
+    description: Country/market scope for all configurator reference data. Prefixes every configurator path.
+  - id: modelId
+    name: modelId
+    description: Vehicle model within a market.
+  - id: configurationId
+    name: configurationId
+    description: A specific vehicle configuration within a model.
+  - id: onlineCode
+    name: onlineCode
+    description: Shareable handle for a saved configuration.
+  - id: dealerId
+    name: dealerId
+  - id: ecuId
+    name: ecuId
+    description: Electronic Control Unit identifier within a vehicle.
+  - id: dtcId
+    name: dtcId
+    description: Diagnostic Trouble Code identifier within an ECU.
+entities:
+  - name: Market
+    domain: configurator
+    root: true
+    operations: [marketsGET, marketGET]
+  - name: Country
+    domain: dealer
+    root: true
+    operations: [countriesGET]
+  - name: VehicleClass
+    domain: configurator
+    operations: [classesGET, classGET]
+  - name: VehicleBody
+    domain: configurator
+    operations: [bodiesGET, bodyGET]
+  - name: ProductGroup
+    domain: configurator
+    operations: [productGroupsGET]
+  - name: VehicleModel
+    domain: configurator
+    operations: [modelsGET, modelGET]
+  - name: VehicleConfiguration
+    domain: configurator
+    operations: [modelConfigurationsGET, modelConfigurationGET, modelConfigurationSelectablesGET, modelConfigurationAlternativesGET]
+  - name: VehicleComponent
+    domain: configurator
+    operations: [modelConfigurationAlternativesGET, imageComponentsGET]
+  - name: VehicleComponentTree
+    domain: configurator
+  - name: PriceInformation
+    domain: configurator
+  - name: TechnicalInformation
+    domain: configurator
+  - name: Engine
+    domain: configurator
+  - name: OnlineCodeResponseBody
+    domain: configurator
+    operations: [onlineCodePOST, onlineCodeGET]
+  - name: Dealer
+    domain: dealer
+    operations: [dealersGET, dealerGET]
+  - name: Address
+    domain: dealer
+  - name: GeoCoordinates
+    domain: dealer
+  - name: Function
+    domain: dealer
+    description: A service function a dealer performs (sales, service, parts).
+  - name: FunctionOpeningHours
+    domain: dealer
+  - name: CommunicationChannels
+    domain: dealer
+  - name: BrandCode
+    domain: dealer
+  - name: ImageUrl
+    domain: images
+    operations: [imageVehicleGET, imageComponentsGET]
+  - name: EcuDataItem
+    domain: diagnostics
+    operations: [getEcuDataListByVehicleIdUsingPOST]
+  - name: DtcDataItem
+    domain: diagnostics
+    operations: [getDtcDataListByEcuUsingPOST]
+  - name: DtcSnapshotDataItem
+    domain: diagnostics
+    operations: [getDtcSnapshotReadoutsUsingPOST]
+  - name: ResourceDataItem
+    domain: diagnostics
+    operations: [getResourceReadoutsUsingPOST]
+relationships:
+  - from: Market
+    to: VehicleModel
+    type: has_many
+    via: path nesting /markets/{marketId}/models
+  - from: Market
+    to: VehicleClass
+    type: has_many
+    via: path nesting /markets/{marketId}/classes
+  - from: Market
+    to: VehicleBody
+    type: has_many
+    via: path nesting /markets/{marketId}/bodies
+  - from: Market
+    to: ProductGroup
+    type: has_many
+    via: path nesting /markets/{marketId}/productgroups
+  - from: VehicleModel
+    to: VehicleClass
+    type: has_one
+    via: $ref field vehicleClass
+  - from: VehicleModel
+    to: VehicleBody
+    type: has_one
+    via: $ref field vehicleBody
+  - from: VehicleModel
+    to: ProductGroup
+    type: has_one
+    via: $ref field productGroup
+  - from: VehicleModel
+    to: PriceInformation
+    type: has_one
+    via: $ref field priceInformation
+  - from: VehicleModel
+    to: VehicleConfiguration
+    type: has_many
+    via: path nesting /models/{modelId}/configurations
+  - from: VehicleConfiguration
+    to: VehicleComponent
+    type: has_many
+    via: $ref array field vehicleComponents[]
+  - from: VehicleConfiguration
+    to: PriceInformation
+    type: has_one
+    via: $ref fields configurationPrice and initialPrice
+  - from: VehicleConfiguration
+    to: TechnicalInformation
+    type: has_one
+    via: $ref field technicalInformation
+  - from: VehicleConfiguration
+    to: ImageUrl
+    type: has_many
+    via: path nesting /configurations/{configurationId}/images/*
+  - from: VehicleComponent
+    to: VehicleComponentType
+    type: has_one
+    via: $ref field componentType
+  - from: VehicleComponent
+    to: PriceInformation
+    type: has_one
+    via: $ref field priceInformation
+  - from: VehicleComponentTree
+    to: VehicleComponentCategory
+    type: has_many
+    via: $ref array field componentCategories[]
+  - from: VehicleConfiguration
+    to: OnlineCodeResponseBody
+    type: has_one
+    via: onlineCodePOST persists a configuration and returns its onlineCode
+  - from: Dealer
+    to: Address
+    type: has_one
+    via: $ref field address
+  - from: Dealer
+    to: GeoCoordinates
+    type: has_one
+    via: $ref field geoCoordinates
+  - from: Dealer
+    to: Function
+    type: has_many
+    via: $ref array field functions[]
+  - from: Dealer
+    to: FunctionOpeningHours
+    type: has_many
+    via: $ref array field openingHours[]
+  - from: Dealer
+    to: CommunicationChannels
+    type: has_one
+    via: $ref field communication
+  - from: Dealer
+    to: BrandCode
+    type: has_many
+    via: $ref array field brandCodes[]
+  - from: Dealer
+    to: RegionRepresentation
+    type: has_one
+    via: $ref field region
+  - from: Country
+    to: Dealer
+    type: has_many
+    via: dealer search is filtered by country
+  - from: Engine
+    to: FuelType
+    type: has_one
+    via: $ref fields fuelType and alternativeFuelType
+  - from: Engine
+    to: FuelEconomy
+    type: has_one
+    via: $ref field fuelEconomy
+  - from: Vehicle (by vehicleId)
+    to: EcuDataItem
+    type: has_many
+    via: POST /vehicles/{vehicleId}/ecuReadouts
+  - from: EcuDataItem
+    to: DtcDataItem
+    type: has_many
+    via: path nesting /vehicles/{vehicleId}/ecuId/{ecuId}/...
+  - from: DtcDataItem
+    to: DtcSnapshotDataItem
+    type: has_many
+    via: path nesting .../dtcId/{dtcId}/dtcSnapshotReadouts
+emission_models:
+  note: >-
+    The configurator model carries BOTH the NEDC and the WLTP European emissions/consumption schema
+    families as separate definition trees (Nedc, NedcAmount, NedcConsumption, NedcEmission, NedcGear and
+    Wltp, WltpAmount, WltpConsumption, WltpEmission, WltpGear). That is a regulatory data model, not a
+    Mercedes-Benz invention, and it is the closest thing in this contract to a domain standard.
+graph_disconnection:
+  finding: >-
+    The three graphs share no foreign key. A caller holding a configurationId cannot reach a Dealer, and a
+    caller holding a vehicleId cannot reach a VehicleConfiguration. The Vehicle Images API is keyed by
+    finorvin while Remote Diagnostic Support is keyed by vehicleId and the configurator by
+    market/model/configuration — three different vehicle identities across one vendor's estate.
+schema_count: 109
+render: null

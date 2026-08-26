@@ -1,0 +1,105 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  Derived from the eleven refined OpenAPI documents in openapi/, the four provider-published Swagger 2.0
+  originals in openapi/_original/, the product list in apis.yml, the OAuth scope list probed from
+  https://id.mercedes-benz.com/.well-known/openid-configuration, and live probes for a status page.
+description: >-
+  Mercedes-Benz versions its APIs by shipping each major version as a separate developer-portal PRODUCT
+  with its own OAuth scope, rather than by versioning one product. That is visible in the identity
+  provider's own scope list and it is the single most consequential lifecycle fact about this estate.
+versioning:
+  scheme: uri-path-major
+  pattern: 'https://api.mercedes-benz.com/{product}/v{major}/...'
+  current:
+    - product: Car Configurator API
+      version: v1
+      spec_info_version: '1.0'
+    - product: Dealer API
+      version: v1
+      spec_info_version: '1.0'
+    - product: Vehicle Images API
+      version: v1
+      spec_info_version: '1.0'
+    - product: Remote Diagnostic Support API
+      version: v1
+      spec_info_version: '1.0'
+    - product: Electric Vehicle Status API
+      version: v3
+      evidence: >-
+        developer.mercedes-benz.com/products/electric_vehicle_status_3 is the product URL, and
+        mb:vehicle:mbdata:evstatus3.0 is a live scope on the production identity provider.
+    - product: Pay As You Drive Insurance API
+      version: '2.0'
+      evidence: mb:vehicle:mbdata:payasyoudrive2.0 is a live scope on the production identity provider.
+  version_as_product:
+    observed: true
+    evidence_scopes:
+      - mb:vehicle:mbdata:evstatus
+      - mb:vehicle:mbdata:evstatus2.0
+      - mb:vehicle:mbdata:evstatus3.0
+      - mb:vehicle:mbdata:payasyoudrive
+      - mb:vehicle:mbdata:payasyoudrive2.0
+      - mb:vehicle:mbdata:vehiclestatus
+      - mb:vehicle:mbdata:vehiclestatus15
+    consequence: >-
+      Because each major version is its own product with its own scope, moving from EV Status v2 to v3 is
+      a new subscription AND a new customer consent grant — not a client change. Every end user must
+      re-consent. That is a materially higher migration cost than a header or path bump, and Mercedes-Benz
+      publishes no migration guide for it that we could read.
+  simultaneous_versions_live: true
+  note: >-
+    v1, v2.0 and v3.0 EV Status scopes are all still provisioned on the production identity provider, so
+    older versions are still callable. Nothing published states for how long.
+deprecation:
+  policy_published: false
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  evidence: >-
+    No operation in any published spec carries `deprecated: true`. No Sunset or Deprecation response header
+    is declared anywhere. No deprecation policy page was reachable — the developer portal returns a
+    client-rendered shell for every path.
+  finding: >-
+    Older product versions are left provisioned rather than formally deprecated. An integrator on EV Status
+    v1 has no published signal telling them when it will stop working.
+sla:
+  published: false
+  note: >-
+    No public SLA. Availability commitments for the Fleet API and connected-vehicle products are contracted
+    with Mercedes-Benz Connectivity Services GmbH per partner.
+status_page:
+  present: false
+  probes:
+    - url: https://status.mercedes-benz.com/
+      status: 'no response — host does not resolve (NXDOMAIN)'
+    - url: https://developer.mercedes-benz.com/status
+      status: 200
+      result: SPA shell, identical to the shell served for a path that does not exist — not a status page
+  finding: >-
+    Mercedes-Benz operates a self-service API platform with no public status page. A partner cannot
+    distinguish a platform incident from their own fault without opening a support ticket.
+support:
+  channel: developer-portal support ticket
+  url: https://developer.mercedes-benz.com/support
+  note: >-
+    Ticketing is inside the authenticated portal. There is no public issue tracker, no public forum and no
+    public mailing list for the API platform.
+open_source_signals:
+  github_org: https://github.com/mercedes-benz
+  first_party_api_sdks:
+    - repo: MBSDK-Mobile-iOS
+      archived: true
+      last_push: '2021-07-22'
+    - repo: MBSDK-Mobile-Android
+      archived: true
+      last_push: '2021-07-22'
+    - repo: MBSDK-community-support
+      archived: true
+      last_push: '2020-10-21'
+  finding: >-
+    Every Mercedes-Benz mobile SDK repository is ARCHIVED and has not been pushed since 2021, while the APIs
+    they wrap are still sold. The only non-archived first-party integration repository is
+    kafka-integration-samples (v1.0.0, released 2024-07-03).

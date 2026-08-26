@@ -1,3 +1,24 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  Live unauthenticated probes of https://api.mercedes-benz.com on 2026-08-26 (a real 429 was observed and
+  its body and headers recorded), plus the 429 responses declared on all 39 operations in the four
+  provider-published Swagger 2.0 documents in openapi/_original/. Mercedes-Benz publishes no rate-limit
+  reference page that we could read — the developer portal is a client-rendered SPA that returns an empty
+  HTML shell to any non-browser client.
+evidence:
+  - url: https://api.mercedes-benz.com/remotediagnostic/v1/vehicles
+    status: 429
+    body: '{ "statusCode": 429, "message": "Rate limit is exceeded. Try again in 58 seconds." }'
+  - url: https://api.mercedes-benz.com/configurator/v1/markets
+    status: 401
+    note: no RateLimit-* or Retry-After header present on the response
+limit_count: 0
+limit_count_note: >-
+  ZERO published numeric limits. Mercedes-Benz documents that a quota exists — 429 "Quota limit is
+  exceeded" is declared on every operation of every published spec — but publishes no requests-per-second,
+  per-minute or per-day figure for any product or tier. The only runtime number an integrator ever sees is
+  the seconds value inside the 429 message body.
 apiCommonsRateLimits: "0.1"
 provider:
   id: mercedes-me
@@ -37,24 +58,60 @@ policies:
       bodyDescription: Quota limit is exceeded
 
   - id: customer-consent-throttling
-    description: Connected-vehicle APIs (Vehicle Status, Fuel Status, EV Status, Vehicle Lock Status, PAYD)
-      are additionally throttled at the per-vehicle level to protect on-vehicle modems and avoid waking the
-      vehicle excessively. Limits are set by Mercedes-Benz operations and are not published.
+    description: >-
+      Connected-vehicle APIs (Vehicle Status, Fuel Status, EV Status, Vehicle Lock Status, PAYD) are
+      understood to be throttled per vehicle in addition to per key.
     enforcement: per-vehicle
     scope: per-vehicle-per-resource
     response:
       status: 429
+    verified: false
+    evidence: none
+    correction_note: >-
+      DOWNGRADED 2026-08-26. A previous round of this profile stated this policy as fact and gave a reason
+      for it ("to protect on-vehicle modems and avoid waking the vehicle excessively"). Mercedes-Benz
+      publishes no such statement that we could read, and there is no contract for these products to read
+      it from. The policy is retained as an unverified expectation, explicitly marked, rather than deleted
+      or left reading as a measurement.
 
   - id: kafka-push-throughput
-    description: Fleet API Kafka Push topics are sized per partner subscription. Throughput is not a typical
-      HTTP 429 — instead the Kafka consumer experiences lag or partition rebalancing if a partner cannot keep
-      up. No public quota number is published.
+    description: >-
+      Fleet API Kafka Push topics are sized per partner subscription. Back-pressure on a streaming channel
+      surfaces as consumer lag or partition rebalancing rather than as an HTTP 429. No public quota number
+      is published.
     enforcement: per-tenant
     scope: kafka-topic
     response:
       status: n/a
       bodyDescription: Kafka consumer lag / rebalance
+    verified: false
+    evidence: none
+    correction_note: >-
+      DOWNGRADED 2026-08-26. Retained as an unverified expectation about Kafka semantics in general, not as
+      a measurement of what Mercedes-Benz publishes. Mercedes-Benz publishes no Fleet API throughput figure.
 
+observed_live:
+  probed: '2026-08-26'
+  request: 'GET https://api.mercedes-benz.com/remotediagnostic/v1/vehicles (unauthenticated)'
+  status: 429
+  body: '{ "statusCode": 429, "message": "Rate limit is exceeded. Try again in 58 seconds." }'
+  finding: >-
+    The gateway rate-limits ANONYMOUS requests before it authenticates them, and it returns the retry
+    interval as ENGLISH PROSE inside the message string. An agent must parse a sentence to learn its
+    backoff. This was observed live; it is not in any Mercedes-Benz document.
+response_headers:
+  retry_after: false
+  ratelimit_limit: false
+  ratelimit_remaining: false
+  ratelimit_reset: false
+  x_ratelimit_family: false
+  checked: >-
+    Response headers inspected on live 401 and 429 responses from https://api.mercedes-benz.com on
+    2026-08-26. No Retry-After, no RateLimit-*, no X-RateLimit-* header was present on either.
+  consequence: >-
+    This is the single most agent-hostile property of the estate. Every published operation declares a 429,
+    and none of them gives a machine a number. A well-behaved client cannot compute a backoff from headers;
+    it must regex an English sentence out of a JSON message field.
 notes:
   - All four published Swagger specs explicitly document `429 Quota limit is exceeded` as a response on every
     operation, demonstrating consistent platform-wide quota enforcement.

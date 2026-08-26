@@ -130,7 +130,7 @@ apis:
   name: Mercedes-Benz Mercedes me Components API
   description: The Components API from Mercedes-Benz Mercedes me — 7 operation(s) for components.
   humanURL: https://developer.mercedes-benz.com/products/configurator
-  baseURL: https://api.mercedes-benz.com/configurator/v1
+  baseURL: https://api.mercedes-benz.com/image/v1/vehicles
   tags:
   - Components
   properties:
@@ -152,6 +152,8 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-components-overlay.yaml
 - aid: mercedes-me:mercedes-me-configurations-api
   name: Mercedes-Benz Mercedes me Configurations API
   description: Select equipment and configure a car
@@ -178,13 +180,15 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-configurations-overlay.yaml
 - aid: mercedes-me:mercedes-me-dealer-search-api
   name: Mercedes-Benz Mercedes me Dealer search API
   description: >-
     Resources that provide search functions for dealers (dealer, garage, retailer, etc.) based on given
     attributes.
   humanURL: https://developer.mercedes-benz.com/products/configurator
-  baseURL: https://api.mercedes-benz.com/configurator/v1
+  baseURL: https://api.mercedes-benz.com/dealer/v1
   tags:
   - Dealer search
   properties:
@@ -206,11 +210,13 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-dealer-search-overlay.yaml
 - aid: mercedes-me:mercedes-me-diagnostic-trouble-code-dtc-snapshots-api
   name: Mercedes-Benz Mercedes me Diagnostic Trouble Code (DTC) Snapshots API
   description: Remote Diagnostic Support service for view dtc snapshot List.
   humanURL: https://developer.mercedes-benz.com/products/configurator
-  baseURL: https://api.mercedes-benz.com/configurator/v1
+  baseURL: https://api.mercedes-benz.com/remotediagnostic/v1
   tags:
   - Diagnostic Trouble Code (DTC) Snapshots
   properties:
@@ -232,11 +238,13 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-diagnostic-trouble-code-dtc-snapshots-overlay.yaml
 - aid: mercedes-me:mercedes-me-diagnostic-trouble-codes-dtc-s-api
   name: Mercedes-Benz Mercedes me Diagnostic Trouble Codes (DTC's) API
   description: Remote Diagnostic Support service for view dtc List.
   humanURL: https://developer.mercedes-benz.com/products/configurator
-  baseURL: https://api.mercedes-benz.com/configurator/v1
+  baseURL: https://api.mercedes-benz.com/remotediagnostic/v1
   tags:
   - Diagnostic Trouble Codes (DTC's)
   properties:
@@ -258,11 +266,13 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-diagnostic-trouble-codes-dtc-s-overlay.yaml
 - aid: mercedes-me:mercedes-me-electronical-control-units-ecu-s-api
   name: Mercedes-Benz Mercedes me Electronical Control Units (ECU's) API
   description: Remote Diagnostic Support services for view ecu List.
   humanURL: https://developer.mercedes-benz.com/products/configurator
-  baseURL: https://api.mercedes-benz.com/configurator/v1
+  baseURL: https://api.mercedes-benz.com/remotediagnostic/v1
   tags:
   - Electronical Control Units (ECU's)
   properties:
@@ -284,6 +294,8 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-electronical-control-units-ecu-s-overlay.yaml
 - aid: mercedes-me:mercedes-me-images-api
   name: Mercedes-Benz Mercedes me Images API
   description: Get images for the vehicle configuration and its components
@@ -312,11 +324,13 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-images-overlay.yaml
 - aid: mercedes-me:mercedes-me-perspectives-api
   name: Mercedes-Benz Mercedes me Perspectives API
   description: The Perspectives API from Mercedes-Benz Mercedes me — 1 operation(s) for perspectives.
   humanURL: https://developer.mercedes-benz.com/products/configurator
-  baseURL: https://api.mercedes-benz.com/configurator/v1
+  baseURL: https://api.mercedes-benz.com/image/v1/vehicles
   tags:
   - Perspectives
   properties:
@@ -338,6 +352,8 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-perspectives-overlay.yaml
 - aid: mercedes-me:mercedes-me-references-api
   name: Mercedes-Benz Mercedes me References API
   description: Provide static reference data about cars like markets, bodies, classes, etc.
@@ -364,11 +380,13 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-references-overlay.yaml
 - aid: mercedes-me:mercedes-me-resources-api
   name: Mercedes-Benz Mercedes me Resources API
   description: Remote Diagnostic Support service for view all resources.
   humanURL: https://developer.mercedes-benz.com/products/configurator
-  baseURL: https://api.mercedes-benz.com/configurator/v1
+  baseURL: https://api.mercedes-benz.com/remotediagnostic/v1
   tags:
   - Resources
   properties:
@@ -390,6 +408,8 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-resources-overlay.yaml
 - aid: mercedes-me:mercedes-me-saved-configurations-api
   name: Mercedes-Benz Mercedes me Saved configurations API
   description: Store and load configurations with an onlinecode
@@ -416,7 +436,32 @@ apis:
     url: https://developer.mercedes-benz.com/products/remote_diagnostic_support
   - type: JSONSchema
     url: json-schema/mercedes-me-dtc-readout-schema.json
+  - type: Overlay
+    url: overlays/mercedes-me-saved-configurations-overlay.yaml
+
 name: Mercedes-Benz Mercedes me
+description: >-
+  Mercedes-Benz operates one of the few genuinely public OEM API platforms. Its /developers portal at
+  developer.mercedes-benz.com sells connected-vehicle data as individually-subscribable products —
+  Vehicle Status, Vehicle Lock Status, Fuel Status, Electric Vehicle Status and Pay As You Drive — each
+  gated by its own OAuth 2.0 scope and each requiring the vehicle owner's explicit per-signal consent,
+  granted through the Mercedes-Benz identity provider at id.mercedes-benz.com. Alongside them sit four
+  content and service APIs with published Swagger 2.0 contracts: the Car Configurator, the Dealer API,
+  the Vehicle Images API and Remote Diagnostic Support. Mercedes-Benz Connectivity Services GmbH sells
+  the Fleet API separately, pairing a REST management surface with a managed Apache Kafka push channel
+  that streams nineteen activatable telemetry packages plus five remote-command packages, including
+  remote door lock and unlock. Every API is versioned by URI path and shipped with a *_tryout sandbox
+  base path on the same host.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
+    url: https://apievangelist.com
+    role: profile-maintainer
+    note: >-
+      This profile is maintained by API Evangelist, not by Mercedes-Benz. Mercedes-Benz publishes no
+      maintainer contact for its API platform; support is a ticket inside the authenticated portal.
+created: '2025-05-25'
+modified: '2026-08-26'
 tags:
   - Automotive
   - Connected Car
@@ -486,9 +531,6 @@ common:
   - type: Connectivity
     url: https://connectivity.mercedes-benz.com/
     name: Mercedes-Benz Connectivity Services
-  - type: Connectivity
-    url: https://data.mercedes-benz.com/
-    name: Mercedes-Benz Business Solutions Data
   - type: LinkedIn
     url: https://www.linkedin.com/company/mercedes-benz-ag/
     name: Mercedes-Benz AG on LinkedIn
@@ -519,6 +561,54 @@ common:
   - type: FinOps
     url: finops/mercedes-me-finops.yml
     name: Mercedes me FinOps Alignment
+  - type: WellKnown
+    url: well-known/mercedes-me-well-known.yml
+    name: Well-Known Document Probe
+  - type: Authentication
+    url: authentication/mercedes-me-authentication.yml
+    name: Authentication Profile
+  - type: OAuthScopes
+    url: scopes/mercedes-me-scopes.yml
+    name: OAuth Scopes (probed from the Mercedes-Benz identity provider)
+  - type: Security
+    url: security/mercedes-me-vulnerability-disclosure.yml
+    name: Vulnerability Disclosure Programme
+  - type: Conventions
+    url: conventions/mercedes-me-conventions.yml
+    name: Runtime Conventions and Reversibility
+  - type: ErrorCatalog
+    url: errors/mercedes-me-problem-types.yml
+    name: Error Catalogue
+  - type: Lifecycle
+    url: lifecycle/mercedes-me-lifecycle.yml
+    name: Versioning and Lifecycle
+  - type: Conformance
+    url: conformance/mercedes-me-conformance.yml
+    name: Standards Conformance
+  - type: DataModel
+    url: data-model/mercedes-me-data-model.yml
+    name: Data Model
+  - type: Sandbox
+    url: sandbox/mercedes-me-sandbox.yml
+    name: Sandbox (tryout base paths)
+  - type: Packages
+    url: packages/mercedes-me-packages.yml
+    name: Client Library Inventory
+  - type: SDKs
+    url: packages/mercedes-me-packages.yml
+    name: First-party SDK inventory (all twelve MBSDK repositories archived since 2021)
+  - type: AgentSkill
+    url: skills/_index.yml
+    name: Agent Skills
+  - type: LLMsTxt
+    url: llms/mercedes-me-llms.txt
+    name: llms.txt (generated by API Evangelist)
+  - type: MCPCandidate
+    url: mcp/mercedes-me-mcp.yml
+    name: MCP Tool Candidate (Mercedes-Benz ships no MCP server)
+  - type: EventCatalog
+    url: asyncapi/mercedes-me-fleet-event-catalog.yml
+    name: Fleet API Kafka Event Surface (no AsyncAPI published)
 features:
   - type: APIPlatform
     name: Self-Service Developer Portal
@@ -628,3 +718,8 @@ solutions:
     description: >-
       The Fleet API replaces aftermarket telematics dongles with native, OEM-grade telemetry streamed via Kafka, sold as
       a managed service.
+x-enrichment:
+  date: '2026-08-26'
+  status: enriched
+  artifacts_added: 31
+  pass: local-v1

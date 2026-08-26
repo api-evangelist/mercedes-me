@@ -1,0 +1,143 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  Direct unauthenticated HTTP probes of every host named in apis.yml (developer.mercedes-benz.com,
+  api.mercedes-benz.com, connectivity.mercedes-benz.com, www.mercedes-benz.com) plus the
+  Mercedes-Benz customer identity provider id.mercedes-benz.com, which is the OAuth 2.0
+  authorization server the connected-vehicle APIs authenticate against.
+description: >-
+  Mercedes-Benz serves NO /.well-known documents from its developer portal or its API gateway.
+  developer.mercedes-benz.com is a client-rendered single-page application that answers HTTP 200
+  with the same ~4.3 KB HTML shell for every path, including paths that do not exist — so a 200
+  there is a soft-404, not a document. api.mercedes-benz.com answers 401 "No credentials provided"
+  for every /.well-known path. The one real hit in the estate is the Mercedes-Benz identity
+  provider id.mercedes-benz.com, which publishes a complete OpenID Connect discovery document
+  and an OAuth 2.0 authorization-server metadata document. Those two files are the authoritative,
+  provider-published source for every OAuth scope, endpoint and grant type used by the
+  Mercedes-Benz connected-vehicle APIs, and they are saved verbatim here.
+hosts:
+  - host: id.mercedes-benz.com
+    note: >-
+      Mercedes-Benz customer identity provider (PingFederate). Issuer https://id.mercedes-benz.com.
+      This is the authorization server behind the Mercedes-Benz OAuth 2.0 customer-consent flow
+      used by Vehicle Status, Fuel Status, Electric Vehicle Status, Vehicle Lock Status and
+      Pay As You Drive — the scopes_supported list in the saved document contains the exact
+      mb:vehicle:* scope strings those products require.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: mercedes-me-id-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: mercedes-me-id-oauth-authorization-server.json
+  - host: developer.mercedes-benz.com
+    note: >-
+      Every path returns HTTP 200 with an identical client-rendered SPA shell — verified by
+      diffing /products/vehicle_status against /zzz-not-a-real-page-xyz, which differ only in the
+      og:url meta tag. These are soft-404s, not documents. robots.txt additionally disallows
+      /console/, /api/, /config/ and /ciam/, so the portal's own spec-serving API was not probed.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+      - path: /.well-known/api-catalog
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+      - path: /.well-known/agent.json
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+      - path: /llms.txt
+        status: 200
+        content_type: text/html
+        result: soft-404 (SPA shell, not a document)
+  - host: api.mercedes-benz.com
+    note: >-
+      API gateway. Returns 401 {"errorMessage":"Unauthorized","message":"No credentials provided"}
+      for every /.well-known path — the gateway requires an API key before routing.
+    documents:
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/openid-configuration
+        status: 401
+      - path: /.well-known/oauth-authorization-server
+        status: 401
+      - path: /.well-known/api-catalog
+        status: 401
+      - path: /.well-known/ai-plugin.json
+        status: 401
+      - path: /.well-known/agent-card.json
+        status: 401
+      - path: /.well-known/agent.json
+        status: 401
+      - path: /llms.txt
+        status: 401
+  - host: connectivity.mercedes-benz.com
+    note: Mercedes-Benz Connectivity Services GmbH product site. Clean 404s on every path.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: www.mercedes-benz.com
+    note: >-
+      Corporate site behind an Akamai edge policy that answers 403 "Access Denied" to our probe
+      regardless of User-Agent. This is a bot policy, not a statement that the documents are absent.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+      - path: /llms.txt
+        status: 403
+findings:
+  security_txt: absent — no host in the estate serves an RFC 9116 security.txt
+  api_catalog: absent — no host serves an RFC 9727 /.well-known/api-catalog
+  agent_card: absent — no A2A agent card on any host (all responses were SPA shells, 401s, 404s or 403s)
+  ai_plugin: absent
+  openid_configuration: >-
+    PRESENT on id.mercedes-benz.com. Saved verbatim. Contains 82 scopes_supported including the
+    connected-vehicle scopes, PKCE S256, pushed authorization requests, CIBA, token exchange and
+    mutual-TLS client authentication.

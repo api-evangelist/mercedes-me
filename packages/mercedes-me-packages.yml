@@ -1,0 +1,231 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  GitHub REST API queries against the github.com/mercedes-benz organisation (repos, releases, tags),
+  registry metadata lookups against registry.npmjs.org, search.maven.org and pypi.org, and the SDK links
+  already recorded in apis.yml.
+description: >-
+  Mercedes-Benz publishes NO first-party client library for its public APIs to ANY package registry.
+  Every Mercedes-Benz mobile SDK is distributed as a GitHub repository only, and every one of those
+  repositories is ARCHIVED with no push since 2021 — while the APIs they wrap are still being sold. That
+  is the strongest decay signal available for this provider and it is provider-published and dated.
+registry_searches:
+  - registry: npm
+    query: 'mercedes-benz, scope:daimler'
+    result: >-
+      No API client library. The only first-party Mercedes-Benz packages on npm are the @daimler/ftk-*
+      MO360 Frontend Toolkit modules, which are a React/TypeScript UI toolkit and NOT a client for any
+      Mercedes-Benz API. Deliberately excluded from packages[] below rather than counted as an SDK.
+  - registry: maven-central
+    query: 'mbsdk, mercedes'
+    result: 'numFound 0 for mbsdk — the Android MBSDK modules were never published to Maven Central.'
+  - registry: pypi
+    query: mercedes
+    result: >-
+      No Mercedes-Benz API client. odxtools (authored by mbition.io engineers) is an ODX diagnostic-file
+      toolkit, not a client for these APIs. Excluded.
+  - registry: cocoapods
+    query: MBSDK
+    result: not probed — the iOS repositories were archived before a podspec release and carry no releases
+packages:
+  - name: MBSDK-Mobile-iOS
+    language: swift
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-Mobile-iOS
+    official: true
+    version: 3.0.0
+    published: null
+    published_note: >-
+      Version read from the repository's only git tag (3.0.0). GitHub publishes no dated release for it, so
+      the publish date is genuinely unknown rather than guessed. Last push to the repository: 2021-07-22.
+    archived: true
+    license: MIT
+    covers: Mercedes me customer/vehicle data, authentication, vehicle assignment, service activation
+    status: abandoned
+  - name: MBSDK-Mobile-Android
+    language: kotlin
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-Mobile-Android
+    official: true
+    version: null
+    published: null
+    published_note: >-
+      Checked GitHub releases and tags: both empty. There has never been a tagged or released version of
+      this SDK. Last push to the repository: 2021-07-22.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-CarKit-iOS
+    language: swift
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-CarKit-iOS
+    official: true
+    version: 2.0.0
+    published: null
+    published_note: Version read from the repository's only git tag. No dated release. Last push 2021-07-22.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-NetworkKit-iOS
+    language: swift
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-NetworkKit-iOS
+    official: true
+    version: 3.0.0
+    published: null
+    published_note: >-
+      Version read from the repository's only git tag (3.0.0). No dated GitHub release. Last push 2021-07-22.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-CommonKit-iOS
+    language: swift
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-CommonKit-iOS
+    official: true
+    version: 3.0.0
+    published: null
+    published_note: >-
+      Version read from the repository's only git tag (3.0.0). No dated GitHub release. Last push 2021-07-22.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-IngressKit-iOS
+    language: swift
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-IngressKit-iOS
+    official: true
+    version: 2.0.0
+    published: null
+    published_note: >-
+      Version read from the repository's only git tag (2.0.0). No dated GitHub release. Last push 2021-07-22.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-RealmKit-iOS
+    language: swift
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-RealmKit-iOS
+    official: true
+    version: 3.0.0
+    published: null
+    published_note: >-
+      Version read from the repository's only git tag (3.0.0). No dated GitHub release. Last push 2021-07-22.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-NetworkKit-Android
+    language: kotlin
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-NetworkKit-Android
+    official: true
+    version: null
+    published: null
+    published_note: No releases and no tags. Last push 2020-03-27.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-CommonKit-Android
+    language: kotlin
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-CommonKit-Android
+    official: true
+    version: null
+    published: null
+    published_note: No releases and no tags. Last push 2020-03-27.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-IngressKit-Android
+    language: kotlin
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-IngressKit-Android
+    official: true
+    version: null
+    published: null
+    published_note: No releases and no tags. Last push 2020-03-27.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-LoggerKit-Android
+    language: kotlin
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-LoggerKit-Android
+    official: true
+    version: null
+    published: null
+    published_note: No releases and no tags. Last push 2020-03-27.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: MBSDK-RealmKit-Android
+    language: kotlin
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/MBSDK-RealmKit-Android
+    official: true
+    version: null
+    published: null
+    published_note: No releases and no tags. Last push 2020-03-27.
+    archived: true
+    license: MIT
+    status: abandoned
+  - name: kafka-integration-samples
+    language: python
+    registry: none
+    distribution: github-source
+    repository: https://github.com/mercedes-benz/kafka-integration-samples
+    official: true
+    version: v1.0.0
+    published: '2024-07-03'
+    published_note: >-
+      Version and date read from the GitHub releases API. This is the ONLY non-archived, released,
+      first-party integration artifact in the Mercedes-Benz API estate.
+    archived: false
+    license: MIT
+    covers: >-
+      Sample Kafka consumers for the Mercedes-Benz Fleet API Push channel, including the OAuth 2.0
+      authentication a consumer needs.
+    status: maintained
+    kind: sample-code
+    official_sdk: false
+    note: >-
+      Marked official:true because Mercedes-Benz publishes it, but it is SAMPLE CODE, not a packaged
+      client library. There is no installable Fleet API client.
+excluded:
+  - name: '@daimler/ftk-core (and the other @daimler/ftk-* packages)'
+    registry: npm
+    version: 0.4.4
+    reason: >-
+      First-party Mercedes-Benz (MO360 Frontend Toolkit) but a React/TypeScript UI toolkit — not a client
+      for any Mercedes-Benz API. Counting it as an SDK would credit the provider with an API client it
+      does not ship.
+  - name: odxtools
+    registry: pypi
+    reason: >-
+      Authored by MBition engineers, but an ODX diagnostic-file toolkit, unrelated to the published APIs.
+  - name: disclosure-cli
+    registry: none
+    reason: >-
+      First-party Mercedes-Benz Go CLI (v0.8.3, 2025-12-29) but it targets the Mercedes-Benz FOSS
+      Disclosure Portal API, a different product from the API estate profiled here. Repository is archived.
+summary:
+  first_party_registry_packages: 0
+  first_party_repos: 13
+  archived_repos: 12
+  maintained_repos: 1
+  finding: >-
+    Twelve of thirteen first-party integration repositories are archived. Not one Mercedes-Benz API client
+    library is installable from npm, PyPI, Maven Central, NuGet, RubyGems, Packagist, crates.io or
+    pkg.go.dev. An integrator building against Mercedes-Benz today writes their own HTTP client.

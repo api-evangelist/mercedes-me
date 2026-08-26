@@ -1,0 +1,254 @@
+generated: '2026-08-26'
+method: probed
+source: https://id.mercedes-benz.com/.well-known/openid-configuration
+docs: https://developer.mercedes-benz.com/content-page/oauth-documentation
+evidence:
+  - url: https://id.mercedes-benz.com/.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    note: saved verbatim to well-known/mercedes-me-id-openid-configuration.json
+  - url: https://id.mercedes-benz.com/.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    note: saved verbatim to well-known/mercedes-me-id-oauth-authorization-server.json
+description: >-
+  The Mercedes-Benz connected-vehicle APIs authenticate against the Mercedes-Benz customer identity
+  provider at https://id.mercedes-benz.com (PingFederate). Its OpenID Connect discovery document is
+  public and unauthenticated, and it publishes the complete scopes_supported list — 81 scopes, of
+  which 38 are Mercedes-Benz product scopes. This artifact records those scopes verbatim as probed,
+  together with the API product each scope string names. Mercedes-Benz publishes NO OpenAPI
+  securitySchemes for the connected-vehicle products (the four Swagger 2.0 documents in openapi/
+  carry no securityDefinitions at all), so the discovery document is the only machine-readable
+  scope reference the provider publishes.
+authorization_server:
+  issuer: https://id.mercedes-benz.com
+  authorization_endpoint: https://id.mercedes-benz.com/as/authorization.oauth2
+  token_endpoint: https://id.mercedes-benz.com/as/token.oauth2
+  revocation_endpoint: https://id.mercedes-benz.com/as/revoke_token.oauth2
+  introspection_endpoint: https://id.mercedes-benz.com/as/introspect.oauth2
+  userinfo_endpoint: https://id.mercedes-benz.com/idp/userinfo.openid
+  jwks_uri: https://id.mercedes-benz.com/pf/JWKS
+  registration_endpoint: https://id.mercedes-benz.com/as/clients.oauth2
+  pushed_authorization_request_endpoint_present: true
+  device_authorization_endpoint_present: true
+  end_session_endpoint_present: true
+  code_challenge_methods_supported: [plain, S256]
+  grant_types_supported:
+    - authorization_code
+    - refresh_token
+    - client_credentials
+    - implicit
+    - password
+    - urn:ietf:params:oauth:grant-type:jwt-bearer
+    - urn:ietf:params:oauth:grant-type:saml2-bearer
+    - urn:ietf:params:oauth:grant-type:device_code
+    - urn:ietf:params:oauth:grant-type:token-exchange
+    - urn:openid:params:grant-type:ciba
+    - urn:pingidentity.com:oauth2:grant_type:validate_bearer
+  token_endpoint_auth_methods_supported:
+    - client_secret_basic
+    - client_secret_post
+    - client_secret_jwt
+    - private_key_jwt
+    - tls_client_auth
+    - none
+scope_count: 81
+product_scope_count: 38
+scopes:
+  # --- Connected vehicle data products (the Mercedes me / connected-vehicle API family) ---
+  - scope: mb:vehicle:mbdata:vehiclestatus
+    product: Vehicle Status API
+    grants: Door, window, deck-lid, sunroof, tyre-pressure and overall lock state by VIN.
+    mapping_confidence: high
+    mapping_basis: scope string names the product (mbdata + vehiclestatus)
+  - scope: mb:vehicle:mbdata:vehiclestatus15
+    product: Vehicle Status API
+    grants: Extended Vehicle Status signal set (15-signal variant).
+    mapping_confidence: medium
+    mapping_basis: scope string names the product; the "15" suffix is not explained in any public Mercedes-Benz document we could read
+  - scope: mb:vehicle:mbdata:vehiclelock
+    product: Vehicle Lock Status API
+    grants: Door-lock, deck-lid and position-lock state by VIN.
+    mapping_confidence: high
+    mapping_basis: scope string names the product
+  - scope: mb:vehicle:mbdata:fuelstatus
+    product: Fuel Status API
+    grants: Tank level and remaining fuel range by VIN.
+    mapping_confidence: high
+    mapping_basis: scope string names the product
+  - scope: mb:vehicle:mbdata:evstatus
+    product: Electric Vehicle Status API (v1)
+    grants: State of charge, electric range and charge status.
+    mapping_confidence: high
+    mapping_basis: scope string names the product
+  - scope: mb:vehicle:mbdata:evstatus2.0
+    product: Electric Vehicle Status API (v2)
+    grants: v2 signal set, including remote charge control surface.
+    mapping_confidence: high
+    mapping_basis: scope string names the product and its version
+  - scope: mb:vehicle:mbdata:evstatus3.0
+    product: Electric Vehicle Status API (v3)
+    grants: v3 signal set — the version currently listed on the developer portal.
+    mapping_confidence: high
+    mapping_basis: scope string names the product and its version
+  - scope: mb:vehicle:mbdata:payasyoudrive
+    product: Pay As You Drive Insurance API (v1)
+    grants: Odometer reading and geographic position for usage-based insurance.
+    mapping_confidence: high
+    mapping_basis: scope string names the product
+  - scope: mb:vehicle:mbdata:payasyoudrive2.0
+    product: Pay As You Drive 2.0 API
+    grants: v2 odometer + position signal set.
+    mapping_confidence: high
+    mapping_basis: scope string names the product and its version
+  - scope: mb:vehicle:image
+    product: Vehicle Images API
+    grants: Vehicle and component imagery for a FIN/VIN or configuration.
+    mapping_confidence: high
+    mapping_basis: scope string names the product
+  - scope: mb:vehicle:rds:reader
+    product: Remote Diagnostic Support API
+    grants: Read access to DTC, DTC-snapshot, ECU and resource readouts. (rds = Remote Diagnostic Support.)
+    mapping_confidence: high
+    mapping_basis: acronym matches the product name and the readout operations in openapi/mercedes-me-*-readouts specs
+  - scope: mb:vehicle:rms:reader
+    product: unmapped
+    grants: Read scope on an "rms" vehicle service.
+    mapping_confidence: low
+    mapping_basis: no Mercedes-Benz public document we could read expands "rms"; recorded because it is published, not because we can attribute it
+  # --- Vehicle command / action scopes ---
+  - scope: mb:vehicle:action:doors
+    product: Remote door commands
+    grants: Remote lock/unlock of vehicle doors. WRITE scope — a safety-relevant actuation.
+    mapping_confidence: high
+    mapping_basis: scope string names the action
+  - scope: mb:vehicle:action:general
+    product: Remote vehicle commands (general)
+    grants: General remote-command surface. WRITE scope.
+    mapping_confidence: high
+    mapping_basis: scope string names the action
+  - scope: mb:vehicle:status:writer
+    product: Vehicle status write
+    grants: Write access to vehicle status. WRITE scope.
+    mapping_confidence: medium
+    mapping_basis: scope string names a writer role on vehicle status; no public reference page describes it
+  - scope: mb:vehicle:status:general
+    product: Vehicle status (general)
+    grants: General vehicle-status read scope. Commonly paired with mb:user:pool:reader in Mercedes-Benz OAuth examples.
+    mapping_confidence: medium
+    mapping_basis: scope string; pairing observed in third-party integration write-ups, not in a Mercedes-Benz reference page we could read
+  - scope: mb:vehicle:status:location
+    product: Vehicle location
+    grants: Vehicle geographic position.
+    mapping_confidence: high
+    mapping_basis: scope string names the signal
+  # --- Vehicle / user pool ---
+  - scope: mb:user:pool:reader
+    product: Vehicle pool
+    grants: Read the set of vehicles the consenting customer has assigned to the application.
+    mapping_confidence: high
+    mapping_basis: scope string
+  - scope: mb:user:cv_exp:reader
+    product: Connected-vehicle experience (read)
+    mapping_confidence: low
+    mapping_basis: scope string only
+  - scope: mb:vehicle:cv_exp:general
+    product: Connected-vehicle experience (general)
+    mapping_confidence: low
+    mapping_basis: scope string only
+  - scope: mb.vehicle
+    product: unmapped legacy scope
+    mapping_confidence: low
+    mapping_basis: dot-delimited legacy form; recorded verbatim as published
+  # --- EUDA (EU Data Act) vehicle-data categories ---
+  - scope: mb:vehicle:mbdata:euda:vehicleoperation
+    product: EU Data Act vehicle-data category — vehicle operation
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:vehicle:mbdata:euda:maintenancediagnostic
+    product: EU Data Act vehicle-data category — maintenance and diagnostics
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:vehicle:mbdata:euda:navigationpositioning
+    product: EU Data Act vehicle-data category — navigation and positioning
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:vehicle:mbdata:euda:bodyfeature
+    product: EU Data Act vehicle-data category — body features
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:vehicle:mbdata:euda:bodymountingwork
+    product: EU Data Act vehicle-data category — body mounting work (van upfitters)
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:vehicle:mbdata:euda:climatecomfort
+    product: EU Data Act vehicle-data category — climate and comfort
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:vehicle:mbdata:euda:energyconsumption
+    product: EU Data Act vehicle-data category — energy consumption
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:vehicle:mbdata:euda:infotainmentuserinteraction
+    product: EU Data Act vehicle-data category — infotainment user interaction
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  - scope: mb:wallbox:mbdata:euda:wallbox
+    product: EU Data Act data category — home wallbox charger
+    mapping_confidence: high
+    mapping_basis: 'the "euda" segment plus the category name'
+  # --- Adjacent Mercedes-Benz products ---
+  - scope: mb:digital:eqready:userdata
+    product: EQ Ready
+    mapping_confidence: medium
+    mapping_basis: scope string names the Mercedes-Benz EQ Ready app
+  - scope: mb:service:incardelivery
+    product: In-car delivery service
+    mapping_confidence: medium
+    mapping_basis: scope string names the service
+  - scope: mb:company-id
+    product: Company identifier claim
+    mapping_confidence: medium
+    mapping_basis: matches the company-id claim in claims_supported
+  - scope: mb:internal
+    product: internal
+    mapping_confidence: high
+    mapping_basis: not for third-party use — published in discovery but named internal
+  - scope: mb:rduhackathon
+    product: hackathon scope
+    mapping_confidence: high
+    mapping_basis: scope string; not a production product
+  - scope: oneapi:vehicle:light
+    product: OneAPI vehicle (light)
+    mapping_confidence: low
+    mapping_basis: scope string only
+  - scope: oneapi:testapi
+    product: OneAPI test
+    mapping_confidence: high
+    mapping_basis: test scope, not a production product
+  - scope: oneapi:nil
+    product: OneAPI placeholder
+    mapping_confidence: high
+    mapping_basis: placeholder scope
+standard_scopes:
+  - openid
+  - profile
+  - email
+  - phone
+  - address
+  - offline_access
+notes:
+  - >-
+    Scope-to-product mapping is stated with an explicit confidence on every row. Where Mercedes-Benz
+    publishes no readable reference for a scope string, the row says so rather than guessing —
+    the developer portal is a client-rendered SPA whose reference pages return an empty HTML shell
+    to any non-browser client, so the per-product scope tables could not be read.
+  - >-
+    The eleven Car Configurator / Dealer / Vehicle Images / Remote Diagnostic Support OpenAPI
+    documents in openapi/ authenticate with an API key, not OAuth — their 401 response description
+    reads "Failed to resolve API Key query parameter / Invalid API Key". The OAuth scopes above
+    apply to the connected-vehicle product family, which publishes no OpenAPI.
+  - >-
+    The presence of an mb:vehicle:mbdata:euda:* scope family is a substantive finding: Mercedes-Benz
+    has provisioned EU Data Act in-vehicle data categories as first-class OAuth scopes on its
+    production identity provider.

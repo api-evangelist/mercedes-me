@@ -1,0 +1,132 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  Derived from the 4xx/5xx responses declared across all 39 operations in the eleven refined OpenAPI
+  documents in openapi/ (originally four provider-published Swagger 2.0 documents in openapi/_original/).
+  Titles and remediation text are quoted verbatim from the specs' own response descriptions; nothing
+  was invented. The developer portal's error reference page could not be read — it is a client-rendered
+  SPA that returns an empty HTML shell to any non-browser client.
+format: vendor
+media_type: application/json
+rfc9457: false
+rfc9457_note: >-
+  Mercedes-Benz does NOT publish RFC 9457 / RFC 7807 problem+json. The gateway's own live 401 body is a
+  bespoke envelope — {"errorMessage":"Unauthorized","statusCode":"401","message":"No credentials provided"}
+  — and the specs model errors with an `ErrorResponse` / `Error` definition, not a problem document.
+  There is no `type` URI, no `instance`, and no registry of error identifiers.
+envelope:
+  observed_live:
+    example_from: 'GET https://api.mercedes-benz.com/configurator/v1/markets (unauthenticated, probed 2026-08-26)'
+    fields:
+      - name: errorMessage
+        type: string
+      - name: statusCode
+        type: string
+        note: returned as a STRING, not an integer — inconsistent with the 429 envelope below
+      - name: message
+        type: string
+  observed_live_rate_limit:
+    example_from: 'GET https://api.mercedes-benz.com/remotediagnostic/v1/vehicles (unauthenticated, probed 2026-08-26)'
+    fields:
+      - name: statusCode
+        type: integer
+        note: integer here, string in the 401 envelope — two different shapes from the same gateway
+      - name: message
+        type: string
+        example: 'Rate limit is exceeded. Try again in 58 seconds.'
+  declared_in_spec:
+    definitions: [ErrorResponse, Error, ImageError]
+problem_types:
+  - status: 400
+    occurrences: 24
+    title: Bad Request
+    detail: >-
+      "Invalid parameter was specified: * MarketId is not valid * ModelId is not valid"
+    remediation: Validate marketId and modelId against GET /markets and GET /markets/{marketId}/models before calling.
+    retryable: false
+  - status: 401
+    occurrences: 39
+    title: Unauthorized
+    detail: >-
+      "Unauthorized: * Failed to resolve API Key query parameter * Invalid API Key"
+    remediation: >-
+      Supply the API key issued for the subscribed product on developer.mercedes-benz.com. The spec does
+      NOT name the query parameter that carries it — that value is only documented on the portal.
+    retryable: false
+  - status: 402
+    occurrences: 4
+    title: Payment required
+    detail: Declared on the Remote Diagnostic Support operations.
+    remediation: >-
+      The subscription covering this product is not paid or not active. Contact Mercedes-Benz via the
+      developer portal support ticket flow.
+    retryable: false
+  - status: 403
+    occurrences: 4
+    title: Forbidden
+    detail: Declared on the Remote Diagnostic Support operations.
+    remediation: The credential is valid but not entitled to this vehicle or this operation.
+    retryable: false
+  - status: 404
+    occurrences: 36
+    title: Not Found
+    detail: >-
+      "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct."
+    remediation: Verify the FIN/VIN. Not every Mercedes-Benz vehicle is provisioned for every product.
+    retryable: false
+  - status: 406
+    occurrences: 4
+    title: Not Acceptable
+    detail: Declared on the Remote Diagnostic Support operations.
+    remediation: Request application/json; the APIs produce application/json only.
+    retryable: false
+  - status: 429
+    occurrences: 39
+    title: Quota limit is exceeded
+    detail: >-
+      Declared on EVERY operation in EVERY published spec. The live gateway body carries a human-readable
+      retry hint — "Rate limit is exceeded. Try again in 58 seconds." — but NO Retry-After header and no
+      RateLimit-* headers.
+    remediation: >-
+      Back off and retry after the interval named in the message body. See rate-limits/mercedes-me-rate-limits.yml.
+    retryable: true
+  - status: 500
+    occurrences: 39
+    title: Internal Server Error
+    detail: >-
+      "The requested FIN/VIN could not be resolved because external resources are not available or the
+      server encountered an internal error."
+    remediation: >-
+      Retry with backoff. This status conflates an upstream vehicle-connectivity failure with a server
+      fault, so a caller cannot tell a transient vehicle-offline condition from a platform outage.
+    retryable: true
+  - status: 501
+    occurrences: 4
+    title: Not Implemented
+    remediation: The requested Remote Diagnostic Support capability is not available for this vehicle.
+    retryable: false
+  - status: 503
+    occurrences: 4
+    title: Service Unavailable
+    remediation: Retry with backoff.
+    retryable: true
+  - status: 505
+    occurrences: 4
+    title: Version not supported
+    remediation: Call a supported API version path.
+    retryable: false
+non_error_notable:
+  - status: 204
+    occurrences: 24
+    title: No content
+    detail: >-
+      "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images
+      are available."
+    note: >-
+      204 is used as a semantic "known vehicle, nothing to return" signal distinct from 404. Agents must
+      handle it: an empty 204 is a valid, successful answer here, not a failure.
+gaps:
+  - No error code catalogue. Errors are identified by HTTP status alone — there is no stable machine-readable error identifier anywhere in the contract.
+  - No RFC 9457 problem+json.
+  - Two different envelope shapes observed live from the same gateway (statusCode as string on 401, as integer on 429).
+  - No request/correlation id in any documented error envelope, so a caller cannot quote an identifier when opening a support ticket.

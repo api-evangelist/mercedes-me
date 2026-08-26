@@ -1,0 +1,83 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  The `basePath` declared by each of the four provider-published Swagger 2.0 documents in
+  openapi/_original/ — every one of them ships pointing at a *_tryout base path, which is Mercedes-Benz's
+  own sandbox convention. Confirmed against the x-origin URL each spec carries
+  (developer.mercedes-benz.com/content/sites/default/files/.../swagger_*_api.json).
+description: >-
+  Mercedes-Benz ships a sandbox for every public API as a separate base path on the SAME host and with the
+  SAME credential type — a `_tryout` suffix on the product segment. It is not a separate key prefix, not a
+  test-mode flag, and not a header: it is a different URL. Notably, the OpenAPI documents Mercedes-Benz
+  publishes are the SANDBOX documents — every one declares the tryout base path, not the production one.
+mode: separate-base-path
+key_prefixes:
+  test: null
+  live: null
+  note: >-
+    Mercedes-Benz does not use distinguishable test/live key prefixes. The same developer-portal API key
+    format is used against both base paths; the environment is chosen by URL. An agent therefore cannot
+    tell from a credential whether it is pointed at synthetic or production data.
+environments:
+  - id: tryout
+    name: Tryout (sandbox)
+    host: api.mercedes-benz.com
+    base_paths:
+      - path: /configurator_tryout/v1
+        product: Car Configurator API
+        source: openapi/_original/mercedes-me-configurator-api-openapi.yml
+      - path: /dealer_tryout/v1
+        product: Dealer API
+        source: openapi/_original/mercedes-me-dealer-api-openapi.yml
+      - path: /image_tryout/v1/vehicles
+        product: Vehicle Images API
+        source: openapi/_original/mercedes-me-vehicle-images-api-openapi.yml
+      - path: /remotediagnostic_tryout/v1
+        product: Remote Diagnostic Support API
+        source: openapi/_original/mercedes-me-remote-diagnostic-support-api-openapi.yml
+    data: synthetic
+    auth: developer-portal API key
+    credentials_required: true
+    self_service: true
+    note: >-
+      Returns Mercedes-Benz-provided sample data. Does not return real customer vehicle data and does not
+      require customer consent.
+  - id: production
+    name: Production
+    host: api.mercedes-benz.com
+    base_paths:
+      - path: /configurator/v1
+        product: Car Configurator API
+      - path: /dealer/v1
+        product: Dealer API
+      - path: /image/v1/vehicles
+        product: Vehicle Images API
+      - path: /remotediagnostic/v1
+        product: Remote Diagnostic Support API
+    data: live
+    auth: developer-portal API key; connected-vehicle products additionally require OAuth customer consent
+    derivation_note: >-
+      The production base paths above are the tryout paths with the `_tryout` suffix removed. Mercedes-Benz
+      publishes no OpenAPI carrying a production base path, so this is a DERIVATION from the sandbox
+      convention, not a value read from a Mercedes-Benz document. It is recorded as derived for exactly
+      that reason.
+test_fixtures:
+  test_vins: null
+  test_cards: null
+  test_accounts: null
+  note: >-
+    Mercedes-Benz publishes no list of tryout FIN/VINs, test vehicles or fixture identifiers that we could
+    read. The developer portal's console is behind /console/, which robots.txt disallows, and its
+    documentation pages are client-rendered and return an empty shell to any non-browser client. This is a
+    real gap for agents: a caller cannot construct a working sandbox request without first driving a
+    browser session on the portal.
+time_simulation:
+  supported: false
+triggers:
+  supported: false
+console:
+  present: true
+  url: https://developer.mercedes-benz.com/console
+  note: >-
+    An in-portal try-it console exists per product. It is disallowed by the portal's own robots.txt
+    (Disallow: /console/), so it was not probed.
