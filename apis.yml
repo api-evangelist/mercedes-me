@@ -1,5 +1,17 @@
 aid: mercedes-me
 url: https://raw.githubusercontent.com/api-evangelist/mercedes-me/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 apis:
 - aid: mercedes-me:mercedes-me-vehicle-status-api
