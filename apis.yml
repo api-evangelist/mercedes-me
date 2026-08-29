@@ -501,6 +501,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mercedes-me.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/mercedes-me-capability-edges.yml
+    name: Mercedes-Benz Mercedes me Business Capability Map
   - type: AgenticAccess
     url: agentic-access/mercedes-me-agentic-access.yml
   - type: VulnerabilityDisclosure

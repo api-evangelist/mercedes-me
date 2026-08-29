@@ -1,0 +1,69 @@
+slug: mercedes-me
+provider: Mercedes-Benz Mercedes me
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Automotive & Mobility
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Diagnostic Trouble Code (DTC) Snapshots
+  spec_file: mercedes-me-diagnostic-trouble-code-dtc-snapshots-api-openapi.yml
+  capability_id: BC-3450.40
+  capability_id_l1: BC-3450
+  capability_name: Vehicle Diagnostic and Telematics Service Operations
+  confidence: 0.85
+  evidence: POST /vehicles/{vehicleId}/ecuId/{ecuId}/dtcId/{dtcId}/dtcSnapshotReadouts — "View the List
+    of Dtc Snapshot for Specific vehicleId"; schemas DtcSnapshotDataItem, DtcSnapshotDataContainer
+  reason: Retrieves freeze-frame diagnostic trouble code snapshot readouts per ECU from a specific vehicle
+    — OEM remote diagnostic data supporting service and dealer diagnostics. The 'Car Configurator' title
+    is a refine artefact; the operation wins.
+- tag: Diagnostic Trouble Codes (DTC's)
+  spec_file: mercedes-me-diagnostic-trouble-codes-dtc-s-api-openapi.yml
+  capability_id: BC-3450.40
+  capability_id_l1: BC-3450
+  capability_name: Vehicle Diagnostic and Telematics Service Operations
+  confidence: 0.85
+  evidence: POST /vehicles/{vehicleId}/dtcReadouts — "View the List of Dtcs for Specific vehicleId"; schemas
+    DtcDataContainer, DtcDataItem
+  reason: Reads stored diagnostic trouble codes from a given vehicle's ECUs — connected/remote vehicle
+    diagnostic service data, i.e. OEM diagnostic and telematics service operations.
+- tag: Electronical Control Units (ECU's)
+  spec_file: mercedes-me-electronical-control-units-ecu-s-api-openapi.yml
+  capability_id: BC-3450.40
+  capability_id_l1: BC-3450
+  capability_name: Vehicle Diagnostic and Telematics Service Operations
+  confidence: 0.8
+  evidence: POST /vehicles/{vehicleId}/ecuReadouts — "View the List of Ecu for Specific vehicleId"; schemas
+    EcuDataItem, EcuDataContainer
+  reason: Returns the ECU inventory/readout for a specific vehicle, the companion to the DTC readouts;
+    this is remote vehicle diagnostic data provisioning for service, not E/E architecture engineering.
+- tag: Configurations
+  spec_file: mercedes-me-configurations-api-openapi.yml
+  capability_id: BC-820.40
+  capability_id_l1: BC-820
+  capability_name: Product Configuration & Variant Management
+  confidence: 0.7
+  evidence: '"Get the Initial Configuration for the Given marketId and modelId"; "Get the Selectable Components
+    for the Given marketId, modelId and configurationId"; schemas VehicleComponentTree, VehicleComponentCategoryCardinality'
+  reason: Operations resolve initial configurations, alternatives and selectable components per market/model
+    — configuration and variant/option management for the vehicle product, as described ("functions to
+    retrieve initial and changed configurations").
+- tag: Dealer search
+  spec_file: mercedes-me-dealer-search-api-openapi.yml
+  capability_id: BC-3430
+  capability_id_l1: BC-3430
+  capability_name: Dealer Network Management
+  confidence: 0.7
+  evidence: GET /dealers, GET /dealers/{dealerId}; schemas Dealer, FunctionOpeningHours, GeoCoordinates,
+    Address, Brand, HalifiedDealers
+  reason: Exposes the OEM's authorised dealer directory with brands, functions, opening hours and locations
+    — dealer network data operated by the OEM. L1 Dealer Network Management is clear; the evidence does
+    not distinguish between network data operations and standards/performance sub-capabilities, so no
+    L2 is asserted.
