@@ -18,6 +18,13 @@ apis:
   name: Mercedes-Benz Vehicle Status API
   tags:
   - Automotive
+  - Connected Vehicles
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  - Vehicle Status
+  tags_raw:
+  - Automotive
   - Connected Vehicle
   - Mercedes me
   - Mercedes-Benz
@@ -36,6 +43,13 @@ apis:
 - aid: mercedes-me:mercedes-me-vehicle-lock-status-api
   name: Mercedes-Benz Vehicle Lock Status API
   tags:
+  - Automotive
+  - Connected Vehicles
+  - Lock Status
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  tags_raw:
   - Automotive
   - Connected Vehicle
   - Lock Status
@@ -56,6 +70,13 @@ apis:
   name: Mercedes-Benz Fuel Status API
   tags:
   - Automotive
+  - Connected Vehicles
+  - Fuel
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  tags_raw:
+  - Automotive
   - Connected Vehicle
   - Fuel
   - Mercedes me
@@ -73,6 +94,15 @@ apis:
 - aid: mercedes-me:mercedes-me-electric-vehicle-status-api
   name: Mercedes-Benz Electric Vehicle Status API
   tags:
+  - Automotive
+  - Charging
+  - Connected Vehicles
+  - Electric Vehicles
+  - EV
+  - Mercedes me
+  - Mercedes-Benz
+  - Telematics
+  tags_raw:
   - Automotive
   - Charging
   - Connected Vehicle
@@ -95,6 +125,16 @@ apis:
   name: Mercedes-Benz Pay As You Drive 2.0 API
   tags:
   - Automotive
+  - Connected Vehicles
+  - Geolocation
+  - Insurance
+  - Mercedes me
+  - Mercedes-Benz
+  - Odometer
+  - Telematics
+  - Usage-Based Insurance
+  tags_raw:
+  - Automotive
   - Connected Vehicle
   - Geolocation
   - Insurance
@@ -116,6 +156,14 @@ apis:
 - aid: mercedes-me:mercedes-benz-fleet-api
   name: Mercedes-Benz Fleet API
   tags:
+  - Automotive
+  - Connected Vehicles
+  - Fleet Management
+  - Kafka
+  - Mercedes-Benz
+  - Streaming
+  - Telematics
+  tags_raw:
   - Automotive
   - Connected Vehicle
   - Fleet Management
@@ -475,6 +523,17 @@ maintainers:
 created: '2025-05-25'
 modified: '2026-08-26'
 tags:
+  - Automotive
+  - Connected Car
+  - Connected Vehicles
+  - Daimler
+  - Fleet Management
+  - Mercedes me
+  - Mercedes-Benz
+  - OEM
+  - Telematics
+  - Vehicle Data
+tags_raw:
   - Automotive
   - Connected Car
   - Connected Vehicle
