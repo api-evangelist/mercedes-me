@@ -1,57 +1,69 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   contact:
     name: The open API platform by Mercedes-Benz
     x-twitter: MercedesBenz
-  description: The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.
-  title: Car Configurator Components API
-  version: '2.0'
+  description: The vehicle images API offers access to original Mercedes-Benz vehicle images. It provides access to exterior and interior images with parameters e.g. to modify the perspective and to display vehicles at day/nighttime. In addition you can request component images of a vehicle's engine, paint, rim, trim, upholstery and equipments.
+  title: Vehicle Image Components API
+  version: '1.0'
   x-apisguru-categories:
   - transport
   x-logo:
     url: https://twitter.com/MercedesBenz/profile_image?size=original
   x-origin:
   - format: swagger
-    url: https://developer.mercedes-benz.com/content/sites/default/files/2018-08/swagger_car_configurator_api.json
+    url: https://developer.mercedes-benz.com/content/sites/default/files/2018-05/swagger_vehicleimage_api.json
+    version: '2.0'
   x-providerName: mercedes-benz.com
-  x-serviceName: configurator
-host: api.mercedes-benz.com
-basePath: /configurator_tryout/v1
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+  x-serviceName: image
+servers:
+- url: https://api.mercedes-benz.com/image_tryout/v1/vehicles
 tags:
 - name: Components
 paths:
   /{finorvin}/components:
     x-swagger-router-controller: images_components_finvin
     get:
-      description: "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px), \n  * rim (710x710 px), \n  * trim (800x600 px), \n  * paints (800x600 px), \n  * upholstery (800x600 px) and \n  * equipments (740x416 px)."
+      description: 'Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle''s:
+
+        * engine (1024x576 px),
+
+        * rim (710x710 px),
+
+        * trim (800x600 px),
+
+        * paints (800x600 px),
+
+        * upholstery (800x600 px) and
+
+        * equipments (740x416 px).'
       operationId: imageComponentsGET
       parameters:
-      - $ref: '#/parameters/finorvin'
+      - $ref: '#/components/parameters/finorvin'
       responses:
         '200':
           description: Successful response
           headers:
             X-Request-Id:
               description: 'Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              '
-              type: string
+              schema:
+                type: string
             cache-control:
-              default: max-age=86400
               description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
-              type: string
-          schema:
-            $ref: '#/definitions/ComponentsResponse'
+              schema:
+                type: string
+                default: max-age=86400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentsResponse'
         '204':
           description: No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
         '401':
           description: "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key "
         '404':
@@ -59,43 +71,55 @@ paths:
           headers:
             X-Request-Id:
               description: 'Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.            '
-              type: string
-          schema:
-            $ref: '#/definitions/Error'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Quota limit is exceeded
         '500':
           description: The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.
-          schema:
-            $ref: '#/definitions/Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
       - Components
+      summary: Image components GET
+      x-summary-source: derived
   /{finorvin}/components/engine:
     x-swagger-router-controller: images_components_finvin
     get:
-      description: Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px.
+      description: Returns a URL pointing to an image of the vehicles engine. These images are available in the resolution 1024x576 px.
       operationId: imageComponentsEngineGET
       parameters:
-      - $ref: '#/parameters/finorvin'
+      - $ref: '#/components/parameters/finorvin'
       responses:
         '200':
           description: Successful response
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
             cache-control:
-              default: max-age=86400
               description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
-              type: string
-          schema:
-            $ref: '#/definitions/EngineResponse'
+              schema:
+                type: string
+                default: max-age=86400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineResponse'
         '204':
           description: No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
         '401':
           description: "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key "
         '404':
@@ -103,43 +127,55 @@ paths:
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
-          schema:
-            $ref: '#/definitions/Error'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Quota limit is exceeded
         '500':
           description: The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.
-          schema:
-            $ref: '#/definitions/Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
       - Components
+      summary: Image components engine GET
+      x-summary-source: derived
   /{finorvin}/components/equipments:
     x-swagger-router-controller: images_components_finvin
     get:
       description: Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).
       operationId: imageComponentsEquipmentsGET
       parameters:
-      - $ref: '#/parameters/finorvin'
+      - $ref: '#/components/parameters/finorvin'
       responses:
         '200':
           description: Successful response
           headers:
             X-Request-Id:
               description: 'Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              '
-              type: string
+              schema:
+                type: string
             cache-control:
-              default: max-age=86400
               description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
-              type: string
-          schema:
-            $ref: '#/definitions/EquipmentResponse'
+              schema:
+                type: string
+                default: max-age=86400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquipmentResponse'
         '204':
           description: No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
         '401':
           description: "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key "
         '404':
@@ -147,43 +183,55 @@ paths:
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
-          schema:
-            $ref: '#/definitions/Error'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Quota limit is exceeded
         '500':
           description: The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.
-          schema:
-            $ref: '#/definitions/Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
       - Components
+      summary: Image components equipments GET
+      x-summary-source: derived
   /{finorvin}/components/paint:
     x-swagger-router-controller: images_components_finvin
     get:
-      description: Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)
+      description: Returns URLs pointing to images of this vehicles paint. These images are available in resolution 800x600 px. Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)
       operationId: imageComponentsPaintGET
       parameters:
-      - $ref: '#/parameters/finorvin'
+      - $ref: '#/components/parameters/finorvin'
       responses:
         '200':
           description: Successful response
           headers:
             X-Request-Id:
               description: 'Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              '
-              type: string
+              schema:
+                type: string
             cache-control:
-              default: max-age=86400
               description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
-              type: string
-          schema:
-            $ref: '#/definitions/PaintResponse'
+              schema:
+                type: string
+                default: max-age=86400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaintResponse'
         '204':
           description: No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
         '401':
           description: "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key "
         '404':
@@ -191,43 +239,55 @@ paths:
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
-          schema:
-            $ref: '#/definitions/Error'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Quota limit is exceeded
         '500':
           description: The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.
-          schema:
-            $ref: '#/definitions/Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
       - Components
+      summary: Image components paint GET
+      x-summary-source: derived
   /{finorvin}/components/rim:
     x-swagger-router-controller: images_components_finvin
     get:
-      description: Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px.
+      description: Returns a URL pointing to an image of the vehicles rim. These images are available in the resolution 710x710 px.
       operationId: imageComponentsRimGET
       parameters:
-      - $ref: '#/parameters/finorvin'
+      - $ref: '#/components/parameters/finorvin'
       responses:
         '200':
           description: Successful response
           headers:
             X-Request-Id:
               description: 'Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              '
-              type: string
+              schema:
+                type: string
             cache-control:
-              default: max-age=86400
               description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
-              type: string
-          schema:
-            $ref: '#/definitions/RimResponse'
+              schema:
+                type: string
+                default: max-age=86400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RimResponse'
         '204':
           description: No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
         '401':
           description: "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key "
         '404':
@@ -235,43 +295,55 @@ paths:
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
-          schema:
-            $ref: '#/definitions/Error'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Quota limit is exceeded
         '500':
           description: The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.
-          schema:
-            $ref: '#/definitions/Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
       - Components
+      summary: Image components rim GET
+      x-summary-source: derived
   /{finorvin}/components/trim:
     x-swagger-router-controller: images_components_finvin
     get:
-      description: Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px.
+      description: Returns a URL pointing to an image of this vehicles trim. These images are available in resolution 800x600 px.
       operationId: imageComponentsTrimGET
       parameters:
-      - $ref: '#/parameters/finorvin'
+      - $ref: '#/components/parameters/finorvin'
       responses:
         '200':
           description: Successful response
           headers:
             X-Request-Id:
               description: 'Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              '
-              type: string
+              schema:
+                type: string
             cache-control:
-              default: max-age=86400
               description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
-              type: string
-          schema:
-            $ref: '#/definitions/TrimResponse'
+              schema:
+                type: string
+                default: max-age=86400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrimResponse'
         '204':
           description: No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
         '401':
           description: "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key "
         '404':
@@ -279,43 +351,55 @@ paths:
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
-          schema:
-            $ref: '#/definitions/Error'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Quota limit is exceeded
         '500':
           description: The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.
-          schema:
-            $ref: '#/definitions/Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
       - Components
+      summary: Image components trim GET
+      x-summary-source: derived
   /{finorvin}/components/upholstery:
     x-swagger-router-controller: images_components_finvin
     get:
       description: Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px).
       operationId: imageComponentsUpholsteryGET
       parameters:
-      - $ref: '#/parameters/finorvin'
+      - $ref: '#/components/parameters/finorvin'
       responses:
         '200':
           description: Successful response
           headers:
             X-Request-Id:
               description: 'Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.              '
-              type: string
+              schema:
+                type: string
             cache-control:
-              default: max-age=86400
               description: Specifies the maximum amount of time (in seconds) an image is considered to be up-to-date
-              type: string
-          schema:
-            $ref: '#/definitions/UpholsteryResponse'
+              schema:
+                type: string
+                default: max-age=86400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpholsteryResponse'
         '204':
           description: No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
+              schema:
+                type: string
         '401':
           description: "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key "
         '404':
@@ -323,129 +407,138 @@ paths:
           headers:
             X-Request-Id:
               description: Returns a randomly generated (unique) request id that was assigned to the request for internal tracing and logging. Provide this request id for troubleshooting in a support case.
-              type: string
-          schema:
-            $ref: '#/definitions/Error'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Quota limit is exceeded
         '500':
           description: The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.
-          schema:
-            $ref: '#/definitions/Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
       - Components
-definitions:
-  TrimResponse:
-    description: A trim object
-    properties:
-      trim:
-        $ref: '#/definitions/CodeImage'
-    type: object
-  ComponentsResponse:
-    description: A paint object
-    properties:
-      components:
-        $ref: '#/definitions/Components'
-    type: object
-  Paints:
-    description: The upper (paint2) and the lower (paint1) paint of the vehicle.
-    properties:
-      lowerPaint:
-        $ref: '#/definitions/CodeImage'
-      upperPaint:
-        $ref: '#/definitions/CodeImage'
-    type: object
-  PaintResponse:
-    description: A paint object
-    properties:
-      paint:
-        $ref: '#/definitions/Paints'
-    type: object
-  EquipmentResponse:
-    description: The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys.
-    properties:
-      equipments:
-        $ref: '#/definitions/EquipmentMap'
-    required:
-    - equipments
-  ImageUrl:
-    description: 'An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.      '
-    properties:
-      url:
-        type: string
-  ImageUrlArray:
-    description: An object describing a list of image URLs that could be an vehicle equipment images for example.
-    properties:
-      urls:
-        items:
+      summary: Image components upholstery GET
+      x-summary-source: derived
+components:
+  schemas:
+    UpholsteryResponse:
+      description: A paint object
+      properties:
+        upholstery:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    EquipmentResponse:
+      description: The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys.
+      properties:
+        equipments:
+          $ref: '#/components/schemas/EquipmentMap'
+      required:
+      - equipments
+    CodeImage:
+      description: The code image contains an equipment code with a corresponding image URL.
+      properties:
+        code:
+          description: The equipment code for the corresponding image.
           type: string
-        type: array
-  EngineResponse:
-    description: A paint object
-    properties:
-      engine:
-        $ref: '#/definitions/ImageUrl'
-    type: object
-  CodeImage:
-    description: The code image contains an equipment code with a corresponding image URL.
-    properties:
-      code:
-        description: The equipment code for the corresponding image.
+        url:
+          description: An URL pointing to an image of an equipment.
+          type: string
+      required:
+      - code
+      - url
+      type: object
+    Paints:
+      description: The upper (paint2) and the lower (paint1) paint of the vehicle.
+      properties:
+        lowerPaint:
+          $ref: '#/components/schemas/CodeImage'
+        upperPaint:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    ImageUrlArray:
+      description: An object describing a list of image URLs that could be an vehicle equipment images for example.
+      properties:
+        urls:
+          items:
+            type: string
+          type: array
+    EngineResponse:
+      description: A paint object
+      properties:
+        engine:
+          $ref: '#/components/schemas/ImageUrl'
+      type: object
+    Components:
+      description: A set of URLs pointing to images of the vehicle in low resolution.
+      properties:
+        engine:
+          $ref: '#/components/schemas/ImageUrl'
+        equipments:
+          $ref: '#/components/schemas/EquipmentMap'
+        paint:
+          $ref: '#/components/schemas/Paints'
+        rim:
+          $ref: '#/components/schemas/CodeImage'
+        trim:
+          $ref: '#/components/schemas/CodeImage'
+        upholstery:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    TrimResponse:
+      description: A trim object
+      properties:
+        trim:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    RimResponse:
+      description: A rim object
+      properties:
+        rim:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    ComponentsResponse:
+      description: A paint object
+      properties:
+        components:
+          $ref: '#/components/schemas/Components'
+      type: object
+    ImageUrl:
+      description: 'An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.      '
+      properties:
+        url:
+          type: string
+    EquipmentMap:
+      additionalProperties:
+        $ref: '#/components/schemas/ImageUrlArray'
+      description: The map holds equipments objects with the equipment codes as map keys and a corresponding list of image URLs for each code.
+      type: object
+    PaintResponse:
+      description: A paint object
+      properties:
+        paint:
+          $ref: '#/components/schemas/Paints'
+      type: object
+    Error:
+      description: The error object containing detailed information about the error.
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+  parameters:
+    finorvin:
+      description: "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+      in: path
+      name: finorvin
+      required: true
+      schema:
         type: string
-      url:
-        description: An URL pointing to an image of an equipment.
-        type: string
-    required:
-    - code
-    - url
-    type: object
-  Components:
-    description: A set of URLs pointing to images of the vehicle in low resolution.
-    properties:
-      engine:
-        $ref: '#/definitions/ImageUrl'
-      equipments:
-        $ref: '#/definitions/EquipmentMap'
-      paint:
-        $ref: '#/definitions/Paints'
-      rim:
-        $ref: '#/definitions/CodeImage'
-      trim:
-        $ref: '#/definitions/CodeImage'
-      upholstery:
-        $ref: '#/definitions/CodeImage'
-    type: object
-  Error:
-    description: The error object containing detailed information about the error.
-    properties:
-      code:
-        type: string
-      message:
-        type: string
-    type: object
-  RimResponse:
-    description: A rim object
-    properties:
-      rim:
-        $ref: '#/definitions/CodeImage'
-    type: object
-  UpholsteryResponse:
-    description: A paint object
-    properties:
-      upholstery:
-        $ref: '#/definitions/CodeImage'
-    type: object
-  EquipmentMap:
-    additionalProperties:
-      $ref: '#/definitions/ImageUrlArray'
-    description: The map holds equipments objects with the equipment codes as map keys and a corresponding list of image URLs for each code.
-    type: object
-parameters:
-  finorvin:
-    default: WDD1760421J123456
-    description: "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
-    in: path
-    name: finorvin
-    required: true
-    type: string
+        default: WDD1760421J123456
 x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB

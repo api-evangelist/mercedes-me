@@ -1,34 +1,47 @@
 {
   "provider": "mercedes-me",
   "sources": [
-    "mercedes-me-components-api-openapi.yml",
-    "mercedes-me-configurations-api-openapi.yml",
-    "mercedes-me-dealer-search-api-openapi.yml",
-    "mercedes-me-diagnostic-trouble-code-dtc-snapshots-api-openapi.yml",
-    "mercedes-me-diagnostic-trouble-codes-dtc-s-api-openapi.yml",
-    "mercedes-me-electronical-control-units-ecu-s-api-openapi.yml",
-    "mercedes-me-images-api-openapi.yml",
-    "mercedes-me-perspectives-api-openapi.yml",
-    "mercedes-me-references-api-openapi.yml",
-    "mercedes-me-resources-api-openapi.yml",
-    "mercedes-me-saved-configurations-api-openapi.yml"
+    "_original/mercedes-me-configurator-api-openapi.yml",
+    "_original/mercedes-me-dealer-api-openapi.yml",
+    "_original/mercedes-me-remote-diagnostic-support-api-openapi.yml",
+    "_original/mercedes-me-vehicle-images-api-openapi.yml"
   ],
   "outputs": [
-    "mercedes-me-components-api-openapi.yml",
     "mercedes-me-configurations-api-openapi.yml",
+    "mercedes-me-images-api-openapi.yml",
+    "mercedes-me-references-api-openapi.yml",
+    "mercedes-me-saved-configurations-api-openapi.yml",
     "mercedes-me-dealer-search-api-openapi.yml",
     "mercedes-me-diagnostic-trouble-code-dtc-snapshots-api-openapi.yml",
     "mercedes-me-diagnostic-trouble-codes-dtc-s-api-openapi.yml",
     "mercedes-me-electronical-control-units-ecu-s-api-openapi.yml",
-    "mercedes-me-images-api-openapi.yml",
-    "mercedes-me-perspectives-api-openapi.yml",
-    "mercedes-me-references-api-openapi.yml",
     "mercedes-me-resources-api-openapi.yml",
-    "mercedes-me-saved-configurations-api-openapi.yml"
+    "mercedes-me-components-api-openapi.yml",
+    "mercedes-me-perspectives-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mercedes-me-configurator-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "mercedes-me-dealer-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "mercedes-me-remote-diagnostic-support-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "mercedes-me-vehicle-images-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "tag 'References' spans 2 source specs (mercedes-me-configurator-api-openapi.yml, mercedes-me-dealer-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mercedes-me-components-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-dealer-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-diagnostic-trouble-code-dtc-snapshots-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-diagnostic-trouble-codes-dtc-s-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-electronical-control-units-ecu-s-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-perspectives-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-references-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-resources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mercedes-me-saved-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
