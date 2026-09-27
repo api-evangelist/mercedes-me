@@ -441,71 +441,7 @@ paths:
       summary: Image vehicle GET
       x-summary-source: derived
 components:
-  parameters:
-    componentCode:
-      description: The value of the requested component group, e.g. '245'.
-      in: path
-      name: componentCode
-      required: true
-      schema:
-        type: string
-        default: '223'
-    night:
-      description: Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'.
-      in: query
-      name: night
-      required: false
-      schema:
-        type: boolean
-        default: false
-    marketId:
-      description: This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'.
-      in: path
-      name: marketId
-      required: true
-      schema:
-        type: string
-        default: de_DE
-        pattern: ^[a-z]{2}_[A-Z]{2}$
-    modelId:
-      description: Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'.
-      in: path
-      name: modelId
-      required: true
-      schema:
-        type: string
-        default: 222980000
-    perspectives:
-      description: "One or more perspectives as a comma separated String list e.g. 'EXT000,EXT010,INT1'.  The following perspectives are available:\n  * EXT000-EXT350: EXT000 defines the front view, EXT010 defines a rotation of 10 degress and so forth.\n  * INT1-INT4: These are the 4 available interior perspectives.\n\nThe default value is EXT020,INT1 if no value is provided."
-      in: query
-      name: perspectives
-      required: false
-      schema:
-        type: string
-        default: EXT020,INT1
-    configurationId:
-      description: Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'.
-      in: path
-      name: configurationId
-      required: true
-      schema:
-        type: string
-        default: E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25
-    roofOpen:
-      description: Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'.
-      in: query
-      name: roofOpen
-      required: false
-      schema:
-        type: boolean
-        default: false
   schemas:
-    UpholsteryImageResponse:
-      description: An upholstery image object
-      properties:
-        upholstery:
-          $ref: '#/components/schemas/CodeImage'
-      type: object
     PaintsImages:
       description: The upper (paint2) and the lower (paint1) paint of the vehicle.
       properties:
@@ -514,23 +450,42 @@ components:
         paint2:
           $ref: '#/components/schemas/CodeImage'
       type: object
-    ComponentsImagesResponse:
-      description: Components images object
-      properties:
-        components:
-          $ref: '#/components/schemas/ComponentsImages'
+    EquipmentImageMap:
+      additionalProperties:
+        $ref: '#/components/schemas/ImageUrl'
+      description: The map holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment image urls for the requested vehicle with the equipment codes as map keys.
       type: object
-    EquipmentImageResponse:
-      description: An equipment image object
+    RimImageResponse:
+      description: A rim image object
       properties:
-        equipment:
-          $ref: '#/components/schemas/ImageUrl'
+        rim:
+          $ref: '#/components/schemas/CodeImage'
       type: object
-    EngineImageResponse:
-      description: An engine image object
+    CodeImage:
+      description: The code image contains an equipment code with a corresponding image URL.
       properties:
-        engine:
-          $ref: '#/components/schemas/ImageUrl'
+        code:
+          description: The equipment code for the corresponding image.
+          type: string
+        url:
+          description: An URL pointing to an image of an equipment.
+          type: string
+      required:
+      - code
+      - url
+      type: object
+    ImageUrlWithError:
+      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content. In case of an error that is related to the requested image material (e.g. perspective), an error object is present containing further information.
+      properties:
+        error:
+          $ref: '#/components/schemas/ImageError'
+        url:
+          type: string
+    PaintImageResponse:
+      description: A paint image object
+      properties:
+        paint:
+          $ref: '#/components/schemas/PaintsImages'
       type: object
     ComponentsImages:
       description: A set of URLs pointing to images of the vehicle in low resolution.
@@ -548,35 +503,41 @@ components:
         upholstery:
           $ref: '#/components/schemas/CodeImage'
       type: object
-    EquipmentImageMap:
-      additionalProperties:
-        $ref: '#/components/schemas/ImageUrl'
-      description: The map holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment image urls for the requested vehicle with the equipment codes as map keys.
-      type: object
-    CodeImage:
-      description: The code image contains an equipment code with a corresponding image URL.
+    AllEquipmentImagesResponse:
+      description: The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys.
       properties:
-        code:
-          description: The equipment code for the corresponding image.
-          type: string
-        url:
-          description: An URL pointing to an image of an equipment.
-          type: string
+        equipments:
+          $ref: '#/components/schemas/EquipmentImageMap'
       required:
-      - code
-      - url
-      type: object
-    RimImageResponse:
-      description: A rim image object
+      - equipments
+    UpholsteryImageResponse:
+      description: An upholstery image object
       properties:
-        rim:
+        upholstery:
           $ref: '#/components/schemas/CodeImage'
       type: object
-    PaintImageResponse:
-      description: A paint image object
+    EngineImageResponse:
+      description: An engine image object
       properties:
-        paint:
-          $ref: '#/components/schemas/PaintsImages'
+        engine:
+          $ref: '#/components/schemas/ImageUrl'
+      type: object
+    ImageUrl:
+      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.
+      properties:
+        url:
+          type: string
+    EquipmentImageResponse:
+      description: An equipment image object
+      properties:
+        equipment:
+          $ref: '#/components/schemas/ImageUrl'
+      type: object
+    TrimImageResponse:
+      description: A trim image object
+      properties:
+        trim:
+          $ref: '#/components/schemas/CodeImage'
       type: object
     ImageError:
       description: The error object containing detailed information about the error.
@@ -588,6 +549,12 @@ components:
         uuid:
           type: string
       type: object
+    ComponentsImagesResponse:
+      description: Components images object
+      properties:
+        components:
+          $ref: '#/components/schemas/ComponentsImages'
+      type: object
     VehicleImageResponse:
       description: The response object holds either an error object, in case that the request was malformed, or a vehicle object containing all urls for the requested perspectives.
       properties:
@@ -598,29 +565,62 @@ components:
           type: object
       required:
       - vehicle
-    AllEquipmentImagesResponse:
-      description: The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys.
-      properties:
-        equipments:
-          $ref: '#/components/schemas/EquipmentImageMap'
-      required:
-      - equipments
-    TrimImageResponse:
-      description: A trim image object
-      properties:
-        trim:
-          $ref: '#/components/schemas/CodeImage'
-      type: object
-    ImageUrl:
-      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.
-      properties:
-        url:
-          type: string
-    ImageUrlWithError:
-      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content. In case of an error that is related to the requested image material (e.g. perspective), an error object is present containing further information.
-      properties:
-        error:
-          $ref: '#/components/schemas/ImageError'
-        url:
-          type: string
+  parameters:
+    night:
+      description: Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'.
+      in: query
+      name: night
+      required: false
+      schema:
+        type: boolean
+        default: false
+    marketId:
+      description: This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'.
+      in: path
+      name: marketId
+      required: true
+      schema:
+        type: string
+        default: de_DE
+        pattern: ^[a-z]{2}_[A-Z]{2}$
+    componentCode:
+      description: The value of the requested component group, e.g. '245'.
+      in: path
+      name: componentCode
+      required: true
+      schema:
+        type: string
+        default: '223'
+    modelId:
+      description: Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'.
+      in: path
+      name: modelId
+      required: true
+      schema:
+        type: string
+        default: 222980000
+    roofOpen:
+      description: Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'.
+      in: query
+      name: roofOpen
+      required: false
+      schema:
+        type: boolean
+        default: false
+    perspectives:
+      description: "One or more perspectives as a comma separated String list e.g. 'EXT000,EXT010,INT1'.  The following perspectives are available:\n  * EXT000-EXT350: EXT000 defines the front view, EXT010 defines a rotation of 10 degress and so forth.\n  * INT1-INT4: These are the 4 available interior perspectives.\n\nThe default value is EXT020,INT1 if no value is provided."
+      in: query
+      name: perspectives
+      required: false
+      schema:
+        type: string
+        default: EXT020,INT1
+    configurationId:
+      description: Minimal string that identifies a configuration e.g. 'E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J53-J67-L08-M23-M70-N18-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-351-360-411-440-442-470-472-475-485-520-533-538-560-570-573-580-584-58U-591-620-70B-808-888-893-B03-B16-K11-L18-R43-U60'. A codeType is only once within the configurationId e.g 'S-152-160-161' stands for the components with the componentId 'S-152', 'S-160' and 'S-161'. A new codeType is divided from the codes with a underscore e.g 'S-152-160-161_I-953_L-696'.
+      in: path
+      name: configurationId
+      required: true
+      schema:
+        type: string
+        default: E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25
 x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB

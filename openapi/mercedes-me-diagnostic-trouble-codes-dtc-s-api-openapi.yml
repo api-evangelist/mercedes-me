@@ -155,6 +155,11 @@ paths:
       - Diagnostic Trouble Codes (DTC's)
 components:
   schemas:
+    DtcDataContainer:
+      properties:
+        dtcReadout:
+          $ref: '#/components/schemas/DtcDataType'
+      type: object
     CommonType:
       properties:
         asyncEstimatedComplete:
@@ -219,11 +224,6 @@ components:
               $ref: '#/components/schemas/DtcDataItem'
             type: array
         type: object
-    DtcDataContainer:
-      properties:
-        dtcReadout:
-          $ref: '#/components/schemas/DtcDataType'
-      type: object
     DtcDataItem:
       properties:
         dtcId:

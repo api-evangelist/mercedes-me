@@ -94,6 +94,27 @@ paths:
       x-summary-source: derived
 components:
   parameters:
+    countryIsoCode:
+      description: The country of the dealer address defined as ISO two letter ID (e.g. DE, CH, CN, etc.)
+      in: query
+      name: countryIsoCode
+      required: false
+      schema:
+        type: string
+    fieldsForDealer:
+      description: Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned. e.g. fields=dealerId,address(street,city)
+      in: query
+      name: fields
+      required: false
+      schema:
+        type: string
+    latitude:
+      description: The latitude geo coordinate.
+      in: query
+      name: latitude
+      required: false
+      schema:
+        type: number
     pageSize:
       description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
 
@@ -104,23 +125,31 @@ components:
       schema:
         type: integer
         format: int32
-    page:
-      description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
-
-        '
+    radiusValue:
+      description: The radius value of the search area. The center of the search area is defined by geo coordinates. (latitude, longitude properties) If radiusValue and radiusUnit parameters are missing, then the default radius is 10 km.
       in: query
-      name: page
+      name: radiusValue
       required: false
       schema:
         type: integer
-        format: int32
-    city:
-      description: The city of the dealer address.
+        default: 10
+    longitude:
+      description: The longitude geo coordinate.
       in: query
-      name: city
+      name: longitude
+      required: false
+      schema:
+        type: number
+    productGroup:
+      description: Filter by a product group
+      in: query
+      name: productGroup
       required: false
       schema:
         type: string
+        enum:
+        - PASSENGER-CAR
+        - VAN
     radiusUnit:
       description: The radius unit of the search area. The center of the search area is defined by geo coordinates. (latitude, longitude properties) If radiusValue and radiusUnit parameters are missing, then the default radius is 10 km.
       in: query
@@ -133,13 +162,30 @@ components:
         - KM
         - MILE
         default: KM
-    longitude:
-      description: The longitude geo coordinate.
+    fieldsForDealers:
+      description: Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned. e.g. fields=dealers(dealerId,address(street,city))
       in: query
-      name: longitude
+      name: fields
       required: false
       schema:
-        type: number
+        type: string
+    page:
+      description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
+
+        '
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        format: int32
+    legalName:
+      description: A name of the dealer, the name filter will be applied to all Dealer names (e.g. legalName, nameAddition). You can also search for parts of Dealer names, e.g. the search term 'Niederlassung' will also match 'Niederlassung Stuttgart'.
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
     activity:
       description: "Filter by activity, valid actitvity values are:\n  * PARTS: Spare Parts Sales\n  * SALES: Sales of new vehicles\n  * SERVICE: Maintaining and repair\n  * USED-VEHICLES-TRADE: Sales of used vehicles"
       in: query
@@ -152,48 +198,13 @@ components:
         - SALES
         - SERVICE
         - USED-VEHICLES-TRADE
-    productGroup:
-      description: Filter by a product group
+    city:
+      description: The city of the dealer address.
       in: query
-      name: productGroup
+      name: city
       required: false
       schema:
         type: string
-        enum:
-        - PASSENGER-CAR
-        - VAN
-    countryIsoCode:
-      description: The country of the dealer address defined as ISO two letter ID (e.g. DE, CH, CN, etc.)
-      in: query
-      name: countryIsoCode
-      required: false
-      schema:
-        type: string
-    fieldsForDealers:
-      description: Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned. e.g. fields=dealers(dealerId,address(street,city))
-      in: query
-      name: fields
-      required: false
-      schema:
-        type: string
-    radiusValue:
-      description: The radius value of the search area. The center of the search area is defined by geo coordinates. (latitude, longitude properties) If radiusValue and radiusUnit parameters are missing, then the default radius is 10 km.
-      in: query
-      name: radiusValue
-      required: false
-      schema:
-        type: integer
-        default: 10
-    brand:
-      description: "Filter by brand, valid values are:\n  * MB: Mercedes-Benz\n  * SMT: Smart"
-      in: query
-      name: brand
-      required: false
-      schema:
-        type: string
-        enum:
-        - MB
-        - SMT
     dealerId:
       description: The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857
       in: path
@@ -202,27 +213,6 @@ components:
       schema:
         type: string
         default: GS0000275
-    latitude:
-      description: The latitude geo coordinate.
-      in: query
-      name: latitude
-      required: false
-      schema:
-        type: number
-    fieldsForDealer:
-      description: Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned. e.g. fields=dealerId,address(street,city)
-      in: query
-      name: fields
-      required: false
-      schema:
-        type: string
-    legalName:
-      description: A name of the dealer, the name filter will be applied to all Dealer names (e.g. legalName, nameAddition). You can also search for parts of Dealer names, e.g. the search term 'Niederlassung' will also match 'Niederlassung Stuttgart'.
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
     dealerIds:
       description: 'Array of dealer ids. The dealer id is dealer’s business key, also known as GS Id. e.g. GS0000857,GS0017621
 
@@ -234,86 +224,17 @@ components:
         type: array
         items:
           type: string
+    brand:
+      description: "Filter by brand, valid values are:\n  * MB: Mercedes-Benz\n  * SMT: Smart"
+      in: query
+      name: brand
+      required: false
+      schema:
+        type: string
+        enum:
+        - MB
+        - SMT
   schemas:
-    CommunicationChannels:
-      properties:
-        general:
-          $ref: '#/components/schemas/General'
-      type: object
-    ProductGroupOfAFunction:
-      properties:
-        code:
-          description: "The product group code, valid values are:\n  * PASSENGER-CAR\n  * VAN"
-          type: string
-        name:
-          description: product group name
-          type: string
-      required:
-      - code
-      - name
-      type: object
-    Function:
-      properties:
-        activity:
-          $ref: '#/components/schemas/ActivityOfAFunction'
-        brand:
-          $ref: '#/components/schemas/Brand'
-        productGroup:
-          $ref: '#/components/schemas/ProductGroupOfAFunction'
-      required:
-      - activity
-      - brand
-      - productGroup
-      type: object
-    ActivityOfAFunction:
-      properties:
-        code:
-          description: "The activity of the dealer, valid actitvity values are:\n  * PARTS: Spare Parts Sales\n  * SALES: Sales of new vehicles\n  * SERVICE: Maintaining and repair\n  * USED-VEHICLES-TRADE: Sales of used vehicles"
-          type: string
-        name:
-          description: the corresponding activity name
-          type: string
-      required:
-      - code
-      - name
-      type: object
-    Address:
-      properties:
-        addressAddition:
-          description: address addition
-          type: string
-        city:
-          description: city
-          type: string
-        countryIsoCode:
-          description: ISO A2 country code
-          type: string
-        district:
-          description: district, area of city
-          type: string
-        street:
-          description: street and house number, if applicable
-          type: string
-        zipCode:
-          description: postal code
-          type: string
-      type: object
-    TheDistance:
-      properties:
-        unit:
-          description: unit of length
-          enum:
-          - M
-          - KM
-          - MILE
-          type: string
-        value:
-          description: numeric amount of distance
-          format: double
-          type: number
-      required:
-      - value
-      type: object
     Weekdays:
       description: 'opening hours for a week, represented by a map where the key
 
@@ -340,71 +261,6 @@ components:
         WEDNESDAY:
           $ref: '#/components/schemas/WeekdayInfo'
       type: object
-    General:
-      properties:
-        email:
-          description: general email address
-          type: string
-        facebook:
-          description: general facebook URL
-          type: string
-        fax:
-          description: general fax number
-          type: string
-        googlePlus:
-          description: general googlePlus account name
-          type: string
-        mobile:
-          description: general mobile phone number
-          type: string
-        phone:
-          description: general phone number
-          type: string
-        twitter:
-          description: general twitter account name
-          type: string
-        website:
-          description: general website
-          type: string
-      type: object
-    WeekdayInfo:
-      properties:
-        periods:
-          description: time periods
-          items:
-            $ref: '#/components/schemas/Periods'
-          type: array
-        status:
-          description: status (OPEN or CLOSED)
-          enum:
-          - OPEN
-          - CLOSED
-          type: string
-      type: object
-    Link:
-      description: the representation of a link
-      properties:
-        href:
-          description: the target of the link
-          type: string
-      required:
-      - href
-      type: object
-    SelfLink:
-      description: self links
-      properties:
-        self:
-          $ref: '#/components/schemas/Link'
-      type: object
-    RegionRepresentation:
-      properties:
-        region:
-          description: region
-          type: string
-        subRegion:
-          description: subregion
-          type: string
-      type: object
     BrandCode:
       properties:
         brand:
@@ -412,15 +268,51 @@ components:
       required:
       - brand
       type: object
-    DefaultLinks:
-      description: default links
+    Periods:
       properties:
-        next:
-          $ref: '#/components/schemas/Link'
-        previous:
-          $ref: '#/components/schemas/Link'
-        self:
-          $ref: '#/components/schemas/Link'
+        from:
+          description: from
+          type: string
+        until:
+          description: until
+          type: string
+      required:
+      - from
+      - until
+      type: object
+    Address:
+      properties:
+        addressAddition:
+          description: address addition
+          type: string
+        city:
+          description: city
+          type: string
+        countryIsoCode:
+          description: ISO A2 country code
+          type: string
+        district:
+          description: district, area of city
+          type: string
+        street:
+          description: street and house number, if applicable
+          type: string
+        zipCode:
+          description: postal code
+          type: string
+      type: object
+    Function:
+      properties:
+        activity:
+          $ref: '#/components/schemas/ActivityOfAFunction'
+        brand:
+          $ref: '#/components/schemas/Brand'
+        productGroup:
+          $ref: '#/components/schemas/ProductGroupOfAFunction'
+      required:
+      - activity
+      - brand
+      - productGroup
       type: object
     Dealer:
       description: the representation of an dealer
@@ -472,30 +364,32 @@ components:
       - legalName
       - dealerId
       type: object
-    HalifiedDealers:
-      description: dealer with navigation links.
+    General:
       properties:
-        _links:
-          $ref: '#/components/schemas/DefaultLinks'
-        dealers:
-          description: dealers
-          items:
-            $ref: '#/components/schemas/Dealer'
-          type: array
-      required:
-      - _links
-      type: object
-    Brand:
-      properties:
-        code:
-          description: brand qualifier
+        email:
+          description: general email address
           type: string
-        name:
-          description: brand name
+        facebook:
+          description: general facebook URL
           type: string
-      required:
-      - code
-      - name
+        fax:
+          description: general fax number
+          type: string
+        googlePlus:
+          description: general googlePlus account name
+          type: string
+        mobile:
+          description: general mobile phone number
+          type: string
+        phone:
+          description: general phone number
+          type: string
+        twitter:
+          description: general twitter account name
+          type: string
+        website:
+          description: general website
+          type: string
       type: object
     GeoCoordinates:
       properties:
@@ -518,16 +412,122 @@ components:
         weekdays:
           $ref: '#/components/schemas/Weekdays'
       type: object
-    Periods:
+    ActivityOfAFunction:
       properties:
-        from:
-          description: from
+        code:
+          description: "The activity of the dealer, valid actitvity values are:\n  * PARTS: Spare Parts Sales\n  * SALES: Sales of new vehicles\n  * SERVICE: Maintaining and repair\n  * USED-VEHICLES-TRADE: Sales of used vehicles"
           type: string
-        until:
-          description: until
+        name:
+          description: the corresponding activity name
           type: string
       required:
-      - from
-      - until
+      - code
+      - name
+      type: object
+    HalifiedDealers:
+      description: dealer with navigation links.
+      properties:
+        _links:
+          $ref: '#/components/schemas/DefaultLinks'
+        dealers:
+          description: dealers
+          items:
+            $ref: '#/components/schemas/Dealer'
+          type: array
+      required:
+      - _links
+      type: object
+    TheDistance:
+      properties:
+        unit:
+          description: unit of length
+          enum:
+          - M
+          - KM
+          - MILE
+          type: string
+        value:
+          description: numeric amount of distance
+          format: double
+          type: number
+      required:
+      - value
+      type: object
+    SelfLink:
+      description: self links
+      properties:
+        self:
+          $ref: '#/components/schemas/Link'
+      type: object
+    WeekdayInfo:
+      properties:
+        periods:
+          description: time periods
+          items:
+            $ref: '#/components/schemas/Periods'
+          type: array
+        status:
+          description: status (OPEN or CLOSED)
+          enum:
+          - OPEN
+          - CLOSED
+          type: string
+      type: object
+    ProductGroupOfAFunction:
+      properties:
+        code:
+          description: "The product group code, valid values are:\n  * PASSENGER-CAR\n  * VAN"
+          type: string
+        name:
+          description: product group name
+          type: string
+      required:
+      - code
+      - name
+      type: object
+    Brand:
+      properties:
+        code:
+          description: brand qualifier
+          type: string
+        name:
+          description: brand name
+          type: string
+      required:
+      - code
+      - name
+      type: object
+    RegionRepresentation:
+      properties:
+        region:
+          description: region
+          type: string
+        subRegion:
+          description: subregion
+          type: string
+      type: object
+    DefaultLinks:
+      description: default links
+      properties:
+        next:
+          $ref: '#/components/schemas/Link'
+        previous:
+          $ref: '#/components/schemas/Link'
+        self:
+          $ref: '#/components/schemas/Link'
+      type: object
+    Link:
+      description: the representation of a link
+      properties:
+        href:
+          description: the target of the link
+          type: string
+      required:
+      - href
+      type: object
+    CommunicationChannels:
+      properties:
+        general:
+          $ref: '#/components/schemas/General'
       type: object
 x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB

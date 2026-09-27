@@ -208,16 +208,6 @@ components:
         ecuReadout:
           $ref: '#/components/schemas/EcuDataType'
       type: object
-    EcuDataType:
-      allOf:
-      - $ref: '#/components/schemas/CommonType'
-      - properties:
-          ecus:
-            description: List of ECUs
-            items:
-              $ref: '#/components/schemas/EcuDataItem'
-            type: array
-        type: object
     EcuDataItem:
       properties:
         ecuId:
@@ -238,6 +228,16 @@ components:
       - hardwareIds
       - softwareIds
       type: object
+    EcuDataType:
+      allOf:
+      - $ref: '#/components/schemas/CommonType'
+      - properties:
+          ecus:
+            description: List of ECUs
+            items:
+              $ref: '#/components/schemas/EcuDataItem'
+            type: array
+        type: object
     ErrorResponse:
       properties:
         errorCode:

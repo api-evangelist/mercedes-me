@@ -81,22 +81,55 @@ paths:
       - Saved configurations
 components:
   schemas:
-    WltpEmission:
-      description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' emission.
+    Engine:
+      description: All technical information about a specific engine.
+      properties:
+        alternativeFuelType:
+          $ref: '#/components/schemas/FuelType'
+        capacity:
+          $ref: '#/components/schemas/Amount'
+        cylinder:
+          type: string
+        driveConcept:
+          $ref: '#/components/schemas/DriveConcept'
+        emissionStandard:
+          type: string
+        engineConcept:
+          $ref: '#/components/schemas/EngineConcept'
+        fuelEconomy:
+          $ref: '#/components/schemas/FuelEconomy'
+        fuelType:
+          $ref: '#/components/schemas/FuelType'
+        powerHp:
+          $ref: '#/components/schemas/Amount'
+        powerHybridExtensionHp:
+          $ref: '#/components/schemas/Amount'
+        powerHybridExtensionKw:
+          $ref: '#/components/schemas/Amount'
+        powerKw:
+          $ref: '#/components/schemas/Amount'
+      required:
+      - fuelType
+    WltpGear:
+      description: The gear of a vehicle. A vehicle can have a primary and a secondary gear.
+      properties:
+        primaryGear:
+          $ref: '#/components/schemas/WltpAmount'
+        secondaryGear:
+          $ref: '#/components/schemas/WltpAmount'
+      type: object
+    WltpConsumption:
+      description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' consumption.
       properties:
         chargeDeplete:
           $ref: '#/components/schemas/WltpGear'
         chargeDepleteCop:
-          $ref: '#/components/schemas/WltpGear'
-        chargeDepleteWeighted:
           $ref: '#/components/schemas/WltpGear'
         extraHigh:
           $ref: '#/components/schemas/WltpGear'
         high:
           $ref: '#/components/schemas/WltpGear'
         low:
-          $ref: '#/components/schemas/WltpGear'
-        lowMid:
           $ref: '#/components/schemas/WltpGear'
         medium:
           $ref: '#/components/schemas/WltpGear'
@@ -123,129 +156,19 @@ components:
       - BI_COMBUSTION_UNDEFINED
       - UNDEFINED
       type: string
-    NedcGear:
-      description: The gear of a vehicle. A vehicle can have a primary and a secondary gear.
+    NedcAmount:
+      description: The Nedc 'New European Drive Cycle' specific amount holds the nedc specific values.
       properties:
-        primaryGear:
-          $ref: '#/components/schemas/NedcAmount'
-        secondaryGear:
-          $ref: '#/components/schemas/NedcAmount'
-      type: object
-    OnlineCodeResponseBody:
-      description: The onlinecode is a unique identifier for a stored vehicle configuration.
-      properties:
-        onlineCode:
-          description: String that identifies the online code
-          type: string
+        individual:
+          $ref: '#/components/schemas/Amount'
+        max:
+          $ref: '#/components/schemas/Amount'
+        min:
+          $ref: '#/components/schemas/Amount'
       required:
-      - onlineCode
-    SelfSelectablesImageVehicleLinks:
-      description: Links to self and image resources.
-      properties:
-        imageapi_vehicle:
-          $ref: '#/components/schemas/HRef'
-        selectables:
-          $ref: '#/components/schemas/HRef'
-        self:
-          $ref: '#/components/schemas/HRef'
-      required:
-      - self
-      - selectables
-      - imageapi_vehicle
-      type: object
-    FuelEconomy:
-      description: This is for the fuel consumption holding a value and unit.
-      properties:
-        consumptionOfElectricityMax:
-          $ref: '#/components/schemas/Amount'
-        consumptionOfElectricityMin:
-          $ref: '#/components/schemas/Amount'
-        emissionCO2Max:
-          $ref: '#/components/schemas/Amount'
-        emissionCO2Min:
-          $ref: '#/components/schemas/Amount'
-        fuelConsumptionCityMax:
-          $ref: '#/components/schemas/Amount'
-        fuelConsumptionCityMin:
-          $ref: '#/components/schemas/Amount'
-        fuelConsumptionCombinedMax:
-          $ref: '#/components/schemas/Amount'
-        fuelConsumptionCombinedMin:
-          $ref: '#/components/schemas/Amount'
-        fuelConsumptionElectricity:
-          $ref: '#/components/schemas/Amount'
-        fuelConsumptionOverlandMax:
-          $ref: '#/components/schemas/Amount'
-        fuelConsumptionOverlandMin:
-          $ref: '#/components/schemas/Amount'
-    WltpGear:
-      description: The gear of a vehicle. A vehicle can have a primary and a secondary gear.
-      properties:
-        primaryGear:
-          $ref: '#/components/schemas/WltpAmount'
-        secondaryGear:
-          $ref: '#/components/schemas/WltpAmount'
-      type: object
-    Wltp:
-      description: Holds all relevant informations for the Wltp 'Worldwide harmonized Light vehicles Test Procedure' drive cycle.
-      properties:
-        consumption:
-          $ref: '#/components/schemas/WltpConsumption'
-        emission:
-          $ref: '#/components/schemas/WltpEmission'
-    PriceInformation:
-      description: The prices, installment price, taxes and ISO currency of a vehicle.
-      properties:
-        currency:
-          type: string
-        instalmentPrice:
-          type: number
-        netPrice:
-          type: number
-        price:
-          type: number
-        taxes:
-          items:
-            $ref: '#/components/schemas/Tax'
-          type: array
-      required:
-      - price
-      - netPrice
-      - currency
-      - taxes
-      type: object
-    FuelType:
-      description: The kind of fuel used by an engine of a vehicle. Where UNDEFINED is used as the default and/or error case.
-      enum:
-      - NORMAL
-      - SUPER
-      - SUPERPLUS
-      - DIESEL
-      - HGAS
-      - GAS
-      - ELECTRIC
-      - FUELCELL
-      - UNDEFINED
-      type: string
-    WltpConsumption:
-      description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' consumption.
-      properties:
-        chargeDeplete:
-          $ref: '#/components/schemas/WltpGear'
-        chargeDepleteCop:
-          $ref: '#/components/schemas/WltpGear'
-        extraHigh:
-          $ref: '#/components/schemas/WltpGear'
-        high:
-          $ref: '#/components/schemas/WltpGear'
-        low:
-          $ref: '#/components/schemas/WltpGear'
-        medium:
-          $ref: '#/components/schemas/WltpGear'
-        total:
-          $ref: '#/components/schemas/WltpGear'
-        weighted:
-          $ref: '#/components/schemas/WltpGear'
+      - individual
+      - min
+      - max
       type: object
     Transmission:
       description: The transmission of the vehicle configuration.
@@ -284,36 +207,29 @@ components:
       required:
       - engine
       - transmission
-    Nedc:
-      description: Holds all relevant informations for the Nedc 'New European Drive Cycle'.
+    WltpEmission:
+      description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' emission.
       properties:
-        consumption:
-          $ref: '#/components/schemas/NedcConsumption'
-        electricRange:
-          $ref: '#/components/schemas/NedcAmount'
-        emission:
-          $ref: '#/components/schemas/NedcEmission'
-        weight:
-          $ref: '#/components/schemas/NedcAmount'
-    Tax:
-      description: The country specific tax information.
-      properties:
-        amount:
-          type: number
-        baseAmount:
-          type: number
-        charge:
-          type: number
-        id:
-          type: string
-        rate:
-          type: number
-      required:
-      - id
-      - amount
-      - baseAmount
-      - charge
-      - rate
+        chargeDeplete:
+          $ref: '#/components/schemas/WltpGear'
+        chargeDepleteCop:
+          $ref: '#/components/schemas/WltpGear'
+        chargeDepleteWeighted:
+          $ref: '#/components/schemas/WltpGear'
+        extraHigh:
+          $ref: '#/components/schemas/WltpGear'
+        high:
+          $ref: '#/components/schemas/WltpGear'
+        low:
+          $ref: '#/components/schemas/WltpGear'
+        lowMid:
+          $ref: '#/components/schemas/WltpGear'
+        medium:
+          $ref: '#/components/schemas/WltpGear'
+        total:
+          $ref: '#/components/schemas/WltpGear'
+        weighted:
+          $ref: '#/components/schemas/WltpGear'
       type: object
     VehicleConfiguration:
       description: A vehicle configuration.
@@ -354,6 +270,169 @@ components:
       - technicalInformation
       - wltpConfiguration
       - _links
+      type: object
+    WltpAmount:
+      description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' drive cycle specific amount holds the wltp specific values.
+      properties:
+        individual:
+          $ref: '#/components/schemas/Amount'
+        max:
+          $ref: '#/components/schemas/Amount'
+        min:
+          $ref: '#/components/schemas/Amount'
+      required:
+      - individual
+      - min
+      - max
+      type: object
+    NedcConsumption:
+      description: The Nedc 'New European Drive Cycle' consumption.
+      properties:
+        city:
+          $ref: '#/components/schemas/NedcGear'
+        combined:
+          $ref: '#/components/schemas/NedcGear'
+        country:
+          $ref: '#/components/schemas/NedcGear'
+        electric:
+          $ref: '#/components/schemas/NedcAmount'
+        weighted:
+          $ref: '#/components/schemas/NedcGear'
+      type: object
+    PriceInformation:
+      description: The prices, installment price, taxes and ISO currency of a vehicle.
+      properties:
+        currency:
+          type: string
+        instalmentPrice:
+          type: number
+        netPrice:
+          type: number
+        price:
+          type: number
+        taxes:
+          items:
+            $ref: '#/components/schemas/Tax'
+          type: array
+      required:
+      - price
+      - netPrice
+      - currency
+      - taxes
+      type: object
+    DriveConcept:
+      description: The kind of drive concept of a vehicle. Where UNDEFINED is used as the default and/or error case.
+      enum:
+      - COMBUSTOR
+      - HYBRID
+      - ELECTRIC
+      - FUELCELL
+      - UNDEFINED
+      type: string
+    NedcGear:
+      description: The gear of a vehicle. A vehicle can have a primary and a secondary gear.
+      properties:
+        primaryGear:
+          $ref: '#/components/schemas/NedcAmount'
+        secondaryGear:
+          $ref: '#/components/schemas/NedcAmount'
+      type: object
+    VehicleComponentType:
+      description: The component type of a vehicle component.
+      enum:
+      - ANY
+      - WHEELS
+      - PAINTS
+      - UPHOLSTERIES
+      - TRIMS
+      - PACKAGES
+      - LINES
+      - SPECIAL_EDITION
+      - SPECIAL_EQUIPMENT
+      type: string
+    FuelEconomy:
+      description: This is for the fuel consumption holding a value and unit.
+      properties:
+        consumptionOfElectricityMax:
+          $ref: '#/components/schemas/Amount'
+        consumptionOfElectricityMin:
+          $ref: '#/components/schemas/Amount'
+        emissionCO2Max:
+          $ref: '#/components/schemas/Amount'
+        emissionCO2Min:
+          $ref: '#/components/schemas/Amount'
+        fuelConsumptionCityMax:
+          $ref: '#/components/schemas/Amount'
+        fuelConsumptionCityMin:
+          $ref: '#/components/schemas/Amount'
+        fuelConsumptionCombinedMax:
+          $ref: '#/components/schemas/Amount'
+        fuelConsumptionCombinedMin:
+          $ref: '#/components/schemas/Amount'
+        fuelConsumptionElectricity:
+          $ref: '#/components/schemas/Amount'
+        fuelConsumptionOverlandMax:
+          $ref: '#/components/schemas/Amount'
+        fuelConsumptionOverlandMin:
+          $ref: '#/components/schemas/Amount'
+    Tax:
+      description: The country specific tax information.
+      properties:
+        amount:
+          type: number
+        baseAmount:
+          type: number
+        charge:
+          type: number
+        id:
+          type: string
+        rate:
+          type: number
+      required:
+      - id
+      - amount
+      - baseAmount
+      - charge
+      - rate
+      type: object
+    Amount:
+      description: Holds a value and unit.
+      properties:
+        unit:
+          type: string
+        value:
+          type: number
+      required:
+      - value
+    HRef:
+      description: The URL to the specific resource.
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    OnlineCodeResponseBody:
+      description: The onlinecode is a unique identifier for a stored vehicle configuration.
+      properties:
+        onlineCode:
+          description: String that identifies the online code
+          type: string
+      required:
+      - onlineCode
+    SelfSelectablesImageVehicleLinks:
+      description: Links to self and image resources.
+      properties:
+        imageapi_vehicle:
+          $ref: '#/components/schemas/HRef'
+        selectables:
+          $ref: '#/components/schemas/HRef'
+        self:
+          $ref: '#/components/schemas/HRef'
+      required:
+      - self
+      - selectables
+      - imageapi_vehicle
       type: object
     VehicleComponent:
       description: A vehicle component.
@@ -408,113 +487,6 @@ components:
       - pseudoCode
       - _links
       type: object
-    Engine:
-      description: All technical information about a specific engine.
-      properties:
-        alternativeFuelType:
-          $ref: '#/components/schemas/FuelType'
-        capacity:
-          $ref: '#/components/schemas/Amount'
-        cylinder:
-          type: string
-        driveConcept:
-          $ref: '#/components/schemas/DriveConcept'
-        emissionStandard:
-          type: string
-        engineConcept:
-          $ref: '#/components/schemas/EngineConcept'
-        fuelEconomy:
-          $ref: '#/components/schemas/FuelEconomy'
-        fuelType:
-          $ref: '#/components/schemas/FuelType'
-        powerHp:
-          $ref: '#/components/schemas/Amount'
-        powerHybridExtensionHp:
-          $ref: '#/components/schemas/Amount'
-        powerHybridExtensionKw:
-          $ref: '#/components/schemas/Amount'
-        powerKw:
-          $ref: '#/components/schemas/Amount'
-      required:
-      - fuelType
-    NedcEmission:
-      description: The Nedc 'New European Drive Cycle' emission.
-      properties:
-        city:
-          $ref: '#/components/schemas/NedcGear'
-        combined:
-          $ref: '#/components/schemas/NedcGear'
-        country:
-          $ref: '#/components/schemas/NedcGear'
-        weighted:
-          $ref: '#/components/schemas/NedcAmount'
-      type: object
-    VehicleComponentType:
-      description: The component type of a vehicle component.
-      enum:
-      - ANY
-      - WHEELS
-      - PAINTS
-      - UPHOLSTERIES
-      - TRIMS
-      - PACKAGES
-      - LINES
-      - SPECIAL_EDITION
-      - SPECIAL_EQUIPMENT
-      type: string
-    WltpAmount:
-      description: The Wltp 'Worldwide harmonized Light vehicles Test Procedure' drive cycle specific amount holds the wltp specific values.
-      properties:
-        individual:
-          $ref: '#/components/schemas/Amount'
-        max:
-          $ref: '#/components/schemas/Amount'
-        min:
-          $ref: '#/components/schemas/Amount'
-      required:
-      - individual
-      - min
-      - max
-      type: object
-    Amount:
-      description: Holds a value and unit.
-      properties:
-        unit:
-          type: string
-        value:
-          type: number
-      required:
-      - value
-    ImageComponentLink:
-      description: Link to VIM image API.
-      properties:
-        imageapi_component:
-          $ref: '#/components/schemas/HRef'
-      required:
-      - imageapi_component
-      type: object
-    NedcConsumption:
-      description: The Nedc 'New European Drive Cycle' consumption.
-      properties:
-        city:
-          $ref: '#/components/schemas/NedcGear'
-        combined:
-          $ref: '#/components/schemas/NedcGear'
-        country:
-          $ref: '#/components/schemas/NedcGear'
-        electric:
-          $ref: '#/components/schemas/NedcAmount'
-        weighted:
-          $ref: '#/components/schemas/NedcGear'
-      type: object
-    HRef:
-      description: The URL to the specific resource.
-      properties:
-        href:
-          type: string
-      required:
-      - href
-      type: object
     OnlineCodeRequestBody:
       description: JSON object containing the modelId and the configurationId
       example:
@@ -530,30 +502,66 @@ components:
       required:
       - modelId
       - configurationId
-    DriveConcept:
-      description: The kind of drive concept of a vehicle. Where UNDEFINED is used as the default and/or error case.
+    NedcEmission:
+      description: The Nedc 'New European Drive Cycle' emission.
+      properties:
+        city:
+          $ref: '#/components/schemas/NedcGear'
+        combined:
+          $ref: '#/components/schemas/NedcGear'
+        country:
+          $ref: '#/components/schemas/NedcGear'
+        weighted:
+          $ref: '#/components/schemas/NedcAmount'
+      type: object
+    FuelType:
+      description: The kind of fuel used by an engine of a vehicle. Where UNDEFINED is used as the default and/or error case.
       enum:
-      - COMBUSTOR
-      - HYBRID
+      - NORMAL
+      - SUPER
+      - SUPERPLUS
+      - DIESEL
+      - HGAS
+      - GAS
       - ELECTRIC
       - FUELCELL
       - UNDEFINED
       type: string
-    NedcAmount:
-      description: The Nedc 'New European Drive Cycle' specific amount holds the nedc specific values.
+    Wltp:
+      description: Holds all relevant informations for the Wltp 'Worldwide harmonized Light vehicles Test Procedure' drive cycle.
       properties:
-        individual:
-          $ref: '#/components/schemas/Amount'
-        max:
-          $ref: '#/components/schemas/Amount'
-        min:
-          $ref: '#/components/schemas/Amount'
+        consumption:
+          $ref: '#/components/schemas/WltpConsumption'
+        emission:
+          $ref: '#/components/schemas/WltpEmission'
+    ImageComponentLink:
+      description: Link to VIM image API.
+      properties:
+        imageapi_component:
+          $ref: '#/components/schemas/HRef'
       required:
-      - individual
-      - min
-      - max
+      - imageapi_component
       type: object
+    Nedc:
+      description: Holds all relevant informations for the Nedc 'New European Drive Cycle'.
+      properties:
+        consumption:
+          $ref: '#/components/schemas/NedcConsumption'
+        electricRange:
+          $ref: '#/components/schemas/NedcAmount'
+        emission:
+          $ref: '#/components/schemas/NedcEmission'
+        weight:
+          $ref: '#/components/schemas/NedcAmount'
   parameters:
+    onlineCode:
+      description: OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'.
+      in: path
+      name: onlineCode
+      required: true
+      schema:
+        type: string
+        default: MQKCIHRI
     fieldsFilter:
       description: Specifies which fields should be included in the result. If this filter is not used, per default all fields are returned.
       in: query
@@ -579,12 +587,4 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/OnlineCodeRequestBody'
-    onlineCode:
-      description: OnlineCode string that identifies a vehicle configuration e.g. 'M6882554'.
-      in: path
-      name: onlineCode
-      required: true
-      schema:
-        type: string
-        default: MQKCIHRI
 x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB
