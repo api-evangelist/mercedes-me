@@ -159,6 +159,11 @@ paths:
       - Diagnostic Trouble Code (DTC) Snapshots
 components:
   schemas:
+    DtcSnapshotDataContainer:
+      properties:
+        dtcSnapshotReadout:
+          $ref: '#/components/schemas/DtcSnapshotDataType'
+      type: object
     CommonType:
       properties:
         asyncEstimatedComplete:
@@ -213,10 +218,14 @@ components:
       - asyncStatus
       - vehicleId
       type: object
-    DtcSnapshotDataContainer:
+    ErrorResponse:
       properties:
-        dtcSnapshotReadout:
-          $ref: '#/components/schemas/DtcSnapshotDataType'
+        errorCode:
+          description: Error Code
+          type: string
+        errorMessage:
+          description: Error Message
+          type: string
       type: object
     DtcSnapshotDataItem:
       properties:
@@ -249,13 +258,4 @@ components:
         - dtcId
         - ecuId
         type: object
-    ErrorResponse:
-      properties:
-        errorCode:
-          description: Error Code
-          type: string
-        errorMessage:
-          description: Error Message
-          type: string
-      type: object
 x-default-token: a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6

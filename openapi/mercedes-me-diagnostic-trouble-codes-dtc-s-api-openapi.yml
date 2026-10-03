@@ -155,10 +155,32 @@ paths:
       - Diagnostic Trouble Codes (DTC's)
 components:
   schemas:
-    DtcDataContainer:
+    DtcDataItem:
       properties:
-        dtcReadout:
-          $ref: '#/components/schemas/DtcDataType'
+        dtcId:
+          description: Identifier of the DTC.
+          type: string
+        dtcTimestamp:
+          description: Date and time when the DTC occurred
+          type: string
+        ecuId:
+          description: Identifier of the ECU where the DTC occurred
+          type: string
+        occurrenceCounter:
+          description: Counter of how many times this DTC has occurred
+          format: int32
+          type: integer
+        status:
+          description: Reflects the status of the DTC
+          enum:
+          - ACTIVE
+          - PENDING
+          - PREVIOUSLY_ACTIVE
+          type: string
+      required:
+      - dtcId
+      - ecuId
+      - status
       type: object
     CommonType:
       properties:
@@ -214,6 +236,15 @@ components:
       - asyncStatus
       - vehicleId
       type: object
+    ErrorResponse:
+      properties:
+        errorCode:
+          description: Error Code
+          type: string
+        errorMessage:
+          description: Error Message
+          type: string
+      type: object
     DtcDataType:
       allOf:
       - $ref: '#/components/schemas/CommonType'
@@ -224,40 +255,9 @@ components:
               $ref: '#/components/schemas/DtcDataItem'
             type: array
         type: object
-    DtcDataItem:
+    DtcDataContainer:
       properties:
-        dtcId:
-          description: Identifier of the DTC.
-          type: string
-        dtcTimestamp:
-          description: Date and time when the DTC occurred
-          type: string
-        ecuId:
-          description: Identifier of the ECU where the DTC occurred
-          type: string
-        occurrenceCounter:
-          description: Counter of how many times this DTC has occurred
-          format: int32
-          type: integer
-        status:
-          description: Reflects the status of the DTC
-          enum:
-          - ACTIVE
-          - PENDING
-          - PREVIOUSLY_ACTIVE
-          type: string
-      required:
-      - dtcId
-      - ecuId
-      - status
-      type: object
-    ErrorResponse:
-      properties:
-        errorCode:
-          description: Error Code
-          type: string
-        errorMessage:
-          description: Error Message
-          type: string
+        dtcReadout:
+          $ref: '#/components/schemas/DtcDataType'
       type: object
 x-default-token: a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6

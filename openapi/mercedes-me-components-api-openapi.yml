@@ -427,56 +427,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CodeImage:
-      description: The code image contains an equipment code with a corresponding image URL.
+    ImageUrlArray:
+      description: An object describing a list of image URLs that could be an vehicle equipment images for example.
       properties:
-        code:
-          description: The equipment code for the corresponding image.
-          type: string
-        url:
-          description: An URL pointing to an image of an equipment.
-          type: string
-      required:
-      - code
-      - url
-      type: object
-    ImageUrl:
-      description: 'An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.      '
-      properties:
-        url:
-          type: string
-    TrimResponse:
-      description: A trim object
-      properties:
-        trim:
-          $ref: '#/components/schemas/CodeImage'
-      type: object
-    Error:
-      description: The error object containing detailed information about the error.
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-      type: object
+        urls:
+          items:
+            type: string
+          type: array
     UpholsteryResponse:
       description: A paint object
       properties:
         upholstery:
           $ref: '#/components/schemas/CodeImage'
       type: object
-    EngineResponse:
-      description: A paint object
+    EquipmentResponse:
+      description: The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys.
       properties:
-        engine:
-          $ref: '#/components/schemas/ImageUrl'
-      type: object
-    PaintResponse:
-      description: A paint object
-      properties:
-        paint:
-          $ref: '#/components/schemas/Paints'
-      type: object
+        equipments:
+          $ref: '#/components/schemas/EquipmentMap'
+      required:
+      - equipments
     Components:
       description: A set of URLs pointing to images of the vehicle in low resolution.
       properties:
@@ -493,6 +463,29 @@ components:
         upholstery:
           $ref: '#/components/schemas/CodeImage'
       type: object
+    TrimResponse:
+      description: A trim object
+      properties:
+        trim:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    PaintResponse:
+      description: A paint object
+      properties:
+        paint:
+          $ref: '#/components/schemas/Paints'
+      type: object
+    RimResponse:
+      description: A rim object
+      properties:
+        rim:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    ImageUrl:
+      description: 'An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.      '
+      properties:
+        url:
+          type: string
     Paints:
       description: The upper (paint2) and the lower (paint1) paint of the vehicle.
       properties:
@@ -506,26 +499,33 @@ components:
         $ref: '#/components/schemas/ImageUrlArray'
       description: The map holds equipments objects with the equipment codes as map keys and a corresponding list of image URLs for each code.
       type: object
-    RimResponse:
-      description: A rim object
+    CodeImage:
+      description: The code image contains an equipment code with a corresponding image URL.
       properties:
-        rim:
-          $ref: '#/components/schemas/CodeImage'
-      type: object
-    EquipmentResponse:
-      description: The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys.
-      properties:
-        equipments:
-          $ref: '#/components/schemas/EquipmentMap'
+        code:
+          description: The equipment code for the corresponding image.
+          type: string
+        url:
+          description: An URL pointing to an image of an equipment.
+          type: string
       required:
-      - equipments
-    ImageUrlArray:
-      description: An object describing a list of image URLs that could be an vehicle equipment images for example.
+      - code
+      - url
+      type: object
+    EngineResponse:
+      description: A paint object
       properties:
-        urls:
-          items:
-            type: string
-          type: array
+        engine:
+          $ref: '#/components/schemas/ImageUrl'
+      type: object
+    Error:
+      description: The error object containing detailed information about the error.
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      type: object
     ComponentsResponse:
       description: A paint object
       properties:

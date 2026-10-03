@@ -143,11 +143,6 @@ paths:
       - Resources
 components:
   schemas:
-    ResourceDataContainer:
-      properties:
-        resourceReadout:
-          $ref: '#/components/schemas/ResourceDataType'
-      type: object
     ResourceDataItem:
       properties:
         api:
@@ -164,6 +159,16 @@ components:
       - name
       - version
       type: object
+    ResourceDataType:
+      allOf:
+      - $ref: '#/components/schemas/CommonType'
+      - properties:
+          resources:
+            description: List of resources.
+            items:
+              $ref: '#/components/schemas/ResourceDataItem'
+            type: array
+        type: object
     CommonType:
       properties:
         asyncEstimatedComplete:
@@ -218,16 +223,6 @@ components:
       - asyncStatus
       - vehicleId
       type: object
-    ResourceDataType:
-      allOf:
-      - $ref: '#/components/schemas/CommonType'
-      - properties:
-          resources:
-            description: List of resources.
-            items:
-              $ref: '#/components/schemas/ResourceDataItem'
-            type: array
-        type: object
     ErrorResponse:
       properties:
         errorCode:
@@ -236,5 +231,10 @@ components:
         errorMessage:
           description: Error Message
           type: string
+      type: object
+    ResourceDataContainer:
+      properties:
+        resourceReadout:
+          $ref: '#/components/schemas/ResourceDataType'
       type: object
 x-default-token: a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6

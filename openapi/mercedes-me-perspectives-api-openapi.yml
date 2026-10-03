@@ -93,6 +93,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ImageUrlWithError:
+      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content. In case of an error that is related to the requested image material (e.g. perspective), an error object is present containing further information.
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+        url:
+          type: string
     VehicleResponse:
       description: The response object holds either an error object, in case that the request was malformed, or a vehicle object containing all urls for the requested perspectives.
       properties:
@@ -111,13 +118,6 @@ components:
         message:
           type: string
       type: object
-    ImageUrlWithError:
-      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content. In case of an error that is related to the requested image material (e.g. perspective), an error object is present containing further information.
-      properties:
-        error:
-          $ref: '#/components/schemas/Error'
-        url:
-          type: string
   parameters:
     finorvin:
       description: "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
@@ -127,10 +127,10 @@ components:
       schema:
         type: string
         default: WDD1760421J123456
-    roofOpen:
-      description: Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'.
+    night:
+      description: Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'.
       in: query
-      name: roofOpen
+      name: night
       required: false
       schema:
         type: boolean
@@ -143,10 +143,10 @@ components:
       schema:
         type: string
         default: EXT020,INT1
-    night:
-      description: Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'.
+    roofOpen:
+      description: Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'.
       in: query
-      name: night
+      name: roofOpen
       required: false
       schema:
         type: boolean

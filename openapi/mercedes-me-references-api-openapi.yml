@@ -356,42 +356,87 @@ paths:
     - url: https://api.mercedes-benz.com/dealer_tryout/v1
 components:
   schemas:
-    VehicleClass:
-      description: The class of a Vehicle, e.g. 'A-Class'.
+    VehicleBody:
+      description: The body of a Vehicle, e.g. 'Limousine'.
       properties:
         _links:
           $ref: '#/components/schemas/SelfModelLinks'
-        classId:
+        bodyId:
           type: string
-        className:
+        bodyName:
           type: string
       required:
-      - classId
-      - className
+      - bodyId
+      - bodyName
       - _links
       type: object
-    ProductGroup:
-      description: Represent a product group.
-      enum:
-      - PKW
-      - VAN
-      - SMART
+    SelfModelLinks:
+      description: Links to self and models resources.
       properties:
-        name:
-          type: string
-      required:
-      - name
-      type: object
-    SelfConfigurationLinks:
-      description: Links to self and configuration resources.
-      properties:
-        configuration:
+        models:
           $ref: '#/components/schemas/HRef'
         self:
           $ref: '#/components/schemas/HRef'
       required:
       - self
-      - configuration
+      - models
+      type: object
+    Tax:
+      description: The country specific tax information.
+      properties:
+        amount:
+          type: number
+        baseAmount:
+          type: number
+        charge:
+          type: number
+        id:
+          type: string
+        rate:
+          type: number
+      required:
+      - id
+      - amount
+      - baseAmount
+      - charge
+      - rate
+      type: object
+    ProductGroupsPerMarket:
+      description: Represent the active product groups for a market.
+      properties:
+        _links:
+          $ref: '#/components/schemas/SelfModelLinks'
+        market:
+          $ref: '#/components/schemas/Market'
+        productGroups:
+          items:
+            $ref: '#/components/schemas/ProductGroup'
+          type: array
+      required:
+      - market
+      - productGroups
+      - _links
+      type: object
+    PriceInformation:
+      description: The prices, installment price, taxes and ISO currency of a vehicle.
+      properties:
+        currency:
+          type: string
+        instalmentPrice:
+          type: number
+        netPrice:
+          type: number
+        price:
+          type: number
+        taxes:
+          items:
+            $ref: '#/components/schemas/Tax'
+          type: array
+      required:
+      - price
+      - netPrice
+      - currency
+      - taxes
       type: object
     Market:
       description: Represent a market (aka country) with a specific country and a language.
@@ -410,16 +455,38 @@ components:
       - language
       - _links
       type: object
-    SelfModelLinks:
-      description: Links to self and models resources.
+    VehicleClass:
+      description: The class of a Vehicle, e.g. 'A-Class'.
       properties:
-        models:
+        _links:
+          $ref: '#/components/schemas/SelfModelLinks'
+        classId:
+          type: string
+        className:
+          type: string
+      required:
+      - classId
+      - className
+      - _links
+      type: object
+    HRef:
+      description: The URL to the specific resource.
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    SelfConfigurationLinks:
+      description: Links to self and configuration resources.
+      properties:
+        configuration:
           $ref: '#/components/schemas/HRef'
         self:
           $ref: '#/components/schemas/HRef'
       required:
       - self
-      - models
+      - configuration
       type: object
     VehicleModel:
       description: The model of a Vehicle, e.g. '176042_002'.
@@ -456,69 +523,6 @@ components:
       - priceInformation
       - _links
       type: object
-    PriceInformation:
-      description: The prices, installment price, taxes and ISO currency of a vehicle.
-      properties:
-        currency:
-          type: string
-        instalmentPrice:
-          type: number
-        netPrice:
-          type: number
-        price:
-          type: number
-        taxes:
-          items:
-            $ref: '#/components/schemas/Tax'
-          type: array
-      required:
-      - price
-      - netPrice
-      - currency
-      - taxes
-      type: object
-    VehicleBody:
-      description: The body of a Vehicle, e.g. 'Limousine'.
-      properties:
-        _links:
-          $ref: '#/components/schemas/SelfModelLinks'
-        bodyId:
-          type: string
-        bodyName:
-          type: string
-      required:
-      - bodyId
-      - bodyName
-      - _links
-      type: object
-    Tax:
-      description: The country specific tax information.
-      properties:
-        amount:
-          type: number
-        baseAmount:
-          type: number
-        charge:
-          type: number
-        id:
-          type: string
-        rate:
-          type: number
-      required:
-      - id
-      - amount
-      - baseAmount
-      - charge
-      - rate
-      type: object
-    HRef:
-      description: The URL to the specific resource.
-      properties:
-        href:
-          type: string
-      required:
-      - href
-      type: object
     SelfReferencesLinks:
       description: Market specific links to the specific resources. i.e. classes, bodies, etc.
       properties:
@@ -539,21 +543,17 @@ components:
       - models
       - productgroups
       type: object
-    ProductGroupsPerMarket:
-      description: Represent the active product groups for a market.
+    ProductGroup:
+      description: Represent a product group.
+      enum:
+      - PKW
+      - VAN
+      - SMART
       properties:
-        _links:
-          $ref: '#/components/schemas/SelfModelLinks'
-        market:
-          $ref: '#/components/schemas/Market'
-        productGroups:
-          items:
-            $ref: '#/components/schemas/ProductGroup'
-          type: array
+        name:
+          type: string
       required:
-      - market
-      - productGroups
-      - _links
+      - name
       type: object
     DefaultLinks:
       description: default links
@@ -578,15 +578,6 @@ components:
       required:
       - _links
       type: object
-    Link:
-      description: the representation of a link
-      properties:
-        href:
-          description: the target of the link
-          type: string
-      required:
-      - href
-      type: object
     Country:
       properties:
         countryId:
@@ -603,23 +594,23 @@ components:
       - isoCode
       - name
       type: object
+    Link:
+      description: the representation of a link
+      properties:
+        href:
+          description: the target of the link
+          type: string
+      required:
+      - href
+      type: object
   parameters:
-    languageParam:
-      description: This is a ISO language string e.g. 'de' and is spoken in Austria 'AT', Germany 'DE' and Swiss 'CH'.
+    nationalSalesTypeParam:
+      description: This is the national sales type (NST) of a distinct baumuster. There is no predefined pattern for the NST, each market defines its NST. e.g. 'E07' in France, 0001 in Germany and ZA1 in South Africa Using the NST markets can define market specific conditions. e.g. different initial configuration, etc.
       in: query
-      name: language
+      name: nationalSalesType
       required: false
       schema:
         type: string
-        default: de
-    classIdParam:
-      description: This is a class id e.g. '176' for 'A-Class' in Germany.
-      in: query
-      name: classId
-      required: false
-      schema:
-        type: string
-        default: '222'
     countryParam:
       description: This is a ISO country string e.g. Germany 'DE' or Swiss 'CH'.
       in: query
@@ -636,6 +627,29 @@ components:
         type: array
         items:
           type: string
+    baumuster4prefixParam:
+      description: The first four digits of a baumuster are called baumuster4prefix e.g. '1760' for 'Berline' in France.
+      in: query
+      name: baumuster4prefix
+      required: false
+      schema:
+        type: string
+    bodyId:
+      description: This is a body id e.g. '1' for 'Limousine' in Germany.
+      in: path
+      name: bodyId
+      required: true
+      schema:
+        type: string
+        default: '2'
+    classIdParam:
+      description: This is a class id e.g. '176' for 'A-Class' in Germany.
+      in: query
+      name: classId
+      required: false
+      schema:
+        type: string
+        default: '222'
     marketId:
       description: This is a ISO 3166 language country string e.g. 'de_DE' or 'en_GB'.
       in: path
@@ -645,6 +659,13 @@ components:
         type: string
         default: de_DE
         pattern: ^[a-z]{2}_[A-Z]{2}$
+    baumusterParam:
+      description: This is a baumuster e.g. '176042' for 'A 180 Limousine' in Germany.
+      in: query
+      name: baumuster
+      required: false
+      schema:
+        type: string
     bodyIdParam:
       description: This is a body id e.g. '1' for 'Limousine' in Germany.
       in: query
@@ -653,14 +674,6 @@ components:
       schema:
         type: string
         default: '2'
-    classId:
-      description: This is a class id e.g. '176' for 'A-Klasse' in Germany.
-      in: path
-      name: classId
-      required: true
-      schema:
-        type: string
-        default: '222'
     modelId:
       description: Minimal string that identifies a model e.g. '176042_002'. If no nationalSalesType is available, the modelId only consists of the baumuster e.g. '176042'.
       in: path
@@ -669,28 +682,6 @@ components:
       schema:
         type: string
         default: 222980000
-    bodyId:
-      description: This is a body id e.g. '1' for 'Limousine' in Germany.
-      in: path
-      name: bodyId
-      required: true
-      schema:
-        type: string
-        default: '2'
-    nationalSalesTypeParam:
-      description: This is the national sales type (NST) of a distinct baumuster. There is no predefined pattern for the NST, each market defines its NST. e.g. 'E07' in France, 0001 in Germany and ZA1 in South Africa Using the NST markets can define market specific conditions. e.g. different initial configuration, etc.
-      in: query
-      name: nationalSalesType
-      required: false
-      schema:
-        type: string
-    baumuster4prefixParam:
-      description: The first four digits of a baumuster are called baumuster4prefix e.g. '1760' for 'Berline' in France.
-      in: query
-      name: baumuster4prefix
-      required: false
-      schema:
-        type: string
     productGroups:
       description: "Specifies to which product groups the vehicles belong which should be returned. The product groups are separated from each other by a comma and are case sensitive. Allowed values are:\n  * PKW\n  * VAN\n  * SMART"
       in: query
@@ -704,29 +695,38 @@ components:
           - VAN
           - SMART
           type: string
-    baumusterParam:
-      description: This is a baumuster e.g. '176042' for 'A 180 Limousine' in Germany.
+    classId:
+      description: This is a class id e.g. '176' for 'A-Klasse' in Germany.
+      in: path
+      name: classId
+      required: true
+      schema:
+        type: string
+        default: '222'
+    languageParam:
+      description: This is a ISO language string e.g. 'de' and is spoken in Austria 'AT', Germany 'DE' and Swiss 'CH'.
       in: query
-      name: baumuster
+      name: language
       required: false
       schema:
         type: string
-    pageSize:
-      description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
-
-        '
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: integer
-        format: int32
+        default: de
     page:
       description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
 
         '
       in: query
       name: page
+      required: false
+      schema:
+        type: integer
+        format: int32
+    pageSize:
+      description: 'The index of the page to be returned. If this parameter is omitted, the first page will be returned.
+
+        '
+      in: query
+      name: pageSize
       required: false
       schema:
         type: integer
