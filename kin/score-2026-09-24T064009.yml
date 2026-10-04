@@ -1,47 +1,49 @@
-# Kin Score artifact — mercedes-me — 2026-08-25T133943
+# Kin Score artifact — mercedes-me — 2026-09-24T064009
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: mercedes-me
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T133943
-  composite: 40.1
+  schema_version: 0.22.0
+  scored_at: '2026-09-24'
+  run_ts: 2026-09-24T064009
+  composite: 51.2
   band: developing
   facets:
-    discoverability: 50.0
-    contract_quality: 63.6
-    governance: 28.8
-    operational_transparency: 5.3
-    developer_ergonomics: 35.7
-    commercial_clarity: 39.5
-    contract_governance: 28.8
+    discoverability: 64.8
+    contract_quality: 72.1
+    contract_governance: 47.0
+    operational_transparency: 15.8
+    developer_ergonomics: 58.9
     access_clarity: 39.5
   agent_readiness:
-    score: 17.3
-    band: agent-aware
+    score: 43.3
+    band: agent-ready
+    band_gated_from: agent-native
     dimensions:
       spec_presence: true
       agentic_access: derived
       reversibility_documented: false
       mcp_server: false
-      auth_clarity: false
+      auth_clarity: served
       idempotency: false
-      error_semantics: false
+      error_semantics: verified
       openapi_examples: false
       rate_limit_signal: documented
-      event_surface_described: false
-      agent_skills: false
+      event_surface_described: true
+      agent_skills: derived
       well_known_catalog: false
       consent_identity: false
       agent_card: false
       dry_run_mode: false
-      delegated_identity: false
+      delegated_identity: served
       protected_resource_metadata: false
-      dynamic_client_registration: false
+      dynamic_client_registration: true
       agentic_commerce: false
   provenance:
+    mcp: derived
+    skills: derived
     agentic_access: derived
+    conformance: first-party
     contracts:
       total: 11
       derived: 0
