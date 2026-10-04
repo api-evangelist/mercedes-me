@@ -92,37 +92,19 @@ paths:
       summary: Image vehicle GET
       x-summary-source: derived
 components:
-  schemas:
-    VehicleResponse:
-      description: The response object holds either an error object, in case that the request was malformed, or a vehicle object containing all urls for the requested perspectives.
-      properties:
-        vehicle:
-          additionalProperties:
-            $ref: '#/components/schemas/ImageUrlWithError'
-          description: A map holding a vehicle image for each requested perspective, e.g. EXT000.
-          type: object
-      required:
-      - vehicle
-    ImageUrlWithError:
-      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content. In case of an error that is related to the requested image material (e.g. perspective), an error object is present containing further information.
-      properties:
-        error:
-          $ref: '#/components/schemas/Error'
-        url:
-          type: string
-    Error:
-      description: The error object containing detailed information about the error.
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-      type: object
   parameters:
     night:
       description: Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'.
       in: query
       name: night
+      required: false
+      schema:
+        type: boolean
+        default: false
+    roofOpen:
+      description: Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'.
+      in: query
+      name: roofOpen
       required: false
       schema:
         type: boolean
@@ -143,12 +125,30 @@ components:
       schema:
         type: string
         default: WDD1760421J123456
-    roofOpen:
-      description: Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'.
-      in: query
-      name: roofOpen
-      required: false
-      schema:
-        type: boolean
-        default: false
+  schemas:
+    ImageUrlWithError:
+      description: An object describing an image URL that could be a vehicle image for example. This includes the URL to the content. In case of an error that is related to the requested image material (e.g. perspective), an error object is present containing further information.
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+        url:
+          type: string
+    Error:
+      description: The error object containing detailed information about the error.
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+    VehicleResponse:
+      description: The response object holds either an error object, in case that the request was malformed, or a vehicle object containing all urls for the requested perspectives.
+      properties:
+        vehicle:
+          additionalProperties:
+            $ref: '#/components/schemas/ImageUrlWithError'
+          description: A map holding a vehicle image for each requested perspective, e.g. EXT000.
+          type: object
+      required:
+      - vehicle
 x-default-apikey: Tyt82ndiKG0AdH8TCqe001ROh7RsGOKB

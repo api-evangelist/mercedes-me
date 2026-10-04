@@ -203,6 +203,15 @@ components:
       - asyncStatus
       - vehicleId
       type: object
+    ErrorResponse:
+      properties:
+        errorCode:
+          description: Error Code
+          type: string
+        errorMessage:
+          description: Error Message
+          type: string
+      type: object
     EcuDataContainer:
       properties:
         ecuReadout:
@@ -237,14 +246,5 @@ components:
       - ecuId
       - hardwareIds
       - softwareIds
-      type: object
-    ErrorResponse:
-      properties:
-        errorCode:
-          description: Error Code
-          type: string
-        errorMessage:
-          description: Error Message
-          type: string
       type: object
 x-default-token: a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6
