@@ -143,6 +143,22 @@ paths:
       - Resources
 components:
   schemas:
+    ResourceDataItem:
+      properties:
+        api:
+          description: URI to API exposing resource
+          type: string
+        name:
+          description: Name of resource
+          type: string
+        version:
+          description: Version of resource in API
+          type: string
+      required:
+      - api
+      - name
+      - version
+      type: object
     ResourceDataType:
       allOf:
       - $ref: '#/components/schemas/CommonType'
@@ -215,22 +231,6 @@ components:
         errorMessage:
           description: Error Message
           type: string
-      type: object
-    ResourceDataItem:
-      properties:
-        api:
-          description: URI to API exposing resource
-          type: string
-        name:
-          description: Name of resource
-          type: string
-        version:
-          description: Version of resource in API
-          type: string
-      required:
-      - api
-      - name
-      - version
       type: object
     ResourceDataContainer:
       properties:

@@ -125,3 +125,35 @@ plans:
     requirements:
       - Mercedes-Benz Connectivity Services commercial contract.
       - Vehicles must be Mercedes-Benz factory-connected (no retrofit).
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  units: []
+  plans:
+  - name: Sandbox / Tryout
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Reference Data Production
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Connected Vehicle Production
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Mercedes-Benz Fleet API
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []

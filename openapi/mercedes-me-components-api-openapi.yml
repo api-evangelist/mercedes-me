@@ -427,49 +427,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ImageUrlArray:
+      description: An object describing a list of image URLs that could be an vehicle equipment images for example.
+      properties:
+        urls:
+          items:
+            type: string
+          type: array
     UpholsteryResponse:
       description: A paint object
       properties:
         upholstery:
-          $ref: '#/components/schemas/CodeImage'
-      type: object
-    PaintResponse:
-      description: A paint object
-      properties:
-        paint:
-          $ref: '#/components/schemas/Paints'
-      type: object
-    ComponentsResponse:
-      description: A paint object
-      properties:
-        components:
-          $ref: '#/components/schemas/Components'
-      type: object
-    Error:
-      description: The error object containing detailed information about the error.
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-      type: object
-    CodeImage:
-      description: The code image contains an equipment code with a corresponding image URL.
-      properties:
-        code:
-          description: The equipment code for the corresponding image.
-          type: string
-        url:
-          description: An URL pointing to an image of an equipment.
-          type: string
-      required:
-      - code
-      - url
-      type: object
-    RimResponse:
-      description: A rim object
-      properties:
-        rim:
           $ref: '#/components/schemas/CodeImage'
       type: object
     EquipmentResponse:
@@ -479,37 +447,6 @@ components:
           $ref: '#/components/schemas/EquipmentMap'
       required:
       - equipments
-    EquipmentMap:
-      additionalProperties:
-        $ref: '#/components/schemas/ImageUrlArray'
-      description: The map holds equipments objects with the equipment codes as map keys and a corresponding list of image URLs for each code.
-      type: object
-    EngineResponse:
-      description: A paint object
-      properties:
-        engine:
-          $ref: '#/components/schemas/ImageUrl'
-      type: object
-    ImageUrlArray:
-      description: An object describing a list of image URLs that could be an vehicle equipment images for example.
-      properties:
-        urls:
-          items:
-            type: string
-          type: array
-    ImageUrl:
-      description: 'An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.      '
-      properties:
-        url:
-          type: string
-    Paints:
-      description: The upper (paint2) and the lower (paint1) paint of the vehicle.
-      properties:
-        lowerPaint:
-          $ref: '#/components/schemas/CodeImage'
-        upperPaint:
-          $ref: '#/components/schemas/CodeImage'
-      type: object
     Components:
       description: A set of URLs pointing to images of the vehicle in low resolution.
       properties:
@@ -531,6 +468,69 @@ components:
       properties:
         trim:
           $ref: '#/components/schemas/CodeImage'
+      type: object
+    PaintResponse:
+      description: A paint object
+      properties:
+        paint:
+          $ref: '#/components/schemas/Paints'
+      type: object
+    RimResponse:
+      description: A rim object
+      properties:
+        rim:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    ImageUrl:
+      description: 'An object describing an image URL that could be a vehicle image for example. This includes the URL to the content.      '
+      properties:
+        url:
+          type: string
+    Paints:
+      description: The upper (paint2) and the lower (paint1) paint of the vehicle.
+      properties:
+        lowerPaint:
+          $ref: '#/components/schemas/CodeImage'
+        upperPaint:
+          $ref: '#/components/schemas/CodeImage'
+      type: object
+    EquipmentMap:
+      additionalProperties:
+        $ref: '#/components/schemas/ImageUrlArray'
+      description: The map holds equipments objects with the equipment codes as map keys and a corresponding list of image URLs for each code.
+      type: object
+    CodeImage:
+      description: The code image contains an equipment code with a corresponding image URL.
+      properties:
+        code:
+          description: The equipment code for the corresponding image.
+          type: string
+        url:
+          description: An URL pointing to an image of an equipment.
+          type: string
+      required:
+      - code
+      - url
+      type: object
+    EngineResponse:
+      description: A paint object
+      properties:
+        engine:
+          $ref: '#/components/schemas/ImageUrl'
+      type: object
+    Error:
+      description: The error object containing detailed information about the error.
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+    ComponentsResponse:
+      description: A paint object
+      properties:
+        components:
+          $ref: '#/components/schemas/Components'
       type: object
   parameters:
     finorvin:
