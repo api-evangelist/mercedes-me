@@ -1,4 +1,4 @@
-# Mercedes-Benz Mercedes me (mercedes-me)
+# Mercedes-Benz Mercedes me
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,316 +64,178 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/mercedes-me/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/mercedes-me/refs/heads/main/apis.yml)
+Mercedes-Benz operates one of the few genuinely public OEM API platforms. Its /developers portal at developer.mercedes-benz.com sells connected-vehicle data as individually-subscribable products — Vehicle Status, Vehicle Lock Status, Fuel Status, Electric Vehicle Status and Pay As You Drive — each gated by its own OAuth 2.0 scope and each requiring the vehicle owner's explicit per-signal consent, granted through the Mercedes-Benz identity provider at id.mercedes-benz.com. Alongside them sit four content and service APIs with published Swagger 2.0 contracts: the Car Configurator, the Dealer API, the Vehicle Images API and Remote Diagnostic Support. Mercedes-Benz Connectivity Services GmbH sells the Fleet API separately, pairing a REST management surface with a managed Apache Kafka push channel that streams nineteen activatable telemetry packages plus five remote-command packages, including remote door lock and unlock. Every API is versioned by URI path and shipped with a *_tryout sandbox base path on the same host.
 
-## Scope
+**Areas:** Automotive · Connected Vehicles · Daimler · Fleet Management · Mercedes me · Mercedes-Benz · OEM · Telematics · Vehicle Data
 
-- **Access:** 3rd-Party
+## Mercedes-Benz Mercedes me on APIs.io
 
-## Tags
+Everything profiled for Mercedes-Benz Mercedes me is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mercedes-me/](https://apis.io/providers/mercedes-me/)** — or go straight to one of the APIs or properties below.
 
-- Automotive
-- Connected Car
-- Connected Vehicle
-- Daimler
-- Fleet Management
-- Mercedes me
-- Mercedes-Benz
-- OEM
-- Telematics
-- Vehicle Data
+### APIs (17)
 
-## APIs
+- [Mercedes-Benz Vehicle Status API](https://apis.io/apis/mercedes-me/mercedes-me-vehicle-status-api/) — The Vehicle Status API delivers real-time vehicle state — doors, windows, deck lid, sunroof, tire pressure, and overall lock state — for a…
+- [Mercedes-Benz Vehicle Lock Status API](https://apis.io/apis/mercedes-me/mercedes-me-vehicle-lock-status-api/) — The Vehicle Lock Status API returns the current door-lock, deck-lid, and position-lock state of a Mercedes-Benz vehicle by VIN. Designed for parking,…
+- [Mercedes-Benz Fuel Status API](https://apis.io/apis/mercedes-me/mercedes-me-fuel-status-api/) — The Fuel Status API exposes a Mercedes-Benz combustion vehicle's current tank level, remaining fuel range in km, and last-update timestamp by VIN. Targeted…
+- [Mercedes-Benz Electric Vehicle Status API](https://apis.io/apis/mercedes-me/mercedes-me-electric-vehicle-status-api/) — The Electric Vehicle Status API (currently at v3) provides charge state, state-of-charge percent, remaining electric range in km, charging-active flag, and…
+- [Mercedes-Benz Pay As You Drive 2.0 API](https://apis.io/apis/mercedes-me/mercedes-me-pay-as-you-drive-insurance-api/) — The Pay As You Drive 2.0 API supplies precise odometer readings and geographical position for a consented Mercedes-Benz vehicle, designed for usage-based…
+- [Mercedes-Benz Fleet API](https://apis.io/apis/mercedes-me/mercedes-benz-fleet-api/) — The Mercedes-Benz Fleet API integrates vehicle data into fleet management systems without retrofit hardware. It splits into a REST Management API (add…
+- [Mercedes-Benz Mercedes me Components API](https://apis.io/apis/mercedes-me/mercedes-me-components-api/) — The Components API from Mercedes-Benz Mercedes me — 7 operation(s) for components.
+- [Mercedes-Benz Mercedes me Configurations API](https://apis.io/apis/mercedes-me/mercedes-me-configurations-api/) — Select equipment and configure a car
+- [Mercedes-Benz Mercedes me Dealer search API](https://apis.io/apis/mercedes-me/mercedes-me-dealer-search-api/) — Resources that provide search functions for dealers (dealer, garage, retailer, etc.) based on given attributes.
+- [Mercedes-Benz Mercedes me Diagnostic Trouble Code (DTC) Snapshots API](https://apis.io/apis/mercedes-me/mercedes-me-diagnostic-trouble-code-dtc-snapshots-api/) — Remote Diagnostic Support service for view dtc snapshot List.
+- [Mercedes-Benz Mercedes me Diagnostic Trouble Codes (DTC's) API](https://apis.io/apis/mercedes-me/mercedes-me-diagnostic-trouble-codes-dtc-s-api/) — Remote Diagnostic Support service for view dtc List.
+- [Mercedes-Benz Mercedes me Electronical Control Units (ECU's) API](https://apis.io/apis/mercedes-me/mercedes-me-electronical-control-units-ecu-s-api/) — Remote Diagnostic Support services for view ecu List.
+- [Mercedes-Benz Mercedes me Images API](https://apis.io/apis/mercedes-me/mercedes-me-images-api/) — Get images for the vehicle configuration and its components
+- [Mercedes-Benz Mercedes me Perspectives API](https://apis.io/apis/mercedes-me/mercedes-me-perspectives-api/) — The Perspectives API from Mercedes-Benz Mercedes me — 1 operation(s) for perspectives.
+- [Mercedes-Benz Mercedes me References API](https://apis.io/apis/mercedes-me/mercedes-me-references-api/) — Provide static reference data about cars like markets, bodies, classes, etc.
+- [Mercedes-Benz Mercedes me Resources API](https://apis.io/apis/mercedes-me/mercedes-me-resources-api/) — Remote Diagnostic Support service for view all resources.
+- [Mercedes-Benz Mercedes me Saved configurations API](https://apis.io/apis/mercedes-me/mercedes-me-saved-configurations-api/) — Store and load configurations with an onlinecode
 
-### Mercedes-Benz Car Configurator API
+### Published properties
 
-The Car Configurator API offers programmatic access to Mercedes-Benz vehicle configuration functions. It exposes reference data (markets, classes, bodies, models) and the configuration engine so apps can build interactive configurators, retrieve images for any configuration state, and save/share configurations via an online code.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Human URL:** [https://developer.mercedes-benz.com/products/configurator](https://developer.mercedes-benz.com/products/configurator)
-- **Base URL:** `https://api.mercedes-benz.com/configurator/v1`
+#### AsyncAPI (1)
 
-#### Tags
+Event-driven and webhook contracts.
 
-- Automotive
-- Configurator
-- Connected Vehicle
-- Mercedes-Benz
-- Vehicle Reference Data
+- [Mercedes Me Fleet Event Catalog](https://apis.io/asyncapis/mercedes-me/mercedes-me-fleet-event-catalog/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://developer.mercedes-benz.com/products/configurator)
-- [Documentation](https://developer.mercedes-benz.com/products/configurator/docs)
-- [OpenAPI](openapi/mercedes-me-configurator-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mercedes-me-configurator-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-configurator-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/mercedes-me-vehicle-configuration-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/mercedes-me-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Mercedes-Benz Dealer API
+- [Mercedes Me Agentic Access](https://apis.io/agentic-access/mercedes-me/mercedes-me-agentic-access/)
 
-The Dealer API exposes Mercedes-Benz authorized dealer locations worldwide with filtering by country, geo radius, services offered, opening hours, and dealer brand. It powers dealer-locator widgets, service-booking flows, and OEM marketing surfaces.
+#### JSON Schema (2)
 
-- **Human URL:** [https://developer.mercedes-benz.com/products/dealer](https://developer.mercedes-benz.com/products/dealer)
-- **Base URL:** `https://api.mercedes-benz.com/dealer/v1`
+The data models the API reads and writes.
 
-#### Tags
+- [Mercedes-Benz DTC Readout](https://apis.io/schemas/mercedes-me/mercedes-me-dtc-readout/)
+- [Mercedes-Benz Vehicle Configuration](https://apis.io/schemas/mercedes-me/mercedes-me-vehicle-configuration/)
 
-- Automotive
-- Dealer Locator
-- Mercedes-Benz
-- Retail
+#### JSON Structure (1)
 
-#### Properties
+Data models expressed in JSON Structure.
 
-- [Documentation](https://developer.mercedes-benz.com/products/dealer)
-- [OpenAPI](openapi/mercedes-me-dealer-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mercedes-me-dealer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-dealer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Mercedes Me Vehicle Configuration Structure](https://apis.io/json-structure/mercedes-me/mercedes-me-vehicle-configuration-structure/)
 
-### Mercedes-Benz Vehicle Images API
+#### JSON-LD (1)
 
-The Vehicle Images API provides original Mercedes-Benz exterior, interior, and component imagery keyed by FIN/VIN. It supports perspective and day/night modifiers and exposes component-level images for engine, paint, rim, trim, upholstery, and individual equipments.
+Linked-data contexts for the provider's vocabulary.
 
-- **Human URL:** [https://developer.mercedes-benz.com/products/vehicle_images](https://developer.mercedes-benz.com/products/vehicle_images)
-- **Base URL:** `https://api.mercedes-benz.com/vehicle_images/v1/vehicles`
+- [Mercedes Me Context](https://apis.io/jsonld/mercedes-me/mercedes-me-context/)
 
-#### Tags
+#### Vocabulary (1)
 
-- Automotive
-- Imagery
-- Mercedes-Benz
-- Vehicle Reference Data
+The provider's domain terms, defined.
 
-#### Properties
+- [Mercedes-Benz Mercedes me Vocabulary](https://apis.io/vocabularies/mercedes-me/mercedes-me-vocabulary/)
 
-- [Documentation](https://developer.mercedes-benz.com/products/vehicle_images)
-- [OpenAPI](openapi/mercedes-me-vehicle-images-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mercedes-me-vehicle-images-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-vehicle-images-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Examples (3)
 
-### Mercedes-Benz Remote Diagnostic Support API
+Example requests and responses.
 
-The Remote Diagnostic Support API lets authorized third parties (e.g. roadside assistance, fleet operators, dealerships) read Diagnostic Trouble Codes, ECU inventories, DTC snapshots, and available resource readouts from a Mercedes-Benz vehicle on behalf of the customer. All endpoints take a VIN/FIN as the vehicle identifier and support async polling.
+- [Mercedes Me Create Dtc Readout Example](https://apis.io/examples/mercedes-me/mercedes-me-create-dtc-readout-example/)
+- [Mercedes Me List Dealers Example](https://apis.io/examples/mercedes-me/mercedes-me-list-dealers-example/)
+- [Mercedes Me List Markets Example](https://apis.io/examples/mercedes-me/mercedes-me-list-markets-example/)
 
-- **Human URL:** [https://developer.mercedes-benz.com/products/remote_diagnostic_support](https://developer.mercedes-benz.com/products/remote_diagnostic_support)
-- **Base URL:** `https://api.mercedes-benz.com/remotediagnostic/v1`
+#### Collections (15)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Automotive
-- Connected Vehicle
-- Diagnostics
-- DTC
-- ECU
-- Mercedes-Benz
-- Telematics
+- [Car Configurator Components API](https://apis.io/collections/mercedes-me/open-mercedes-me-components-api/)
+- [Car Configurator Components Configurations API](https://apis.io/collections/mercedes-me/open-mercedes-me-configurations-api/)
+- [Car Configurator](https://apis.io/collections/mercedes-me/open-mercedes-me-configurator-api/)
+- [Dealer](https://apis.io/collections/mercedes-me/open-mercedes-me-dealer-api/)
+- [Car Configurator Components Dealer search API](https://apis.io/collections/mercedes-me/open-mercedes-me-dealer-search-api/)
+- [Car Configurator Components Diagnostic Trouble Code (DTC) Snapshots API](https://apis.io/collections/mercedes-me/open-mercedes-me-diagnostic-trouble-code-dtc-snapshots-api/)
+- [Car Configurator Components Diagnostic Trouble Codes (DTC's) API](https://apis.io/collections/mercedes-me/open-mercedes-me-diagnostic-trouble-codes-dtc-s-api/)
+- [Car Configurator Components Electronical Control Units (ECU's) API](https://apis.io/collections/mercedes-me/open-mercedes-me-electronical-control-units-ecu-s-api/)
+- [Car Configurator Components Images API](https://apis.io/collections/mercedes-me/open-mercedes-me-images-api/)
+- [Car Configurator Components Perspectives API](https://apis.io/collections/mercedes-me/open-mercedes-me-perspectives-api/)
+- [Car Configurator Components References API](https://apis.io/collections/mercedes-me/open-mercedes-me-references-api/)
+- [Remote Diagnostic Support](https://apis.io/collections/mercedes-me/open-mercedes-me-remote-diagnostic-support-api/)
+- [Car Configurator Components Resources API](https://apis.io/collections/mercedes-me/open-mercedes-me-resources-api/)
+- [Car Configurator Components Saved configurations API](https://apis.io/collections/mercedes-me/open-mercedes-me-saved-configurations-api/)
+- [Vehicle Image](https://apis.io/collections/mercedes-me/open-mercedes-me-vehicle-images-api/)
 
-#### Properties
+#### Overlays (11)
 
-- [Documentation](https://developer.mercedes-benz.com/products/remote_diagnostic_support)
-- [OpenAPI](openapi/mercedes-me-remote-diagnostic-support-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mercedes-me-remote-diagnostic-support-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-remote-diagnostic-support-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/mercedes-me-dtc-readout-schema.json) — [JSON Schema](https://json-schema.org/specification)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-### Mercedes-Benz Vehicle Status API
+- [Mercedes Me Components Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-components-overlay/)
+- [Mercedes Me Configurations Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-configurations-overlay/)
+- [Mercedes Me Dealer Search Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-dealer-search-overlay/)
+- [Mercedes Me Diagnostic Trouble Code Dtc Snapshots Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-diagnostic-trouble-code-dtc-snapshots-overlay/)
+- [Mercedes Me Diagnostic Trouble Codes Dtc S Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-diagnostic-trouble-codes-dtc-s-overlay/)
+- [Mercedes Me Electronical Control Units Ecu S Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-electronical-control-units-ecu-s-overlay/)
+- [Mercedes Me Images Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-images-overlay/)
+- [Mercedes Me Perspectives Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-perspectives-overlay/)
+- [Mercedes Me References Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-references-overlay/)
+- [Mercedes Me Resources Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-resources-overlay/)
+- [Mercedes Me Saved Configurations Overlay](https://apis.io/overlays/mercedes-me/mercedes-me-saved-configurations-overlay/)
 
-The Vehicle Status API delivers real-time vehicle state — doors, windows, deck lid, sunroof, tire pressure, and overall lock state — for a customer-consented Mercedes-Benz vehicle by VIN. Returns last-known timestamps and uses the standard Mercedes-Benz OAuth 2.0 customer-consent flow.
+#### Governance rules (2)
 
-- **Human URL:** [https://developer.mercedes-benz.com/products/vehicle_status](https://developer.mercedes-benz.com/products/vehicle_status)
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Mercedes-Benz Mercedes me — jsonschema rules](https://apis.io/rules/mercedes-me/mercedes-me-jsonschema-spectral-rules/)
+- [Mercedes-Benz Mercedes me API Rules](https://apis.io/rules/mercedes-me/mercedes-me-rules/)
 
-- Automotive
-- Connected Vehicle
-- Mercedes me
-- Mercedes-Benz
-- Telematics
-- Vehicle Status
-
-#### Properties
-
-- [Documentation](https://developer.mercedes-benz.com/products/vehicle_status)
-- [Documentation](https://developer.mercedes-benz.com/products/vehicle_status/docs)
-- [Postman Collection](collections/mercedes-me-configurator-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-configurator-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-dealer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-dealer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-remote-diagnostic-support-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-remote-diagnostic-support-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-vehicle-images-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-vehicle-images-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (3)
 
-### Mercedes-Benz Vehicle Lock Status API
-
-The Vehicle Lock Status API returns the current door-lock, deck-lid, and position-lock state of a Mercedes-Benz vehicle by VIN. Designed for parking, insurance, and security-monitoring use cases that need a minimal lock-only surface separate from full Vehicle Status.
-
-- **Human URL:** [https://developer.mercedes-benz.com/products/vehicle_lock_status](https://developer.mercedes-benz.com/products/vehicle_lock_status)
-
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Automotive
-- Connected Vehicle
-- Lock Status
-- Mercedes me
-- Mercedes-Benz
-- Telematics
-
-#### Properties
-
-- [Documentation](https://developer.mercedes-benz.com/products/vehicle_lock_status)
-- [Documentation](https://developer.mercedes-benz.com/products/vehicle_lock_status/docs)
-- [Postman Collection](collections/mercedes-me-configurator-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-configurator-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-dealer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-dealer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-remote-diagnostic-support-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-remote-diagnostic-support-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-vehicle-images-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-vehicle-images-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Mercedes Me Authentication](https://apis.io/security/mercedes-me/mercedes-me-authentication/)
+- [Mercedes Me Domain Security](https://apis.io/security/mercedes-me/mercedes-me-domain-security/)
+- [Mercedes Me Vulnerability Disclosure](https://apis.io/security/mercedes-me/mercedes-me-vulnerability-disclosure/)
 
-### Mercedes-Benz Fuel Status API
-
-The Fuel Status API exposes a Mercedes-Benz combustion vehicle's current tank level, remaining fuel range in km, and last-update timestamp by VIN. Targeted at fueling, fleet, and concierge integrations.
-
-- **Human URL:** [https://developer.mercedes-benz.com/products/fuel_status](https://developer.mercedes-benz.com/products/fuel_status)
-
-#### Tags
+#### OAuth scopes (1)
 
-- Automotive
-- Connected Vehicle
-- Fuel
-- Mercedes me
-- Mercedes-Benz
-- Telematics
-
-#### Properties
-
-- [Documentation](https://developer.mercedes-benz.com/products/fuel_status)
-- [Documentation](https://developer.mercedes-benz.com/products/fuel_status/docs)
-- [Postman Collection](collections/mercedes-me-configurator-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-configurator-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-dealer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-dealer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-remote-diagnostic-support-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-remote-diagnostic-support-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-vehicle-images-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-vehicle-images-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mercedes-Benz Electric Vehicle Status API
-
-The Electric Vehicle Status API (currently at v3) provides charge state, state-of-charge percent, remaining electric range in km, charging-active flag, and time-to-full estimates for Mercedes-EQ and EV-mode plug-in hybrid vehicles. v2 also adds remote charge start/stop commands.
-
-- **Human URL:** [https://developer.mercedes-benz.com/products/electric_vehicle_status_3](https://developer.mercedes-benz.com/products/electric_vehicle_status_3)
-
-#### Tags
-
-- Automotive
-- Charging
-- Connected Vehicle
-- Electric Vehicle
-- EV
-- Mercedes me
-- Mercedes-Benz
-- Telematics
-
-#### Properties
-
-- [Documentation](https://developer.mercedes-benz.com/products/electric_vehicle_status_3)
-- [Documentation](https://developer.mercedes-benz.com/products/electric_vehicle_status_2/docs)
-- [Postman Collection](collections/mercedes-me-configurator-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-configurator-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-dealer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-dealer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-remote-diagnostic-support-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-remote-diagnostic-support-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-vehicle-images-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-vehicle-images-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mercedes-Benz Pay As You Drive 2.0 API
-
-The Pay As You Drive 2.0 API supplies precise odometer readings and geographical position for a consented Mercedes-Benz vehicle, designed for usage-based insurance, mileage-based subscriptions, and PAYD underwriting workflows.
-
-- **Human URL:** [https://developer.mercedes-benz.com/products/pay_as_you_drive_insurance_2](https://developer.mercedes-benz.com/products/pay_as_you_drive_insurance_2)
-
-#### Tags
-
-- Automotive
-- Connected Vehicle
-- Geolocation
-- Insurance
-- Mercedes me
-- Mercedes-Benz
-- Odometer
-- Telematics
-- Usage-Based Insurance
-
-#### Properties
-
-- [Documentation](https://developer.mercedes-benz.com/products/pay_as_you_drive_insurance_2)
-- [Documentation](https://developer.mercedes-benz.com/products/pay_as_you_drive_insurance_2/docs)
-- [Postman Collection](collections/mercedes-me-configurator-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-configurator-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-dealer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-dealer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-remote-diagnostic-support-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-remote-diagnostic-support-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-vehicle-images-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-vehicle-images-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Mercedes-Benz Fleet API
-
-The Mercedes-Benz Fleet API integrates vehicle data into fleet management systems without retrofit hardware. It splits into a REST Management API (add vehicles, activate/deactivate per-vehicle data packages, issue remote commands) and a Kafka Push API that streams location, mileage, fuel/charge, vehicle health, tires, door/window status, driving behavior, and anti-theft events. Packages are activated individually at vehicle level.
-
-- **Human URL:** [https://developer.mercedes-benz.com/products/mercedes-benz_fleet_api](https://developer.mercedes-benz.com/products/mercedes-benz_fleet_api)
-
-#### Tags
-
-- Automotive
-- Connected Vehicle
-- Fleet Management
-- Kafka
-- Mercedes-Benz
-- Streaming
-- Telematics
-
-#### Properties
-
-- [Documentation](https://developer.mercedes-benz.com/products/mercedes-benz_fleet_api)
-- [Documentation](https://connectivity.mercedes-benz.com/products/mercedes-benz-fleet-api)
-- [SDK](https://github.com/mercedes-benz/kafka-integration-samples)
-- [Postman Collection](collections/mercedes-me-configurator-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-configurator-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-dealer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-dealer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-remote-diagnostic-support-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-remote-diagnostic-support-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mercedes-me-vehicle-images-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mercedes-me-vehicle-images-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://developer.mercedes-benz.com/)
+The permissions the API asks for.
+
+- [Mercedes Me Scopes](https://apis.io/scopes/mercedes-me/mercedes-me-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Mercedes Me Plans Pricing](https://apis.io/plans/mercedes-me/mercedes-me-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Mercedes Me Rate Limits](https://apis.io/rate-limits/mercedes-me/mercedes-me-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Mercedes Me Finops](https://apis.io/finops/mercedes-me/mercedes-me-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Documentation](https://developer.mercedes-benz.com/products)
-- [SDK](https://developer.mercedes-benz.com/sdks)
-- [SDK](https://github.com/mercedes-benz/MBSDK-Mobile-Android)
-- [SDK](https://github.com/mercedes-benz/MBSDK-Mobile-iOS)
-- [SDK](https://github.com/mercedes-benz/MBSDK-community-support)
-- [SDK](https://github.com/mercedes-benz/kafka-integration-samples)
-- [Git Hub](https://github.com/mercedes-benz)
-- [Git Hub](https://github.com/mercedes-benz/foss)
-- [Git Hub](https://github.com/mercedes-benz/mercedes-benz-foss-manifesto)
-- [Postman](https://www.postman.com/mbdevelopers/mercedes-benz/overview) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Connectivity](https://connectivity.mercedes-benz.com/)
-- [Connectivity](https://data.mercedes-benz.com/)
-- [LinkedIn](https://www.linkedin.com/company/mercedes-benz-ag/)
-- [Twitter](https://twitter.com/MercedesBenz)
-- [Consumer App](https://www.mbusa.com/en/mercedes-benz-app)
-- [Payments](https://group.mercedes-benz.com/innovations/digitalisation/connectivity/mercedes-pay.html)
-- [Payments](https://www.mercedes-benz-mobility.com/en/what-we-do/payment-services/)
-- [Vocabulary](vocabulary/mercedes-me-vocabulary.yml)
-- [Spectral Rules](rules/mercedes-me-rules.yml)
-- [Plans](plans/mercedes-me-plans-pricing.yml)
-- [Rate Limits](rate-limits/mercedes-me-rate-limits.yml)
-- [Fin Ops](finops/mercedes-me-finops.yml)
+
+## API Evangelist rating
+
+**Unrated** — no public website could be reached for this company, so there was almost nothing to measure and nothing a reader could check.
+
+This is not a score of zero. No rating is published for this company. If that is wrong because something public exists that we missed, say so on this repository or email [info@apievangelist.com](mailto:info@apievangelist.com) and it will be re-run — free, and no justification needed.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mercedes-Benz Mercedes me: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mercedes-me/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
